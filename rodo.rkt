@@ -5,19 +5,23 @@
   (displayln (hash-ref hash-list key)))
 
 (define message (hash 
-                  'help-messages "For usage type `rodo -h` or `rodo --help`"
-                  'file-not-found "Rodo has not been setup in your home directory\nWould you like to set it up now? [y/n]"
+                  'incorrect-usage-msg "For usage type `rodo -h` or `rodo --help`"
+                  'file-not-found "rodo has not been setup in your home directory\nWould you like to set it up now? [y/n]"
                   'file-exists ".rodo file exists"
                   'item-added "Item added"
-                  'item-removed "item removed"
+                  'item-removed "Item removed"
                   'initializing "Initializing rodo in your home directory"))
+
+(define y-n (hash
+              'yes '("yes" "Yes" "y" "Y")
+              'no '("no" "No" "n" "N")))
 
 ; just figuring out stuff here
 (define (prompt-user prompt-message)
   (display-hash message prompt-message)
   (let ([user-input (read-line)])
     (cond
-      [(member user-input '("yes" "Yes" "y" "Y"))  
+      [(member user-input (hash-ref y-n 'yes))  
        (displayln "You chose yes")]
       [else 
         (displayln "you chose something else")])))
