@@ -23,6 +23,8 @@
     (cond
       [(member user-input (hash-ref y-n 'yes))  
        (displayln "You chose yes")]
+      [(member user-input (hash-ref y-n 'no))  
+       (displayln "You chose no")]
       [else 
         (displayln "you chose something else")])))
 
