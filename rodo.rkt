@@ -25,7 +25,6 @@
                       #:mode 'text
                       #:exists 'can-update)))
 
-; just figuring out stuff here
 (define (prompt-user prompt-message)
   (display-hash messages prompt-message)
   (let ([user-input (read-line)])
