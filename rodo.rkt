@@ -5,15 +5,15 @@
   (displayln (hash-ref hash-list key)))
 
 (define messages (hash 
-                  'incorrect-usage "For usage type `rodo -h` or `rodo --help`"
-                  'file-not-found "rodo has not been setup in your home directory\nWould you like to set it up now? [y/n]"
-                  'file-exists ".rodo file exists"
+                  'incorrect-usage "> For usage type `rodo -h` or `rodo --help`"
+                  'file-not-found "> rodo has not been setup in your home directory\nWould you like to set it up now? [y/n]"
+                  'file-exists "> .rodo file exists"
                   'creating-file "> Creating .rodo file in your home directory..."
-                  'item-added "Item added"
-                  'item-removed "Item removed"
-                  'initializing "Initializing rodo in your home directory"
-                  'terminating "Terminating rodo..."
-                  'choose-y/n "Error: Please choose y or n"))
+                  'item-added "> Item added"
+                  'item-removed "> Item removed"
+                  'initializing "> Initializing rodo in your home directory"
+                  'terminating "> Terminating rodo..."
+                  'choose-y/n "> Error: Please choose y or n"))
 
 (define y/n (hash
               'yes '("yes" "Yes" "y" "Y")
