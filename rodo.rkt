@@ -1,14 +1,12 @@
 #! /usr/bin/env racket
 #lang racket/base
+
 (require json racket/vector)
 
 (define program-name "rodo")
-
 (define program-file ".rodo")
-
 (define program-path "~/")
 
-;; because I don't want to type `(display (hash-ref...` over and over again
 (define (d-hash-ref hash-list key)
   (displayln (hash-ref hash-list key)))
 
@@ -31,7 +29,7 @@
 
     'creating-file (string-append "> Creating a " program-file " file in your " program-path " directory...")
     'file-exists-now (string-append "> " program-path program-file " have been successfully created") 
-    'error-creating-file (string-append "> There was an error creating " program-file " in your " program-path " path.\n> This may be due to directory permissions")
+    'error-creating-file (string-append "> Error: Could not create " program-file " in your " program-path " directory.\n> This may be due to directory permissions")
 
     'item-added "> Added item to list" 
     'item-removed "> Added item to list"
