@@ -24,12 +24,11 @@
   (hash 
     'incorrect-usage (string-append "> For usage type `" program-name " -h` or `" program-name " --help`")
 
+    'file-creating (string-append "> Creating a " program-file " file in your " program-path " directory...")
+    'file-creation-error (string-append "> Error: Could not create " program-file " in your " program-path " directory.\n> This may be due to directory permissions")
+    'file-already-exists (string-append "> " program-file " file already exists in " program-path)
+    'file-successfully-created (string-append "> " program-path program-file " have been successfully created") 
     'file-not-found (string-append "> " program-file " has not been setup in your " program-path " directory\n> Would you like to set it up now? [y/n]")
-    'file-exists-already (string-append "> " program-file " file already exists in " program-path)
-
-    'creating-file (string-append "> Creating a " program-file " file in your " program-path " directory...")
-    'file-exists-now (string-append "> " program-path program-file " have been successfully created") 
-    'error-creating-file (string-append "> Error: Could not create " program-file " in your " program-path " directory.\n> This may be due to directory permissions")
 
     'item-added "> Added item to list" 
     'item-removed "> Added item to list"
@@ -58,11 +57,11 @@
   (let ([user-input (read-line)])
     (cond
       [(member user-input (hash-ref y/n 'yes))  
-       (d-hash-ref messages 'creating-file)
+       (d-hash-ref messages 'file-creating)
        (open/create-file (string-append program-path program-file))
        (if (file-exists? (expand-user-path (string-append program-path program-file)))
-         (d-hash-ref messages 'file-exists-now)
-         (d-hash-ref messages 'error-creating-file))]
+         (d-hash-ref messages 'file-successfully-created)
+         (d-hash-ref messages 'file-creation-error))]
       [(member user-input (hash-ref y/n 'no))  
        (d-hash-ref messages 'terminating)]
       [else 
@@ -85,7 +84,7 @@
 
 (define (todo-list-exist?)
   (if (file-exists? (expand-user-path (string-append program-path program-file)))
-    (d-hash-ref messages 'file-exists-already)
+    (d-hash-ref messages 'file-already-exists)
     (prompt-initialize 'file-not-found)))
 
 (define (main)
