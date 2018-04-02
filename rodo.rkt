@@ -9,16 +9,17 @@
 (define program-path "~/.")
 
 ;; because I don't want to type `(display (hash-ref...` over and over again
-(define (displayln-hash-ref hash-list key)
+(define (d-hash-ref hash-list key)
   (displayln (hash-ref hash-list key)))
 
-;; (define (add-to-list)
-;;  (let ([args (vector-ref (current-command-line-arguments) 1)])
-;;    (string-append "> Added " args " to list")))
+#|(define (add-to-list)
+  (let ([args (vector-ref (current-command-line-arguments) 1)])
+    (string-append "> Added " args " to list")))
 
-;;(define (remove-from-list)
-;;  (let ([args (vector-ref (current-command-line-arguments) 1)])
-;;    (string-append "> Removed " args " from list")))
+(define (remove-from-list)
+  (let ([args (vector-ref (current-command-line-arguments) 1)])
+    (string-append "> Removed " args " from list")))
+|#
 
 ;; define all messages for quick access
 (define messages 
@@ -51,32 +52,32 @@
 
 ;; talk with user if something goes wrong/right 
 (define (prompt-initialize prompt-message)
-  (displayln-hash-ref messages prompt-message)
+  (d-hash-ref messages prompt-message)
   (display "> ")
   (let ([user-input (read-line)])
     (cond
       [(member user-input (hash-ref y/n 'yes))  
-       (displayln-hash-ref messages 'creating-file)
+       (d-hash-ref messages 'creating-file)
        (open/create-file (string-append program-path program-name))]
       [(member user-input (hash-ref y/n 'no))  
-       (displayln-hash-ref messages 'terminating)]
+       (d-hash-ref messages 'terminating)]
       [else 
-        (displayln-hash-ref messages 'choose-y/n)
+        (d-hash-ref messages 'choose-y/n)
         (prompt-initialize 'file-not-found)])))
 
 (define (check-args args)
   (let ([args-length (vector-length args)])
     (cond
       [(or (equal? args-length 0) (> args-length 2))
-       (displayln-hash-ref messages 'incorrect-usage)]
+       (d-hash-ref messages 'incorrect-usage)]
       [(and (equal? args-length 2) (equal? (vector-member "add" args) 0))
-       (displayln-hash-ref messages 'item-added)]
+       (d-hash-ref messages 'item-added)]
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
        (todo-list-exist?)])))
 
 (define (todo-list-exist?)
   (if (file-exists? (expand-user-path (string-append program-path program-name)))
-    (displayln-hash-ref messages 'file-exists)
+    (d-hash-ref messages 'file-exists)
     (prompt-initialize 'file-not-found)))
 
 (define (main)
