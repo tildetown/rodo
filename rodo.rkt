@@ -80,6 +80,6 @@
     (prompt-initialize 'file-not-found)))
 
 (define (main)
-(check-args (current-command-line-arguments)))
+  (check-args (current-command-line-arguments)))
 
 (main)
