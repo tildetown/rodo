@@ -27,7 +27,7 @@
     'incorrect-usage (string-append "> For usage type `" program-name " -h` or `" program-name " --help`")
 
     'file-not-found (string-append "> " program-file " has not been setup in your " program-path " directory\n> Would you like to set it up now? [y/n]")
-    'file-exists (string-append "> " program-file " file exists")
+    'file-exists-already (string-append "> " program-file " file already exists in " program-path)
 
     'creating-file (string-append "> Creating a " program-file " file in your " program-path " directory...")
     'file-exists-now (string-append "> " program-path program-file " have been successfully created") 
@@ -87,7 +87,7 @@
 
 (define (todo-list-exist?)
   (if (file-exists? (expand-user-path (string-append program-path program-file)))
-    (d-hash-ref messages 'file-exists)
+    (d-hash-ref messages 'file-exists-already)
     (prompt-initialize 'file-not-found)))
 
 (define (main)
