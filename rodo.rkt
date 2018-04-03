@@ -51,7 +51,7 @@
       (close-output-port opened-file))))
 
 ;; talk with user if something goes wrong/right 
-(define (prompt-initialize chosen-message)
+(define (prompt-user chosen-message)
   (d-hash-ref messages chosen-message)
   (display "> ")
   (let ([user-input (read-line)])
@@ -65,7 +65,7 @@
       [(member user-input (hash-ref y/n 'no))  
        (d-hash-ref messages 'terminating)]
       [else 
-        (prompt-initialize 'choose-y/n)])))
+        (prompt-user 'choose-y/n)])))
 
 (define (check-args args)
   (let ([args-length (vector-length args)])
@@ -85,7 +85,7 @@
 (define (todo-list-exist?)
   (if (file-exists? (expand-user-path (string-append program-path program-file)))
     (d-hash-ref messages 'file-already-exists)
-    (prompt-initialize 'file-not-found)))
+    (prompt-user 'file-not-found)))
 
 (define (main)
   (check-args (current-command-line-arguments)))
