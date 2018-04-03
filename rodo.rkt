@@ -51,8 +51,8 @@
       (close-output-port opened-file))))
 
 ;; talk with user if something goes wrong/right 
-(define (prompt-initialize prompt-message)
-  (d-hash-ref messages prompt-message)
+(define (prompt-initialize chosen-message)
+  (d-hash-ref messages chosen-message)
   (display "> ")
   (let ([user-input (read-line)])
     (cond
