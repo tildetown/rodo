@@ -10,6 +10,7 @@
 (define (d-hash-ref hash-list key)
   (displayln (hash-ref hash-list key)))
 
+;; if no command-line arguments are called this will throw an error, even if the function is never called :(
 ;;(define (add-to-list)
 ;;  (let ([args (vector-ref (current-command-line-arguments) 1)])
 ;;    (string-append "> Added " args " to list")))
@@ -50,7 +51,7 @@
                                          #:exists 'can-update)])
       (close-output-port opened-file))))
 
-;; talk with user if something goes wrong/right 
+;; prompt user for file initial file creation 
 (define (prompt-user chosen-message)
   (d-hash-ref messages chosen-message)
   (display "> ")
@@ -62,8 +63,10 @@
        (if (file-exists? (expand-user-path (string-append program-path program-file)))
          (d-hash-ref messages 'file-successfully-created)
          (d-hash-ref messages 'file-creation-error))]
+
       [(member user-input (hash-ref y/n 'no))  
        (d-hash-ref messages 'terminating)]
+
       [else 
         (prompt-user 'choose-y/n)])))
 
@@ -82,6 +85,7 @@
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
        (todo-list-exist?)])))
 
+;; does the file exist that holds the list(s?)
 (define (todo-list-exist?)
   (if (file-exists? (expand-user-path (string-append program-path program-file)))
     (d-hash-ref messages 'file-already-exists)
