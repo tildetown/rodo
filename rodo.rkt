@@ -24,16 +24,13 @@
 (define messages 
   (hash 
     'incorrect-usage (string-append "> For usage type `" program-name " -h` or `" program-name " --help`")
-
     'file-creating (string-append "> Creating a " program-file " file in your " program-path " directory...")
     'file-creation-error (string-append "> Error: Could not create " program-file " in your " program-path " directory.\n> This may be due to directory permissions")
     'file-already-exists (string-append "> " program-file " file already exists in " program-path)
     'file-successfully-created (string-append "> " program-path program-file " have been successfully created") 
     'file-not-found (string-append "> " program-file " has not been setup in your " program-path " directory\n> Would you like to set it up now? [y/n]")
-
     'item-added "> Added item to list" 
     'item-removed "> Added item to list"
-
     'terminating (string-append "> Exiting " program-name "...")
     'choose-y/n "> Error: Please choose y or n"))
 
@@ -63,7 +60,6 @@
        (if (file-exists? (expand-user-path (string-append program-path program-file)))
          (d-hash-ref messages 'file-successfully-created)
          (d-hash-ref messages 'file-creation-error))]
-
       [(member user-input (hash-ref y/n 'no))  
        (d-hash-ref messages 'terminating)]
 
@@ -75,13 +71,10 @@
     (cond
       [(or (equal? args-length 0) (> args-length 2))
        (d-hash-ref messages 'incorrect-usage)]
-
       [(and (equal? args-length 2) (equal? (vector-member "add" args) 0))
        (d-hash-ref messages 'item-added)]
-
       [(and (equal? args-length 2) (equal? (vector-member "remove" args) 0))
        (d-hash-ref messages 'item-removed)]
-
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
        (todo-list-exist?)])))
 
