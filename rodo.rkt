@@ -1,5 +1,4 @@
-#! /usr/bin/env racket
-#lang racket/base
+#! /usr/bin/env racket #lang racket/base
 
 (require racket/vector)
 
@@ -32,7 +31,7 @@
     'item-removed-prefix "> Removed "
     'item-removed-suffix " from list\n"
 
-    'terminating (string-append "> Exiting " program-name "...\n")))
+    'terminating (string-append "> Exiting " program-name " ...\n")))
 
 ;; some possible user-input related "mistakes" that will be accepted for input
 (define y/n 
