@@ -68,6 +68,12 @@
       " init` "
       "to set it up\n")
 
+    'terminating 
+    (string-append 
+      "> Exiting " 
+      program-name 
+      " ...\n")
+
     'choose-y/n
     "> Error: Please choose y or n\n"
 
@@ -81,13 +87,7 @@
     "> Removed "
 
     'item-removed-suffix 
-    " from list\n"
-
-    'terminating 
-    (string-append 
-      "> Exiting " 
-      program-name 
-      " ...\n")))
+    " from list\n"))
 
 (define y/n 
   (hash
@@ -154,6 +154,16 @@
       (d-hash-ref messages 'not-found)
       (d-hash-ref messages 'try-initializing))))
 
+(define (remove-item args)
+  (if (check-for-folder)
+    (begin
+      (d-hash-ref messages 'item-removed-prefix) 
+      (d-vector-ref args 1) 
+      (d-hash-ref messages 'item-removed-suffix))
+    (begin
+      (d-hash-ref messages 'not-found)
+      (d-hash-ref messages 'try-initializing))))
+
 (define (check-args args)
   (let 
     ([args-length (vector-length args)])
@@ -166,9 +176,7 @@
       [(and 
          (equal? args-length 2) 
          (equal? (vector-member "remove" args) 0))
-       (d-hash-ref messages 'item-removed-prefix) 
-       (d-vector-ref args 1) 
-       (d-hash-ref messages 'item-removed-suffix)]
+       (remove-item args)]
 
       [(and 
          (equal? args-length 1) 
