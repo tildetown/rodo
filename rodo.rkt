@@ -101,8 +101,10 @@
        (if (check-for-folder)
          (d-hash-ref messages 'successfully-created)
          (d-hash-ref messages 'creation-error))]
+
       [(member user-input (hash-ref y/n 'no))  
        (d-hash-ref messages 'terminating)]
+
       [else 
         (prompt-user 'choose-y/n)])))
 
