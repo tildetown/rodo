@@ -49,8 +49,16 @@
                  "> " 
                  program-directory 
                  " has not been setup in " 
-                 program-path "\n"
+                 program-path "\n")
+
+    'setup-y/n (string-append
                  "> Would you like to set it up now? [y/n]\n")
+
+    'try-initializing (string-append
+                        "> Try typing "
+                        "`" program-name
+                        " init` "
+                        "to set it up\n")
 
     'choose-y/n "> Error: Please choose y or n\n"
 
@@ -108,13 +116,21 @@
       [else 
         (prompt-user 'choose-y/n)])))
 
+(define (add-item args)
+  (if (check-for-folder)
+    (begin
+      (d-hash-ref messages 'item-added-prefix) 
+      (d-vector-ref args 1) 
+      (d-hash-ref messages 'item-added-suffix))
+    (begin
+      (d-hash-ref messages 'not-found)
+      (d-hash-ref messages 'try-initializing))))
+
 (define (check-args args)
   (let ([args-length (vector-length args)])
     (cond
       [(and (equal? args-length 2) (equal? (vector-member "add" args) 0))
-       (d-hash-ref messages 'item-added-prefix) 
-       (d-vector-ref args 1) 
-       (d-hash-ref messages 'item-added-suffix)]
+       (add-item args)]
 
       [(and (equal? args-length 2) (equal? (vector-member "remove" args) 0))
        (d-hash-ref messages 'item-removed-prefix) 
@@ -122,17 +138,19 @@
        (d-hash-ref messages 'item-removed-suffix)]
 
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
-       (todo-list-exist?)]
+       (todo-folder-exist?)]
 
       [else (d-hash-ref messages 'incorrect-usage)])))
 
 ;; does the file exist that holds the list(s?)
-(define (todo-list-exist?)
+(define (todo-folder-exist?)
   (if (check-for-folder)
     (d-hash-ref messages 'already-exists)
-    (prompt-user 'not-found)))
+    (begin
+      (d-hash-ref messages 'not-found)
+      (prompt-user 'setup-y/n))))
 
-(define (main)
-  (check-args (current-command-line-arguments)))
+  (define (main)
+    (check-args (current-command-line-arguments)))
 
-(main)
+  (main)
