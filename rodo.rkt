@@ -75,7 +75,7 @@
     'yes '("yes" "Yes" "y" "Y")
     'no '("no" "No" "n" "N")))
 
-(define (open/create-file list-name)
+(define (open/create-file)
   (let ([path (expand-user-path (string-append 
                                   program-path 
                                   program-directory 
