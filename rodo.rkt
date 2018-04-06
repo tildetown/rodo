@@ -170,7 +170,10 @@
         (prompt-user messages 'choose-y/n)])))
 
 (define (add-item args)
-  (if (check-for-folder)
+  (if 
+    (and
+      (check-for-folder)
+      (check-for-file))
     (begin
       (d-hash-ref messages 'item-added-prefix) 
       (d-vector-ref args 1) 
@@ -180,7 +183,10 @@
       (d-hash-ref messages 'try-initializing))))
 
 (define (remove-item args)
-  (if (check-for-folder)
+  (if 
+    (and
+      (check-for-folder)
+      (check-for-file))
     (begin
       (d-hash-ref messages 'item-removed-prefix) 
       (d-vector-ref args 1) 
