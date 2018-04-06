@@ -125,8 +125,8 @@
         program-path 
         program-directory))))
 
-(define (prompt-user chosen-message)
-  (d-hash-ref messages chosen-message)
+(define (prompt-user hash-list key)
+  (d-hash-ref hash-list key)
   (display "> ")
   (let 
     ([user-input (read-line)])
@@ -142,7 +142,7 @@
        (d-hash-ref messages 'terminating)]
 
       [else 
-        (prompt-user 'choose-y/n)])))
+        (prompt-user messages 'choose-y/n)])))
 
 (define (add-item args)
   (if (check-for-folder)
@@ -191,7 +191,7 @@
     (d-hash-ref messages 'already-exists)
     (begin
       (d-hash-ref messages 'not-found)
-      (prompt-user 'setup-y/n))))
+      (prompt-user messages 'setup-y/n))))
 
 (define (main)
   (check-args (current-command-line-arguments)))
