@@ -8,7 +8,7 @@
 (define program-path "~/")
 
 (define (d-hash-ref hash-list key)
-  (display (hash-ref messages key)))
+  (display (hash-ref hash-list key)))
 
 (define (d-vector-ref args key)
   (display (vector-ref args key)))
@@ -78,8 +78,7 @@
 (define (open/create-file)
   (let ([path (expand-user-path (string-append 
                                   program-path 
-                                  program-directory 
-                                  list-name))])
+                                  program-directory))])
     (let ([opened-file (open-output-file path
                                          #:mode 'text
                                          #:exists 'can-update)])
