@@ -1,4 +1,5 @@
-#! /usr/bin/env racket #lang racket/base
+#! /usr/bin/env racket 
+#lang racket/base
 
 (require racket/vector)
 
