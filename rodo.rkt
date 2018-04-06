@@ -121,6 +121,9 @@
          (open-output-file path
                            #:mode 'text
                            #:exists 'can-update)])
+      ;;TODO
+      ;;I think i can write to file with
+      ;;a function right here...
       (close-output-port opened-file))))
 
 (define (create-folder)
