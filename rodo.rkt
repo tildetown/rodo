@@ -150,7 +150,7 @@
       (d-hash-ref messages 'not-found)
       (prompt-user 'setup-y/n))))
 
-  (define (main)
-    (check-args (current-command-line-arguments)))
+(define (main)
+  (check-args (current-command-line-arguments)))
 
-  (main)
+(main)
