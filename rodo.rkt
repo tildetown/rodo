@@ -1,34 +1,23 @@
 #! /usr/bin/env racket
 #lang racket/base
 
-(require json racket/vector)
+(require racket/vector)
 
 (define program-name "rodo")
-(define program-file ".rodo")
+(define program-directory ".rodo/")
 (define program-path "~/")
 
-(define (d-hash-ref hash-list key)
-  (displayln (hash-ref hash-list key)))
-
-;; if no command-line arguments are called this will throw an error, even if the function is never called :(
-;;(define (add-to-list)
-;;  (let ([args (vector-ref (current-command-line-arguments) 1)])
-;;    (string-append "> Added " args " to list")))
-
-;;(define (remove-from-list)
-;;  (let ([args (vector-ref (current-command-line-arguments) 1)])
-;;    (string-append "> Removed " args " from list")))
-
-;; define all messages for quick access
+(define (d-hash-ref key)
+  (displayln (hash-ref messages key)))
 
 (define messages 
   (hash 
     'incorrect-usage (string-append "> For usage type `" program-name " -h` or `" program-name " --help`")
-    'file-creating (string-append "> Creating a " program-file " file in your " program-path " directory...")
-    'file-creation-error (string-append "> Error: Could not create " program-file " in your " program-path " directory.\n> This may be due to directory permissions")
-    'file-already-exists (string-append "> " program-file " file already exists in " program-path)
-    'file-successfully-created (string-append "> " program-path program-file " have been successfully created") 
-    'file-not-found (string-append "> " program-file " has not been setup in your " program-path " directory\n> Would you like to set it up now? [y/n]")
+    'creating (string-append "> Creating a " program-directory " folder in " program-path "...")
+    'creation-error (string-append "> Error: Could not create " program-directory " in " program-path ".\n> This may be due to directory permissions")
+    'already-exists (string-append "> " program-directory " folder already exists in " program-path)
+    'successfully-created (string-append "> " program-path program-directory " has been successfully created") 
+    'not-found (string-append "> " program-directory " has not been setup in " program-path "\n> Would you like to set it up now? [y/n]")
     'item-added "> Added item to list" 
     'item-removed "> Added item to list"
     'terminating (string-append "> Exiting " program-name "...")
@@ -40,29 +29,33 @@
     'yes '("yes" "Yes" "y" "Y")
     'no '("no" "No" "n" "N")))
 
-;; yet again, less typing for opening a file
-(define (open/create-file path)
-  (let ([path (expand-user-path path)])
+(define (open/create-file list-name)
+  (let ([path (expand-user-path (string-append program-path program-directory list-name))])
     (let ([opened-file (open-output-file path
                                          #:mode 'text
                                          #:exists 'can-update)])
       (close-output-port opened-file))))
 
+(define (create-folder)
+  (make-directory (expand-user-path (string-append program-path program-directory))))
+
+(define (check-for-folder)
+  (directory-exists? (expand-user-path (string-append program-path program-directory))))
+
 ;; prompt user for file initial file creation 
 (define (prompt-user chosen-message)
-  (d-hash-ref messages chosen-message)
+  (d-hash-ref chosen-message)
   (display "> ")
   (let ([user-input (read-line)])
     (cond
       [(member user-input (hash-ref y/n 'yes))  
-       (d-hash-ref messages 'file-creating)
-       (open/create-file (string-append program-path program-file))
-       (if (file-exists? (expand-user-path (string-append program-path program-file)))
-         (d-hash-ref messages 'file-successfully-created)
-         (d-hash-ref messages 'file-creation-error))]
+       (d-hash-ref 'creating)
+       (create-folder)
+       (if (check-for-folder)
+         (d-hash-ref 'successfully-created)
+         (d-hash-ref 'creation-error))]
       [(member user-input (hash-ref y/n 'no))  
-       (d-hash-ref messages 'terminating)]
-
+       (d-hash-ref 'terminating)]
       [else 
         (prompt-user 'choose-y/n)])))
 
@@ -70,19 +63,20 @@
   (let ([args-length (vector-length args)])
     (cond
       [(or (equal? args-length 0) (> args-length 2))
-       (d-hash-ref messages 'incorrect-usage)]
+       (d-hash-ref 'incorrect-usage)]
       [(and (equal? args-length 2) (equal? (vector-member "add" args) 0))
-       (d-hash-ref messages 'item-added)]
+       (d-hash-ref 'item-added)]
       [(and (equal? args-length 2) (equal? (vector-member "remove" args) 0))
-       (d-hash-ref messages 'item-removed)]
+       (d-hash-ref 'item-removed)]
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
-       (todo-list-exist?)])))
+       (todo-list-exist?)]
+      [else (d-hash-ref 'incorrect-usage)])))
 
 ;; does the file exist that holds the list(s?)
 (define (todo-list-exist?)
-  (if (file-exists? (expand-user-path (string-append program-path program-file)))
-    (d-hash-ref messages 'file-already-exists)
-    (prompt-user 'file-not-found)))
+  (if (check-for-folder)
+    (d-hash-ref 'already-exists)
+    (prompt-user 'not-found)))
 
 (define (main)
   (check-args (current-command-line-arguments)))
