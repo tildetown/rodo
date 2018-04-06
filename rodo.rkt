@@ -15,15 +15,43 @@
 
 (define messages 
   (hash 
-    'incorrect-usage (string-append "> For usage type `" program-name " -h` or `" program-name " --help`\n")
+    'incorrect-usage (string-append 
+                       "> For usage type " 
+                       "`" program-name " -h`" 
+                       " or " 
+                       "`" program-name " --help`\n")
 
-    'creating (string-append "> Creating a " program-directory " folder in " program-path "...\n")
-    'creation-error (string-append "> Error: Could not create " program-directory " in " program-path ".\n> This may be due to directory permissions\n")
+    'creating (string-append 
+                "> Creating a " 
+                program-directory 
+                " folder in " 
+                program-path " ...\n")
 
-    'already-exists (string-append "> " program-directory " folder already exists in " program-path "\n")
-    'successfully-created (string-append "> " program-path program-directory " has been successfully created\n") 
+    'creation-error (string-append 
+                      "> Error: Could not create " 
+                      program-directory 
+                      " in " 
+                      program-path ".\n" 
+                      "> This may be due to directory permissions\n")
 
-    'not-found (string-append "> " program-directory " has not been setup in " program-path "\n> Would you like to set it up now? [y/n]\n")
+    'already-exists (string-append 
+                      "> " 
+                      program-directory 
+                      " folder already exists in " 
+                      program-path "\n")
+
+    'successfully-created (string-append 
+                            "> " 
+                            program-path program-directory 
+                            " has been successfully created\n") 
+
+    'not-found (string-append 
+                 "> " 
+                 program-directory 
+                 " has not been setup in " 
+                 program-path 
+                 "\n> Would you like to set it up now? [y/n]\n")
+
     'choose-y/n "> Error: Please choose y or n\n"
 
     'item-added-prefix "> Added " 
