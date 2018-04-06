@@ -1,7 +1,7 @@
 #! /usr/bin/env racket 
 #lang racket/base
 
-(require racket/vector)
+(require racket/vector racket/file)
 
 (define program-name "rodo")
 (define program-directory ".rodo/")
@@ -121,9 +121,15 @@
          (open-output-file path
                            #:mode 'text
                            #:exists 'can-update)])
-      ;;TODO
+      ;;TODO:
       ;;I think i can write to file with
       ;;a function right here...
+      ;;NOTE: this works when doing `./rodo.rkt init`, 
+      ;;just gotta separate it into another function
+      (write-to-file "test" 
+                     path 
+                     #:mode 'text
+                     #:exists 'append)
       (close-output-port opened-file))))
 
 (define (create-folder)
