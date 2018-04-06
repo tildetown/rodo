@@ -62,24 +62,32 @@
 
     'terminating (string-append "> Exiting " program-name " ...\n")))
 
-;; some possible user-input related "mistakes" that will be accepted for input
+;; some possible user-input related "mistakes" that 
+;; will be accepted for input
 (define y/n 
   (hash
     'yes '("yes" "Yes" "y" "Y")
     'no '("no" "No" "n" "N")))
 
 (define (open/create-file list-name)
-  (let ([path (expand-user-path (string-append program-path program-directory list-name))])
+  (let ([path (expand-user-path (string-append 
+                                  program-path 
+                                  program-directory 
+                                  list-name))])
     (let ([opened-file (open-output-file path
                                          #:mode 'text
                                          #:exists 'can-update)])
       (close-output-port opened-file))))
 
 (define (create-folder)
-  (make-directory (expand-user-path (string-append program-path program-directory))))
+  (make-directory (expand-user-path (string-append 
+                                      program-path 
+                                      program-directory))))
 
 (define (check-for-folder)
-  (directory-exists? (expand-user-path (string-append program-path program-directory))))
+  (directory-exists? (expand-user-path (string-append 
+                                         program-path 
+                                         program-directory))))
 
 ;; prompt user for file initial file creation 
 (define (prompt-user chosen-message)
