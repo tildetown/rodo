@@ -6,6 +6,7 @@
 (define program-name "rodo")
 (define program-directory ".rodo/")
 (define program-path "~/")
+(define program-file "todo-list")
 
 (define (d-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
@@ -22,12 +23,20 @@
       " or " 
       "`" program-name " --help`\n")
 
-    'creating 
+    'creating-folder 
     (string-append 
-      "> Creating a " 
+      "> creating a " 
       program-directory 
       " folder in " 
       program-path " ...\n")
+
+    'creating-file 
+    (string-append 
+      "> creating a " 
+      program-file 
+      " folder in "
+      program-path
+      program-directory " ...\n")
 
     'creation-error 
     (string-append 
@@ -47,7 +56,9 @@
     'successfully-created 
     (string-append 
       "> " 
-      program-path program-directory 
+      program-path 
+      program-directory 
+      program-file
       " has been successfully created\n") 
 
     'not-found 
@@ -97,13 +108,14 @@
     'no 
     '("no" "No" "n" "N")))
 
-(define (open/create-file)
+(define (create-file)
   (let 
     ([path 
        (expand-user-path 
          (string-append 
            program-path 
-           program-directory))])
+           program-directory
+           program-file))])
     (let 
       ([opened-file 
          (open-output-file path
@@ -117,6 +129,14 @@
       (string-append 
         program-path 
         program-directory))))
+
+(define (check-for-file)
+  (file-exists?
+    (expand-user-path
+      (string-append
+        program-path
+        program-directory
+        program-file))))
 
 (define (check-for-folder)
   (directory-exists? 
@@ -132,9 +152,14 @@
     ([user-input (read-line)])
     (cond
       [(member user-input (hash-ref y/n 'yes))  
-       (d-hash-ref messages 'creating)
+       (d-hash-ref messages 'creating-folder)
+       (d-hash-ref messages 'creating-file)
        (create-folder)
-       (if (check-for-folder)
+       (create-file)
+       (if 
+         (and 
+           (check-for-folder) 
+           (check-for-file))
          (d-hash-ref messages 'successfully-created)
          (d-hash-ref messages 'creation-error))]
 
@@ -181,12 +206,12 @@
       [(and 
          (equal? args-length 1) 
          (equal? (vector-member "init" args) 0))
-       (todo-folder-exist?)]
+       (todo-already-exists?)]
 
       [else 
         (d-hash-ref messages 'incorrect-usage)])))
 
-(define (todo-folder-exist?)
+(define (todo-already-exists?)
   (if (check-for-folder)
     (d-hash-ref messages 'already-exists)
     (begin
