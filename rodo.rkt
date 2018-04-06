@@ -70,8 +70,6 @@
 
     'terminating (string-append "> Exiting " program-name " ...\n")))
 
-;; some possible user-input related "mistakes" that 
-;; will be accepted for input
 (define y/n 
   (hash
     'yes '("yes" "Yes" "y" "Y")
@@ -97,7 +95,6 @@
                                          program-path 
                                          program-directory))))
 
-;; prompt user for file initial file creation 
 (define (prompt-user chosen-message)
   (d-hash-ref messages chosen-message)
   (display "> ")
@@ -142,7 +139,6 @@
 
       [else (d-hash-ref messages 'incorrect-usage)])))
 
-;; does the file exist that holds the list(s?)
 (define (todo-folder-exist?)
   (if (check-for-folder)
     (d-hash-ref messages 'already-exists)
