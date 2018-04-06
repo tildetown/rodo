@@ -49,8 +49,8 @@
                  "> " 
                  program-directory 
                  " has not been setup in " 
-                 program-path 
-                 "\n> Would you like to set it up now? [y/n]\n")
+                 program-path "\n"
+                 "> Would you like to set it up now? [y/n]\n")
 
     'choose-y/n "> Error: Please choose y or n\n"
 
