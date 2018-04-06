@@ -30,7 +30,7 @@
     'item-added-suffix " to list\n" 
 
     'item-removed-prefix "> Removed "
-    'item-removed-suffix "from list\n"
+    'item-removed-suffix " from list\n"
 
     'terminating (string-append "> Exiting " program-name "...\n")))
 
@@ -79,7 +79,9 @@
        (d-hash-ref messages 'item-added-suffix)]
 
       [(and (equal? args-length 2) (equal? (vector-member "remove" args) 0))
-       (d-hash-ref messages 'item-removed-prefix)]
+       (d-hash-ref messages 'item-removed-prefix) 
+       (d-vector-ref args 1) 
+       (d-hash-ref messages 'item-removed-suffix)]
 
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
        (todo-list-exist?)]
