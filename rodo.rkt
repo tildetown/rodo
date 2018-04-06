@@ -16,17 +16,23 @@
 (define messages 
   (hash 
     'incorrect-usage (string-append "> For usage type `" program-name " -h` or `" program-name " --help`\n")
+
     'creating (string-append "> Creating a " program-directory " folder in " program-path "...\n")
     'creation-error (string-append "> Error: Could not create " program-directory " in " program-path ".\n> This may be due to directory permissions\n")
+
     'already-exists (string-append "> " program-directory " folder already exists in " program-path "\n")
     'successfully-created (string-append "> " program-path program-directory " has been successfully created\n") 
+
     'not-found (string-append "> " program-directory " has not been setup in " program-path "\n> Would you like to set it up now? [y/n]\n")
+    'choose-y/n "> Error: Please choose y or n\n"
+
     'item-added-prefix "> Added " 
     'item-added-suffix " to list\n" 
+
     'item-removed-prefix "> Removed "
     'item-removed-suffix "from list\n"
-    'terminating (string-append "> Exiting " program-name "...\n")
-    'choose-y/n "> Error: Please choose y or n\n"))
+
+    'terminating (string-append "> Exiting " program-name "...\n")))
 
 ;; some possible user-input related "mistakes" that will be accepted for input
 (define y/n 
@@ -67,17 +73,17 @@
 (define (check-args args)
   (let ([args-length (vector-length args)])
     (cond
-      [(or (equal? args-length 0) (> args-length 2))
-       (d-hash-ref messages 'incorrect-usage)]
       [(and (equal? args-length 2) (equal? (vector-member "add" args) 0))
-       ;;       (d-hash-ref messages 'item-added-prefix) (vector-ref args 1)]
        (d-hash-ref messages 'item-added-prefix) 
        (d-vector-ref args 1) 
        (d-hash-ref messages 'item-added-suffix)]
+
       [(and (equal? args-length 2) (equal? (vector-member "remove" args) 0))
        (d-hash-ref messages 'item-removed-prefix)]
+
       [(and (equal? args-length 1) (equal? (vector-member "init" args) 0))
        (todo-list-exist?)]
+
       [else (d-hash-ref messages 'incorrect-usage)])))
 
 ;; does the file exist that holds the list(s?)
