@@ -108,6 +108,19 @@
     'no 
     '("no" "No" "n" "N")))
 
+(define (add-item-to-file item) ;; need to figure out how to add an EOL to each item
+    (let
+      ([path
+         (expand-user-path
+           (string-append
+             program-path
+             program-directory
+             program-file))])
+      (write-to-file item 
+                     path
+                     #:mode 'text
+                     #:exists 'append)))
+
 (define (create-file)
   (let 
     ([path 
@@ -121,15 +134,6 @@
          (open-output-file path
                            #:mode 'text
                            #:exists 'can-update)])
-      ;;TODO:
-      ;;I think i can write to file with
-      ;;a function right here...
-      ;;NOTE: this works when doing `./rodo.rkt init`, 
-      ;;just gotta separate it into another function
-      (write-to-file "test" 
-                     path 
-                     #:mode 'text
-                     #:exists 'append)
       (close-output-port opened-file))))
 
 (define (create-folder)
@@ -184,6 +188,7 @@
       (check-for-folder)
       (check-for-file))
     (begin
+      (add-item-to-file (vector-ref args 1))
       (d-hash-ref messages 'item-added-prefix) 
       (d-vector-ref args 1) 
       (d-hash-ref messages 'item-added-suffix))
