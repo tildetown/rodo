@@ -108,7 +108,8 @@
     'no 
     '("no" "No" "n" "N")))
 
-(define (add-item-to-file item) ;; need to figure out how to add an EOL to each item
+(define (add-item-to-file item)
+  (let ([item (string-append item "\n")])
     (let
       ([path
          (expand-user-path
@@ -116,10 +117,10 @@
              program-path
              program-directory
              program-file))])
-      (write-to-file item 
+      (display-to-file item 
                      path
                      #:mode 'text
-                     #:exists 'append)))
+                     #:exists 'append))))
 
 (define (create-file)
   (let 
