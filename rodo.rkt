@@ -34,7 +34,7 @@
     (string-append 
       "> creating a " 
       program-file 
-      " folder in "
+      " file in "
       program-path
       program-directory " ...\n")
 
