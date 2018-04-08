@@ -1,12 +1,14 @@
 #! /usr/bin/env racket 
 #lang racket/base
 
-(require racket/vector racket/file)
+(require racket/vector 
+         racket/file)
 
 (define program-name "rodo")
 (define program-directory ".rodo/")
 (define program-path "~/")
 (define program-file "todo-list")
+(define bullet "*")
 
 (define (d-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
@@ -16,7 +18,7 @@
 
 (define messages 
   (hash 
-    'incorrect-usage 
+    'show-usage 
     (string-append 
       "> For usage type " 
       "`" program-name " -h`" 
@@ -41,17 +43,20 @@
     'creation-error 
     (string-append 
       "> Error: Could not create " 
+      program-file
+      " in "
       program-directory 
-      " in " 
       program-path ".\n" 
       "> This may be due to directory permissions\n")
 
-    'already-exists 
+    'file-already-exists 
     (string-append 
-      "> " 
+      "> Error: " 
+      program-name 
+      " already exists in " 
+      program-path 
       program-directory 
-      " folder already exists in " 
-      program-path "\n")
+      program-file "\n")
 
     'successfully-created 
     (string-append 
@@ -61,22 +66,26 @@
       program-file
       " has been successfully created\n") 
 
-    'not-found 
+    'file-not-found 
     (string-append 
-      "> " 
+      "> Error: Could not find " 
+      program-path 
       program-directory 
-      " has not been setup in " 
-      program-path "\n")
+      program-file "\n")
 
-    'setup-y/n 
+    'init-y/n 
     (string-append
-      "> Would you like to set it up now? [y/n]\n")
+      "> A "
+      program-file 
+      " file will be created in "
+      program-path
+      program-directory "\n"
+      "> Are you sure you want to continue? [y/n]\n")
 
-    'try-initializing 
+    'try-init 
     (string-append
       "> Try typing "
-      "`" program-name
-      " init` "
+      "`" program-name " init` "
       "to set it up\n")
 
     'terminating 
@@ -109,7 +118,7 @@
     '("no" "No" "n" "N")))
 
 (define (add-item-to-file item)
-  (let ([item (string-append item "\n")])
+  (let ([item (string-append bullet " " item "\n")])
     (let
       ([path
          (expand-user-path
@@ -118,9 +127,9 @@
              program-directory
              program-file))])
       (display-to-file item 
-                     path
-                     #:mode 'text
-                     #:exists 'append))))
+                       path
+                       #:mode 'text
+                       #:exists 'append))))
 
 (define (create-file)
   (let 
@@ -159,7 +168,7 @@
         program-path 
         program-directory))))
 
-(define (prompt-user hash-list key)
+(define (prompt-user-init hash-list key)
   (d-hash-ref hash-list key)
   (display "> ")
   (let 
@@ -181,7 +190,7 @@
        (d-hash-ref messages 'terminating)]
 
       [else 
-        (prompt-user messages 'choose-y/n)])))
+        (prompt-user-init messages 'choose-y/n)])))
 
 (define (add-item args)
   (if 
@@ -194,8 +203,8 @@
       (d-vector-ref args 1) 
       (d-hash-ref messages 'item-added-suffix))
     (begin
-      (d-hash-ref messages 'not-found)
-      (d-hash-ref messages 'try-initializing))))
+      (d-hash-ref messages 'file-not-found)
+      (d-hash-ref messages 'try-init))))
 
 (define (remove-item args)
   (if 
@@ -203,12 +212,13 @@
       (check-for-folder)
       (check-for-file))
     (begin
+      ;; TODO (remove-item-from-file (vector-ref args 1))
       (d-hash-ref messages 'item-removed-prefix) 
       (d-vector-ref args 1) 
       (d-hash-ref messages 'item-removed-suffix))
     (begin
-      (d-hash-ref messages 'not-found)
-      (d-hash-ref messages 'try-initializing))))
+      (d-hash-ref messages 'file-not-found)
+      (d-hash-ref messages 'try-init))))
 
 (define (check-args args)
   (let 
@@ -227,17 +237,16 @@
       [(and 
          (equal? args-length 1) 
          (equal? (vector-member "init" args) 0))
-       (todo-already-exists?)]
+       (initialize)]
 
       [else 
-        (d-hash-ref messages 'incorrect-usage)])))
+        (d-hash-ref messages 'show-usage)])))
 
-(define (todo-already-exists?)
-  (if (check-for-folder)
-    (d-hash-ref messages 'already-exists)
+(define (initialize)
+  (if (check-for-file)
+    (d-hash-ref messages 'file-already-exists)
     (begin
-      (d-hash-ref messages 'not-found)
-      (prompt-user messages 'setup-y/n))))
+      (prompt-user-init messages 'init-y/n))))
 
 (define (main)
   (check-args (current-command-line-arguments)))
