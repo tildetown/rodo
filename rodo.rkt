@@ -2,7 +2,8 @@
 #lang racket/base
 
 (require racket/vector 
-         racket/file)
+         racket/file
+         racket/string)
 
 (define program-name "rodo")
 (define program-directory ".rodo/")
@@ -117,8 +118,28 @@
     'no 
     '("no" "No" "n" "N")))
 
+(define (show-list)
+  (let ([path
+          (expand-user-path
+            (string-append
+              program-path
+              program-directory
+              program-file))])
+    (let ([todo-items 
+            (file->lines path
+                         #:mode 'text
+                         #:line-mode 'linefeed)])
+      (display
+        (string-join
+          (map (lambda (lst)
+                 (string-append
+                   bullet
+                   " "
+                   lst))
+               todo-items) "\n")))))
+
 (define (add-item-to-file item)
-  (let ([item (string-append bullet " " item "\n")])
+  (let ([item (string-append item "\n")])
     (let
       ([path
          (expand-user-path
@@ -168,7 +189,7 @@
         program-path 
         program-directory))))
 
-(define (prompt-user-init hash-list key)
+(define (init-prompt hash-list key)
   (d-hash-ref hash-list key)
   (display "> ")
   (let 
@@ -190,7 +211,7 @@
        (d-hash-ref messages 'terminating)]
 
       [else 
-        (prompt-user-init messages 'choose-y/n)])))
+        (init-prompt messages 'choose-y/n)])))
 
 (define (add-item args)
   (if 
@@ -246,7 +267,7 @@
   (if (check-for-file)
     (d-hash-ref messages 'file-already-exists)
     (begin
-      (prompt-user-init messages 'init-y/n))))
+      (init-prompt messages 'init-y/n))))
 
 (define (main)
   (check-args (current-command-line-arguments)))
