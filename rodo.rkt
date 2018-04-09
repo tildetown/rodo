@@ -118,24 +118,29 @@
     'no 
     '("no" "No" "n" "N")))
 
+(define (create-bullets)
+  (lambda (lst)
+    (string-append
+      bullet
+      " "
+      lst)))
+
 (define (show-list)
-  (let ([path
-          (expand-user-path
-            (string-append
-              program-path
-              program-directory
-              program-file))])
-    (let ([todo-items 
-            (file->lines path
-                         #:mode 'text
-                         #:line-mode 'linefeed)])
+  (let 
+    ([path
+       (expand-user-path
+         (string-append
+           program-path
+           program-directory
+           program-file))])
+    (let 
+      ([todo-items 
+         (file->lines path
+                      #:mode 'text
+                      #:line-mode 'linefeed)])
       (display
         (string-join
-          (map (lambda (lst)
-                 (string-append
-                   bullet
-                   " "
-                   lst))
+          (map (create-bullets) 
                todo-items) "\n")))))
 
 (define (add-item-to-file item)
