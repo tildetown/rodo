@@ -140,9 +140,10 @@
            program-file))])
     (let 
       ([opened-file 
-         (open-output-file path
-                           #:mode 'text
-                           #:exists 'can-update)])
+         (open-output-file 
+           path
+           #:mode 'text
+           #:exists 'can-update)])
       (close-output-port opened-file))))
 
 (define (check-for-folder)
@@ -181,8 +182,8 @@
                       #:line-mode 'linefeed)])
       (display
         (string-join
-          (map (add-bullets) 
-               todo-items) "\n"
+          (map (add-bullets) todo-items) 
+          "\n"
           #:after-last "\n")))))
 
 (define (show-list)
