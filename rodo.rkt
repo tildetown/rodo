@@ -122,6 +122,43 @@
     'no 
     '("no" "No" "n" "N")))
 
+(define (check-for-file)
+  (file-exists?
+    (expand-user-path
+      (string-append
+        program-path
+        program-directory
+        program-file))))
+
+(define (create-file)
+  (let 
+    ([path 
+       (expand-user-path 
+         (string-append 
+           program-path 
+           program-directory
+           program-file))])
+    (let 
+      ([opened-file 
+         (open-output-file path
+                           #:mode 'text
+                           #:exists 'can-update)])
+      (close-output-port opened-file))))
+
+(define (check-for-folder)
+  (directory-exists? 
+    (expand-user-path 
+      (string-append 
+        program-path 
+        program-directory))))
+
+(define (create-folder)
+  (make-directory 
+    (expand-user-path 
+      (string-append 
+        program-path 
+        program-directory))))
+
 (define (add-bullets)
   (lambda (lst)
     (string-append
@@ -148,6 +185,16 @@
                todo-items) "\n"
           #:after-last "\n")))))
 
+(define (show-list)
+  (if 
+    (and
+      (check-for-folder)
+      (check-for-file))
+    (show-list-from-file)
+    (begin
+      (d-hash-ref messages 'file-not-found)
+      (d-hash-ref messages 'try-init))))
+
 (define (add-item-to-file item)
   (let ([item (string-append item "\n")])
     (let
@@ -161,77 +208,6 @@
                        path
                        #:mode 'text
                        #:exists 'append))))
-
-(define (create-file)
-  (let 
-    ([path 
-       (expand-user-path 
-         (string-append 
-           program-path 
-           program-directory
-           program-file))])
-    (let 
-      ([opened-file 
-         (open-output-file path
-                           #:mode 'text
-                           #:exists 'can-update)])
-      (close-output-port opened-file))))
-
-(define (create-folder)
-  (make-directory 
-    (expand-user-path 
-      (string-append 
-        program-path 
-        program-directory))))
-
-(define (check-for-file)
-  (file-exists?
-    (expand-user-path
-      (string-append
-        program-path
-        program-directory
-        program-file))))
-
-(define (check-for-folder)
-  (directory-exists? 
-    (expand-user-path 
-      (string-append 
-        program-path 
-        program-directory))))
-
-(define (init-prompt hash-list key)
-  (d-hash-ref hash-list key)
-  (display "> ")
-  (let 
-    ([user-input (read-line)])
-    (cond
-      [(member user-input (hash-ref y/n 'yes))  
-       (d-hash-ref messages 'creating-folder)
-       (d-hash-ref messages 'creating-file)
-       (create-folder)
-       (create-file)
-       (if 
-         (and 
-           (check-for-folder) 
-           (check-for-file))
-         (d-hash-ref messages 'successfully-created)
-         (d-hash-ref messages 'creation-error))]
-
-      [(member user-input (hash-ref y/n 'no))  
-       (d-hash-ref messages 'terminating)]
-
-      [else 
-        (init-prompt messages 'choose-y/n)])))
-
-(define (show-list)
-  (if 
-    (and
-      (check-for-folder)
-      (check-for-file))
-    (show-list-from-file)
-    (begin
-      (d-hash-ref messages 'file-not-found)
-      (d-hash-ref messages 'try-init))))
 
 (define (add-item args)
   (if 
@@ -287,6 +263,30 @@
 
       [else 
         (d-hash-ref messages 'show-usage)])))
+
+(define (init-prompt hash-list key)
+  (d-hash-ref hash-list key)
+  (display "> ")
+  (let 
+    ([user-input (read-line)])
+    (cond
+      [(member user-input (hash-ref y/n 'yes))  
+       (d-hash-ref messages 'creating-folder)
+       (d-hash-ref messages 'creating-file)
+       (create-folder)
+       (create-file)
+       (if 
+         (and 
+           (check-for-folder) 
+           (check-for-file))
+         (d-hash-ref messages 'successfully-created)
+         (d-hash-ref messages 'creation-error))]
+
+      [(member user-input (hash-ref y/n 'no))  
+       (d-hash-ref messages 'terminating)]
+
+      [else 
+        (init-prompt messages 'choose-y/n)])))
 
 (define (initialize)
   (if (check-for-file)
