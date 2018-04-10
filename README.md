@@ -3,7 +3,7 @@ A command-line todo list in Racket
 
 **Currently under development**
 
-You can try it out while it's being developed:
+You can try it out while it's being developed (note: it requires that you have Racket installed):
 
 `./rodo init` -> initialize rodo in your home directory by default
 
