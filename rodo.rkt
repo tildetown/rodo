@@ -129,7 +129,7 @@
       " "
       lst)))
 
-(define (show-list);; todo check for file like other functions
+(define (show-list-from-file)
   (let 
     ([path
        (expand-user-path
@@ -222,6 +222,16 @@
 
       [else 
         (init-prompt messages 'choose-y/n)])))
+
+(define (show-list)
+  (if 
+    (and
+      (check-for-folder)
+      (check-for-file))
+    (show-list-from-file)
+    (begin
+      (d-hash-ref messages 'file-not-found)
+      (d-hash-ref messages 'try-init))))
 
 (define (add-item args)
   (if 
