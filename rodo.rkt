@@ -3,7 +3,8 @@
 
 (require racket/vector 
          racket/file
-         racket/string)
+         racket/string
+         racket/list)
 
 (define program-name "rodo")
 (define program-directory ".rodo/")
@@ -160,12 +161,17 @@
         program-path 
         program-directory))))
 
-(define (add-bullets)
+(define (make-numbered lst)
+  (map
+   string-append
+   (map
+    number->string
+        (range (length lst)))
+   lst))
+
+(define (add-spaces)
   (lambda (lst)
-    (string-append
-      bullet
-      " "
-      lst)))
+    (string-append ". " lst)))
 
 (define (show-list-from-file)
   (let 
@@ -176,13 +182,13 @@
            program-directory
            program-file))])
     (let 
-      ([todo-items 
+      ([todo-list 
          (file->lines path
                       #:mode 'text
                       #:line-mode 'linefeed)])
       (display
         (string-join
-          (map (add-bullets) todo-items) 
+          (make-numbered (map (add-spaces) todo-list)) 
           "\n"
           #:after-last "\n")))))
 
