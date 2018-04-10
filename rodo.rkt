@@ -10,6 +10,10 @@
 (define program-path "~/")
 (define program-file "todo-list")
 (define bullet "*")
+(define remove-command "rm")
+(define add-command "add")
+(define list-command "ls")
+(define initialize-command "init")
 
 (define (d-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
@@ -118,14 +122,14 @@
     'no 
     '("no" "No" "n" "N")))
 
-(define (create-bullets)
+(define (add-bullets)
   (lambda (lst)
     (string-append
       bullet
       " "
       lst)))
 
-(define (show-list)
+(define (show-list);; todo check for file like other functions
   (let 
     ([path
        (expand-user-path
@@ -140,8 +144,9 @@
                       #:line-mode 'linefeed)])
       (display
         (string-join
-          (map (create-bullets) 
-               todo-items) "\n")))))
+          (map (add-bullets) 
+               todo-items) "\n"
+          #:after-last "\n")))))
 
 (define (add-item-to-file item)
   (let ([item (string-append item "\n")])
@@ -251,18 +256,23 @@
     ([args-length (vector-length args)])
     (cond
       [(and 
+         (equal? args-length 1) 
+         (equal? (vector-member list-command args) 0))
+       (show-list)]
+
+      [(and 
          (equal? args-length 2) 
-         (equal? (vector-member "add" args) 0))
+         (equal? (vector-member add-command args) 0))
        (add-item args)]
 
       [(and 
          (equal? args-length 2) 
-         (equal? (vector-member "remove" args) 0))
+         (equal? (vector-member remove-command args) 0))
        (remove-item args)]
 
       [(and 
          (equal? args-length 1) 
-         (equal? (vector-member "init" args) 0))
+         (equal? (vector-member initialize-command args) 0))
        (initialize)]
 
       [else 
