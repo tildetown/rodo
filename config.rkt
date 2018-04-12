@@ -1,4 +1,5 @@
 #lang racket/base
+
 (provide (all-defined-out))
 
 (define program-name "rodo")
@@ -9,4 +10,3 @@
 (define add-command "add")
 (define list-command "ls")
 (define initialize-command "init")
-
