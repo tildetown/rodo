@@ -2,9 +2,8 @@
 
 (require racket/vector
          "config.rkt"
-         "todo-file.rkt"
          "init.rkt"
-         "tools.rkt"
+         "util.rkt"
          "messages.rkt")
 
 (provide (all-defined-out))

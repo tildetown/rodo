@@ -5,10 +5,15 @@
          racket/string
          "config.rkt"
          "io.rkt"
-         "tools.rkt"
          "messages.rkt")
 
 (provide (all-defined-out))
+
+(define (d-hash-ref hash-list key)
+  (display (hash-ref hash-list key)))
+
+(define (d-vector-ref args key)
+  (display (vector-ref args key)))
 
 (define (make-numbered lst)
   (map
