@@ -5,7 +5,7 @@
          racket/string
          "config.rkt"
          "io.rkt"
-         "list-hash.rkt"
+         "tools.rkt"
          "messages.rkt")
 
 (provide (all-defined-out))

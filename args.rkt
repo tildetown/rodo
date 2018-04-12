@@ -4,7 +4,7 @@
          "config.rkt"
          "todo-file.rkt"
          "init.rkt"
-         "list-hash.rkt"
+         "tools.rkt"
          "messages.rkt")
 
 (provide (all-defined-out))
