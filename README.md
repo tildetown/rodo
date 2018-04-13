@@ -1,14 +1,19 @@
 # rodo
 A command-line todo list in Racket
 
-**Currently under development**
+* `init`: initialize a file in ~/.rodo/todo-list
+	Example: `rodo init`
 
-You can try it out while it's being developed (**note: it requires that you have Racket installed**):
+* `ls`: lists items on the list
+	Example: `rodo rm 1`
 
-`./rodo init` -> initialize rodo in your home directory by default
+* `add`: adds an item to the list
+	Note: For multi-word items you will need to
+	surround your item in double quotes as so:
+	`rodo add "go to the bank"`
+	Example: `rodo add bread`
 
-`./rodo add milk` -> add "milk" to the list
-
-`./rodo add "go to the bank"` -> add "go to the bank" to the list
-
-`./rodo ls` -> list your todo list items
+* `rm`: removes an item from the list
+	Note: You may have to run `rodo ls` to see which
+	number corresponds to which item to remove it.
+	Example: `rodo rm 1`
