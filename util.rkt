@@ -94,7 +94,7 @@
                   args)) 
               todo-list)])
       (display-to-file 
-        (string-append (string-join new-list "\n") "\n")
+        (string-join new-list "\n")
         path
         #:mode 'text
         #:exists 'replace))))
