@@ -32,13 +32,16 @@
       "\x09rodo add \"go to the bank\"\n"
       "\x09Example: "
       "rodo add bread\n\n"
-      
+
       "* " remove-command ": "
       "removes an item from the list\n"
       "\x09Note: You may have to run `rodo ls` to see which\n"
       "\x09number corresponds to which item to remove it.\n"
       "\x09Example: "
       "rodo rm 1\n")
+
+    'empty-todo-list
+    "Error> There is nothing in your list yet\n"
 
     'show-usage
     (string-append
@@ -118,6 +121,9 @@
 
     'choose-y/n
     "> Error: Please choose y or n\n"
+
+    'not-in-list
+    "> Error: Item does not exist\n"
 
     'item-added-prefix
     "> Added "

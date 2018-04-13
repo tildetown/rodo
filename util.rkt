@@ -100,12 +100,23 @@
         #:exists 'replace))))
 
 (define (remove-item args)
-  (if
-    (and
-      (number? (string->number (vector-ref args 1)))
-      (check-for-folder)
-      (check-for-file))
-    (remove-item-from-file (vector-ref args 1))
-    (begin
-      (d-hash-ref messages 'file-not-found)
-      (d-hash-ref messages 'try-init))))
+  (let ([todo-list
+          (file->lines
+            path
+            #:mode 'text
+            #:line-mode 'linefeed)])
+    (cond
+      [(< (length todo-list) 1)
+       (d-hash-ref messages 'empty-todo-list)]
+      [(and
+         (number? (string->number (vector-ref args 1)))
+         (< (string->number (vector-ref args 1)) (vector-length args))
+         (check-for-folder)
+         (check-for-file))
+       (remove-item-from-file (vector-ref args 1))]
+      [(and (not (check-for-folder)) (not (check-for-file)))
+       (begin
+         (d-hash-ref messages 'file-not-found)
+         (d-hash-ref messages 'try-init))]
+      [(>= (string->number (vector-ref args 1)) (vector-length args))
+       (d-hash-ref messages 'not-in-list)])))
