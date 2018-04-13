@@ -23,22 +23,21 @@
       "\x09Example: "
       "rodo rm 1\n\n"
 
-
       "* " add-command ": "
       "adds an item to the list"
       "\n"
+      "\x09Example: "
+      "rodo add bread\n\n"
       "\x09Note: For multi-word items you will need to\n"
       "\x09surround your item in double quotes as so:\n"
       "\x09rodo add \"go to the bank\"\n"
-      "\x09Example: "
-      "rodo add bread\n\n"
 
       "* " remove-command ": "
       "removes an item from the list\n"
-      "\x09Note: You may have to run `rodo ls` to see which\n"
-      "\x09number corresponds to which item to remove it.\n"
       "\x09Example: "
-      "rodo rm 1\n")
+      "rodo rm 1\n"
+      "\x09Note: You may have to run `rodo ls` to see which\n"
+      "\x09number corresponds to which item to remove it.\n")
 
     'empty-todo-list
     "Error> There is nothing in your list yet\n"
