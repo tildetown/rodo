@@ -6,6 +6,40 @@
 
 (define messages
   (hash
+    'show-help
+    (string-append
+      "* " initialize-command ": "
+      "initialize a file in "
+      program-path
+      program-directory
+      program-file
+      "\n"
+      "\x09Example: "
+      "rodo init\n\n"
+
+      "* " list-command ": "
+      "lists items on the list"
+      "\n"
+      "\x09Example: "
+      "rodo rm 1\n\n"
+
+
+      "* " add-command ": "
+      "adds an item to the list"
+      "\n"
+      "\x09Note: For multi-word items you will need to\n"
+      "\x09surround your item in double quotes as so:\n"
+      "\x09rodo add \"go to the bank\"\n"
+      "\x09Example: "
+      "rodo add bread\n\n"
+      
+      "* " remove-command ": "
+      "removes an item from the list\n"
+      "\x09Note: You may have to run `rodo ls` to see which\n"
+      "\x09number corresponds to which item to remove it.\n"
+      "\x09Example: "
+      "rodo rm 1\n")
+
     'show-usage
     (string-append
       "> For usage type "

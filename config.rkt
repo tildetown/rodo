@@ -6,7 +6,14 @@
 (define program-directory ".rodo/")
 (define program-path "~/")
 (define program-file "todo-list")
+(define path 
+  (expand-user-path
+    (string-append
+      program-path
+      program-directory
+      program-file)))
 (define remove-command "rm")
 (define add-command "add")
 (define list-command "ls")
 (define initialize-command "init")
+(define help-command '("-h" "--help"))

@@ -32,5 +32,10 @@
          (equal? (vector-member initialize-command args) 0))
        (initialize)]
 
+      [(and
+         (equal? args-length 1)
+         (member (vector-ref args 0) help-command))
+       (d-hash-ref messages 'show-help)]
+
       [else
         (d-hash-ref messages 'show-usage)])))

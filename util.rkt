@@ -15,6 +15,14 @@
 (define (d-vector-ref args key)
   (display (vector-ref args key)))
 
+(define (quote-item-in-list lst args)
+  (display
+    (string-append 
+      "\"" 
+      (list-ref lst
+                (string->number args)) 
+      "\"")))
+
 (define (make-numbered lst)
   (map
     string-append
@@ -29,22 +37,15 @@
 
 (define (show-list-from-file)
   (let
-    ([path
-       (expand-user-path
-         (string-append
-           program-path
-           program-directory
-           program-file))])
-    (let
-      ([todo-list
-         (file->lines path
-                      #:mode 'text
-                      #:line-mode 'linefeed)])
-      (display
-        (string-join
-          (make-numbered (map (add-spaces) todo-list))
-          "\n"
-          #:after-last "\n")))))
+    ([todo-list
+       (file->lines path
+                    #:mode 'text
+                    #:line-mode 'linefeed)])
+    (display
+      (string-join
+        (make-numbered (map (add-spaces) todo-list))
+        "\n"
+        #:after-last "\n"))))
 
 (define (show-list)
   (if
@@ -56,19 +57,12 @@
       (d-hash-ref messages 'file-not-found)
       (d-hash-ref messages 'try-init))))
 
-(define (add-item-to-file item)
-  (let ([item (string-append item "\n")])
-    (let
-      ([path
-         (expand-user-path
-           (string-append
-             program-path
-             program-directory
-             program-file))])
-      (display-to-file item
-                       path
-                       #:mode 'text
-                       #:exists 'append))))
+(define (add-item-to-file args)
+  (let ([args (string-append args "\n")])
+    (display-to-file args 
+                     path
+                     #:mode 'text
+                     #:exists 'append)))
 
 (define (add-item args)
   (if
@@ -84,16 +78,34 @@
       (d-hash-ref messages 'file-not-found)
       (d-hash-ref messages 'try-init))))
 
+(define (remove-item-from-file args)
+  (let ([todo-list
+          (file->lines path
+                       #:mode 'text
+                       #:line-mode 'linefeed)])
+    (d-hash-ref messages 'item-removed-prefix)
+    (quote-item-in-list todo-list args)
+    (d-hash-ref messages 'item-removed-suffix)
+    (let ([new-list
+            (remove 
+              (list-ref 
+                todo-list 
+                (string->number 
+                  args)) 
+              todo-list)])
+      (display-to-file 
+        (string-append (string-join new-list "\n") "\n")
+        path
+        #:mode 'text
+        #:exists 'replace))))
+
 (define (remove-item args)
   (if
     (and
+      (number? (string->number (vector-ref args 1)))
       (check-for-folder)
       (check-for-file))
-    (begin
-      ;; TODO (remove-item-from-file (vector-ref args 1))
-      (d-hash-ref messages 'item-removed-prefix)
-      (d-vector-ref args 1)
-      (d-hash-ref messages 'item-removed-suffix))
+    (remove-item-from-file (vector-ref args 1))
     (begin
       (d-hash-ref messages 'file-not-found)
       (d-hash-ref messages 'try-init))))
