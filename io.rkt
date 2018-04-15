@@ -6,28 +6,16 @@
 (provide (all-defined-out))
 
 (define (check-for-file)
-  (file-exists?
-    (expand-user-path
-      (string-append
-        program-path
-        program-directory
-        program-file))))
+  (file-exists? path))
 
 (define (create-file)
   (let
-    ([path
-       (expand-user-path
-         (string-append
-           program-path
-           program-directory
-           program-file))])
-    (let
-      ([opened-file
-         (open-output-file
-           path
-           #:mode 'text
-           #:exists 'can-update)])
-      (close-output-port opened-file))))
+    ([opened-file
+       (open-output-file
+         path
+         #:mode 'text
+         #:exists 'can-update)])
+    (close-output-port opened-file)))
 
 (define (check-for-folder)
   (directory-exists?

@@ -15,15 +15,28 @@
 (define (d-vector-ref args key)
   (display (vector-ref args key)))
 
+(define (file->string-list path-to-file)
+  (let
+    ([todo-list
+       (file->lines 
+         path-to-file 
+         #:mode 'text
+         #:line-mode 'any)])
+    todo-list))
+
 (define (quote-item-in-list lst args)
   (display
     (string-append 
       "\"" 
-      (list-ref lst
-                (string->number args)) 
+      (list-ref lst (string->number args)) 
       "\"")))
 
-(define (make-numbered lst)
+(define (quote-item-in-vector args)
+  (display
+    (string-append 
+      "\"" args "\"")))
+
+(define (number-list lst)
   (map
     string-append
     (map
@@ -31,38 +44,34 @@
       (range (length lst)))
     lst))
 
-(define (add-spaces)
+(define (indent-list)
   (lambda (lst)
     (string-append ". " lst)))
 
-(define (show-list-from-file)
-  (let
-    ([todo-list
-       (file->lines path
-                    #:mode 'text
-                    #:line-mode 'linefeed)])
+(define (prettify-list)
     (display
       (string-join
-        (make-numbered (map (add-spaces) todo-list))
+        (number-list (map (indent-list) (file->string-list path)))
         "\n"
-        #:after-last "\n"))))
+        #:after-last "\n")))
 
 (define (show-list)
   (if
     (and
       (check-for-folder)
       (check-for-file))
-    (show-list-from-file)
+    (prettify-list)
     (begin
       (d-hash-ref messages 'file-not-found)
       (d-hash-ref messages 'try-init))))
 
 (define (add-item-to-file args)
   (let ([args (string-append args "\n")])
-    (display-to-file args 
-                     path
-                     #:mode 'text
-                     #:exists 'append)))
+    (display-to-file 
+      args 
+      path
+      #:mode 'text
+      #:exists 'append)))
 
 (define (add-item args)
   (if
@@ -72,51 +81,40 @@
     (begin
       (add-item-to-file (vector-ref args 1))
       (d-hash-ref messages 'item-added-prefix)
-      (d-vector-ref args 1)
+      (quote-item-in-vector (vector-ref args 1))
       (d-hash-ref messages 'item-added-suffix))
     (begin
       (d-hash-ref messages 'file-not-found)
       (d-hash-ref messages 'try-init))))
 
 (define (remove-item-from-file args)
-  (let ([todo-list
-          (file->lines path
-                       #:mode 'text
-                       #:line-mode 'linefeed)])
-    (d-hash-ref messages 'item-removed-prefix)
-    (quote-item-in-list todo-list args)
-    (d-hash-ref messages 'item-removed-suffix)
-    (let ([new-list
-            (remove 
-              (list-ref 
-                todo-list 
-                (string->number 
-                  args)) 
-              todo-list)])
-      (display-to-file 
-        (string-join new-list "\n")
-        path
-        #:mode 'text
-        #:exists 'replace))))
+  (d-hash-ref messages 'item-removed-prefix)
+  (quote-item-in-list 
+    (file->string-list path) args)
+  (d-hash-ref messages 'item-removed-suffix)
+  (let ([new-list
+          (remove (list-ref 
+                    (file->string-list path) 
+                    (string->number 
+                      args)) 
+                  (file->string-list path))])
+    (display-to-file 
+      (string-join new-list "\n" #:after-last "\n")
+      path
+      #:mode 'text
+      #:exists 'replace)))
 
 (define (remove-item args)
-  (let ([todo-list
-          (file->lines
-            path
-            #:mode 'text
-            #:line-mode 'linefeed)])
-    (cond
-      [(< (length todo-list) 1)
-       (d-hash-ref messages 'empty-todo-list)]
-      [(and
-         (number? (string->number (vector-ref args 1)))
-         (< (string->number (vector-ref args 1)) (vector-length args))
-         (check-for-folder)
-         (check-for-file))
-       (remove-item-from-file (vector-ref args 1))]
-      [(and (not (check-for-folder)) (not (check-for-file)))
-       (begin
-         (d-hash-ref messages 'file-not-found)
-         (d-hash-ref messages 'try-init))]
-      [(>= (string->number (vector-ref args 1)) (vector-length args))
-       (d-hash-ref messages 'not-in-list)])))
+  (cond
+    [(< (length (file->string-list path)) 1)
+     (d-hash-ref messages 'empty-(file->string-list path))]
+    [(and
+       (number? (string->number (vector-ref args 1)))
+       (< (string->number (vector-ref args 1)) (vector-length args))
+       (check-for-folder)
+       (check-for-file))
+     (remove-item-from-file (vector-ref args 1))]
+    [(and (not (check-for-folder)) (not (check-for-file)))
+     (begin
+       (d-hash-ref messages 'file-not-found)
+       (d-hash-ref messages 'try-init))]))

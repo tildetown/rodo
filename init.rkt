@@ -1,11 +1,19 @@
 #lang racket/base
 
-(require "config.rkt"
+(require racket/file
+         "config.rkt"
          "util.rkt"
          "messages.rkt"
          "io.rkt")
 
 (provide (all-defined-out))
+
+(define (initialize-file)
+  (display-to-file 
+    "\n" 
+    path
+    #:mode 'text
+    #:exists 'replace))
 
 (define (init-prompt hash-list key)
   (d-hash-ref hash-list key)
@@ -18,6 +26,7 @@
        (d-hash-ref messages 'creating-file)
        (create-folder)
        (create-file)
+       (initialize-file)
        (if
          (and
            (check-for-folder)
