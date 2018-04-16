@@ -24,6 +24,9 @@
          #:line-mode 'any)])
     todo-list))
 
+(define (list-empty? lst)
+  (empty? (rest (file->string-list lst))))
+
 (define (quote-item-in-list lst args)
   (display
     (string-append 
@@ -41,29 +44,32 @@
     string-append
     (map
       number->string
-      (range (length lst)))
-    lst))
+      (rest (range (length lst)))) 
+    (rest lst)))                 
 
 (define (indent-list)
   (lambda (lst)
     (string-append ". " lst)))
 
 (define (prettify-list)
-    (display
-      (string-join
-        (number-list (map (indent-list) (file->string-list path)))
-        "\n"
-        #:after-last "\n")))
+  (display
+    (string-join
+      (number-list (map (indent-list) (file->string-list path)))
+      "\n"
+      #:after-last "\n")))
 
 (define (show-list)
-  (if
-    (and
-      (check-for-folder)
-      (check-for-file))
-    (prettify-list)
-    (begin
+  (cond
+    [(and
+       (check-for-folder)
+       (check-for-file))
+     (if
+       (list-empty? path)
+       (d-hash-ref messages 'empty-todo-list)
+       (prettify-list))]
+    [else
       (d-hash-ref messages 'file-not-found)
-      (d-hash-ref messages 'try-init))))
+      (d-hash-ref messages 'try-init)]))
 
 (define (add-item-to-file args)
   (let ([args (string-append args "\n")])
@@ -89,8 +95,7 @@
 
 (define (remove-item-from-file args)
   (d-hash-ref messages 'item-removed-prefix)
-  (quote-item-in-list 
-    (file->string-list path) args)
+  (quote-item-in-list (file->string-list path) args)
   (d-hash-ref messages 'item-removed-suffix)
   (let ([new-list
           (remove (list-ref 
@@ -106,11 +111,9 @@
 
 (define (remove-item args)
   (cond
-    [(< (length (file->string-list path)) 1)
-     (d-hash-ref messages 'empty-(file->string-list path))]
+    [(list-empty? path)
+     (d-hash-ref messages 'empty-todo-list)]
     [(and
-       (number? (string->number (vector-ref args 1)))
-       (< (string->number (vector-ref args 1)) (vector-length args))
        (check-for-folder)
        (check-for-file))
      (remove-item-from-file (vector-ref args 1))]

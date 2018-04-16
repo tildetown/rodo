@@ -9,8 +9,8 @@
 (provide (all-defined-out))
 
 (define (initialize-file)
-  (display-to-file 
-    "\n" 
+  (display-to-file
+    "\n"
     path
     #:mode 'text
     #:exists 'replace))
