@@ -14,8 +14,9 @@ A command-line todo list in Racket
 	Example: `rodo add bread`
 
 	Note: For multi-word items you will need to
-	surround your item in double quotes as so:
-	`rodo add "go to the bank"`
+	surround your item in double quotes like this:
+
+	`rodo add "go to the bank"` <-- **This is currently broken**
 
 * `rm`: removes an item from the list
 	

@@ -18,9 +18,10 @@
        (show-list)]
 
       [(and
-         (equal? args-length 2)
+         (equal? (vector-ref args 0) add-command)
          (equal? (vector-member add-command args) 0))
-       (add-item args)]
+       (add-item args)
+       (cdr (vector->list args))]
 
       [(and
          (equal? args-length 2)
