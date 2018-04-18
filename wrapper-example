@@ -28,4 +28,4 @@
 # | to where you keep the actual rodo program           |
 # +-----------------------------------------------------+
 
-racket ~/projects/rodo/rodo.rkt "$@"
+racket ~/change/this/path/rodo.rkt "$@"
