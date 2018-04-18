@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# 
+# Running rodo from anywhere on your system
+# =========================================
+#
+# +-------------------------------------------------------+
+# | If you want to use rodo from your $PATH or ~/bin      |
+# |-------------------------------------------------------|
+# | `cp` this file to your ~/bin and rename it `rodo`     |
+# | then make it executable:                              |
+# |                                                       |
+# | cp wrapper-example ~/bin/rodo && chmod u+x ~/bin/rodo |
+# +-------------------------------------------------------+
+# 
+# +------------------------------------------------------------+
+# | If you don't know how to set up your $PATH:                |
+# |------------------------------------------------------------|  
+# | Add `export PATH=~/bin:$PATH` to your ~/.bashrc then       |
+# | make a ~/bin foloder:                                      |
+# |                                                            |
+# | echo "export PATH=~/bin:$PATH" >> ~/.bashrc && mkdir ~/bin |
+# |                                                            |
+# | After doing this, follow the instructions above this box   |
+# +------------------------------------------------------------+
+#
+# +-----------------------------------------------------+
+# | note: don't forget to change the path in the middle |
+# | to where you keep the actual rodo program           |
+# +-----------------------------------------------------+
+
+racket ~/projects/rodo/rodo.rkt "$@"
