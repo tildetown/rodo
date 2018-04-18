@@ -12,16 +12,18 @@
   (let
     ([args-length (vector-length args)])
     (cond
+      [(equal? args-length 0)
+       (d-hash-ref messages 'show-usage)]
+
       [(and
          (equal? args-length 1)
          (equal? (vector-member list-command args) 0))
        (show-list)]
 
       [(and
-         (equal? (vector-ref args 0) add-command)
-         (equal? (vector-member add-command args) 0))
-       (add-item args)
-       (cdr (vector->list args))]
+         (equal? args-length 2)
+         (equal? (vector-ref args 0) add-command))
+       (add-item args)]
 
       [(and
          (equal? args-length 2)

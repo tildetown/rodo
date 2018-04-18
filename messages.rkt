@@ -40,7 +40,7 @@
       "\x09number corresponds to which item to remove it.\n")
 
     'empty-todo-list
-    "Error > There is nothing in your list \n"
+    "> There is nothing in your list \n"
 
     'show-usage
     (string-append
