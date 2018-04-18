@@ -28,16 +28,19 @@
   (empty? (rest (file->string-list lst))))
 
 (define (quote-item-in-list lst args)
-  (display
-    (string-append 
-      "\"" 
-      (list-ref lst (string->number args)) 
-      "\"")))
-
-(define (quote-item-in-vector args)
-  (display
-    (string-append 
-      "\"" args "\"")))
+  (cond
+    [(number? args)
+     (display
+       (string-append 
+         "\"" 
+         (list-ref lst (string->number args)) 
+         "\""))]
+    [(string? args)
+     (display
+       (string-append
+         "\""
+         args
+         "\""))]))
 
 (define (number-list lst)
   (map
@@ -72,23 +75,27 @@
       (d-hash-ref messages 'try-init)]))
 
 (define (add-item-to-file args)
-  (let ([args (string-append args "\n")])
+  (begin
+    (d-hash-ref messages 'item-added-prefix)
+    (quote-item-in-list (file->string-list path) args)
+    (d-hash-ref messages 'item-added-suffix))
+  (let ([new-list
+          (reverse
+            (append (list args)
+                    (reverse 
+                      (file->string-list path))))])
     (display-to-file 
-      args 
+      (string-join new-list "\n" #:after-last "\n")
       path
       #:mode 'text
-      #:exists 'append)))
+      #:exists 'replace)))
 
 (define (add-item args)
   (if
     (and
       (check-for-folder)
       (check-for-file))
-    (begin
       (add-item-to-file (vector-ref args 1))
-      (d-hash-ref messages 'item-added-prefix)
-      (quote-item-in-vector (vector-ref args 1))
-      (d-hash-ref messages 'item-added-suffix))
     (begin
       (d-hash-ref messages 'file-not-found)
       (d-hash-ref messages 'try-init))))
