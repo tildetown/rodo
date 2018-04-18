@@ -16,7 +16,7 @@ A command-line todo list in Racket
 	Note: For multi-word items you will need to
 	surround your item in double quotes like this:
 
-	`rodo add "go to the bank"` <-- **This is currently broken**
+	`rodo add "go to the bank"`
 
 * `rm`--> removes an item from the list
 	
