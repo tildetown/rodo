@@ -2,12 +2,6 @@
 
 A command-line todo list in Racket
 
-***Current bugs:***
-
-* removing the "0th" item will remove all items in the list. **Example:** `rodo rm 0`
-
-* removing items longest than the list will throw an error. **Example:** You have a list longer than 3 and you `rodo rm 7`
-
 ## Commands
 
 ### `init`
