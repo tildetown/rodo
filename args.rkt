@@ -30,7 +30,7 @@
          (equal? args-length 2)
          (equal? (vector-member remove-command args) 0)
          (not (equal? (vector-member "0" args) 1))
-         (vector-member (vector-ref args 1) (list->vector (map number->string (range (length (file->string-list path)))))))
+         (vector-member (vector-ref args 1) (list->vector (map number->string (rest (range (length (file->string-list path))))))))
        (remove-item args)]
 
       [(and
