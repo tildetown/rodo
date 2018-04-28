@@ -36,8 +36,7 @@
 
 (define (number-list lst)
   (map string-append
-       (map number->string
-            (rest (range (length lst)))) 
+       (map number->string (rest (range (length lst)))) 
        (rest lst)))                 
 
 (define (indent-list)
@@ -67,7 +66,7 @@
 (define (add-item-to-file args)
   (let ([new-list
           (reverse
-            (append (list args)
+            (cons args
                     (reverse (file->string-list path))))])
     (display-to-file 
       (string-join new-list "\n" #:after-last "\n")
