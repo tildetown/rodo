@@ -28,11 +28,11 @@
   (empty? (rest (file->string-list lst))))
 
 (define (get-removed-item lst args)
-     (list-ref lst (string->number args)))
+  (list-ref lst (string->number args)))
 
 (define (quote-item args)
   (display
-  (string-append "\"" args "\"")))
+    (string-append "\"" args "\"")))
 
 (define (number-list lst)
   (map string-append
@@ -74,9 +74,9 @@
       path
       #:mode 'text
       #:exists 'replace)
-      (d-hash-ref messages 'item-added-prefix)
-      (quote-item args)
-      (d-hash-ref messages 'item-added-suffix)))
+    (d-hash-ref messages 'item-added-prefix)
+    (quote-item args)
+    (d-hash-ref messages 'item-added-suffix)))
 
 (define (add-item args)
   (if
@@ -90,16 +90,16 @@
 
 (define (remove-item-from-file args)
   (let ([removed-item
-          (get-removed-item (file->string-list path) args)])
-    (let ([new-list
-            (remove 
-              (list-ref (file->string-list path) (string->number args)) 
-              (file->string-list path))])
-      (display-to-file 
-        (string-join new-list "\n" #:after-last "\n")
-        path
-        #:mode 'text
-        #:exists 'replace))
+          (get-removed-item (file->string-list path) args)]
+        [new-list
+          (remove 
+            (list-ref (file->string-list path) (string->number args)) 
+            (file->string-list path))])
+    (display-to-file 
+      (string-join new-list "\n" #:after-last "\n")
+      path
+      #:mode 'text
+      #:exists 'replace)
     (d-hash-ref messages 'item-removed-prefix)
     (quote-item removed-item)
     (d-hash-ref messages 'item-removed-suffix)))
