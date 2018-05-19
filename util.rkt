@@ -37,16 +37,15 @@
 (define (number-list lst)
   (map string-append
        (map number->string (rest (range (length lst)))) 
-       (rest lst)))                 
+       (rest lst)))  
 
-(define (indent-list)
-  (lambda (lst)
-    (string-append ". " lst)))
+(define (indent-list lst)
+  (string-append ". " lst))
 
 (define (prettify-list)
   (display
     (string-join
-      (number-list (map (indent-list) (file->string-list path)))
+      (number-list (map indent-list (file->string-list path)))
       "\n"
       #:after-last "\n")))
 
