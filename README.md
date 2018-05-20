@@ -36,7 +36,7 @@ For example, if you `git clone`d the project to your
 
 to 
 
-'racket ~/downloads/rodo/rodo.rkt "$@"`
+`racket ~/downloads/rodo/rodo.rkt "$@"`
 
 4. Make the `rodo` file executable: 
 
