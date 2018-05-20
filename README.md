@@ -29,10 +29,14 @@ following contents to it:
 #!/usr/bin/env bash
 racket ~/path/to/rodo.rkt "$@"
 ```
-(For example, if you `git clone`d the project to your
-`~/downloads/` folder you would change `racket
-~/path/to/rodo.rkt "$@"` to 'racket
-~/downloads/rodo/rodo.rkt "$@"`)
+For example, if you `git clone`d the project to your
+`~/downloads/` folder you would change the line:
+
+`racket ~/path/to/rodo.rkt "$@"` 
+
+to 
+
+'racket ~/downloads/rodo/rodo.rkt "$@"`
 
 4. Make the `rodo` file executable: 
 
