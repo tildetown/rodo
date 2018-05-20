@@ -12,7 +12,7 @@ project for use on your local machine
 * GNU/Linux
 * Racket 6.x
 
-## Setting up rodo
+### Setting up rodo
 
 1. Download from your terminal by running: 
 
@@ -42,21 +42,21 @@ to
 
 `chmod u+x rodo`
 
-### Usage
+## Usage
 
-## `init`
+### `init`
 
 Initializes a file in *~/.rodo/todo-list*
 
 **Example:** `$ rodo init`
 
-## `ls`
+### `ls`
 
 Lists items from the list
 	
  **Example:** `$ rodo rm 1`
 
-## `add`
+### `add`
 
 Adds an item to the list
 
@@ -65,7 +65,7 @@ Adds an item to the list
 **Note:** For multi-word items you will need to surround your item in double quotes like this:
 `$ rodo add "go to the bank"`
 
-## `rm`
+### `rm`
 
 Removes an item from the list
 	
