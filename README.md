@@ -44,23 +44,28 @@ to
 
 ## Usage
 
+The below examples assume that you have rodo set up in your
+$PATH folder. If you don't, you would simply go to the
+directory of the `rodo.rkt` file and use `./rodo <command>`
+instead.
+
 ### `init`
 
-Initializes a file in *~/.rodo/todo-list*
+Initializes a file in `~/.rodo/todo-list` by default
 
-**Example:** `$ rodo init`
+**Example:** `rodo init`
 
 ### `ls`
 
 Lists items from the list
 	
- **Example:** `$ rodo rm 1`
+ **Example:** `rodo rm 1`
 
 ### `add`
 
 Adds an item to the list
 
-**Example:** `$ rodo add bread`
+**Example:** `rodo add bread`
 
 **Note:** For multi-word items you will need to surround your item in double quotes like this:
 `$ rodo add "go to the bank"`
@@ -69,10 +74,10 @@ Adds an item to the list
 
 Removes an item from the list
 	
-**Example:** `$ rodo rm 1`
+**Example:** `rodo rm 1`
 
 **Note:** You may have to run `rodo ls` to see which number corresponds to which item to remove it.
 
-## Configure rodo
+## Configuring rodo
 
 Right now, the configurations can be found in the `config.rkt` file. Settings such at program name, path, and directory can be set here.
