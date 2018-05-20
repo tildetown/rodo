@@ -22,7 +22,8 @@ project for use on your local machine
 
 `echo "export PATH=~/bin:$PATH" >> .bashrc`
 
-3. Create a file called `rodo` in your $PATH: 
+3. Create a file called `rodo` in your $PATH and add the
+following contents to it: 
 
 ```
 #!/usr/bin/env bash
