@@ -1,6 +1,6 @@
 # rodo
 
-**rodo** is a command-line todo list written in Racket
+**rodo** - A command-line todo list written in Racket
 
 ## Getting started
 
