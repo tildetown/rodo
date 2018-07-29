@@ -14,15 +14,15 @@ project for use on your local machine
 
 ### Setting up rodo
 
-1. Download from your terminal by running: 
+Download from your terminal by running: 
 
 `git clone https://github.com/m455/rodo`
 
-2. Create a $PATH if you haven't done so already: 
+Create a $PATH if you haven't done so already: 
 
 `echo "export PATH=~/bin:$PATH" >> .bashrc`
 
-3. Create a file called `rodo` in your $PATH and add the
+Create a file called `rodo` in your $PATH and add the
 following contents to it: 
 
 ```
@@ -38,7 +38,7 @@ to
 
 `racket ~/downloads/rodo/rodo.rkt "$@"`
 
-4. Make the `rodo` file executable: 
+Make the `rodo` file executable: 
 
 `chmod u+x rodo`
 
