@@ -1,11 +1,6 @@
 # rodo
 
-A command-line todo list written in Racket
-
-## Getting started
-
-The following instructions will get you a copy of the
-project for use on your local machine
+An easy-to-use todo list program for people who live on the command line written in Racket.
 
 ### Requirements
 
@@ -14,15 +9,19 @@ project for use on your local machine
 
 ### Setting up rodo
 
-Download from your terminal by running: 
+Download rodo by running: 
 
 `git clone https://github.com/m455/rodo`
 
-Create a $PATH if you haven't done so already: 
+Create a $PATH if you haven't done so already by running: 
 
-`echo "export PATH=~/bin:$PATH" >> .bashrc`
+`echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-Create a file called `rodo` in your $PATH and add the
+Make the actual directory for your `$PATH`:
+
+`mkdir ~/bin/`
+
+Create a file called `rodo` in your $PATH (in your ~/bin/ folder if you followed the instructions above) and add the
 following contents to it: 
 
 ```
