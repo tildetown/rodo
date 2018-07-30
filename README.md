@@ -48,19 +48,19 @@ $PATH folder. If you don't, you would simply go to the
 directory of the `rodo.rkt` file and use `./rodo <command>`
 instead.
 
-### `init`
+### init
 
 Initializes a file in `~/.rodo/todo-list` by default
 
 **Example:** `rodo init`
 
-### `ls`
+### ls
 
 Lists items from the list
 	
  **Example:** `rodo rm 1`
 
-### `add`
+### add
 
 Adds an item to the list
 
@@ -69,7 +69,7 @@ Adds an item to the list
 **Note:** For multi-word items you will need to surround your item in double quotes like this:
 `$ rodo add "go to the bank"`
 
-### `rm`
+### rm
 
 Removes an item from the list
 	
