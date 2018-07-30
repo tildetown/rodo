@@ -52,19 +52,19 @@ instead.
 
 Initializes a file in `~/.rodo/todo-list` by default
 
-**Example:** `rodo init`
+Example: `rodo init`
 
 ### ls
 
 Lists items from the list
 	
- **Example:** `rodo rm 1`
+Example: `rodo rm 1`
 
 ### add
 
 Adds an item to the list
 
-**Example:** `rodo add bread`
+Example: `rodo add bread`
 
 **Note:** For multi-word items you will need to surround your item in double quotes like this:
 `$ rodo add "go to the bank"`
@@ -73,7 +73,7 @@ Adds an item to the list
 
 Removes an item from the list
 	
-**Example:** `rodo rm 1`
+Example: `rodo rm 1`
 
 **Note:** You may have to run `rodo ls` to see which number corresponds to which item to remove it.
 
