@@ -58,7 +58,7 @@ Example: `rodo init`
 
 Lists items from the list
 	
-Example: `rodo rm 1`
+Example: `rodo ls`
 
 ### add
 
