@@ -21,7 +21,7 @@
       "lists items on the list"
       "\n"
       "\x09Example: "
-      "rodo rm 1\n\n"
+      "rodo ls\n\n"
 
       "* " add-command ": "
       "adds an item to the list"
