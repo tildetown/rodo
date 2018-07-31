@@ -23,8 +23,7 @@ Make the actual directory for your `$PATH`:
 
 `mkdir ~/bin/`
 
-Add the `rodo` binary to your $PATH folder (in your ~/bin/ folder if you followed the instructions above) and add the
-following contents to it: 
+Add the `rodo` binary to your $PATH folder (in your ~/bin/ folder if you followed the instructions above) and make sure it's executable: 
 
 `chmod u+x ~/bin/rodo`
 
