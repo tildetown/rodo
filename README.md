@@ -9,6 +9,8 @@ An easy-to-use todo list program for people who live on the command line written
 
 ### Setting up rodo
 
+#### Using the binary
+
 Download rodo by running: 
 
 `git clone https://github.com/m455/rodo`
@@ -21,7 +23,26 @@ Make the actual directory for your `$PATH`:
 
 `mkdir ~/bin/`
 
-Create a file called `rodo` in your $PATH (in your ~/bin/ folder if you followed the instructions above) and add the
+Add the `rodo` binary to your $PATH folder (in your ~/bin/ folder if you followed the instructions above) and add the
+following contents to it: 
+
+`chmod u+x ~/bin/rodo`
+
+#### Manually
+
+Download rodo by running: 
+
+`git clone https://github.com/m455/rodo`
+
+Create a $PATH if you haven't done so already by running: 
+
+`echo "export PATH=~/bin:\$PATH" >> .bashrc`
+
+Make the actual directory for your `$PATH`:
+
+`mkdir ~/bin/`
+
+Create a file called `rodo` in your $PATH folder (in your ~/bin/ folder if you followed the instructions above) and add the
 following contents to it: 
 
 ```
@@ -39,7 +60,7 @@ to
 
 Make the `rodo` file executable: 
 
-`chmod u+x rodo`
+`chmod u+x ~/bin/rodo`
 
 ## Usage
 
