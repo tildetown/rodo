@@ -9,7 +9,7 @@ An easy-to-use todo list program for people who live on the command line written
 
 ### Setting up rodo
 
-#### Using the binary
+#### Using the Linux binary
 
 Download rodo by running: 
 
