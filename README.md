@@ -15,9 +15,10 @@ An easy-to-use todo list program for people who live on the command line written
 
 ## Download
 
+### Via Git
 Download this repository by clicking the `Clone or download` button at the top right and then by clicking `Download ZIP` from the drop-down list
 
-**or**
+### Via Github
 
 Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
