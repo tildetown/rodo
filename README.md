@@ -4,15 +4,17 @@ An easy-to-use todo list program for people who live on the command line written
 
 # Table of Contents
 
+* [Legend](https://github.com/m455/rodo#legend)
 * [Platforms](https://github.com/m455/rodo#platforms)
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Download](https://github.com/m455/rodo#download)
 	* [Via Browser](https://github.com/m455/rodo#via-browser)
 	* [Via Git](https://github.com/m455/rodo#via-git)
-* [Setup](https://github.com/m455/rodo#setting-up-rodo)
+* [Setup](https://github.com/m455/rodo#setup)
 	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
-		* [Using the executable binary](https://github.com/m455/rodo#using-the-executable-binary)
-		* [Using and creating a wrapper](https://github.com/m455/rodo#using-and-creating-a-wrapper)
+	* [Setup a $PATH](https://github.com/m455/rodo#setup-a-$path)
+		* [Using the binary](https://github.com/m455/rodo#using-the-binary)
+		* [Creating a wrapper](https://github.com/m455/rodo#creating-a-wrapper)
 	* [Windows](https://github.com/m455/rodo#windows)
 	* [Mac](https://github.com/m455/rodo#mac)
 * [Usage](https://github.com/m455/rodo#usage)
@@ -23,6 +25,11 @@ An easy-to-use todo list program for people who live on the command line written
 		* [Adding a multi-word entry](https://github.com/m455/rodo#adding-a-multi-word-entry)
 	* [`rm`](https://github.com/m455/rodo#rm)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
+
+## Legend
+
+* `Items marked like this` are commands for running on the command line
+* **Items marked like this** are keywords, buttons, variables or specific files/folders
 
 ## Platforms
 
@@ -49,24 +56,30 @@ Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 ### GNU/Linux
 
-#### Using the executable binary
+#### Setup a $PATH
 
-Create a **$PATH** if you haven't done so already by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
+1. Create a directory for your **$PATH** by running `mkdir ~/bin/`
 
-Make the actual directory for your **$PATH** by running `mkdir ~/bin/`
+2. Associate your **$PATH** with the **~/bin/** folder you created by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-Add the **rodo** binary to your **$PATH** folder (in your **~/bin/** folder if you followed the instructions above) and make sure it's executable by running `chmod u+x ~/bin/rodo`
+#### Using the binary
 
-#### Using and creating a wrapper
+1. Copy the **rodo** binary file to your **$PATH** folder by running `cp /path/to/rodo ~/bin/`
 
-Create a file called **rodo** in your **$PATH** folder (in your **~/bin/** folder if you followed the instructions above) by running `touch ~/bin/rodo` and then add the following contents to it: 
+2. Make sure the **rodo** binary file is executable by running `chmod u+x ~/bin/rodo`
+
+#### Creating a wrapper
+
+Create an empty wrapper file by running `touch ~/bin/rodo` and then add the following contents to it and save: 
+
 ```
 #!/usr/bin/env bash
 racket ~/path/to/rodo.rkt "$@"
 ```
-For example, if you downloaded the project to your `~/downloads/` folder you would change the line `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`
 
-Make the **rodo** file executable by running`chmod u+x ~/bin/rodo`
+**Example**: if you downloaded the project to your **~/downloads/** folder you would change the line **racket ~/path/to/rodo.rkt "$@"** to **racket ~/downloads/rodo/rodo.rkt "$@"**
+
+Make the **rodo** wrapper file executable by running`chmod u+x ~/bin/rodo`
 
 ### Windows
 
@@ -78,7 +91,9 @@ Make the **rodo** file executable by running`chmod u+x ~/bin/rodo`
 
 ## Usage
 
-The below examples assume that you have **rodo** set up in your **$PATH** folder. If you don't, you would navigate to the directory of the **rodo.rkt** file and use `./rodo.rkt <command>` if the **rodo.rkt** is executable or `racket rodo.rkt <command>` if it is not.
+The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup) in your **$PATH** folder. 
+
+**If you don't**: Navigate to the directory of the **rodo.rkt** file and use `./rodo.rkt <command-from-below>` if the **rodo.rkt** is executable or `racket rodo.rkt <command>` if it is not.
 
 ### init
 
