@@ -12,7 +12,7 @@ An easy-to-use todo list program for people who live on the command line written
 	* [Via Git](https://github.com/m455/rodo#via-git)
 * [Setup](https://github.com/m455/rodo#setup)
 	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
-	* [Setup a $PATH](https://github.com/m455/rodo#setup-a-$path)
+	* [Setup a $PATH](https://github.com/m455/rodo#setup-a-path)
 		* [Using the binary](https://github.com/m455/rodo#using-the-binary)
 		* [Creating a wrapper](https://github.com/m455/rodo#creating-a-wrapper)
 	* [Windows](https://github.com/m455/rodo#windows)
@@ -91,7 +91,7 @@ Make the **rodo** wrapper file executable by running`chmod u+x ~/bin/rodo`
 
 ## Usage
 
-The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup) in your **$PATH** folder. 
+The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH** folder. 
 
 **If you don't**: Navigate to the directory of the **rodo.rkt** file and use `./rodo.rkt <command-from-below>` if the **rodo.rkt** is executable or `racket rodo.rkt <command>` if it is not.
 
