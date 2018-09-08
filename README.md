@@ -2,6 +2,8 @@
 
 An easy-to-use todo list program for people who live on the command line written in Racket
 
+By: Jesse Laprade
+
 # Table of Contents
 
 * [Legend](https://github.com/m455/rodo#legend)
