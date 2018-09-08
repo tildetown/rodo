@@ -12,7 +12,7 @@ An easy-to-use todo list program for people who live on the command line written
 	* [Via Git](https://github.com/m455/rodo#via-git)
 * [Setup](https://github.com/m455/rodo#setup)
 	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
-	* [Setup a $PATH](https://github.com/m455/rodo#setup-a-path)
+		* [Setup a $PATH](https://github.com/m455/rodo#setup-a-path)
 		* [Using the binary](https://github.com/m455/rodo#using-the-binary)
 		* [Creating a wrapper](https://github.com/m455/rodo#creating-a-wrapper)
 	* [Windows](https://github.com/m455/rodo#windows)
