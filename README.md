@@ -32,17 +32,18 @@ An easy-to-use todo list program for people who live on the command line written
 
 ## Requirements
 
-* Racket 6.x
-* Git (Optional)
+* [Racket 6.x](https://racket-lang.org/)
+* [Git (Optional)](https://git-scm.com/)
 
 ## Download
 
 ### Via Git
-Download this repository by clicking the `Clone or download` button at the top right and then by clicking `Download ZIP` from the drop-down list
+
+Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 ### Via Browser
 
-Run `git clone https://github.com/m455/rodo` at the command line if you use Git
+Download this repository by clicking the `Clone or download` button at the top right and then by clicking `Download ZIP` from the drop-down list
 
 ## Setup
 
