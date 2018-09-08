@@ -7,8 +7,8 @@ An easy-to-use todo list program for people who live on the command line written
 * [Platforms](https://github.com/m455/rodo#platforms)
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Download](https://github.com/m455/rodo#download)
-	* [Via Git](https://github.com/m455/rodo#via-git)
 	* [Via Browser](https://github.com/m455/rodo#via-browser)
+	* [Via Git](https://github.com/m455/rodo#via-git)
 * [Setup](https://github.com/m455/rodo#setting-up-rodo)
 	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
 		* [Using the executable binary](https://github.com/m455/rodo#using-the-executable-binary)
@@ -37,13 +37,13 @@ An easy-to-use todo list program for people who live on the command line written
 
 ## Download
 
-### Via Git
-
-Run `git clone https://github.com/m455/rodo` at the command line if you use Git
-
 ### Via Browser
 
 Download this repository by clicking the `Clone or download` button at the top right and then by clicking `Download ZIP` from the drop-down list
+
+### Via Git
+
+Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 ## Setup
 
