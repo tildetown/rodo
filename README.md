@@ -97,7 +97,7 @@ The below examples assume that you have **rodo** [set up](https://github.com/m45
 
 ### init
 
-Initializes a file in `~/.rodo/todo-list` by default
+Initializes a file in **~/.rodo/todo-list** by default
 
 Example: `rodo init`
 
@@ -129,4 +129,4 @@ Example: `rodo rm 1`
 
 ## Configuring rodo
 
-Right now, the configurations can be found in the `config.rkt` file. Settings such at **program name**, **path**, and **directory** can be set here.
+Right now, the configurations can be found in the **config.rkt** file. Settings such at **program name**, **path**, and **directory** can be set here.
