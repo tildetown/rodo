@@ -78,11 +78,11 @@ racket ~/path/to/rodo.rkt "$@"
 
 ### Windows
 
-*Instructions coming soon*
+*No instructions yet*
 
 ### Mac
 
-*Instructions coming soon*
+*No instructions yet*
 
 ## Usage
 
