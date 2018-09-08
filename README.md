@@ -5,20 +5,16 @@ An easy-to-use todo list program for people who live on the command line written
 # Table of Contents
 
 * [Platforms](https://github.com/m455/rodo#platforms)
-
 * [Requirements](https://github.com/m455/rodo#requirements)
-
 * [Download](https://github.com/m455/rodo#download)
 	* [Via Git](https://github.com/m455/rodo#via-git)
 	* [Via Browser](https://github.com/m455/rodo#via-browser)
-
 * [Setup](https://github.com/m455/rodo#setting-up-rodo)
 	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
 		* [Using the executable binary](https://github.com/m455/rodo#using-the-executable-binary)
 		* [Using and creating a wrapper](https://github.com/m455/rodo#using-and-creating-a-wrapper)
 	* [Windows](https://github.com/m455/rodo#windows)
 	* [Mac](https://github.com/m455/rodo#mac)
-
 * [Usage](https://github.com/m455/rodo#usage)
 	* [init](https://github.com/m455/rodo#init)
 	* [ls](https://github.com/m455/rodo#ls)
