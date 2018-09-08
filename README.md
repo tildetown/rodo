@@ -1,6 +1,6 @@
 # rodo
 
-An easy-to-use todo list program for people who live on the command line written in Racket.
+An easy-to-use todo list program for people who live on the command line written in Racket
 
 ## Platforms
 
@@ -15,7 +15,7 @@ An easy-to-use todo list program for people who live on the command line written
 
 ## Download
 
-Download this repository by clicking the `Clone or download` button at the top, then click `Download ZIP`
+Download this repository by clicking the `Clone or download` button at the top right and then by clicking `Download ZIP` from the drop-down list
 
 **or**
 
@@ -63,11 +63,11 @@ Make the `rodo` file executable:
 
 ### Windows
 
-Instructions coming soon
+*Instructions coming soon*
 
 ### Mac
 
-Instructions coming soon
+*Instructions coming soon*
 
 ## Usage
 
