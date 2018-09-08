@@ -99,7 +99,7 @@ rm - Removes an item from the list
 
 ## Examples
 
-The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH** folder
+The examples below assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH**
 
 init - `rodo init`
 
