@@ -78,11 +78,11 @@ racket ~/path/to/rodo.rkt "$@"
 
 ### Windows
 
-*No instructions yet*
+*To do*
 
 ### Mac
 
-*No instructions yet*
+*To do*
 
 ## Usage
 
@@ -110,4 +110,4 @@ Example: `rodo rm 1`
 
 ## Configuring rodo
 
-Right now, the configurations can be found in the **config.rkt** file. Settings such at **program name**, **path**, and **directory** can be set here.
+Right now, the configurations can be found in the **config.rkt** file. Settings such at **program name**, **path** and **directory** can be set here.
