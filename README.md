@@ -2,18 +2,30 @@
 
 An easy-to-use todo list program for people who live on the command line written in Racket.
 
-### Requirements
+## Platforms
 
 * GNU/Linux
+* Microsoft Windows
+* OS X
+
+## Requirements
+
 * Racket 6.x
+* Git (Optional)
 
-### Setting up rodo
+## Download
 
-#### Using the Linux binary
+Download this repository by clicking the `Clone or download` button at the top, then click `Download ZIP`
 
-Download rodo by running: 
+**or**
 
-`git clone https://github.com/m455/rodo`
+Run `git clone https://github.com/m455/rodo` at the command line if you use Git
+
+## Setting up rodo
+
+### GNU/Linux
+
+#### Using the executable binary
 
 Create a $PATH if you haven't done so already by running: 
 
@@ -27,19 +39,7 @@ Add the `rodo` binary to your $PATH folder (in your ~/bin/ folder if you followe
 
 `chmod u+x ~/bin/rodo`
 
-#### Manually
-
-Download rodo by running: 
-
-`git clone https://github.com/m455/rodo`
-
-Create a $PATH if you haven't done so already by running: 
-
-`echo "export PATH=~/bin:\$PATH" >> .bashrc`
-
-Make the actual directory for your `$PATH`:
-
-`mkdir ~/bin/`
+#### Using and creating a wrapper
 
 Create a file called `rodo` in your $PATH folder (in your ~/bin/ folder if you followed the instructions above) and add the
 following contents to it: 
@@ -60,6 +60,14 @@ to
 Make the `rodo` file executable: 
 
 `chmod u+x ~/bin/rodo`
+
+### Windows
+
+Instructions coming soon
+
+### Mac
+
+Instructions coming soon
 
 ## Usage
 
@@ -82,12 +90,15 @@ Example: `rodo ls`
 
 ### add
 
-Adds an item to the list
+Adds an entry to the list
+
+#### Adding a single-word entry
 
 Example: `rodo add bread`
 
-**Note:** For multi-word items you will need to surround your item in double quotes like this:
-`$ rodo add "go to the bank"`
+#### Adding a multi-word entry
+
+Example: `rodo add "go to the bank"`
 
 ### rm
 
@@ -99,4 +110,4 @@ Example: `rodo rm 1`
 
 ## Configuring rodo
 
-Right now, the configurations can be found in the `config.rkt` file. Settings such at program name, path, and directory can be set here.
+Right now, the configurations can be found in the `config.rkt` file. Settings such at **program name**, **path**, and **directory** can be set here.
