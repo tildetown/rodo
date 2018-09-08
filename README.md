@@ -2,6 +2,32 @@
 
 An easy-to-use todo list program for people who live on the command line written in Racket
 
+# Table of Contents
+
+* [Platforms](https://github.com/m455/rodo#platforms)
+
+* [Requirements](https://github.com/m455/rodo#requirements)
+
+* [Download](https://github.com/m455/rodo#download)
+	* [Via Git](https://github.com/m455/rodo#via-git)
+	* [Via Browser](https://github.com/m455/rodo#via-browser)
+
+* [Setup](https://github.com/m455/rodo#setting-up-rodo)
+	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
+		* [Using the executable binary](https://github.com/m455/rodo#using-the-executable-binary)
+		* [Using and creating a wrapper](https://github.com/m455/rodo#using-and-creating-a-wrapper)
+	* [Windows](https://github.com/m455/rodo#windows)
+	* [Mac](https://github.com/m455/rodo#mac)
+
+* [Usage](https://github.com/m455/rodo#usage)
+	* [init](https://github.com/m455/rodo#init)
+	* [ls](https://github.com/m455/rodo#ls)
+	* [add](https://github.com/m455/rodo#add)
+ 		* [Adding a single-word entry](https://github.com/m455/rodo#adding-a-single-word-entry)
+		* [Adding a multi-word entry](https://github.com/m455/rodo#adding-a-multi-word-entry)
+	* [rm](https://github.com/m455/rodo#rm)
+* [Configuration](https://github.com/m455/rodo#configuring-rodo)
+
 ## Platforms
 
 * GNU/Linux
@@ -18,11 +44,11 @@ An easy-to-use todo list program for people who live on the command line written
 ### Via Git
 Download this repository by clicking the `Clone or download` button at the top right and then by clicking `Download ZIP` from the drop-down list
 
-### Via Github
+### Via Browser
 
 Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
-## Setting up rodo
+## Setup
 
 ### GNU/Linux
 
