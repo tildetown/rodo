@@ -51,7 +51,7 @@ Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 #### Using the executable binary
 
-Create a $PATH if you haven't done so already by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
+Create a **$PATH** if you haven't done so already by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
 Make the actual directory for your **$PATH** by running `mkdir ~/bin/`
 
@@ -59,7 +59,7 @@ Add the **rodo** binary to your **$PATH** folder (in your **~/bin/** folder if y
 
 #### Using and creating a wrapper
 
-Create a file called **rodo** in your **$PATH** folder (in your ~/bin/ folder if you followed the instructions above) by running `touch ~/bin/rodo` and then add the following contents to it: 
+Create a file called **rodo** in your **$PATH** folder (in your **~/bin/** folder if you followed the instructions above) by running `touch ~/bin/rodo` and then add the following contents to it: 
 ```
 #!/usr/bin/env bash
 racket ~/path/to/rodo.rkt "$@"
