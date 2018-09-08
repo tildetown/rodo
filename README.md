@@ -22,7 +22,7 @@ An easy-to-use todo list program for people who live on the command line written
 
 ## Legend
 
-`Items marked like this` are commands for running on the command line
+`Items marked like this` are instructions for running on the command line
 
 **Items marked like this** are keywords, buttons, variables or specific files/folders
 
@@ -87,8 +87,6 @@ racket ~/path/to/rodo.rkt "$@"
 ## Usage
 
 The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH** folder. 
-
-**If you don't**: Navigate to the directory of the **rodo.rkt** file and use `./rodo.rkt <command-from-below>` if the **rodo.rkt** is executable or `racket rodo.rkt <command>` if it is not.
 
 `init` - Initializes a file in **~/.rodo/todo-list** by default
 
