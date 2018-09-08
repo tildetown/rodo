@@ -18,18 +18,13 @@ An easy-to-use todo list program for people who live on the command line written
 	* [Windows](https://github.com/m455/rodo#windows)
 	* [Mac](https://github.com/m455/rodo#mac)
 * [Usage](https://github.com/m455/rodo#usage)
-	* [`init`](https://github.com/m455/rodo#init)
-	* [`ls`](https://github.com/m455/rodo#ls)
-	* [`add`](https://github.com/m455/rodo#add)
- 		* [Adding a single-word entry](https://github.com/m455/rodo#adding-a-single-word-entry)
-		* [Adding a multi-word entry](https://github.com/m455/rodo#adding-a-multi-word-entry)
-	* [`rm`](https://github.com/m455/rodo#rm)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
 ## Legend
 
-* `Items marked like this` are commands for running on the command line
-* **Items marked like this** are keywords, buttons, variables or specific files/folders
+`Items marked like this` are commands for running on the command line
+
+**Items marked like this** are keywords, buttons, variables or specific files/folders
 
 ## Platforms
 
@@ -70,7 +65,7 @@ Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 #### Creating a wrapper
 
-Create an empty wrapper file by running `touch ~/bin/rodo` and then add the following contents to it and save: 
+1. Create an empty wrapper file by running `touch ~/bin/rodo` and then add the following contents to it and save: 
 
 ```
 #!/usr/bin/env bash
@@ -79,7 +74,7 @@ racket ~/path/to/rodo.rkt "$@"
 
 **Example**: if you downloaded the project to your **~/downloads/** folder you would change the line **racket ~/path/to/rodo.rkt "$@"** to **racket ~/downloads/rodo/rodo.rkt "$@"**
 
-Make the **rodo** wrapper file executable by running`chmod u+x ~/bin/rodo`
+2. Make the **rodo** wrapper file executable by running`chmod u+x ~/bin/rodo`
 
 ### Windows
 
@@ -95,33 +90,21 @@ The below examples assume that you have **rodo** [set up](https://github.com/m45
 
 **If you don't**: Navigate to the directory of the **rodo.rkt** file and use `./rodo.rkt <command-from-below>` if the **rodo.rkt** is executable or `racket rodo.rkt <command>` if it is not.
 
-### init
-
-Initializes a file in **~/.rodo/todo-list** by default
+`init` - Initializes a file in **~/.rodo/todo-list** by default
 
 Example: `rodo init`
 
-### ls
-
-Lists items from the list
+`ls` - Lists items from the list
 	
 Example: `rodo ls`
 
-### add
+`add` - Adds an entry to the list
 
-Adds an entry to the list
+Example of adding a single-word entry: `rodo add bread`
 
-#### Adding a single-word entry
+Example of adding a multi-word entry: `rodo add "go to the bank"`
 
-Example: `rodo add bread`
-
-#### Adding a multi-word entry
-
-Example: `rodo add "go to the bank"`
-
-### rm
-
-Removes an item from the list
+`rm` - Removes an item from the list
 	
 Example: `rodo rm 1`
 
