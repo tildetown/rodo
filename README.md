@@ -18,6 +18,7 @@ An easy-to-use todo list program for people who live on the command line written
 	* [Windows](https://github.com/m455/rodo#windows)
 	* [Mac](https://github.com/m455/rodo#mac)
 * [Usage](https://github.com/m455/rodo#usage)
+* [Examples](https://github.com/m455/rodo#examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
 ## Legend
@@ -86,27 +87,29 @@ racket ~/path/to/rodo.rkt "$@"
 
 ## Usage
 
-The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH** folder. 
+init - Initializes a file in **~/.rodo/todo-list** by default
 
-`init` - Initializes a file in **~/.rodo/todo-list** by default
+ls - Lists items from the list
 
-Example: `rodo init`
+add - Adds an entry to the list
 
-`ls` - Lists items from the list
-	
-Example: `rodo ls`
+rm - Removes an item from the list
 
-`add` - Adds an entry to the list
+**Note:** You may have to run `rodo ls` to see which number corresponds to which item to remove it
 
-Example of adding a single-word entry: `rodo add bread`
+## Examples
 
-Example of adding a multi-word entry: `rodo add "go to the bank"`
+The below examples assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH** folder
 
-`rm` - Removes an item from the list
-	
-Example: `rodo rm 1`
+init - `rodo init`
 
-**Note:** You may have to run `rodo ls` to see which number corresponds to which item to remove it.
+ls - `rodo ls`
+
+add (Single-word entry) - `rodo add bread`
+
+add (Multi-word entry) - `rodo add "go to the bank"`
+
+rm - `rodo rm 1`
 
 ## Configuring rodo
 
