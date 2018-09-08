@@ -39,7 +39,7 @@ An easy-to-use todo list program for people who live on the command line written
 
 ### Via Browser
 
-Download this repository by clicking the **Clone or download** button at the top right and then by clicking **Download ZIP** from the drop-down list
+Download this repository by clicking the **Clone or download** button at the top right and then choosing **Download ZIP** from the drop-down list
 
 ### Via Git
 
