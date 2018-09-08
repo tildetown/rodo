@@ -16,12 +16,12 @@ An easy-to-use todo list program for people who live on the command line written
 	* [Windows](https://github.com/m455/rodo#windows)
 	* [Mac](https://github.com/m455/rodo#mac)
 * [Usage](https://github.com/m455/rodo#usage)
-	* [init](https://github.com/m455/rodo#init)
-	* [ls](https://github.com/m455/rodo#ls)
-	* [add](https://github.com/m455/rodo#add)
+	* [`init`](https://github.com/m455/rodo#init)
+	* [`ls`](https://github.com/m455/rodo#ls)
+	* [`add`](https://github.com/m455/rodo#add)
  		* [Adding a single-word entry](https://github.com/m455/rodo#adding-a-single-word-entry)
 		* [Adding a multi-word entry](https://github.com/m455/rodo#adding-a-multi-word-entry)
-	* [rm](https://github.com/m455/rodo#rm)
+	* [`rm`](https://github.com/m455/rodo#rm)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
 ## Platforms
