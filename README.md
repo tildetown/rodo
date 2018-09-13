@@ -4,6 +4,8 @@ An easy-to-use todo list program for people who live on the command line written
 
 By: Jesse Laprade
 
+![](screenshot.png)
+
 # Table of Contents
 
 * [Legend](https://github.com/m455/rodo#legend)
