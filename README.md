@@ -1,6 +1,6 @@
 # rodo
 
-An easy-to-use todo list program for people who live on the command line written in Racket
+A simple to-do list tool for people who live on the command-line
 
 By: Jesse Laprade
 
