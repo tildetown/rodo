@@ -19,8 +19,6 @@ By: Jesse Laprade
 		* [Setup a $PATH](https://github.com/m455/rodo#setup-a-path)
 		* [Using the binary](https://github.com/m455/rodo#using-the-binary)
 		* [Creating a wrapper](https://github.com/m455/rodo#creating-a-wrapper)
-	* [Windows](https://github.com/m455/rodo#windows)
-	* [Mac](https://github.com/m455/rodo#mac)
 * [Usage](https://github.com/m455/rodo#usage)
 * [Examples](https://github.com/m455/rodo#examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
@@ -34,8 +32,6 @@ By: Jesse Laprade
 ## Platforms
 
 * GNU/Linux
-* Microsoft Windows
-* OS X
 
 ## Requirements
 
@@ -77,17 +73,9 @@ Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-**Example**: if you downloaded the project to your **~/downloads/** folder you would change the line **racket ~/path/to/rodo.rkt "$@"** to **racket ~/downloads/rodo/rodo.rkt "$@"**
+For example, if you downloaded the project to your **~/downloads/** folder you would change the line **racket ~/path/to/rodo.rkt "$@"** to **racket ~/downloads/rodo/rodo.rkt "$@"**
 
 2. Make the **rodo** wrapper file executable by running`chmod u+x ~/bin/rodo`
-
-### Windows
-
-*To do*
-
-### Mac
-
-*To do*
 
 ## Usage
 
