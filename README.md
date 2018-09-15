@@ -25,9 +25,9 @@ By: Jesse Laprade
 
 ## Legend
 
-`Items marked like this` are instructions for running on the command line or code. Do not include the initial `$` when running them.
+`Items marked like this` are either instructions for running on the command line or code. Do not include the initial `$` when running them.
 
-**Items marked like this** are important, keywords, buttons, variables or specific files/folders
+**Items marked like this** are important.
 
 ## Platforms
 
@@ -54,19 +54,19 @@ Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 #### Setup a $PATH
 
-1. Create a directory for your **$PATH** by running `mkdir ~/bin/`
+1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 
-2. Associate your **$PATH** with the **~/bin/** folder you created by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
+2. Associate your `$PATH` with the ~/bin/ folder you created by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
 #### Using the binary
 
-1. Copy the **rodo binary file*** to your **$PATH** folder by running `cp /path/to/rodo ~/bin/`
+1. Copy the rodo binary file to your `$PATH` folder by running `cp /path/to/rodo ~/bin/`
 
-2. Make the **rodo binary file** executable by running `chmod u+x ~/bin/rodo`
+2. Make the rodo binary file executable by running `chmod u+x ~/bin/rodo`
 
 #### Creating a wrapper
 
-1. Create an **empty wrapper file** by running `touch ~/bin/rodo`. 
+1. Create an empty wrapper file by running `touch ~/bin/rodo`. 
 
 2. Add the following contents show below to it
 
@@ -76,13 +76,19 @@ racket ~/path/to/rodo.rkt "$@"
 ```
 3. Save the file
 
-For example, if you downloaded the project to your **~/downloads/** folder you would change the line **racket ~/path/to/rodo.rkt "$@"** to **racket ~/downloads/rodo/rodo.rkt "$@"**
+For example, if you downloaded the project to your ~/downloads/ folder you would change the line 
 
-2. Make the **rodo wrapper file** executable by running`chmod u+x ~/bin/rodo`
+`racket ~/path/to/rodo.rkt "$@"` 
+
+to 
+
+`racket ~/downloads/rodo/rodo.rkt "$@"`
+
+2. Make the rodo wrapper file executable by running`chmod u+x ~/bin/rodo`
 
 ## Usage
 
-init - Initializes a file in **~/.rodo/todo-list** by default
+init - Initializes a file in ~/.rodo/todo-list by default
 
 ls - Lists items from the list
 
@@ -94,7 +100,7 @@ rm - Removes an item from the list
 
 ## Examples
 
-The examples below assume that you have **rodo** [set up](https://github.com/m455/rodo#setup-a-path) in your **$PATH**
+The examples below assume that you have rodo [set up](https://github.com/m455/rodo#setup-a-path) in your `$PATH`
 
 init - `rodo init`
 
@@ -108,4 +114,4 @@ rm - `rodo rm 1`
 
 ## Configuring rodo
 
-Right now, the configurations can be found in the **config.rkt** file. Settings such at **program name**, **path** and **directory** can be set here.
+Right now, the configurations can be found in the config.rkt file. Settings such at program name, path and directory can be set here.
