@@ -76,13 +76,7 @@ racket ~/path/to/rodo.rkt "$@"
 ```
 3. Save the file
 
-For example, if you downloaded the project to your ~/downloads/ folder you would change the line 
-
-`racket ~/path/to/rodo.rkt "$@"` 
-
-to 
-
-`racket ~/downloads/rodo/rodo.rkt "$@"`
+For example, if you downloaded the project to your ~/downloads/ folder you would change the line `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`
 
 2. Make the rodo wrapper file executable by running`chmod u+x ~/bin/rodo`
 
