@@ -60,22 +60,25 @@ Run `git clone https://github.com/m455/rodo` at the command line if you use Git
 
 #### Using the binary
 
-1. Copy the **rodo** binary file to your **$PATH** folder by running `cp /path/to/rodo ~/bin/`
+1. Copy the **rodo binary file*** to your **$PATH** folder by running `cp /path/to/rodo ~/bin/`
 
-2. Make sure the **rodo** binary file is executable by running `chmod u+x ~/bin/rodo`
+2. Make the **rodo binary file** executable by running `chmod u+x ~/bin/rodo`
 
 #### Creating a wrapper
 
-1. Create an empty wrapper file by running `touch ~/bin/rodo` and then add the following contents to it and save: 
+1. Create an **empty wrapper file** by running `touch ~/bin/rodo`. 
+
+2. Add the following contents show below to it
 
 ```
 #!/usr/bin/env bash
 racket ~/path/to/rodo.rkt "$@"
 ```
+3. Save the file
 
 For example, if you downloaded the project to your **~/downloads/** folder you would change the line **racket ~/path/to/rodo.rkt "$@"** to **racket ~/downloads/rodo/rodo.rkt "$@"**
 
-2. Make the **rodo** wrapper file executable by running`chmod u+x ~/bin/rodo`
+2. Make the **rodo wrapper file** executable by running`chmod u+x ~/bin/rodo`
 
 ## Usage
 
@@ -87,7 +90,7 @@ add - Adds an entry to the list
 
 rm - Removes an item from the list
 
-**Note:** You may have to run `rodo ls` to see which number corresponds to which item to remove it
+**Note:** You may have to run `rodo ls` to see which number corresponds to which item when removing items.
 
 ## Examples
 
