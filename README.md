@@ -25,9 +25,9 @@ By: Jesse Laprade
 
 ## Legend
 
-`Items marked like this` are instructions for running on the command line
+`Items marked like this` are instructions for running on the command line or code. Do not include the initial `$` when running them.
 
-**Items marked like this** are keywords, buttons, variables or specific files/folders
+**Items marked like this** are important, keywords, buttons, variables or specific files/folders
 
 ## Platforms
 
