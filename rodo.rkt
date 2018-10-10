@@ -1,9 +1,9 @@
 #! /usr/bin/env racket
 #lang racket/base
 
-(require "args.rkt")
+(require (prefix-in args: "args.rkt"))
 
 (define (main)
-  (check-args (current-command-line-arguments)))
+  (args:check-args (current-command-line-arguments)))
 
 (main)
