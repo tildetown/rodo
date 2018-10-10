@@ -38,15 +38,15 @@ By: Jesse Laprade
 
 ### GNU/Linux
 
-* Setup a $PATH
+1. Setup a $PATH
 	1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 	2. Associate your `$PATH` with the ~/bin/ folder you created by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-* Using the binary
+2. Using the binary
 	1. Copy the rodo binary file to your `$PATH` folder by running `cp /path/to/rodo ~/bin/`
 	2. Make the rodo binary file executable by running `chmod u+x ~/bin/rodo`
 
-* Creating a wrapper
+3. Creating a wrapper
 	1. Create an empty wrapper file by running `touch ~/bin/rodo`. 
 	2. Add the following contents show below to it
 	```
