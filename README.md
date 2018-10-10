@@ -8,26 +8,14 @@ By: Jesse Laprade
 
 # Table of Contents
 
-* [Legend](https://github.com/m455/rodo#legend)
 * [Platforms](https://github.com/m455/rodo#platforms)
 * [Requirements](https://github.com/m455/rodo#requirements)
-* [Download](https://github.com/m455/rodo#download)
-	* [Via Browser](https://github.com/m455/rodo#via-browser)
-	* [Via Git](https://github.com/m455/rodo#via-git)
+* [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
 	* [GNU/Linux](https://github.com/m455/rodo#gnulinux)
-		* [Setup a $PATH](https://github.com/m455/rodo#setup-a-path)
-		* [Using the binary](https://github.com/m455/rodo#using-the-binary)
-		* [Creating a wrapper](https://github.com/m455/rodo#creating-a-wrapper)
 * [Usage](https://github.com/m455/rodo#usage)
 * [Examples](https://github.com/m455/rodo#examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
-
-## Legend
-
-`Items marked like this` are either instructions for running on the command line or code. Do not include the initial `$` when running them.
-
-**Items marked like this** are important.
 
 ## Platforms
 
@@ -38,47 +26,37 @@ By: Jesse Laprade
 * [Racket 6.x](https://racket-lang.org/)
 * [Git (Optional)](https://git-scm.com/)
 
-## Download
+## Downloading
 
-### Via Browser
+* Via Browser
+	* Download this repository by clicking the **Clone or download** button at the top right, then choose **Download ZIP** from the drop-down list
 
-Download this repository by clicking the **Clone or download** button at the top right and then choosing **Download ZIP** from the drop-down list
-
-### Via Git
-
-Run `git clone https://github.com/m455/rodo` at the command line if you use Git
+* Via Git
+	* Run `git clone https://github.com/m455/rodo` at the command line
 
 ## Setup
 
 ### GNU/Linux
 
-#### Setup a $PATH
+1. Setup a $PATH
+	1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
+	2. Associate your `$PATH` with the ~/bin/ folder you created by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
+2. Using the binary
+	1. Copy the rodo binary file to your `$PATH` folder by running `cp /path/to/rodo ~/bin/`
+	2. Make the rodo binary file executable by running `chmod u+x ~/bin/rodo`
 
-2. Associate your `$PATH` with the ~/bin/ folder you created by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
-
-#### Using the binary
-
-1. Copy the rodo binary file to your `$PATH` folder by running `cp /path/to/rodo ~/bin/`
-
-2. Make the rodo binary file executable by running `chmod u+x ~/bin/rodo`
-
-#### Creating a wrapper
-
-1. Create an empty wrapper file by running `touch ~/bin/rodo`. 
-
-2. Add the following contents show below to it
-
-```
-#!/usr/bin/env bash
-racket ~/path/to/rodo.rkt "$@"
-```
-3. Save the file
-
-For example, if you downloaded the project to your ~/downloads/ folder you would change the line `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`
-
-2. Make the rodo wrapper file executable by running`chmod u+x ~/bin/rodo`
+3. Creating a wrapper
+	1. Create an empty wrapper file by running `touch ~/bin/rodo`. 
+	2. Add the following contents show below to it
+	```
+	#!/usr/bin/env bash
+	racket ~/path/to/rodo.rkt "$@"
+	```
+	For example, if you downloaded the project to your ~/downloads/ folder you would change the line `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`
+	
+	3. Save the file
+	4. Make the rodo wrapper file executable by running`chmod u+x ~/bin/rodo`
 
 ## Usage
 
@@ -109,3 +87,4 @@ rm - `rodo rm 1`
 ## Configuring rodo
 
 Right now, the configurations can be found in the config.rkt file. Settings such at program name, path and directory can be set here.
+
