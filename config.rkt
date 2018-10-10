@@ -1,5 +1,4 @@
 #lang racket/base
-(require racket/file)
 (provide (all-defined-out))
 
 (define program-name "rodo")
