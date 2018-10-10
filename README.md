@@ -87,3 +87,4 @@ rm - `rodo rm 1`
 ## Configuring rodo
 
 Right now, the configurations can be found in the config.rkt file. Settings such at program name, path and directory can be set here.
+
