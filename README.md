@@ -1,6 +1,6 @@
 # rodo
 
-A simple to-do list tool for people who live on the command-line
+A simple to-do list program for people who live on the command-line
 
 By: Jesse Laprade
 
@@ -35,6 +35,8 @@ By: Jesse Laprade
 	* Run `git clone https://github.com/m455/rodo` at the command line
 
 ## Setup
+
+The steps below will assist the user in setting up rodo
 
 ### GNU/Linux
 
