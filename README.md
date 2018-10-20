@@ -2,8 +2,6 @@
 
 A simple to-do list program for people who live on the command-line
 
-By: Jesse Laprade
-
 ![](screenshot.png)
 
 # Table of Contents
