@@ -6,6 +6,8 @@ A simple to-do list tool for people who live on the command-line
 - [ ] Only allow quoted items to be added
 
 By: Jesse Laprade
+=======
+A simple to-do list program for people who live on the command line
 
 ![](screenshot.png)
 
@@ -38,6 +40,8 @@ By: Jesse Laprade
     * Run `git clone https://github.com/m455/rodo` at the command line
 
 ## Setup
+
+The steps below will assist the user in setting up rodo
 
 ### GNU/Linux
 
