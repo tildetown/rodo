@@ -17,9 +17,9 @@ A simple todo list program for people who live on the command line
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
-    * [GNU/Linux and Windows Subsystem for Linux](https://github.com/m455/rodo#gnulinux-and-windows-subsystem-for-linux)
+    * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
 * [Usage](https://github.com/m455/rodo#usage)
-* [Examples](https://github.com/m455/rodo#examples)
+* [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
 # Platforms
@@ -30,7 +30,7 @@ A simple todo list program for people who live on the command line
 ## Requirements
 
 * [Racket 6.x](https://racket-lang.org/)
-* [Git](https://git-scm.com/)(Optional method for downloading)
+* [Git](https://git-scm.com/) (Optional method for downloading)
 
 # Downloading
 
@@ -44,7 +44,7 @@ A simple todo list program for people who live on the command line
 
 The steps below will assist the user in setting up rodo
 
-## GNU/Linux and Windows Subsystem for Linux
+## GNU/Linux
 
 Follow the steps below to set up rodo
 
