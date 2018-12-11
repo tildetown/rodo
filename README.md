@@ -14,12 +14,12 @@ A simple todo list program for people who live on the command line
 # Table of Contents
 
 * [Platforms](https://github.com/m455/rodo#platforms)
-* [Requirements](https://github.com/m455/rodo#requirements)
+    * [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
     * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
 * [Usage](https://github.com/m455/rodo#usage)
-* [Usage examples](https://github.com/m455/rodo#usage-examples)
+    * [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
 # Platforms
@@ -48,7 +48,7 @@ The steps below will assist the user in setting up rodo
 
 Follow the steps below to set up rodo
 
-### Setup a $PATH
+### Set up a $PATH
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
@@ -92,7 +92,7 @@ between `rodo` and the option.
 
 ## Usage examples
 
-The examples below assume that you have rodo [set up](https://github.com/m455/rodo#setup-a-path) in your `$PATH`
+The examples below assume that you have rodo [set up](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
 
 `rodo init`
 
