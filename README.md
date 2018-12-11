@@ -1,6 +1,6 @@
 # rodo
 
-A simple to-do list tool for people who live on the command-line
+A simple todo list tool for people who live on the command-line
 
 # Todos
 - [ ] Only allow quoted items to be added
