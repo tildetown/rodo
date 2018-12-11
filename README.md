@@ -2,12 +2,13 @@
 
 A simple todo list tool for people who live on the command-line
 
-# Todos
+By Jesse Laprade
+
+## Todo
+
 - [ ] Only allow quoted items to be added
 
-By: Jesse Laprade
-=======
-A simple todo list program for people who live on the command line
+# Screenshot
 
 ![](screenshot.png)
 
