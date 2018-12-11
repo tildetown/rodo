@@ -42,11 +42,12 @@ A simple todo list program for people who live on the command line
 
 # Setup
 
-The steps below will assist the user in setting up rodo
+Follow the steps below to set up rodo on the available
+platform(s)
 
 ## GNU/Linux
 
-Follow the steps below to set up rodo
+Follow the steps below to set up rodo on GNU/Linux
 
 ### Set up a $PATH
 
