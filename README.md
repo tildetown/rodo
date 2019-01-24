@@ -35,9 +35,11 @@ By Jesse Laprade
 
 # Downloading
 
-* Via GitHub
-    1. Click the *Clone or download* button in the top right
+* Via GitHub on a web browser
+    1. Click the *Clone or download* button at the top of
+    this page
     2. Click *Download ZIP* from the drop-down list
+
 * Via Git
     * Run `git clone https://github.com/m455/rodo` on the command line
 
@@ -65,7 +67,7 @@ racket ~/path/to/rodo.rkt "$@"
 ```
 
 For example, if you downloaded the project to your
-~/downloads/ folder you would change the line `racket
+`~/downloads/` folder you would change the line `racket
 ~/path/to/rodo.rkt "$@"` to `racket
 ~/downloads/rodo/rodo.rkt "$@"`.
 
@@ -82,7 +84,7 @@ file-name-here.rkt`.
 Type `rodo` plus one of the options below with a space
 between `rodo` and the option.
 
-`init` - Initializes a file in ~/.rodo/todo-list by default
+`init` - Initializes a file in `~/.rodo/todo-list` by default
 
 `ls` - Lists items from the list
 
