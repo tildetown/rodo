@@ -15,10 +15,11 @@ By Jesse Laprade
 # Table of Contents
 
 * [Platforms](https://github.com/m455/rodo#platforms)
-    * [Requirements](https://github.com/m455/rodo#requirements)
+* [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
     * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
+    * [Windows Subsystem for Linux](https://github.com/m455/rodo#windows-subsystem-for-linux)
 * [Usage](https://github.com/m455/rodo#usage)
     * [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
@@ -28,7 +29,7 @@ By Jesse Laprade
 * GNU/Linux
 * Windows Subsystem for Linux
 
-## Requirements
+# Requirements
 
 * [Racket 6.x](https://racket-lang.org/)
 * [Git](https://git-scm.com/) (Optional method for downloading)
@@ -49,6 +50,37 @@ Follow the steps below to set up rodo on the available
 platform(s)
 
 ## GNU/Linux
+
+Follow the steps below to set up rodo on GNU/Linux
+
+### Set up a $PATH
+
+1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
+2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
+
+### Adding rodo to your $PATH
+
+1. Create a file in your `~/bin/` directory with the following contents in it:
+
+```
+#!/usr/bin/env bash
+racket ~/path/to/rodo.rkt "$@"
+```
+
+For example, if you downloaded the project to your
+`~/downloads/` folder you would change the line `racket
+~/path/to/rodo.rkt "$@"` to `racket
+~/downloads/rodo/rodo.rkt "$@"`.
+
+If you prefer to use an executable, rather than a wrapper,
+you can create an executable binary file with `raco exe
+file-name-here.rkt`.
+
+2. Save the file
+
+3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
+
+## Windows Subsystem for Linux
 
 Follow the steps below to set up rodo on GNU/Linux
 
