@@ -6,38 +6,38 @@
 
 (define messages
   (hash
-   'show-help
-   (string-append
-    config:initialize-command ":\n"
-    "initialize a file in "
-    config:program-path
-    config:program-directory
-    config:program-file
-    "\n"
-    "Example: "
-    "rodo init\n\n"
+   'show-help (string-append
+               config:initialize-command
+               " - "
+               "initialize a file in "
+               config:program-path
+               config:program-directory
+               config:program-file
+               "\n"
+               "Example: "
+               "rodo init\n\n"
 
-    config:list-command ":\n"
-    "lists items on the list"
-    "\n"
-    "Example: "
-    "rodo ls\n\n"
+               config:list-command ":\n"
+               "lists items on the list"
+               "\n"
+               "Example: "
+               "rodo ls\n\n"
 
-    config:add-command ":\n"
-    "adds an item to the list"
-    "\n"
-    "Example: "
-    "rodo add bread\n\n"
-    "Note: For multi-word items you will need to\n"
-    "surround your item in double quotes as so:\n"
-    "rodo add \"go to the bank\"\n\n"
+               config:add-command ":\n"
+               "adds an item to the list"
+               "\n"
+               "Example: "
+               "rodo add bread\n\n"
+               "Note: For multi-word items you will need to\n"
+               "surround your item in double quotes as so:\n"
+               "rodo add \"go to the bank\"\n\n"
 
-    config:remove-command ":\n"
-    "removes an item from the list\n"
-    "Example: "
-    "rodo rm 1\n\n"
-    "Note: You may have to run `rodo ls` to see which\n"
-    "number corresponds to which item to remove it.\n")
+               config:remove-command ":\n"
+               "removes an item from the list\n"
+               "Example: "
+               "rodo rm 1\n\n"
+               "Note: You may have to run `rodo ls` to see which\n"
+               "number corresponds to which item to remove it.\n")
 
    'empty-todo-list
    "> There is nothing in your list \n"
