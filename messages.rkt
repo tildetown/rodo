@@ -54,7 +54,7 @@
     "> creating a "
     config:program-directory
     " folder in "
-    config:program-path " ...\n")
+    config:program-path "\n")
 
    'creating-file
    (string-append
@@ -62,7 +62,7 @@
     config:program-file
     " file in "
     config:program-path
-    config:program-directory " ...\n")
+    config:program-directory "\n")
 
    'creation-error
    (string-append 
@@ -116,7 +116,7 @@
    (string-append
     "> Exiting "
     config:program-name
-    " ...\n")
+    "\n")
 
    'choose-y/n
    "> Error: Please choose y or n\n"
