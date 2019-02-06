@@ -37,8 +37,8 @@
 ;; "#:mode...#:line-mode..." every time
 (define (file->string-list config:path-to-file)
   (let ([todo-list (file:file->lines config:path-to-file
-                           #:mode 'text
-                           #:line-mode 'any)])
+                                     #:mode 'text
+                                     #:line-mode 'any)])
     todo-list))
 
 (define (list-empty? lst)
@@ -56,31 +56,34 @@
 (define (surround-in-quotes args)
   (display (string-append "\"" args "\"")))
 
+(define (prefix-with-period lst)
+  (string-append lst ". "))
+
 (define (prefix-with-number lst)
   ;; Connect the list of numbers to the list of items
   (map string-append
-       ;; Convert the numbers made below into strings
-       ;; so we can append them to other strings
-       (map number->string
-            ;; The add1 here makes the numbers more human by
-            ;; starting at 1 instead of 0
-            (map add1
-                 ;; Create a list of numbers from the total
-                 ;; number of items in a list
-                 (list:range (length lst))))
+       (map prefix-with-period
+            ;; 3. Convert the numbers made below into strings
+            ;; so we can append them to other strings
+            (map number->string
+                 ;; 2. The add1 here makes the numbers more human by
+                 ;; starting at 1 instead of 0
+                 (map add1
+                      ;; 1. Create a list of numbers from the total
+                      ;; number of items in a list
+                      (list:range (length lst)))))
        ;; This is just the original list that everything will
        ;; be appended to
        lst))
 
-(define (prefix-with-period lst)
-  (string-append ". " lst))
-
-(define (prettify-list)
+(define (display-prettified-list)
   (display
-   (string:string-join (prefix-with-number (map prefix-with-period (file->string-list config:path)))
+   (string:string-join
+    (prefix-with-number (file->string-list config:path))
     "\n"
     #:after-last "\n")))
 
+;; This is a bit of ugly scheme sorcery
 (define (append-to-end args lst)
   (reverse (cons args (reverse (file->string-list lst)))))
 
@@ -99,17 +102,23 @@
           (check-for-folder)
           (check-for-file))
          (if
+          ;; If file exists, see if it's empty, if so
+          ;; tell the user
           (list-empty? config:path)
           (display-hash-ref messages:messages 'empty-todo-list)
-          (prettify-list))]
+          ;; If file isn't empty, display a pretty list
+          (display-prettified-list))]
+
+        ;; If file doesn't exist, tell the user
         [else
          (display-hash-ref messages:messages 'file-not-found)
          (display-hash-ref messages:messages 'try-init)]))
 
 (define (add-item-to-file args)
+  ;; Add item to end of list and write to file
   (let ([new-list (append-to-end args config:path)])
     (file:display-to-file
-     (string:string-join new-list "\n");; #:after-last "\n")
+     (string:string-join new-list "\n")
      config:path
      #:mode 'text
      #:exists 'replace)
@@ -126,13 +135,15 @@
 
 (define (remove-item-from-file args)
   (let ([removed-item (get-removed-item config:path args)]
+        ;; Todo:
+        ;; Some how add removed-item here, instead of
+        ;; repeating (get-removed-item config:path args).
+        ;; This is still a mystery to me
         [new-list (remove
-                   ;; Todo: Some how add removed-item here
-                   ;; from above
                    (get-removed-item config:path args)
                    (file->string-list config:path))])
     (file:display-to-file
-     (string:string-join new-list "\n");; #:after-last "\n")
+     (string:string-join new-list "\n")
      config:path
      #:mode 'text
      #:exists 'replace)
@@ -141,10 +152,12 @@
 (define (remove-item args)
   (cond [(list-empty? config:path)
          (display-hash-ref messages:messages 'empty-todo-list)]
+
         [(and
           (check-for-folder)
           (check-for-file))
          (remove-item-from-file (vector-ref args 1))]
+
         [(and (not (check-for-folder)) (not (check-for-file)))
          (begin
            (display-hash-ref messages:messages 'file-not-found)
