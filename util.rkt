@@ -33,6 +33,8 @@
 (define (display-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
 
+;; Just so I don't have to keep typing
+;; "#:mode...#:line-mode..." every time
 (define (file->string-list config:path-to-file)
   (let ([todo-list (file:file->lines config:path-to-file
                            #:mode 'text
@@ -40,21 +42,35 @@
     todo-list))
 
 (define (list-empty? lst)
-  (list:empty? (list:rest (file->string-list lst))))
+  (list:empty? (file->string-list lst)))
 
+;; Find out which item is being removed by scooping up
+;; the number the user entered in the command line
+;; argument
 (define (get-removed-item lst args)
-  (list-ref lst (string->number args)))
+  ;; Subtract one from what the user chose, because they are
+  ;; are actually viewing the list numbers as human numbers
+  ;; so (actual-number +1)
+  (list-ref (file->string-list lst) (sub1 (string->number args))))
 
-(define (quote-item args)
-  (display
-   (string-append "\"" args "\"")))
+(define (surround-in-quotes args)
+  (display (string-append "\"" args "\"")))
 
 (define (prefix-with-number lst)
+  ;; Connect the list of numbers to the list of items
   (map string-append
+       ;; Convert the numbers made below into strings
+       ;; so we can append them to other strings
        (map number->string
-            (list:rest
-             (list:range (length lst))))
-       (list:rest lst)))
+            ;; The add1 here makes the numbers more human by
+            ;; starting at 1 instead of 0
+            (map add1
+                 ;; Create a list of numbers from the total
+                 ;; number of items in a list
+                 (list:range (length lst))))
+       ;; This is just the original list that everything will
+       ;; be appended to
+       lst))
 
 (define (prefix-with-period lst)
   (string-append ". " lst))
@@ -70,12 +86,12 @@
 
 (define (display-item-added args)
   (display-hash-ref messages:messages 'item-added-prefix)
-  (quote-item args)
+  (surround-in-quotes args)
   (display-hash-ref messages:messages 'item-added-suffix))
 
 (define (display-item-removed args)
   (display-hash-ref messages:messages 'item-removed-prefix)
-  (quote-item args)
+  (surround-in-quotes args)
   (display-hash-ref messages:messages 'item-removed-suffix))
 
 (define (show-list)
@@ -93,7 +109,7 @@
 (define (add-item-to-file args)
   (let ([new-list (append-to-end args config:path)])
     (file:display-to-file
-     (string:string-join new-list "\n" #:after-last "\n")
+     (string:string-join new-list "\n");; #:after-last "\n")
      config:path
      #:mode 'text
      #:exists 'replace)
@@ -109,12 +125,14 @@
         (display-hash-ref messages:messages 'try-init))))
 
 (define (remove-item-from-file args)
-  (let ([removed-item (get-removed-item (file->string-list config:path) args)]
+  (let ([removed-item (get-removed-item config:path args)]
         [new-list (remove
-                   (list-ref (file->string-list config:path) (string->number args))
+                   ;; Todo: Some how add removed-item here
+                   ;; from above
+                   (get-removed-item config:path args)
                    (file->string-list config:path))])
     (file:display-to-file
-     (string:string-join new-list "\n" #:after-last "\n")
+     (string:string-join new-list "\n");; #:after-last "\n")
      config:path
      #:mode 'text
      #:exists 'replace)
