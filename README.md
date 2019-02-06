@@ -6,6 +6,8 @@ By Jesse Laprade
 
 ## Todo
 
+- [ ] Don't allow users to remove negative numbers
+- [ ] Change nested maps into a `compose`
 - [ ] Only allow quoted items to be added
 - [ ] Add color option to config file
 - [ ] Encrypt todo list file
