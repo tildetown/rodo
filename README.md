@@ -6,7 +6,6 @@ By Jesse Laprade
 
 ## Todo
 
-- [ ] Convert input to string first, even if it's not a number
 - [ ] Only allow quoted items to be added
 - [ ] Add color option to config file
 - [ ] Encrypt todo list file
