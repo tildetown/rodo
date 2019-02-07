@@ -30,6 +30,8 @@
         (equal? (vector:vector-member config:remove-command args) 0)
         ;; Don't allow user to remove zeroth item
         (not (equal? (vector:vector-member "0" args) 1))
+        ;; Number is positive
+        (positive? (string->number (vector-ref args 1)))
         ;; Don't allow removal of items beyond last item
         (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path)))))
        (util:remove-item args)]
