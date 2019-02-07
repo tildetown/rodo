@@ -60,20 +60,11 @@
   (string-append lst ". "))
 
 (define (prefix-with-number lst)
-  ;; Connect the list of numbers to the list of items
   (map string-append
-       (map prefix-with-period
-            ;; 3. Convert the numbers made below into strings
-            ;; so we can append them to other strings
-            (map number->string
-                 ;; 2. The add1 here makes the numbers more human by
-                 ;; starting at 1 instead of 0
-                 (map add1
-                      ;; 1. Create a list of numbers from the total
-                      ;; number of items in a list
-                      (list:range (length lst)))))
-       ;; This is just the original list that everything will
-       ;; be appended to
+       ;; Note: compose starts from the last element in it's
+       ;; list, as if it were nested, so that would be add1 here
+       (map (compose prefix-with-period number->string add1)
+            (list:range (length lst)))
        lst))
 
 (define (display-prettified-list)
@@ -108,7 +99,6 @@
           (display-hash-ref messages:messages 'empty-todo-list)
           ;; If file isn't empty, display a pretty list
           (display-prettified-list))]
-
         ;; If file doesn't exist, tell the user
         [else
          (display-hash-ref messages:messages 'file-not-found)
@@ -134,14 +124,9 @@
         (display-hash-ref messages:messages 'try-init))))
 
 (define (remove-item-from-file args)
-  (let ([removed-item (get-removed-item config:path args)]
-        ;; Todo:
-        ;; Some how add removed-item here, instead of
-        ;; repeating (get-removed-item config:path args).
-        ;; This is still a mystery to me
-        [new-list (remove
-                   (get-removed-item config:path args)
-                   (file->string-list config:path))])
+  (let* ([removed-item (get-removed-item config:path args)]
+         [new-list (remove removed-item (file->string-list config:path))])
+
     (file:display-to-file
      (string:string-join new-list "\n")
      config:path
@@ -152,12 +137,10 @@
 (define (remove-item args)
   (cond [(list-empty? config:path)
          (display-hash-ref messages:messages 'empty-todo-list)]
-
         [(and
           (check-for-folder)
           (check-for-file))
          (remove-item-from-file (vector-ref args 1))]
-
         [(and (not (check-for-folder)) (not (check-for-file)))
          (begin
            (display-hash-ref messages:messages 'file-not-found)

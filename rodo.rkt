@@ -3,7 +3,7 @@
 
 (require (prefix-in args: "args.rkt"))
 
-(define (main)
-  (args:check-args (current-command-line-arguments)))
+(define (main args)
+  (args:check-args args))
 
-(main)
+(main (current-command-line-arguments))
