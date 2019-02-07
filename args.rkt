@@ -10,37 +10,40 @@
 (provide (all-defined-out))
 
 (define (check-args args)
-  (let([args-length (vector-length args)])
+  (let ([args-length (vector-length args)])
     (cond
       [(equal? args-length 0)
        (util:display-hash-ref messages:messages 'show-usage)]
 
+      ;; ls
       [(and
         (equal? args-length 1)
         (equal? (vector:vector-member config:list-command args) 0))
        (util:show-list)]
 
+      ;; add
       [(and
         (equal? args-length 2)
         (equal? (vector-ref args 0) config:add-command))
        (util:add-item args)]
 
+      ;; rm
       [(and
         (equal? args-length 2)
         (equal? (vector:vector-member config:remove-command args) 0)
-        ;; Don't allow user to remove zeroth item
-        (not (equal? (vector:vector-member "0" args) 1))
-        ;; Number is positive
+        (real? (string->number (vector-ref args 1)))
         (positive? (string->number (vector-ref args 1)))
-        ;; Don't allow removal of items beyond last item
-        (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path)))))
-       (util:remove-item args)]
+        (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path))))
+        (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path))))))
+       (util:remove-item args))]
 
+      ;; init
       [(and
         (equal? args-length 1)
         (equal? (vector:vector-member config:initialize-command args) 0))
        (init:initialize)]
 
+      ;; help
       [(and
         (equal? args-length 1)
         (member (vector-ref args 0) config:help-command))
