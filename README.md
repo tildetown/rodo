@@ -95,7 +95,7 @@ regarding the [creation of standalone executables](https://docs.racket-lang.org/
 Type `rodo` plus one of the options below with a space
 between `rodo` and the option.
 
-`init` - Initializes a file in `~/.rodo/todo-list` by default
+`init` - Initializes a file called `todo-list` in `~/.rodo/` by default
 
 `ls` - Lists items from the list
 
