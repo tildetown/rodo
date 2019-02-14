@@ -9,6 +9,8 @@ By Jesse Laprade
 - [ ] Only allow quoted items to be added
 - [ ] Add color option to config.rkt file
 - [ ] Encrypt todo-list file
+- [ ] Change default permissions of todo-list file
+- [ ] Add note on .bash_history about items being added here before going into the todo-list file
 
 # Screenshot
 
@@ -21,7 +23,6 @@ By Jesse Laprade
 * [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
     * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
-    * [Windows Subsystem for Linux](https://github.com/m455/rodo#windows-subsystem-for-linux)
 * [Usage](https://github.com/m455/rodo#usage)
     * [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
@@ -29,12 +30,11 @@ By Jesse Laprade
 # Platforms
 
 * GNU/Linux
-* Windows Subsystem for Linux
 
 # Requirements
 
 * [Racket 6.x](https://racket-lang.org/)
-* [Git](https://git-scm.com/) (Optional method for downloading)
+* [Git](https://git-scm.com/) (Optional method for downloading using `git clone`)
 
 # Downloading
 
@@ -48,19 +48,21 @@ By Jesse Laprade
 
 # Setup
 
-Follow the steps below to set up rodo on the available
-platform(s)
+Follow the steps below to set up `rodo` on your platform, if available
 
 ## GNU/Linux
 
-Follow the steps below to set up rodo on GNU/Linux
+Follow the steps below to add `rodo` to your `$PATH`
 
-### Set up a $PATH
+### Set up a `$PATH`
+
+Follow the steps below if you haven't set up a `$PATH`. If you have set up a `$PATH` already,
+then skip to the next step, [Adding `rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path)
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-### Adding rodo to your $PATH
+### Adding `rodo` to your `$PATH`
 
 1. Create a file in your `~/bin/` directory with the following contents in it:
 
@@ -69,45 +71,14 @@ Follow the steps below to set up rodo on GNU/Linux
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-For example, if you downloaded the project to your
-`~/downloads/` folder you would change the line `racket
-~/path/to/rodo.rkt "$@"` to `racket
-~/downloads/rodo/rodo.rkt "$@"`.
+#### Example
+
+If you downloaded the project to your `~/downloads/` folder you would change the line
+`racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`.
 
 If you prefer to use an executable, rather than a wrapper,
-you can create an executable binary file with `raco exe
-file-name-here.rkt`.
-
-2. Save the file
-
-3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
-
-## Windows Subsystem for Linux
-
-Follow the steps below to set up rodo on GNU/Linux
-
-### Set up a $PATH
-
-1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
-2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
-
-### Adding rodo to your $PATH
-
-1. Create a file in your `~/bin/` directory with the following contents in it:
-
-```
-#!/usr/bin/env bash
-racket ~/path/to/rodo.rkt "$@"
-```
-
-For example, if you downloaded the project to your
-`~/downloads/` folder you would change the line `racket
-~/path/to/rodo.rkt "$@"` to `racket
-~/downloads/rodo/rodo.rkt "$@"`.
-
-If you prefer to use an executable, rather than a wrapper,
-you can create an executable binary file with `raco exe
-file-name-here.rkt`.
+you can create an executable binary file with `raco exe rodo.rkt` when in the same
+folder as the `rodo.rkt` file.
 
 2. Save the file
 
@@ -130,7 +101,7 @@ between `rodo` and the option.
 
 ## Usage examples
 
-The examples below assume that you have rodo [set up](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
+The examples below assume that you have `rodo` [set up](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
 
 `rodo init`
 
