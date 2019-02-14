@@ -29,18 +29,23 @@ By Jesse Laprade
 
 # Platforms
 
+Below is a list of platform(s) that `rodo` is currently available for.
+
 * GNU/Linux
 
 # Requirements
+
+Below is a list of items needed for running `rodo` on your machine.
 
 * [Racket 6.x](https://racket-lang.org/)
 * [Git](https://git-scm.com/) (Optional method for downloading using `git clone`)
 
 # Downloading
 
+Currently, there are two ways to download the source code. Please choose one:
+
 * Via GitHub on a web browser
-    1. Click the *Clone or download* button at the top of
-    this page
+    1. Click the *Clone or download* button at the top of this page
     2. Click *Download ZIP* from the drop-down list
 
 * Via Git
@@ -48,21 +53,23 @@ By Jesse Laprade
 
 # Setup
 
-Follow the steps below to set up `rodo` on your platform, if available
+Follow the steps below to set up `rodo` on your platform, if available.
 
 ## GNU/Linux
 
-Follow the steps below to add `rodo` to your `$PATH`
+Follow the steps below to add `rodo` to your `$PATH`.
 
 ### Set up a `$PATH`
 
 Follow the steps below if you haven't set up a `$PATH`. If you have set up a `$PATH` already,
-then skip to the next step, [Adding `rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path)
+then skip to the next step, [Adding `rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
 ### Adding `rodo` to your `$PATH`
+
+Follow the steps below if you have set up your `$PATH`.
 
 1. Create a file in your `~/bin/` directory with the following contents in it:
 
@@ -78,7 +85,8 @@ If you downloaded the project to your `~/downloads/` folder you would change the
 
 If you prefer to use an executable, rather than a wrapper,
 you can create an executable binary file with `raco exe rodo.rkt` when in the same
-folder as the `rodo.rkt` file.
+folder as the `rodo.rkt` file. If you don't know how to do this please refer to Racket's documentation
+regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).
 
 2. Save the file
 
@@ -113,7 +121,7 @@ The examples below assume that you have `rodo` [set up](https://github.com/m455/
 
 `rodo rm 1`
 
-# Configuring rodo
+# Configuring `rodo`
 
 Right now, the configurations can be found in the `config.rkt file`. Settings, such as program name, path, and directory can be changed.
 
