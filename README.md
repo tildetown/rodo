@@ -78,19 +78,17 @@ Follow the steps below if you have set up your `$PATH`.
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-#### Example
-
-If you downloaded the project to your `~/downloads/` folder you would change the line
+Note: If you downloaded the project to your `~/downloads/` folder you would change the line
 `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`.
-
-If you prefer to use an executable, rather than a wrapper,
-you can create an executable binary file with `raco exe rodo.rkt` when in the same
-folder as the `rodo.rkt` file. If you don't know how to do this please refer to Racket's documentation
-regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).
 
 2. Save the file
 
 3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
+
+If you prefer to use an executable, rather than a wrapper,
+you can create an executable binary file with `raco exe rodo.rkt` when in the same
+folder as the `rodo.rkt` file. If you are having trouble with this please refer to Racket's documentation
+regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).
 
 # Usage
 
