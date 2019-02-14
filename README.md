@@ -113,7 +113,7 @@ The examples below assume that you have `rodo` [set up](https://github.com/m455/
 
 `rodo ls`
 
-`rodo add bread` (Single-word entry)
+`rodo add bread` (Single-word entry) (**Soon the use of unquoted items will be depreciated**)
 
 `rodo add "go to the bank"` (Multi-word entry)
 
