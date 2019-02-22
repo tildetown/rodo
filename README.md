@@ -9,7 +9,7 @@ By Jesse Laprade
 - [ ] Only allow quoted items to be added
 - [ ] Add color option to config.rkt file
 - [ ] Encrypt todo-list file
-- [ ] Change default permissions of todo-list file
+- [ ] Change default permissions of `~/.rodo` folder and `todo-list` file
 - [ ] Add note on .bash_history about items being added here before going into the todo-list file
 
 # Screenshot
