@@ -62,7 +62,7 @@ Follow the steps below to download `rodo` from your web browser.
 
 Follow the steps below to download `rodo` using the `git` command.
 
-1. Ensure Git is installed
+1. Ensure `git` is installed
 2. Run `git clone https://github.com/m455/rodo` on the command line
 
 # Setup
