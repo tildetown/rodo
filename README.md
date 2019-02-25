@@ -4,13 +4,17 @@ A simple todo list tool for people who live on the command-line
 
 By Jesse Laprade
 
-## Todo
+# New things added!
 
-- [ ] Only allow quoted items to be added
+Now default directory and file permissions are more private! `~/.rodo/` is now
+set to 700 by default, and `~/.rodo/todo.txt` is set to 600 by default.
+
+# Todo
+
 - [ ] Add color option to config.rkt file
 - [ ] Encrypt todo-list file
-- [ ] Change default permissions of `~/.rodo` folder and `todo-list` file
-- [ ] Add note on .bash_history about items being added here before going into the todo-list file
+- [ ] Add note on .bash_history about items being added here before going into
+  the todo.txt file
 
 # Screenshot
 
@@ -21,6 +25,8 @@ By Jesse Laprade
 * [Platforms](https://github.com/m455/rodo#platforms)
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
+    * [Option one: Via GitHub on a web browser](https://github.com/m455/rodo#option-one-via-github-on-a-web-browser)
+    * [Option two: Via Git](https://github.com/m455/rodo#option-two-via-git)
 * [Setup](https://github.com/m455/rodo#setup)
     * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
 * [Usage](https://github.com/m455/rodo#usage)
@@ -38,22 +44,34 @@ Below is a list of platform(s) that `rodo` is currently available for.
 Below is a list of items needed for running `rodo` on your machine.
 
 * [Racket 6.x](https://racket-lang.org/)
-* [Git](https://git-scm.com/) (Optional method for downloading using `git clone`)
+* [GNU coreutils](https://wiki.debian.org/coreutils)(`chmod` at least)
 
 # Downloading
 
-Currently, there are two ways to download the source code. Please choose one:
+Currently, there are two options for downloading the source code. Choose one from the
+list below:
 
-* Via GitHub on a web browser
-    1. Click the *Clone or download* button at the top of this page
-    2. Click *Download ZIP* from the drop-down list
+## Option one: Via GitHub on a web browser
 
-* Via Git
-    * Run `git clone https://github.com/m455/rodo` on the command line
+Follow the steps below to download `rodo` from your web browser.
+
+1. Click the *Clone or download* button at the top of this page
+2. Click *Download ZIP* from the drop-down list
+
+## Option two: Via Git
+
+Follow the steps below to download `rodo` using the `git` command.
+
+1. Ensure Git is installed
+2. Run `git clone https://github.com/m455/rodo` on the command line
 
 # Setup
 
-Follow the steps below to set up `rodo` on your platform, if available.
+Follow the sections below to set up `rodo`, so it can be used from anywhere on
+your system.
+
+**If you just want to test it out, just run `cd` into the downloaded
+directory and run `./rodo.rkt`.**
 
 ## GNU/Linux
 
@@ -61,8 +79,9 @@ Follow the steps below to add `rodo` to your `$PATH`.
 
 ### Set up a `$PATH`
 
-Follow the steps below if you haven't set up a `$PATH`. If you have set up a `$PATH` already,
-then skip to the next step, [Adding `rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
+Follow the steps below if you haven't set up a `$PATH`. If you have set up a
+`$PATH` already, then skip to the next step, [Adding `rodo` to your
+`$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
@@ -78,48 +97,54 @@ Follow the steps below if you have set up your `$PATH`.
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-Note: If you downloaded the project to your `~/downloads/` folder you would change the line
+For example: If you downloaded the project to your `~/downloads/` folder you would change the line
 `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`.
 
 2. Save the file
 
 3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
 
-If you prefer to use an executable, rather than a wrapper,
-you can create an executable binary file with `raco exe rodo.rkt` when in the same
-folder as the `rodo.rkt` file. If you are having trouble with this please refer to Racket's documentation
-regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).
+If you prefer to use an executable, rather than a wrapper, you can create an
+executable binary file with `raco exe rodo.rkt` when in the same folder as the
+`rodo.rkt` file. If you are having trouble with this please refer to Racket's
+documentation regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).
 
 # Usage
 
-Type `rodo` plus one of the options below with a space
-between `rodo` and the option.
+Type `rodo` plus one of the commands below with a space
+between `rodo` and the command.
 
-`init` - Initializes a file called `todo-list` in `~/.rodo/` by default
+`init` - Initializes a file called `todo.txt` in `~/.rodo/` by default (The
+directory and filename can be changed by modifying the `config.rkt` file)
 
-`ls` - Lists items from the list
+`ls` - Displays items from the todo list in a vertical format
 
-`add` - Adds an entry to the list
+`add` - Adds an entry to the todo list
 
-`rm` - Removes an item from the list
+`rm` - Removes an item from the todo list
 
-**Note:** You may have to run `rodo ls` to see which number corresponds to which item when removing items.
+Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.
 
 ## Usage examples
 
-The examples below assume that you have `rodo` [set up](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
+The examples below assume that you have `rodo` [set up in your `$PATH`](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
 
 `rodo init`
 
 `rodo ls`
 
-`rodo add bread` (Single-word entry) (**Soon the use of unquoted items will be depreciated**)
+`rodo add "go to the park"`
 
-`rodo add "go to the bank"` (Multi-word entry)
+Note: If you leave out the double quotation marks here, only the first word
+will be added. In the example above, only "go" would be added to the list.
 
 `rodo rm 1`
 
 # Configuring `rodo`
 
-Right now, the configurations can be found in the `config.rkt file`. Settings, such as program name, path, and directory can be changed.
+Caution: Change the `config.rkt` file at your own risk, as it may break things!
+
+Right now, the configurations can be found in the `config.rkt file`. Settings,
+such as the program name, directory, and the filename of the todo list file can
+be changed.
 

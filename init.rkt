@@ -14,12 +14,11 @@
       ([user-input (read-line)])
     (cond
       [(member user-input (hash-ref messages:y/n 'yes))
-       (util:display-hash-ref messages:messages 'creating-folder)
-       (util:display-hash-ref messages:messages 'creating-file)
-       (util:create-folder)
+       (util:display-hash-ref messages:messages 'creating)
+       (util:create-directory)
        (util:create-file)
        (if (and
-            (util:check-for-folder)
+            (util:check-for-directory)
             (util:check-for-file))
            (util:display-hash-ref messages:messages 'successfully-created)
            (util:display-hash-ref messages:messages 'creation-error))]

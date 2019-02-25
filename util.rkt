@@ -3,38 +3,46 @@
 (require (prefix-in list: racket/list)
          (prefix-in file: racket/file)
          (prefix-in string: racket/string)
+         (prefix-in system: racket/system)
          (prefix-in config: "config.rkt")
          (prefix-in messages: "messages.rkt"))
 
 (provide (all-defined-out))
+
+(define (set-permissions permissions file-or-directory)
+  (let* ([converted-permissions (number->string permissions)]
+         [converted-file-or-directory
+           (cond [(path? file-or-directory) (path->string file-or-directory)]
+                 [else file-or-directory])])
+    (system:system 
+      (string-append "chmod" " " converted-permissions " " converted-file-or-directory))))
 
 (define (check-for-file)
   (file-exists? config:path))
 
 (define (create-file)
   (let ([opened-file
-         (open-output-file config:path
-                           #:mode 'text
-                           #:exists 'can-update)])
-    (close-output-port opened-file)))
+          (open-output-file config:path
+                            #:mode 'text
+                            #:exists 'can-update)])
+    (close-output-port opened-file))
+  (set-permissions 600 config:path))
 
-(define (check-for-folder)
+(define (check-for-directory)
   (directory-exists? (expand-user-path
-                      (string-append
-                       config:program-path
-                       config:program-directory))))
+                       (string-append
+                         config:program-directory))))
 
-(define (create-folder)
+(define (create-directory)
   (make-directory (expand-user-path
-                   (string-append
-                    config:program-path
-                    config:program-directory))))
+                    (string-append
+                      config:program-directory)))
+  (set-permissions 700 config:program-directory))
 
 (define (display-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
 
-;; Just so I don't have to keep typing
-;; "#:mode...#:line-mode..." every time
+;; Just so I don't have to keep typing "#:mode...#:line-mode..." every time
 (define (file->string-list config:path-to-file)
   (let ([todo-list (file:file->lines config:path-to-file
                                      #:mode 'text
@@ -69,10 +77,10 @@
 
 (define (display-prettified-list)
   (display
-   (string:string-join
-    (prefix-with-number (file->string-list config:path))
-    "\n"
-    #:after-last "\n")))
+    (string:string-join
+      (prefix-with-number (file->string-list config:path))
+      "\n"
+      #:after-last "\n")))
 
 ;; This is a bit of ugly scheme sorcery
 (define (append-to-end args lst)
@@ -90,58 +98,58 @@
 
 (define (show-list)
   (cond [(and
-          (check-for-folder)
-          (check-for-file))
+           (check-for-directory)
+           (check-for-file))
          (if
-          ;; If file exists, see if it's empty, if so
-          ;; tell the user
-          (list-empty? config:path)
-          (display-hash-ref messages:messages 'empty-todo-list)
-          ;; If file isn't empty, display a pretty list
-          (display-prettified-list))]
+           ;; If file exists, see if it's empty, if so
+           ;; tell the user
+           (list-empty? config:path)
+           (display-hash-ref messages:messages 'empty-todo-list)
+           ;; If file isn't empty, display a pretty list
+           (display-prettified-list))]
         ;; If file doesn't exist, tell the user
         [else
-         (display-hash-ref messages:messages 'file-not-found)
-         (display-hash-ref messages:messages 'try-init)]))
+          (display-hash-ref messages:messages 'file-not-found)
+          (display-hash-ref messages:messages 'try-init)]))
 
 (define (add-item-to-file args)
   ;; Add item to end of list and write to file
   (let ([new-list (append-to-end args config:path)])
     (file:display-to-file
-     (string:string-join new-list "\n")
-     config:path
-     #:mode 'text
-     #:exists 'replace)
+      (string:string-join new-list "\n")
+      config:path
+      #:mode 'text
+      #:exists 'replace)
     (display-item-added args)))
 
 (define (add-item args)
   (if (and
-       (check-for-folder)
-       (check-for-file))
-      (add-item-to-file (vector-ref args 1))
-      (begin
-        (display-hash-ref messages:messages 'file-not-found)
-        (display-hash-ref messages:messages 'try-init))))
+        (check-for-directory)
+        (check-for-file))
+    (add-item-to-file (vector-ref args 1))
+    (begin
+      (display-hash-ref messages:messages 'file-not-found)
+      (display-hash-ref messages:messages 'try-init))))
 
 (define (remove-item-from-file args)
   (let* ([removed-item (get-removed-item config:path args)]
          [new-list (remove removed-item (file->string-list config:path))])
 
     (file:display-to-file
-     (string:string-join new-list "\n")
-     config:path
-     #:mode 'text
-     #:exists 'replace)
+      (string:string-join new-list "\n")
+      config:path
+      #:mode 'text
+      #:exists 'replace)
     (display-item-removed removed-item)))
 
 (define (remove-item args)
   (cond [(list-empty? config:path)
          (display-hash-ref messages:messages 'empty-todo-list)]
         [(and
-          (check-for-folder)
-          (check-for-file))
+           (check-for-directory)
+           (check-for-file))
          (remove-item-from-file (vector-ref args 1))]
-        [(and (not (check-for-folder)) (not (check-for-file)))
+        [(and (not (check-for-directory)) (not (check-for-file)))
          (begin
            (display-hash-ref messages:messages 'file-not-found)
            (display-hash-ref messages:messages 'try-init))]))
