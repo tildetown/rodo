@@ -75,13 +75,15 @@ your system.
 
 ## GNU/Linux
 
-Follow the steps below to add `rodo` to your `$PATH`.
+Follow the sections below to add `rodo` to your `$PATH`, if you are using
+GNU/Linux.
 
 ### Set up a `$PATH`
 
-Follow the steps below if you haven't set up a `$PATH`. If you have set up a
-`$PATH` already, then skip to the next step, [Adding `rodo` to your
-`$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
+Follow the steps below if you haven't set up a `$PATH`.
+
+Tip: If you have set up a `$PATH` already, then skip to the next step, [Adding
+`rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
