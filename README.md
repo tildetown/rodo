@@ -114,8 +114,9 @@ documentation regarding the [creation of standalone executables](https://docs.ra
 Type `rodo` plus one of the commands below with a space
 between `rodo` and the command.
 
-`init` - Initializes a file called `todo.txt` in `~/.rodo/` by default (The
-directory and filename can be changed by modifying the `config.rkt` file)
+`init` - Initializes a file called `todo.txt` in `~/.rodo/` by default
+
+Note: The directory and filename can be changed by modifying the `config.rkt` file
 
 `ls` - Displays items from the todo list in a vertical format
 
