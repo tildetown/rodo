@@ -70,8 +70,8 @@ Follow the steps below to download `rodo` using the `git` command.
 Follow the sections below to set up `rodo`, so it can be used from anywhere on
 your system.
 
-**If you just want to test rodo out, just `cd` into the directory you downloaded
-rodo into, and then run `./rodo.rkt`.**
+**If you just want to test `rodo` out, then just `cd` into the directory you downloaded
+`rodo` into, and then run `./rodo.rkt`.**
 
 ## GNU/Linux
 
