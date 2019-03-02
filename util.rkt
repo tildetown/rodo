@@ -14,7 +14,7 @@
          [converted-file-or-directory
            (cond [(path? file-or-directory) (path->string file-or-directory)]
                  [else file-or-directory])])
-    (system:system 
+    (system:system
       (string-append "chmod" " " converted-permissions " " converted-file-or-directory))))
 
 (define (check-for-file)
