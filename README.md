@@ -2,31 +2,28 @@
 
 A simple todo list tool for people who live on the command-line
 
-By Jesse Laprade
+# Screenshot
+
+![](screenshot.png)
 
 # New things added!
 
 Now default directory and file permissions are more private! `~/.rodo/` is now
 set to 700 by default, and `~/.rodo/todo.txt` is set to 600 by default.
 
-# Todo
+# Todos
 
-- [ ] Add color option to config.rkt file
-- [ ] Encrypt todo-list file
-- [ ] Add note on .bash_history about items being added here before going into
-  the todo.txt file
-
-# Screenshot
-
-![](screenshot.png)
+- Add color option to config.rkt file
+- Encrypt todo-list file
+- Add note on .bash_history about items being added here before going into the todo.txt file
 
 # Table of Contents
 
 * [Platforms](https://github.com/m455/rodo#platforms)
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
-    * [Option one: Via GitHub on a web browser](https://github.com/m455/rodo#option-one-via-github-on-a-web-browser)
-    * [Option two: Via Git](https://github.com/m455/rodo#option-two-via-git)
+    * [Option one: Via Git](https://github.com/m455/rodo#option-two-via-git)
+    * [Option two: Via GitHub on a web browser](https://github.com/m455/rodo#option-one-via-github-on-a-web-browser)
 * [Setup](https://github.com/m455/rodo#setup)
     * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
 * [Usage](https://github.com/m455/rodo#usage)
@@ -51,19 +48,19 @@ Below is a list of items needed for running `rodo` on your machine.
 Currently, there are two options for downloading the source code. Choose one from the
 list below:
 
-## Option one: Via GitHub on a web browser
-
-Follow the steps below to download `rodo` from your web browser.
-
-1. Click the *Clone or download* button at the top of this page
-2. Click *Download ZIP* from the drop-down list
-
-## Option two: Via Git
+## Option one: Via Git
 
 Follow the steps below to download `rodo` using the `git` command.
 
 1. Ensure `git` is installed
 2. Run `git clone https://github.com/m455/rodo` on the command line
+
+## Option two: Via GitHub on a web browser
+
+Follow the steps below to download `rodo` from your web browser.
+
+1. Click the *Clone or download* button at the top of this page
+2. Click *Download ZIP* from the drop-down list
 
 # Setup
 
