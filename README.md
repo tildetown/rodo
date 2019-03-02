@@ -8,8 +8,10 @@ A simple todo list tool for people who live on the command-line
 
 # New things added!
 
-Now default directory and file permissions are more private! `~/.rodo/` is now
-set to 700 by default, and `~/.rodo/todo.txt` is set to 600 by default.
+Now the default directory and todo list file have better default permissions:
+
+* `~/.rodo/` is set to 700 by default
+* `~/.rodo/todo.txt` is set to 600 by default.
 
 # Todos
 
