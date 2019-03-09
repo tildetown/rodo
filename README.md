@@ -117,7 +117,7 @@ between `rodo` and the command.
 
 `init` - Initializes a file called `todo.txt` in `~/.rodo/` by default
 
-Note: The directory and filename can be changed by modifying the `config.rkt` file
+**Note: The directory and filename can be changed by modifying the `config.rkt` file**
 
 `ls` - Displays items from the todo list in a vertical format
 
@@ -125,7 +125,7 @@ Note: The directory and filename can be changed by modifying the `config.rkt` fi
 
 `rm` - Removes an item from the todo list
 
-Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.
+**Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.**
 
 ## Usage examples
 
@@ -137,14 +137,14 @@ The examples below assume that you have `rodo` [set up in your `$PATH`](https://
 
 `rodo add "go to the park"`
 
-Note: If you leave out the double quotation marks here, only the first word
+**Note: If you leave out the double quotation marks here, only the first word**
 will be added. In the example above, only "go" would be added to the list.
 
 `rodo rm 1`
 
 # Configuring `rodo`
 
-Caution: Change the `config.rkt` file at your own risk, as it may break things!
+**Caution: Change the `config.rkt` file at your own risk, as it may break things!**
 
 Right now, the configurations can be found in the `config.rkt file`. Settings,
 such as the program name, directory, and the filename of the todo list file can
