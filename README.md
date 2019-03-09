@@ -91,9 +91,9 @@ Follow the steps below if you haven't set up a `$PATH`.
 
 Follow the steps below to add the `rodo.rkt` file to your `$PATH`.
 
-**Tip: If you prefer to use an executable, rather than a wrapper (see the note after step one below), you can create an
+**Tip: If you prefer to use an executable, rather than a wrapper (see the note after step one below to see what a "wrapper" is), you can create an
 executable binary file with `raco exe rodo.rkt` when in the same folder as the
-`rodo.rkt` file. If you are having trouble with this please refer to Racket's
+`rodo.rkt` file. If you are having trouble with the `raco exe` command, refer to Racket's
 documentation regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).**
 
 1. Create a file in your `~/bin/` directory with the following contents in it:
@@ -103,7 +103,9 @@ documentation regarding the [creation of standalone executables](https://docs.ra
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-**Note: The creation of a file that runs another program is called a "wrapper"**
+**Note: The file created above is called a "wrapper". This is a script that
+runs the `rodo.rkt` file through the Racket interpreter. If you wish to
+directly run `rodo` as an executable from your `$PATH`, see the tip above**
 
 For example: If you downloaded the project to your `~/downloads/` folder you would change the line
 `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`.
