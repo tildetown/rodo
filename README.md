@@ -43,7 +43,7 @@ Below is a list of platform(s) that `rodo` is currently available for.
 Below is a list of items needed for running `rodo` on your machine.
 
 * [Racket 6.x](https://racket-lang.org/)
-* [GNU coreutils](https://wiki.debian.org/coreutils)(`chmod` at least)
+* [GNU coreutils](https://wiki.debian.org/coreutils) (`chmod` at least)
 
 # Downloading
 
