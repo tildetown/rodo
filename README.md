@@ -69,7 +69,7 @@ Follow the steps below to download `rodo` from your web browser.
 Follow the sections below to set up `rodo`, so it can be used from anywhere on
 your system.
 
-**If you just want to test `rodo` out, then just `cd` into the directory you downloaded
+**Tip: If you just want to test `rodo` out, then just `cd` into the directory you downloaded
 `rodo` into, and then run `./rodo.rkt`.**
 
 ## GNU/Linux
@@ -141,8 +141,8 @@ The examples below assume that you have `rodo` [set up in your `$PATH`](https://
 
 `rodo add "go to the park"`
 
-**Note: If you leave out the double quotation marks here, only the first word**
-will be added. In the example above, only "go" would be added to the list.
+**Note: If you leave out the double quotation marks here, only the first word
+will be added. In the example above, only "go" would be added to the list.**
 
 `rodo rm 1`
 
