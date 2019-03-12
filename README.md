@@ -32,7 +32,6 @@ Now the default directory and todo list file have better default permissions:
       (display-to-file "this is a test" "/home/username/.rodo/todo.txt" #:mode 'text #:exists 'replace)
         (file-or-directory-permissions "/home/username/.rodo/todo.txt" #o600))
     ```
-    - Then check the file permissions again with `ls -l` to see the change
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
 - Add note on `.bash_history` about items being added here before going into the `todo.txt` file
