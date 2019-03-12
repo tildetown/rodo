@@ -16,23 +16,23 @@ Now the default directory and todo list file have better default permissions:
 # Todos
 
 - **Really weird bug to solve**: `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after being modified
-    - For example, run `touch somefile.txt` to create a file in your home directory
-    - Open a Racket REPL while in your home directory
+    - For example, while in your home directory, run `touch test.txt` to create a test file in your home directory
+    - While in your home directory, run `racket` to open a Racket REPL
     - Run the following to set `600` file permissions on the file:
     ```racket
-    (file-or-directory-permissions "somefile.txt" #o600)
+    (file-or-directory-permissions "test.txt" #o600)
     ```
     - Run `ls -l` to check the file permissions
     - Run the following to modify the file:
     ```racket
-    (display-to-file "this is a test" "somefile.txt" #:mode 'text #:exists 'replace)
+    (display-to-file "this is a test" "test.txt" #:mode 'text #:exists 'replace)
     ```
     - Run `ls -l` to check the file permissions to see that they have changed to either `rw-rw-r--` or `rw-rw-rw`
     - So far, the only solution I know of would be to do:
     ```racket
     (begin
-      (display-to-file "this is a test" "somefile.txt" #:mode 'text #:exists 'replace)
-        (file-or-directory-permissions "somefile.txt" #o600))
+      (display-to-file "this is a test" "test.txt" #:mode 'text #:exists 'replace)
+        (file-or-directory-permissions "test.txt" #o600))
     ```
     - Unfortunately the above solution leaves the file readable for a split second, which would be enough for another program to read information in the files
 - Add color option to `config.rkt` file
