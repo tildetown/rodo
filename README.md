@@ -15,7 +15,7 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
-- **Really weird bug**: Figure out why `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after adding to the file
+- **Really weird bug to solve**: `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after being modified
     - So far, the only solution I know of would be to do:
     ```racket
     (begin
