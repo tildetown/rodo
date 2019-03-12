@@ -16,21 +16,22 @@ Now the default directory and todo list file have better default permissions:
 # Todos
 
 - **Really weird bug to solve**: `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after being modified
-    - For example, run the following to set `600` file permissions:
+    - For example, run `touch somefile.txt` to create a file
+    - Run the following to set `600` file permissions on the file:
     ```racket
-    (file-or-directory-permissions "/home/username/.rodo/todo.txt" #o600)
+    (file-or-directory-permissions "somefile.txt" #o600)
     ```
-    - Check the file permissions with `ls -l`
+    - Run `ls -l` to check the file permissions
     - Run the following to modify the file:
     ```racket
-    (display-to-file "this is a test" "/home/username/.rodo/todo.txt" #:mode 'text #:exists 'replace)
+    (display-to-file "this is a test" "somefile.txt" #:mode 'text #:exists 'replace)
     ```
-    - Check the file permissions with `ls -l` to see that they have changed to either `rw-rw-r--` or `rw-rw-rw`
+    - Run `ls -l` to check the file permissions to see that they have changed to either `rw-rw-r--` or `rw-rw-rw`
     - So far, the only solution I know of would be to do:
     ```racket
     (begin
-      (display-to-file "this is a test" "/home/username/.rodo/todo.txt" #:mode 'text #:exists 'replace)
-        (file-or-directory-permissions "/home/username/.rodo/todo.txt" #o600))
+      (display-to-file "this is a test" "somefile.txt" #:mode 'text #:exists 'replace)
+        (file-or-directory-permissions "somefile.txt" #o600))
     ```
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
