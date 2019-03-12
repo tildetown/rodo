@@ -117,6 +117,9 @@
   (if (and
        (check-for-directory)
        (check-for-file))
+      ;; Todo: add rest of arguments to make double quotation
+      ;;       marks optional if the user doesn't want/
+      ;;       forgets to use them
       (add-item-to-file (vector-ref args 1))
       (begin
         (display-hash-ref messages:messages 'file-not-found)

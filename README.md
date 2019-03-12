@@ -15,6 +15,7 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
+- Allow the use of unquoted items to be added if the user doesn't want/forgets to use them
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
 - Add note on `.bash_history` about items being added here before going into the `todo.txt` file
