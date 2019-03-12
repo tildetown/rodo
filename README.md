@@ -15,9 +15,10 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
-- Add color option to config.rkt file
-- Encrypt todo-list file
-- Add note on .bash_history about items being added here before going into the todo.txt file
+- Figure out why `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after adding to the file
+- Add color option to `config.rkt` file
+- Encrypt `todo.txt` file
+- Add note on `.bash_history` about items being added here before going into the `todo.txt` file
 
 # Table of Contents
 
