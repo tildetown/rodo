@@ -16,13 +16,7 @@ Now the default directory and todo list file have better default permissions:
 # Todos
 
 - **Really weird bug to solve**: `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after being modified
-    - So far, the only solution I know of would be to do:
-    ```racket
-    (begin
-      (display-to-file "this is a test" "/home/username/.rodo/todo.txt" #:mode 'text #:exists 'replace)
-        (file-or-directory-permissions "/home/username/.rodo/todo.txt" #o600))
-    ```
-    - For example, try running:
+    - For example, run:
     ```racket
     (file-or-directory-permissions "/home/username/.rodo/todo.txt" #o600)
     ```
@@ -30,6 +24,12 @@ Now the default directory and todo list file have better default permissions:
     - Then run:
     ```racket
     (display-to-file "this is a test" "/home/username/.rodo/todo.txt" #:mode 'text #:exists 'replace)
+    ```
+    - So far, the only solution I know of would be to do:
+    ```racket
+    (begin
+      (display-to-file "this is a test" "/home/username/.rodo/todo.txt" #:mode 'text #:exists 'replace)
+        (file-or-directory-permissions "/home/username/.rodo/todo.txt" #o600))
     ```
     - Then check the file permissions again with `ls -l` to see the change
 - Add color option to `config.rkt` file
