@@ -43,7 +43,6 @@ Below is a list of platform(s) that `rodo` is currently available for.
 Below is a list of items needed for running `rodo` on your machine.
 
 * [Racket 6.x](https://racket-lang.org/)
-* [GNU coreutils](https://wiki.debian.org/coreutils) (`chmod` at least)
 
 # Downloading
 
@@ -52,10 +51,11 @@ list below:
 
 ## Option one: Via Git
 
-Follow the steps below to download `rodo` using the `git` command.
+Run the command below to download `rodo` using the `git` command.
 
-1. Ensure `git` is installed
-2. Run `git clone https://github.com/m455/rodo` on the command line
+```
+git clone https://github.com/m455/rodo
+```
 
 ## Option two: Via GitHub on a web browser
 
