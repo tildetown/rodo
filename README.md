@@ -17,18 +17,18 @@ Now the default directory and todo list file have better default permissions:
 
 - **Really weird bug to solve**: `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` or `rw-rw-rw` after being modified
     - For example:
-    1. Create a `test.txt` file somewhere
-    2. Open a Racket REPL
-    3. Run the following to set `600` file permissions on the file:
-    ```racket
-    (file-or-directory-permissions "test.txt" #o600)
-    ```
-    4. Run `ls -l` to check the file permissions
-    5. Run the following to modify the file:
-    ```racket
-    (display-to-file "this is a test" "test.txt" #:mode 'text #:exists 'replace)
-    ```
-    6. Run `ls -l` to check the file permissions to see that they have changed to either `rw-rw-r--` or `rw-rw-rw`
+        1. Create a `test.txt` file somewhere
+        2. Open a Racket REPL
+        3. Run the following to set `600` file permissions on the file:
+        ```racket
+        (file-or-directory-permissions "test.txt" #o600)
+        ```
+        4. Run `ls -l` to check the file permissions
+        5. Run the following to modify the file:
+        ```racket
+        (display-to-file "this is a test" "test.txt" #:mode 'text #:exists 'replace)
+        ```
+        6. Run `ls -l` to check the file permissions to see that they have changed to either `rw-rw-r--` or `rw-rw-rw`
     - So far, the only solution I know of would be to do:
     ```racket
     (begin
