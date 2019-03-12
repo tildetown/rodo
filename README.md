@@ -15,27 +15,6 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
-- **Really weird bug to solve**: `~/.rodo/todo.txt`'s file permissions change from `rw-------` to `rw-rw-r--` (if on Ubuntu) or `rw-rw-rw` (if on Windows Subsystem for Linux) after being modified
-    - For example:
-        1. Create a `test.txt` file somewhere
-        2. Open a Racket REPL
-        3. Run the following to set `600` file permissions on the file:
-        ```racket
-        (file-or-directory-permissions "test.txt" #o600)
-        ```
-        4. Run `ls -l` to check the file permissions
-        5. Run the following to modify the file:
-        ```racket
-        (display-to-file "this is a test" "test.txt" #:mode 'text #:exists 'replace)
-        ```
-        6. Run `ls -l` to check the file permissions to see that they have changed to either `rw-rw-r--` or `rw-rw-rw`
-    - So far, the only solution I know of would be to do:
-    ```racket
-    (begin
-      (display-to-file "this is a test" "test.txt" #:mode 'text #:exists 'replace)
-        (file-or-directory-permissions "test.txt" #o600))
-    ```
-    - Unfortunately the above solution leaves the file readable for a split second, which would be enough for another program to read information in the files
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
 - Add note on `.bash_history` about items being added here before going into the `todo.txt` file
