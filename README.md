@@ -15,7 +15,6 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
-- Allow the use of unquoted items to be added if the user doesn't want/forgets to use them
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
 - Add note on `.bash_history` about items being added here before going into the `todo.txt` file
@@ -141,8 +140,7 @@ The examples below assume that you have `rodo` [set up in your `$PATH`](https://
 
 `rodo add "go to the park"`
 
-**Note: If you leave out the double quotation marks here, only the first word
-will be added. In the example above, only "go" would be added to the list.**
+`rodo add this is a task without quotes`
 
 `rodo rm 1`
 

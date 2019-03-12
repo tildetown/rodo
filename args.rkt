@@ -23,7 +23,7 @@
 
       ;; add
       [(and
-        (equal? args-length 2)
+        (or (equal? args-length 2) (>= args-length 2))
         (equal? (vector-ref args 0) config:add-command))
        (util:add-item args)]
 
@@ -34,8 +34,8 @@
         (real? (string->number (vector-ref args 1)))
         (positive? (string->number (vector-ref args 1)))
         (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path))))
-        (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path))))))
-       (util:remove-item args))]
+        (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path)))))))
+       (util:remove-item args)]
 
       ;; init
       [(and
