@@ -46,10 +46,9 @@ Below is a list of items needed for running `rodo` on your machine.
 
 # Downloading
 
-Currently, there are two options for downloading the source code. Choose one from the
-list below:
+Choose one of the two options from the following sections below.
 
-## Option one: Via Git
+## Option one: via Git
 
 Run the command below to download `rodo` using the `git` command.
 
@@ -57,7 +56,7 @@ Run the command below to download `rodo` using the `git` command.
 git clone https://github.com/m455/rodo
 ```
 
-## Option two: Via GitHub on a web browser
+## Option two: via GitHub on a web browser
 
 Follow the steps below to download `rodo` from your web browser.
 
