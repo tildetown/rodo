@@ -123,13 +123,15 @@ For example: If you downloaded the project to your `~/downloads/` folder you wou
 Type `rodo` plus one of the commands below with a space
 between `rodo` and the command.
 
-`init` - Initializes a file called `todo.txt` in `~/.rodo/` by default
+`-h` or `--help` - Displays the help message
+
+`init` - Creates a file called `todo.txt` in `~/.rodo/` by default
 
 **Note: The directory and filename can be changed by modifying the `config.rkt` file**
 
-`ls` - Displays items from the todo list in a vertical format
+`ls` - Displays numbered items in the todo list
 
-`add` - Adds an entry to the todo list
+`add` - Adds an item to the todo list
 
 `rm` - Removes an item from the todo list
 
@@ -139,15 +141,21 @@ between `rodo` and the command.
 
 The examples below assume that you have `rodo` [set up in your `$PATH`](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
 
+`rodo -h`
+
+`rodo --help`
+
 `rodo init`
 
 `rodo ls`
 
-`rodo add "go to the park"`
+`rodo add "this is a task"`
 
 `rodo add this is a task without quotes`
 
 `rodo rm 1`
+
+**Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.**
 
 # Configuring `rodo`
 
