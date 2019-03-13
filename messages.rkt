@@ -74,7 +74,8 @@
                "======\n"
                "Try running "
                "`" config:program-name " -h | less` to use the arrow keys "
-               "to scroll up and down through the help message\n")
+               "to scroll up and down through the help message, then when you "
+               "want to quit, just type `q` (without the grave accents)\n")
 
    'empty-todo-list "> There is nothing in your list \n"
 
