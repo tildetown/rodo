@@ -33,8 +33,8 @@
         (equal? (vector:vector-member config:remove-command args) 0)
         (real? (string->number (vector-ref args 1)))
         (positive? (string->number (vector-ref args 1)))
-        (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path))))
-        (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path)))))))
+        (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path-to-file))))
+        (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path-to-file)))))))
        (util:remove-item args)]
 
       ;; init

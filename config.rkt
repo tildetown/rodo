@@ -9,7 +9,4 @@
 (define list-command "ls")
 (define initialize-command "init")
 (define help-command '("-h" "--help"))
-(define path
-    (string-append
-      program-directory
-      program-file))
+(define path-to-file (string-append program-directory program-file))

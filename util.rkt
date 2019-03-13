@@ -9,33 +9,29 @@
 (provide (all-defined-out))
 
 (define (check-for-file)
-  (file-exists? config:path))
+  (file-exists? config:path-to-file))
 
 (define (create-file)
   (let ([opened-file
-         (open-output-file config:path
+         (open-output-file config:path-to-file
                            #:mode 'text
                            #:exists 'truncate)])
     (close-output-port opened-file))
-  (file-or-directory-permissions config:path #o600))
+  (file-or-directory-permissions config:path-to-file #o600))
 
 (define (check-for-directory)
-  (directory-exists? (expand-user-path
-                      (string-append
-                       config:program-directory))))
+  (directory-exists? config:program-directory))
 
 (define (create-directory)
-  (make-directory (expand-user-path
-                   (string-append
-                    config:program-directory)))
+  (make-directory config:program-directory)
   (file-or-directory-permissions config:program-directory #o700))
 
 (define (display-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
 
 ;; Just so I don't have to keep typing "#:mode...#:line-mode..." every time
-(define (file->string-list config:path-to-file)
-  (let ([todo-list (file:file->lines config:path-to-file
+(define (file->string-list config:path-to-file-to-file)
+  (let ([todo-list (file:file->lines config:path-to-file-to-file
                                      #:mode 'text
                                      #:line-mode 'any)])
     todo-list))
@@ -69,7 +65,7 @@
 (define (display-prettified-list)
   (display
    (string:string-join
-    (prefix-with-number (file->string-list config:path))
+    (prefix-with-number (file->string-list config:path-to-file))
     "\n"
     #:after-last "\n")))
 
@@ -94,7 +90,7 @@
          (if
           ;; If file exists, see if it's empty, if so
           ;; tell the user
-          (list-empty? config:path)
+          (list-empty? config:path-to-file)
           (display-hash-ref messages:messages 'empty-todo-list)
           ;; If file isn't empty, display a pretty list
           (display-prettified-list))]
@@ -105,10 +101,10 @@
 
 (define (add-item-to-file args)
   ;; Add item to end of list and write to file
-  (let ([new-list (append-to-end args config:path)])
+  (let ([new-list (append-to-end args config:path-to-file)])
     (file:display-to-file
      (string:string-join new-list "\n")
-     config:path
+     config:path-to-file
      #:mode 'text
      #:exists 'truncate)
     (display-item-added args)))
@@ -117,25 +113,24 @@
   (if (and
        (check-for-directory)
        (check-for-file))
-       ;; The cdr here removes the command string "add" from being added to the file
+       ;; The cdr here prevents the command line argument "add" from being added to the file
       (add-item-to-file (string:string-join (cdr (vector->list args))))
       (begin
         (display-hash-ref messages:messages 'file-not-found)
         (display-hash-ref messages:messages 'try-init))))
 
 (define (remove-item-from-file args)
-  (let* ([removed-item (get-removed-item config:path args)]
-         [new-list (remove removed-item (file->string-list config:path))])
-
+  (let* ([removed-item (get-removed-item config:path-to-file args)]
+         [new-list (remove removed-item (file->string-list config:path-to-file))])
     (file:display-to-file
      (string:string-join new-list "\n")
-     config:path
+     config:path-to-file
      #:mode 'text
      #:exists 'truncate)
     (display-item-removed removed-item)))
 
 (define (remove-item args)
-  (cond [(list-empty? config:path)
+  (cond [(list-empty? config:path-to-file)
          (display-hash-ref messages:messages 'empty-todo-list)]
         [(and
           (check-for-directory)
