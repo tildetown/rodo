@@ -63,7 +63,8 @@
                config:program-name " " config:remove-command " " "1\n"
                "\n"
 
-               "Note: You may have to run "
+               "Note:\n"
+               "You may have to run "
                "`" config:program-name " " config:list-command "`" " "
                "see which number corresponds to which item in the list."
                " In the example above, the first item was removed from the list\n"
