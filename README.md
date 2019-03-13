@@ -19,6 +19,11 @@ Now the default directory and todo list file have better default permissions:
 - Encrypt `todo.txt` file
 - Add note on `.bash_history` about items being added here before going into the `todo.txt` file
 
+# TL;DR
+
+Run `./rodo.rkt` or, if you want an executable, run `raco exe rodo.rkt` to
+compile the project into a single executable file
+
 # Table of Contents
 
 * [Platforms](https://github.com/m455/rodo#platforms)
