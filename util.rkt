@@ -117,7 +117,8 @@
   (if (and
        (check-for-directory)
        (check-for-file))
-      (add-item-to-file (string:string-join (vector->list args)))
+       ;; The cdr here removes the command string "add" from being added to the file
+      (add-item-to-file (string:string-join (cdr (vector->list args))))
       (begin
         (display-hash-ref messages:messages 'file-not-found)
         (display-hash-ref messages:messages 'try-init))))
