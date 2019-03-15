@@ -17,7 +17,6 @@ Now the default directory and todo list file have better default permissions:
 
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
-- Add note on `.bash_history` about items being added here before going into the `todo.txt` file
 
 # TL;DR
 
