@@ -8,21 +8,21 @@
   (hash
    'show-help (string-append
                "Usage\n"
-               "======\n"
-               "If using the "
+               "=====\n"
+               "If you are using the "
                "<" config:initialize-command ">" " or "
                "<" config:list-command ">" " commands, follow the structure below:\n"
                config:program-name " <command>\n"
                "\n"
 
-               "If using the "
+               "If you are using the "
                "<" config:add-command ">" " or "
                "<" config:remove-command ">" " commands, follow the structure below:\n"
                config:program-name " <command> [argument]\n"
                "\n"
 
                "Commands\n"
-               "======\n"
+               "========\n"
 
                "<" config:initialize-command ">" ":\n"
                "Create a file in "
@@ -70,8 +70,8 @@
                " In the example above, the first item was removed from the list\n"
                "\n"
 
-               "Can't see this whole help message?\n"
-               "======\n"
+               "Can't see the whole help message?\n"
+               "=================================\n"
                "Try running "
                "`" config:program-name " -h | less` to use the arrow keys "
                "to scroll up and down through the help message, then when you "
