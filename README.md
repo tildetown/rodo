@@ -6,10 +6,11 @@ A simple todo list tool for people who live on the command-line
 
 ![](screenshot.png)
 
-# New things added!
+# New things!
 
 Now the default directory and todo list file have better default permissions:
 
+* `rodo` is now license under AGPL3!
 * `~/.rodo/` is set to 700 by default
 * `~/.rodo/todo.txt` is set to 600 by default.
 
