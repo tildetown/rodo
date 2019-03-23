@@ -1,6 +1,6 @@
 # rodo
 
-A simple todo list tool for people who live on the command-line
+A simple todo list application for people who live in the terminal
 
 # Screenshot
 
