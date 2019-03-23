@@ -22,8 +22,15 @@ Now the default directory and todo list file have better default permissions:
 
 # TL;DR
 
-Run `./rodo.rkt` or, if you want an executable, run `raco exe rodo.rkt` to
-compile the project into a single executable file, and then run that.
+1. Make sure [Racket](https://racket-lang.org/) is installed
+2. `git clone https://github.com/m455/rodo` into a directory of your choice
+3. Run `racket rodo.rkt` or, if you want an executable, run `raco exe rodo.rkt` to compile the project into a single executable file, and then run that.
+4. Add the following to your `$PATH` directory to run `rodo` from anywhere, depending on whether or not you are using the `rodo.rkt` file or a compiled executable file:
+
+```
+#!/usr/bin/env bash
+racket ~/path/to/rodo.rkt "$@"
+```
 
 # Table of Contents
 
