@@ -30,10 +30,7 @@ compile the project into a single executable file, and then run that.
 * [Platforms](https://github.com/m455/rodo#platforms)
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
-    * [Option one: Via Git](https://github.com/m455/rodo#option-two-via-git)
-    * [Option two: Via GitHub on a web browser](https://github.com/m455/rodo#option-one-via-github-on-a-web-browser)
 * [Setup](https://github.com/m455/rodo#setup)
-    * [Unix-likes](https://github.com/m455/rodo#unix-likes)
 * [Usage](https://github.com/m455/rodo#usage)
     * [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
@@ -69,11 +66,7 @@ your system.
 **Tip: If you just want to test `rodo` out, then just `cd` into the directory you downloaded
 `rodo` into, and then run `./rodo.rkt`.**
 
-## Unix-likes
-
-Continue on to the sections below to add `rodo` to your `$PATH`.
-
-### Set up a `$PATH`
+## Set up a `$PATH`
 
 Follow the steps below if you haven't set up a `$PATH`.
 
@@ -83,7 +76,7 @@ Follow the steps below if you haven't set up a `$PATH`.
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-### Adding `rodo` to your `$PATH`
+## Adding `rodo` to your `$PATH`
 
 Follow the steps below to add the `rodo.rkt` file to your `$PATH`.
 
