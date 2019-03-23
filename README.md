@@ -16,6 +16,7 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
+- Update README so it's up to "technical writing standards"
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
 
