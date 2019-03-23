@@ -23,7 +23,7 @@ Now the default directory and todo list file have better default permissions:
 # TL;DR
 
 Run `./rodo.rkt` or, if you want an executable, run `raco exe rodo.rkt` to
-compile the project into a single executable file
+compile the project into a single executable file, and then run that.
 
 # Table of Contents
 
