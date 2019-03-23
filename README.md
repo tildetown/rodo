@@ -33,7 +33,7 @@ compile the project into a single executable file
     * [Option one: Via Git](https://github.com/m455/rodo#option-two-via-git)
     * [Option two: Via GitHub on a web browser](https://github.com/m455/rodo#option-one-via-github-on-a-web-browser)
 * [Setup](https://github.com/m455/rodo#setup)
-    * [GNU/Linux](https://github.com/m455/rodo#gnulinux)
+    * [Unix-likes](https://github.com/m455/rodo#unix-likes)
 * [Usage](https://github.com/m455/rodo#usage)
     * [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
@@ -42,7 +42,10 @@ compile the project into a single executable file
 
 Below is a list of platform(s) that `rodo` is currently available for.
 
-* GNU/Linux
+* Unix-like operating systems:
+    * Windows Subsystem for Linux (Tested)
+    * GNU/Linux (Untested)
+    * macOS (Untested)
 
 # Requirements
 
@@ -52,22 +55,11 @@ Below is a list of items needed for running `rodo` on your machine.
 
 # Downloading
 
-Choose one of the two options from the following sections below.
-
-## Option one: via Git
-
 Run the command below to download `rodo` using the `git` command.
 
 ```
 git clone https://github.com/m455/rodo
 ```
-
-## Option two: via GitHub on a web browser
-
-Follow the steps below to download `rodo` from your web browser.
-
-1. Click the *Clone or download* button at the top of this page
-2. Click *Download ZIP* from the drop-down list
 
 # Setup
 
@@ -77,10 +69,9 @@ your system.
 **Tip: If you just want to test `rodo` out, then just `cd` into the directory you downloaded
 `rodo` into, and then run `./rodo.rkt`.**
 
-## GNU/Linux
+## Unix-likes
 
-Follow the sections below to add `rodo` to your `$PATH`, if you are using
-GNU/Linux.
+Continue on to the sections below to add `rodo` to your `$PATH`.
 
 ### Set up a `$PATH`
 
