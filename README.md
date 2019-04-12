@@ -1,6 +1,6 @@
 # rodo
 
-A simple todo list application for people who live in the terminal
+A easy-to-use todo list program for people who live on the command line
 
 # Screenshot
 
@@ -24,13 +24,21 @@ Now the default directory and todo list file have better default permissions:
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
 2. `git clone https://github.com/m455/rodo` into a directory of your choice
-3. Run `racket rodo.rkt` or, if you want an executable, run `raco exe rodo.rkt` to compile the project into a single executable file, and then run that.
-4. Add the following to your `$PATH` directory to run `rodo` from anywhere, depending on whether or not you are using the `rodo.rkt` file or a compiled executable file:
+3. `cd` into the `rodo` directory
+4. Run one of the following commands:
+    * To use `rodo` using the Racket interpreter run: `racket rodo.rkt`
+    * To use `rodo` as an single-file executable follow the two steps below:
+        1. Run `raco exe rodo.rkt` to compile the `rodo` into a single-file executable
+        2. Run `./rodo`
+5. (optional) Add the following to your `$PATH` directory to run `rodo` from
+anywhere.
 
 ```
 #!/usr/bin/env bash
 racket ~/path/to/rodo.rkt "$@"
 ```
+
+Note: If you made an executable, remember to change the `rodo.rkt` part above to just `rodo`
 
 # Table of Contents
 
