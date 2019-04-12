@@ -38,7 +38,7 @@ anywhere.
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-Note: If you made an executable, remember to change the `rodo.rkt` part above to just `rodo`
+Note: If you made an executable, remember to change the `rodo.rkt` part above to `rodo`
 
 # Table of Contents
 
