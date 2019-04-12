@@ -30,7 +30,7 @@ Note: If you made an executable, remember to change the `rodo.rkt` part above to
 
 Now the default directory and todo list file have better default permissions:
 
-* `rodo` is now license under AGPL3!
+* `rodo` is now licensed under AGPL3!
 * `~/.rodo/` is set to 700 by default
 * `~/.rodo/todo.txt` is set to 600 by default.
 
