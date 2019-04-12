@@ -6,20 +6,6 @@ A easy-to-use todo list program for people who live on the command line
 
 ![](screenshot.png)
 
-# New things!
-
-Now the default directory and todo list file have better default permissions:
-
-* `rodo` is now license under AGPL3!
-* `~/.rodo/` is set to 700 by default
-* `~/.rodo/todo.txt` is set to 600 by default.
-
-# Todos
-
-- Update README so it's up to "technical writing standards"
-- Add color option to `config.rkt` file
-- Encrypt `todo.txt` file
-
 # TL;DR
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
@@ -40,6 +26,20 @@ racket ~/path/to/rodo.rkt "$@"
 
 Note: If you made an executable, remember to change the `rodo.rkt` part above to `rodo`
 
+# New things!
+
+Now the default directory and todo list file have better default permissions:
+
+* `rodo` is now license under AGPL3!
+* `~/.rodo/` is set to 700 by default
+* `~/.rodo/todo.txt` is set to 600 by default.
+
+# Todos
+
+- Update README so it's up to "technical writing standards"
+- Add color option to `config.rkt` file
+- Encrypt `todo.txt` file
+
 # Table of Contents
 
 * [Platforms](https://github.com/m455/rodo#platforms)
@@ -55,7 +55,7 @@ Note: If you made an executable, remember to change the `rodo.rkt` part above to
 Below is a list of platform(s) that `rodo` is currently available for.
 
 * Unix-like operating systems:
-    * Windows Subsystem for Linux (Tested)
+    * Windows Subsystem for Linux (Works)
     * GNU/Linux (Untested)
     * macOS (Untested)
 
