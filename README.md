@@ -46,7 +46,7 @@ Now the default directory and todo list file have better default permissions:
 * [Requirements](https://github.com/m455/rodo#requirements)
 * [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
-* [Usage](https://github.com/m455/rodo#usage)
+* [List of commands](https://github.com/m455/rodo#list-of-commands)
     * [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
@@ -118,10 +118,9 @@ For example: If you downloaded the project to your `~/downloads/` folder you wou
 
 3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
 
-# Usage
+# List of commands
 
-Type `rodo` plus one of the commands below with a space
-between `rodo` and the command.
+Type `rodo` plus one of the commands below.
 
 `-h` or `--help` - Displays the help message
 
@@ -139,7 +138,7 @@ between `rodo` and the command.
 
 ## Usage examples
 
-The examples below assume that you have `rodo` [set up in your `$PATH`](https://github.com/m455/rodo#set-up-a-path) in your `$PATH`
+The examples below assume that you have [added `rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
 `rodo -h`
 
