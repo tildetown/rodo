@@ -6,6 +6,27 @@ A easy-to-use todo list program for people who live on the command line
 
 ![](screenshot.png)
 
+# Table of Contents
+
+* [TL;DR](https://github.com/m455/rodo#tldr)
+* [New things](https://github.com/m455/rodo#new-things)
+* [Todos](https://github.com/m455/rodo#todos)
+* [Platforms](https://github.com/m455/rodo#platforms)
+* [Requirements](https://github.com/m455/rodo#requirements)
+    * [Downloading Racket](https://github.com/m455/rodo#downloading-racket)
+        * [To download Racket using apt](https://github.com/m455/rodo#to-download-racket-using-apt)
+        * [To download Racket using pacman](https://github.com/m455/rodo#to-download-racket-using-pacman)
+    * [Downloading the rodo source code](https://github.com/m455/rodo#downloading-the-rodo-source-code)
+        * [To download the rodo source code](https://github.com/m455/rodo#to-download-the-rodo-source-code)
+* [Setup](https://github.com/m455/rodo#setup)
+    * [Setting up a $PATH](https://github.com/m455/rodo#setting-up-a-path)
+        * [To set up a $PATH](https://github.com/m455/rodo#to-set-up-a-path)
+    * [Adding rodo to your $PATH](https://github.com/m455/rodo#adding-rodo-to-your-path)
+        * [To add rodo to your $PATH](https://github.com/m455/rodo#to-add-rodo-to-your-path)
+* [List of commands](https://github.com/m455/rodo#list-of-commands)
+* [Usage examples](https://github.com/m455/rodo#usage-examples)
+* [Configuration](https://github.com/m455/rodo#configuring-rodo)
+
 # TL;DR
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
@@ -16,8 +37,7 @@ A easy-to-use todo list program for people who live on the command line
     * To use `rodo` as an single-file executable follow the two steps below:
         1. Run `raco exe rodo.rkt` to compile the `rodo` into a single-file executable
         2. Run `./rodo`
-5. (optional) Add the following to your `$PATH` directory to run `rodo` from
-anywhere.
+5. (optional) Add the following to your `$PATH` directory to run `rodo` from anywhere.
 
 ```
 #!/usr/bin/env bash
@@ -26,7 +46,7 @@ racket ~/path/to/rodo.rkt "$@"
 
 Note: If you made an executable, remember to change the `rodo.rkt` part above to `rodo`
 
-# New things!
+# New things
 
 Now the default directory and todo list file have better default permissions:
 
@@ -36,69 +56,85 @@ Now the default directory and todo list file have better default permissions:
 
 # Todos
 
-- Update README so it's up to "technical writing standards"
+When I have time, I plan on adding the following features to rodo:
+
 - Add color option to `config.rkt` file
 - Encrypt `todo.txt` file
 
-# Table of Contents
-
-* [Platforms](https://github.com/m455/rodo#platforms)
-* [Requirements](https://github.com/m455/rodo#requirements)
-* [Downloading](https://github.com/m455/rodo#downloading)
-* [Setup](https://github.com/m455/rodo#setup)
-* [List of commands](https://github.com/m455/rodo#list-of-commands)
-* [Usage examples](https://github.com/m455/rodo#usage-examples)
-* [Configuration](https://github.com/m455/rodo#configuring-rodo)
-
 # Platforms
 
-Below is a list of platform(s) that `rodo` is currently available for.
+Below is a list of platforms that `rodo` can run on.
 
-* Unix-like operating systems:
-    * Windows Subsystem for Linux (Works)
-    * GNU/Linux (Untested)
-    * macOS (Untested)
+* Windows Subsystem for Linux
+* GNU/Linux (Untested)
+* macOS (Untested)
 
 # Requirements
 
-Below is a list of items needed for running `rodo` on your machine.
+This section will provide you with the requirements needed to run `rodo`. This
+section will guide you through downloading Racket and downloading the `rodo`
+source code.
 
 * [Racket 6.x](https://racket-lang.org/)
+* `rodo` source code
 
-# Downloading
+## Downloading Racket
 
-Run the command below to download `rodo` using the `git` command.
+Racket can be download using your machine's package manager. Depending on what
+package manager you use, commands may vary. See the two sections below for a
+list of examples using the `apt` and `pacman` package managers on the command
+line.
+
+### To download Racket using apt
+
+1. run `sudo apt install racket`
+
+Note: You may need to run this command as root
+
+### To download Racket using pacman
+
+1. run `pacman -Syu racket`
+
+Note: You may need to run this command as root
+
+## Downloading the rodo source code
+
+The `rodo` source code is available from this repository, and can be downloaded using `git`.
+
+### To download the rodo source code
+
+1. run `git clone https://github.com/m455/rodo`
+
+Tip: If you want to download this into a different directory, you can specify a
+directory by running the command below:
 
 ```
-git clone https://github.com/m455/rodo
+git clone https://github.com/m455/rodo your-directory-name/
 ```
 
 # Setup
 
-Follow the sections below to set up `rodo`, so it can be used from anywhere on
-your system.
+For convenience, `rodo` can be added to your `$PATH`. This section will guide
+you through setting up a `$PATH` and adding `rodo` to your `$PATH`.
 
-**Tip: If you just want to test `rodo` out, then just `cd` into the directory you downloaded
-`rodo` into, and then run `./rodo.rkt`.**
+## Setting up a $PATH
 
-## Set up a `$PATH`
+A `$PATH` is a directory in which you can place executable files or script files. These files
+can then be ran from any directory on your machine.
 
-Follow the steps below if you haven't set up a `$PATH`.
+Tip: If you have set up a `$PATH` already, then skip to the next step, [Adding
+`rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
-**Tip: If you have set up a `$PATH` already, then skip to the next step, [Adding
-`rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).**
+### To set up a $PATH
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
 2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
-## Adding `rodo` to your `$PATH`
+## Adding rodo to your $PATH
 
-Follow the steps below to add the `rodo.rkt` file to your `$PATH`.
+Adding `rodo` to your `$PATH` allows you to run `rodo` from any directory on your machine.
 
-**Tip: If you prefer to use an executable, rather than a wrapper (see the note after step one below to see what a "wrapper" is), you can create an
-executable binary file with `raco exe rodo.rkt` when in the same folder as the
-`rodo.rkt` file. If you are having trouble with the `raco exe` command, refer to Racket's
-documentation regarding the [creation of standalone executables](https://docs.racket-lang.org/raco/exe.html).**
+### To add rodo to your $PATH
 
 1. Create a file in your `~/bin/` directory with the following contents in it:
 
@@ -107,34 +143,30 @@ documentation regarding the [creation of standalone executables](https://docs.ra
 racket ~/path/to/rodo.rkt "$@"
 ```
 
-**Note: The file created above is called a "wrapper". This is a script that
-runs the `rodo.rkt` file through the Racket interpreter. If you wish to
-directly run `rodo` as an executable from your `$PATH`, see the tip above**
-
 For example: If you downloaded the project to your `~/downloads/` folder you would change the line
 `racket ~/path/to/rodo.rkt "$@"` to `racket ~/downloads/rodo/rodo.rkt "$@"`.
 
 2. Save the file
-
 3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
+
+Tip: Racket can make executables. You can do this by running the following
+command when in the same folder as the `rodo.rkt` file:
+
+```
+raco exe rodo.rkt
+```
 
 # List of commands
 
-Type `rodo` plus one of the commands below.
+This section lists and describes `rodo`'s commands.
 
-`-h` or `--help` - Displays the help message
+* `-h` or `--help` displays the help message
+* `init` creates a file called `todo.txt` in `~/.rodo/` by default
+* `ls` displays numbered items in the todo list
+* `add` adds an item to the todo list
+* `rm` removes an item from the todo list
 
-`init` - Creates a file called `todo.txt` in `~/.rodo/` by default
-
-**Note: The directory and filename can be changed by modifying the `config.rkt` file**
-
-`ls` - Displays numbered items in the todo list
-
-`add` - Adds an item to the todo list
-
-`rm` - Removes an item from the todo list
-
-**Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.**
+Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.
 
 # Usage examples
 
@@ -152,13 +184,13 @@ The examples below assume that you have [added `rodo` to your `$PATH`](https://g
 
 `rodo add this is a task without quotes`
 
-`rodo rm 1`
+`rodo rm 1` (This removes the first item in your list)
 
-**Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.**
+Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.
 
 # Configuring `rodo`
 
-**Caution: Change the `config.rkt` file at your own risk, as it may break things!**
+**Caution: Changing the `config.rkt` file should be done at your own risk as it may break `rodo`'s functionality**
 
 Right now, the configurations can be found in the `config.rkt file`. Settings,
 such as the program name, directory, and the filename of the todo list file can
