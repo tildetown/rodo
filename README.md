@@ -47,7 +47,7 @@ Now the default directory and todo list file have better default permissions:
 * [Downloading](https://github.com/m455/rodo#downloading)
 * [Setup](https://github.com/m455/rodo#setup)
 * [List of commands](https://github.com/m455/rodo#list-of-commands)
-    * [Usage examples](https://github.com/m455/rodo#usage-examples)
+* [Usage examples](https://github.com/m455/rodo#usage-examples)
 * [Configuration](https://github.com/m455/rodo#configuring-rodo)
 
 # Platforms
@@ -136,7 +136,7 @@ Type `rodo` plus one of the commands below.
 
 **Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.**
 
-## Usage examples
+# Usage examples
 
 The examples below assume that you have [added `rodo` to your `$PATH`](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
