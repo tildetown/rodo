@@ -19,13 +19,13 @@
       [(and
         (equal? args-length 1)
         (equal? (vector:vector-member config:list-command args) 0))
-       (util:show-list)]
+       (util:show-list-from-program-file)]
 
       ;; add
       [(and
         (or (equal? args-length 2) (>= args-length 2))
         (equal? (vector-ref args 0) config:add-command))
-       (util:add-item args)]
+       (util:add-item-to-list args)]
 
       ;; rm
       [(and
@@ -35,7 +35,7 @@
         (positive? (string->number (vector-ref args 1)))
         (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path-to-file))))
         (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path-to-file)))))))
-       (util:remove-item args)]
+       (util:remove-item-from-list args)]
 
       ;; init
       [(and

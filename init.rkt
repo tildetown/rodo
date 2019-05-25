@@ -15,11 +15,11 @@
     (cond
       [(member user-input (hash-ref messages:y/n 'yes))
        (util:display-hash-ref messages:messages 'creating)
-       (util:create-directory)
-       (util:create-file)
+       (util:create-program-directory)
+       (util:create-program-file)
        (if (and
-            (util:check-for-directory)
-            (util:check-for-file))
+            (util:check-for-program-directory)
+            (util:check-for-program-file))
            (util:display-hash-ref messages:messages 'successfully-created)
            (util:display-hash-ref messages:messages 'creation-error))]
 
@@ -30,7 +30,7 @@
        (init-prompt messages:messages 'choose-y/n)])))
 
 (define (initialize)
-  (if (util:check-for-file)
+  (if (util:check-for-program-file)
       (util:display-hash-ref messages:messages 'file-already-exists)
       (begin
         (init-prompt messages:messages 'init-y/n))))
