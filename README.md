@@ -8,11 +8,14 @@ A easy-to-use todo list program for people who live on the command line
 
 # Table of Contents
 
+- [rodo](#rodo)
+- [Screenshot](#screenshot)
 - [TL;DR](#tldr)
 - [New things](#new-things)
 - [Todos](#todos)
 - [Platforms](#platforms)
-- [Requirements](#requirements)
+- [Installing rodo](#installing-rodo)
+    - [Requirements](#requirements)
     - [Downloading Racket](#downloading-racket)
         - [To download Racket using apt](#to-download-racket-using-apt)
         - [To download Racket using pacman](#to-download-racket-using-pacman)
@@ -32,7 +35,7 @@ A easy-to-use todo list program for people who live on the command line
 1. Make sure [Racket](https://racket-lang.org/) is installed
 2. `git clone https://github.com/m455/rodo` into a directory of your choice
 3. `cd` into the `rodo` directory
-4. Run one of the following commands:
+4. Choose one of the options below for running `rodo`.
     * To use `rodo` using the Racket interpreter run: `racket rodo.rkt`
     * To use `rodo` as an single-file executable follow the two steps below:
         1. Run `raco exe rodo.rkt` to compile the `rodo` into a single-file executable
@@ -58,18 +61,22 @@ Now the default directory and todo list file have better default permissions:
 
 When I have time, I plan on adding the following features to rodo:
 
-- Add color option to `config.rkt` file
-- Encrypt `todo.txt` file
+- Add a purpose, context, and overview for each h1 in `README.md`
+- A boolean color option in the `config.rkt` file
+- Encrypt/decrypt `todo.txt` file
 
 # Platforms
 
 Below is a list of platforms that `rodo` can run on.
 
 * Windows Subsystem for Linux
-* GNU/Linux (Untested)
+* GNU/Linux
 * macOS (Untested)
 
-# Requirements
+# Installing rodo
+This section will guide you through installing `rodo`, so you can use it on your platform.
+
+## Requirements
 
 This section will provide you with the requirements needed to run `rodo`. This
 section will guide you through downloading Racket and downloading the `rodo`
