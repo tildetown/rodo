@@ -8,10 +8,8 @@ A easy-to-use todo list program for people who live on the command line
 
 # Table of Contents
 
-- [rodo](#rodo)
-- [Screenshot](#screenshot)
 - [TL;DR](#tldr)
-- [New things](#new-things)
+- [New features](#new-features)
 - [Todos](#todos)
 - [Platforms](#platforms)
 - [Installing rodo](#installing-rodo)
@@ -49,7 +47,7 @@ racket ~/path/to/rodo.rkt "$@"
 
 Note: If you made an executable, remember to change the `rodo.rkt` part above to `rodo`
 
-# New things
+# New features
 
 Now the default directory and todo list file have better default permissions:
 
