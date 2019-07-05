@@ -43,25 +43,25 @@
   ;; the real list starts at 0.
   (list-ref (file->string-list lst) (sub1 (string->number args))))
 
-(define (surround-item-in-quotation-marks args)
+(define (surround-with-quotation-marks args)
   (display (string-append "\"" args "\"")))
 
-(define (prefix-item-with-period lst)
+(define (list->dotted-list lst)
   (string-append lst ". "))
 
-(define (prefix-item-with-number lst)
+(define (list->numbered-list lst)
   ;; Take the list made in the first (map), which is
   ;; '(1 2 3 ...), and append that to each item in a list
   (map string-append
        ;; Note: compose starts from the last element in it's
        ;; list. In this case, it starts at (number->string).
-       (map (compose1 prefix-item-with-period number->string)
+       (map (compose1 list->dotted-list number->string)
             (list:range 1 (add1 (length lst))))
        lst))
 
 (define (display-prettified-program-file)
   (display (string:string-join
-             (prefix-item-with-number (file->string-list config:path-to-file))
+             (list->numbered-list (file->string-list config:path-to-file))
              "\n"
              #:after-last "\n")))
 
@@ -71,12 +71,12 @@
 
 (define (display-item-added args)
   (display-hash-ref messages:messages 'item-added-prefix)
-  (surround-item-in-quotation-marks args)
+  (surround-with-quotation-marks args)
   (display-hash-ref messages:messages 'item-added-suffix))
 
 (define (display-item-removed args)
   (display-hash-ref messages:messages 'item-removed-prefix)
-  (surround-item-in-quotation-marks args)
+  (surround-with-quotation-marks args)
   (display-hash-ref messages:messages 'item-removed-suffix))
 
 (define (show-list-from-program-file)
