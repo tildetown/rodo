@@ -2,7 +2,7 @@
 
 A easy-to-use todo list program for people who live on the command line.
 
-Also available from the following Git services:
+Also available from the following Git-hosting services:
 
 * https://github.com/m455/rodo
 * https://gitlab.com/m455/rodo
