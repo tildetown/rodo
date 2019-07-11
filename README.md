@@ -2,6 +2,12 @@
 
 A easy-to-use todo list program for people who live on the command line.
 
+Also available from the following Git services:
+
+* https://github.com/m455/rodo
+* https://gitlab.com/m455/rodo
+* https://notabug.org/m455/rodo
+
 # Screenshot
 
 ![](screenshot.png)
