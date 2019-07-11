@@ -3,7 +3,7 @@
 
 (define program-name "rodo")
 (define program-directory (path->string (expand-user-path "~/.rodo/")))
-(define program-file "todo.txt")
+(define program-file "to-do.txt")
 (define remove-command "rm")
 (define add-command "add")
 (define list-command "ls")

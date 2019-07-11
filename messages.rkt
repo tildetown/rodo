@@ -28,7 +28,7 @@
                "Create a file in "
                config:program-directory
                config:program-file
-               " where your todo list will be stored\n"
+               " where your to-do list will be stored\n"
                "Example:\n"
                config:program-name " "
                config:initialize-command "\n"
@@ -77,7 +77,7 @@
                "to scroll up and down through the help message, then when you "
                "want to quit, just type `q` (without the grave accents)\n")
 
-   'empty-todo-list "> There is nothing in your list \n"
+   'empty-to-do-list "> There is nothing in your list \n"
 
    'show-usage (string-append
                 "> For usage type "

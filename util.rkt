@@ -29,10 +29,10 @@
   (display (hash-ref hash-list key)))
 
 (define (file->string-list config:path-to-file-to-file)
-  (let ([todo-list (file:file->lines config:path-to-file-to-file
+  (let ([to-do-list (file:file->lines config:path-to-file-to-file
                                      #:mode 'text
                                      #:line-mode 'any)])
-    todo-list))
+    to-do-list))
 
 (define (list-empty? lst)
   (list:empty? (file->string-list lst)))
@@ -85,7 +85,7 @@
            (check-for-program-file))
          (if
            (list-empty? config:path-to-file)
-           (display-hash-ref messages:messages 'empty-todo-list)
+           (display-hash-ref messages:messages 'empty-to-do-list)
            (display-prettified-program-file))]
         [else
           (display-hash-ref messages:messages 'file-not-found)
@@ -124,7 +124,7 @@
 
 (define (remove-item-from-list args)
   (cond [(list-empty? config:path-to-file)
-         (display-hash-ref messages:messages 'empty-todo-list)]
+         (display-hash-ref messages:messages 'empty-to-do-list)]
         [(and (check-for-program-directory)
               (check-for-program-file))
          (remove-item-from-program-file (vector-ref args 1))]

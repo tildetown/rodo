@@ -1,12 +1,6 @@
 # rodo
 
-A easy-to-use todo list program for people who live on the command line.
-
-Also available from the following Git-hosting services:
-
-* https://github.com/m455/rodo
-* https://gitlab.com/m455/rodo
-* https://notabug.org/m455/rodo
+A easy-to-use to-do list program for people who live on the command line.
 
 # Screenshot
 
@@ -16,7 +10,7 @@ Also available from the following Git-hosting services:
 
 - [TL;DR](#tldr)
 - [New features](#new-features)
-- [Todos](#todos)
+- [To-dos](#to-dos)
 - [Platforms](#platforms)
 - [Installing rodo](#installing-rodo)
     - [Requirements](#requirements)
@@ -59,15 +53,15 @@ Now the default directory and todo list file have better default permissions:
 
 * `rodo` is now licensed under AGPL3!
 * `~/.rodo/` is set to 700 by default
-* `~/.rodo/todo.txt` is set to 600 by default.
+* `~/.rodo/to-do.txt` is set to 600 by default.
 
-# Todos
+# To-dos
 
 When I have time, I plan on adding the following features to rodo:
 
 - Add a purpose, context, and overview for each h1 in `README.md`
 - A boolean color option in the `config.rkt` file
-- Encrypt/decrypt `todo.txt` file
+- Encrypt/decrypt `to-do.txt` file
 
 # Platforms
 
@@ -78,6 +72,7 @@ Below is a list of platforms that `rodo` can run on.
 * macOS (Untested)
 
 # Installing rodo
+
 This section will guide you through installing `rodo`, so you can use it on your platform.
 
 ## Requirements
@@ -172,10 +167,10 @@ raco exe rodo.rkt
 This section lists and describes `rodo`'s commands.
 
 * `-h` or `--help` displays the help message
-* `init` creates a file called `todo.txt` in `~/.rodo/` by default
-* `ls` displays numbered items in the todo list
-* `add` adds an item to the todo list
-* `rm` removes an item from the todo list
+* `init` creates a file called `to-do.txt` in `~/.rodo/` by default
+* `ls` displays numbered items in the to-do list
+* `add` adds an item to the to-do list
+* `rm` removes an item from the to-do list
 
 Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.
 
@@ -195,7 +190,7 @@ The examples below assume that you have [added `rodo` to your `$PATH`](https://g
 
 `rodo add this is a task without quotes`
 
-`rodo rm 1` (This removes the first item in your list)
+`rodo rm 1` (This removes the first item in your to-do list)
 
 Note: You may have to run `rodo ls` to see which number corresponds to which item when removing items.
 
