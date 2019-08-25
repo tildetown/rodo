@@ -55,7 +55,7 @@
 
                (format "~a [argument]\n" config:remove-command)
                "=============\n"
-               "Removes an item from the list\n\n"
+               "Removes an item from the list.\n\n"
 
                "Example:\n"
                (format "~a ~a 1\n\n" config:program-name config:remove-command)
@@ -68,18 +68,18 @@
 
                "Can't see the whole help message?\n"
                "=================================\n"
-               (format "Try running `~a -h | less` so you can use the arrow keys to scrolll up and down."
+               (format "Try running `~a -h | less` so you can use the arrow keys to scroll up and down."
                        config:program-name)
                " "
-               "When you want to quit, type `q` (without the grave accents).")
+               "When you want to quit, type `q` (without the grave accents).\n")
 
-   'empty-to-do-list "> There is nothing in your list \n"
+   'empty-to-do-list "> There is nothing in your list.\n"
 
-   'show-usage (format "> For usage type `~a -h` or `~a --help`\n"
+   'show-usage (format "> For usage type `~a -h` or `~a --help`.\n"
                        config:program-name
                        config:program-name)
 
-   'creating (format "> Creating ~a in ~a\n"
+   'creating (format "> Creating ~a in ~a.\n"
                      config:program-file
                      config:program-directory)
 
@@ -87,14 +87,14 @@
                     (format "> Error: Could not create a(n) ~a in ~a.\n"
                             config:program-file
                             config:program-directory)
-                    "> This might be due to directory permissions\n")
+                    "> This might be due to directory permissions.\n")
 
    'file-already-exists (format "> Error: ~a already exists in ~a~a.\n"
                                 config:program-name
                                 config:program-directory
                                 config:program-file)
 
-   'successfully-created (format "> ~a~a has been successfully created\n"
+   'successfully-created (format "> ~a has been successfully created in ~a.\n"
                                  config:program-directory
                                  config:program-file)
 
