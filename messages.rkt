@@ -30,9 +30,9 @@
                ;; init
                (format "~a\n" config:initialize-command)
                "====\n"
-               (format "Creates a file in ~a~a. This is where your to-do list will be stored.\n\n"
-                       config:program-directory
-                       config:program-file)
+               (format "Creates ~a in ~a. This is where your to-do list will be stored.\n\n"
+                       config:program-file
+                       config:program-directory)
 
                "Example:\n"
                (format "~a ~a\n\n" config:program-name config:initialize-command)
@@ -79,7 +79,7 @@
                        config:program-name
                        config:program-name)
 
-   'creating (format "> Creating a(n) ~a file in ~a\n"
+   'creating (format "> Creating ~a in ~a\n"
                      config:program-file
                      config:program-directory)
 
@@ -103,7 +103,7 @@
                            config:program-file)
 
    'init-y/n (string-append
-              (format "> A ~a file will be created in the ~a directory.\n"
+              (format "> ~a will be created in ~a.\n"
                       config:program-file
                       config:program-directory)
               "> Are you sure you want to continue? [y/n]\n")
