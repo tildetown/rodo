@@ -9,130 +9,110 @@
    'show-help (string-append
                "Usage\n"
                "=====\n"
-               "If you are using the "
-               "<" config:initialize-command ">" " or "
-               "<" config:list-command ">" " commands, follow the structure below:\n"
-               config:program-name " <command>\n"
-               "\n"
+               (format "If you want to use the ~a or ~a commands, follow the structure below:\n"
+                       config:initialize-command
+                       config:list-command)
+               (format "~a <command>\n\n"
+                       config:program-name)
 
-               "If you are using the "
-               "<" config:add-command ">" " or "
-               "<" config:remove-command ">" " commands, follow the structure below:\n"
-               config:program-name " <command> [argument]\n"
-               "\n"
+               (format "If you want to use the ~a or ~a commands, follow the structure below:\n"
+                       config:add-command
+                       config:remove-command)
+               (format "~a <command> [argument]\n\n" config:program-name)
+
+               "Note: Replace <command> with one of the Commands below without the surrounding \"<\" and \">\".\n\n"
 
                "Commands\n"
                "========\n"
+               (format "This section describes the commands available for ~a.\n\n" config:program-name)
+               (format "Note: The commands mentioned in this section should replace the \"<command>\" filler text found in the Usage section above.\n\n")
 
-               "<" config:initialize-command ">" ":\n"
-               "Create a file in "
-               config:program-directory
-               config:program-file
-               " where your to-do list will be stored\n"
+               ;; init
+               (format "~a\n" config:initialize-command)
+               "====\n"
+               (format "Creates a file in ~a~a. This is where your to-do list will be stored.\n\n"
+                       config:program-directory
+                       config:program-file)
+
                "Example:\n"
-               config:program-name " "
-               config:initialize-command "\n"
-               "\n"
+               (format "~a ~a\n\n" config:program-name config:initialize-command)
 
-               "<" config:list-command ">" ":\n"
-               "Displays items in the list\n"
+               ;; ls
+               (format "~a\n" config:list-command)
+               "====\n"
+               "Displays items in your to-do list.\n\n"
+
                "Example:\n"
-               config:program-name " "
-               config:list-command "\n"
-               "\n"
+               (format "~a ~a\n\n" config:program-name config:list-command)
 
-               "<" config:add-command ">" " "
-               "[argument]:\n"
-               "Adds an item to the list\n"
+               (format "~a [argument(s)]\n" config:add-command)
+               "=================\n"
+               "Adds an item to the list.\n\n"
+
+               "Examples:\n"
+               (format "~a ~a this is an unquoted item\n" config:program-name config:add-command)
+               (format "~a ~a \"this is a quoted item\"\n\n" config:program-name config:add-command)
+
+               (format "~a [argument]\n" config:remove-command)
+               "=============\n"
+               "Removes an item from the list\n\n"
+
                "Example:\n"
-               config:program-name " "
-               config:add-command " "
-               "bread\n"
-               config:program-name " "
-               config:add-command " "
-               "this is an unquoted task\n"
-               config:program-name " "
-               config:add-command " "
-               "\"this is a quoted task which isn't any different from an unquoted task\"\n"
-               "\n"
+               (format "~a ~a 1\n\n" config:program-name config:remove-command)
 
-               "<" config:remove-command ">" " "
-               "[argument]:\n"
-               "Removes an item from the list\n"
-               "Example:\n"
-               config:program-name " " config:remove-command " " "1\n"
-               "\n"
-
-               "Note:\n"
-               "You may have to run "
-               "`" config:program-name " " config:list-command "`" " "
-               "see which number corresponds to which item in the list."
-               " In the example above, the first item was removed from the list\n"
-               "\n"
+               (format "Note: You may have to run `~a ~a` to see which number corresponds to which item in your to-do list."
+                       config:program-name
+                       config:list-command)
+               " "
+               "In the example above, the first item was removed from the to-do list.\n\n"
 
                "Can't see the whole help message?\n"
                "=================================\n"
-               "Try running "
-               "`" config:program-name " -h | less` to use the arrow keys "
-               "to scroll up and down through the help message, then when you "
-               "want to quit, just type `q` (without the grave accents)\n")
+               (format "Try running `~a -h | less` so you can use the arrow keys to scrolll up and down."
+                       config:program-name)
+               " "
+               "When you want to quit, type `q` (without the grave accents).")
 
    'empty-to-do-list "> There is nothing in your list \n"
 
-   'show-usage (string-append
-                "> For usage type "
-                "`" config:program-name " -h`"
-                " or "
-                "`" config:program-name " --help`\n")
+   'show-usage (format "> For usage type `~a -h` or `~a --help`\n"
+                       config:program-name
+                       config:program-name)
 
-   'creating (string-append
-              "> Creating "
-              config:program-file
-              " file in "
-              config:program-directory "\n")
+   'creating (format "> Creating a(n) ~a file in ~a\n"
+                     config:program-file
+                     config:program-directory)
 
    'creation-error (string-append
-                    "> Error: Could not create "
-                    config:program-file
-                    " in "
-                    config:program-directory
-                    ".\n"
-                    "> This may be due to directory permissions\n")
+                    (format "> Error: Could not create a(n) ~a in ~a.\n"
+                            config:program-file
+                            config:program-directory)
+                    "> This might be due to directory permissions\n")
 
-   'file-already-exists (string-append
-                         "> Error: "
-                         config:program-name
-                         " already exists in "
-                         config:program-directory
-                         config:program-file "\n")
+   'file-already-exists (format "> Error: ~a already exists in ~a~a.\n"
+                                config:program-name
+                                config:program-directory
+                                config:program-file)
 
-   'successfully-created (string-append
-                          "> "
-                          config:program-directory
-                          config:program-file
-                          " has been successfully created\n")
+   'successfully-created (format "> ~a~a has been successfully created\n"
+                                 config:program-directory
+                                 config:program-file)
 
-   'file-not-found (string-append
-                    "> Error: Could not find "
-                    config:program-directory
-                    config:program-file "\n")
+   'file-not-found (format "> Error: Could not find ~a~a\n"
+                           config:program-directory
+                           config:program-file)
 
    'init-y/n (string-append
-              "> A "
-              config:program-file
-              " file will be created in the directory "
-              config:program-directory "\n"
+              (format "> A ~a file will be created in the ~a directory.\n"
+                      config:program-file
+                      config:program-directory)
               "> Are you sure you want to continue? [y/n]\n")
 
-   'try-init (string-append
-              "> Try typing "
-              "`" config:program-name " init` "
-              "to set it up\n")
+   'try-init (format "> Try typing `~a ~a` to set it up (without the grave accents).\n"
+                     config:program-name
+                     config:initialize-command)
 
-   'terminating (string-append
-                 "> Exiting "
-                 config:program-name
-                 "\n")
+   'terminating (format "> Exiting ~a\n" config:program-name)
 
    'choose-y/n "> Error: Please choose y or n\n"
 
@@ -146,8 +126,5 @@
 
    'item-removed-suffix " from list\n"))
 
-(define y/n
-  (hash
-   'yes '("yes" "Yes" "y" "Y")
-
-   'no '("no" "No" "n" "N")))
+(define y/n (hash 'yes '("yes" "Yes" "y" "Y")
+                  'no '("no" "No" "n" "N")))

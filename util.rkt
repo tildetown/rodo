@@ -30,8 +30,8 @@
 
 (define (file->string-list config:path-to-file-to-file)
   (let ([to-do-list (file:file->lines config:path-to-file-to-file
-                                     #:mode 'text
-                                     #:line-mode 'any)])
+                                      #:mode 'text
+                                      #:line-mode 'any)])
     to-do-list))
 
 (define (list-empty? lst)
@@ -61,11 +61,10 @@
 
 (define (display-prettified-program-file)
   (display (string:string-join
-             (list->numbered-list (file->string-list config:path-to-file))
-             "\n"
-             #:after-last "\n")))
+            (list->numbered-list (file->string-list config:path-to-file))
+            "\n"
+            #:after-last "\n")))
 
-;; Don't ask
 (define (append-item-to-end args lst)
   (reverse (cons args (reverse (file->string-list lst)))))
 
@@ -81,45 +80,45 @@
 
 (define (show-list-from-program-file)
   (cond [(and
-           (check-for-program-directory)
-           (check-for-program-file))
+          (check-for-program-directory)
+          (check-for-program-file))
          (if
-           (list-empty? config:path-to-file)
-           (display-hash-ref messages:messages 'empty-to-do-list)
-           (display-prettified-program-file))]
+          (list-empty? config:path-to-file)
+          (display-hash-ref messages:messages 'empty-to-do-list)
+          (display-prettified-program-file))]
         [else
-          (display-hash-ref messages:messages 'file-not-found)
-          (display-hash-ref messages:messages 'try-init)]))
+         (display-hash-ref messages:messages 'file-not-found)
+         (display-hash-ref messages:messages 'try-init)]))
 
 (define (write-item-to-program-file args)
   ;; Add an item to the end of a list and write to a file
   (let ([new-list (append-item-to-end args config:path-to-file)])
     (file:display-to-file
-      (string:string-join new-list "\n") config:path-to-file
-      #:mode 'text
-      #:exists 'truncate)
+     (string:string-join new-list "\n") config:path-to-file
+     #:mode 'text
+     #:exists 'truncate)
     ;; After writing to the file, tell the user what was written
     (display-item-added args)))
 
 (define (add-item-to-list args)
   (if (and (check-for-program-directory)
            (check-for-program-file))
-    ;; The cdr here prevents the first command line argument ("add")
-    ;; from being added to the file
-    (write-item-to-program-file (string:string-join (cdr (vector->list args))))
-    ;; Else
-    (begin
-      (display-hash-ref messages:messages 'file-not-found)
-      (display-hash-ref messages:messages 'try-init))))
+      ;; The cdr here prevents user commands, such as "add"
+      ;; from being added to the file
+      (write-item-to-program-file (string:string-join (cdr (vector->list args))))
+      ;; Else
+      (begin
+        (display-hash-ref messages:messages 'file-not-found)
+        (display-hash-ref messages:messages 'try-init))))
 
 (define (remove-item-from-program-file args)
   (let* ([removed-item (get-removed-item config:path-to-file args)]
          [new-list (remove removed-item (file->string-list config:path-to-file))])
     (file:display-to-file
-      (string:string-join new-list "\n")
-      config:path-to-file
-      #:mode 'text
-      #:exists 'truncate)
+     (string:string-join new-list "\n")
+     config:path-to-file
+     #:mode 'text
+     #:exists 'truncate)
     (display-item-removed removed-item)))
 
 (define (remove-item-from-list args)
