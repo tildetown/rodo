@@ -47,22 +47,6 @@ racket ~/path/to/rodo.rkt "$@"
 
 Note: If you made an executable, remember to change the `rodo.rkt` part above to `rodo`
 
-# New features
-
-Now the default directory and todo list file have better default permissions:
-
-* `rodo` is now licensed under AGPL3!
-* `~/.rodo/` is set to 700 by default
-* `~/.rodo/to-do.txt` is set to 600 by default.
-
-# To-dos
-
-When I have time, I plan on adding the following features to rodo:
-
-- Add a purpose, context, and overview for each h1 in `README.md`
-- A boolean color option in the `config.rkt` file
-- Encrypt/decrypt `to-do.txt` file
-
 # Platforms
 
 Below is a list of platforms that `rodo` can run on.
@@ -202,3 +186,18 @@ Right now, the configurations can be found in the `config.rkt file`. Settings,
 such as the program name, directory, and the filename of the todo list file can
 be changed.
 
+# New features
+
+Now the default directory and todo list file have better default permissions:
+
+* `rodo` is now licensed under AGPL3!
+* `~/.rodo/` is set to 700 by default
+* `~/.rodo/to-do.txt` is set to 600 by default.
+
+# To-dos
+
+When I have time, I plan on adding the following features to rodo:
+
+- Add a purpose, context, and overview for each h1 in `README.md`
+- A boolean color option in the `config.rkt` file
+- Encrypt/decrypt `to-do.txt` file
