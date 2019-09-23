@@ -38,25 +38,22 @@
   (list:empty? (file->string-list lst)))
 
 (define (get-removed-item lst args)
-  ;; Subtract one from what the user chose, because what they are actually
-  ;; viewing is a list starting from "1" rather than "0". Under the hood,
-  ;; the real list starts at 0.
-  (list-ref (file->string-list lst) (sub1 (string->number args))))
+  (list-ref (file->string-list lst) (string->number args)))
 
 (define (surround-with-quotation-marks args)
   (display (string-append "\"" args "\"")))
 
 (define (list->dotted-list lst)
-  (string-append lst ". "))
+  (string-append lst "." " "))
 
 (define (list->numbered-list lst)
   ;; Take the list made in the first (map), which is
-  ;; '(1 2 3 ...), and append that to each item in a list
+  ;; '(0 1 2 ...), and append that to each item in a list
   (map string-append
        ;; Note: compose starts from the last element in it's
        ;; list. In this case, it starts at (number->string).
        (map (compose1 list->dotted-list number->string)
-            (list:range 1 (add1 (length lst))))
+            (list:range (length lst)))
        lst))
 
 (define (display-prettified-program-file)

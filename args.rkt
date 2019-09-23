@@ -30,12 +30,12 @@
       ;; rm
       [(and
         (equal? args-length 2)
-        (equal? (vector:vector-member config:remove-command args) 0)
+        (equal? (vector-ref args 0) config:remove-command)
         (real? (string->number (vector-ref args 1)))
         (positive? (string->number (vector-ref args 1)))
-        (not (> (string->number (vector-ref args 1)) (length (util:file->string-list config:path-to-file))))
-        (not (< (string->number (vector-ref args 1)) (car (list:range (length (util:file->string-list config:path-to-file)))))))
-       (util:remove-item-from-list args)]
+        ;; Length subtract one because the numbering starts at zero
+        (not (> (string->number (vector-ref args 1)) (sub1 (length (util:file->string-list config:path-to-file)))))
+       (util:remove-item-from-list args))]
 
       ;; init
       [(and
