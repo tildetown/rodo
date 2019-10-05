@@ -1,6 +1,6 @@
 # rodo
 
-A easy-to-use to-do list program for people who live on the command line.
+A minimal to-do list program for people who live on the command line.
 
 # Screenshot
 
