@@ -100,7 +100,7 @@ For example: If you downloaded the project to your `~/downloads/` folder you wou
 This section lists and describes rodo's commands.
 
 * `-h` or `--help` displays the help message
-* `init` creates a list file (See the `config.rkt` file for the default * location of this file)
+* `init` creates a list file (See the `config.rkt` file for the default location of this file)
 * `ls` displays your list
 * `add` adds an item to your list
 * `rm` removes an item from your list
