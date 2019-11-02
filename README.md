@@ -78,7 +78,7 @@ these files or scripts from any directory on your machine.
 Tip: If you have set up a `$PATH` already, then skip to the next step, [Adding rodo to your $PATH](https://github.com/m455/rodo#adding-rodo-to-your-path).
 
 1. Create a directory for your `$PATH` by running `mkdir ~/bin/`
-2. Add your newly-created `~/bin/` to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
+2. Add your newly-created `~/bin/` directory to your `$PATH` by running `echo "export PATH=~/bin:\$PATH" >> .bashrc`
 
 ## Adding rodo to your $PATH
 
