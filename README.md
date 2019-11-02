@@ -129,9 +129,8 @@ Note: You may have to run `rodo ls` to see which number corresponds to which ite
 
 **Caution: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality**
 
-Right now, the configurations can be found in the `config.rkt file`. Settings,
-such as the program name, directory, and the filename of the todo list file can
-be changed.
+Settings such as the program name, directory, and the filename of the todo list
+file can be changed by editing the `config.rkt` file.
 
 # Todos
 
