@@ -105,8 +105,6 @@ This section lists and describes rodo's commands.
 * `add` adds an item to your list
 * `rm` removes an item from your list
 
-Note: You may have to run `rodo ls` to see which number corresponds to which item in your list.
-
 # Usage examples
 
 The examples below assume that you have [added rodo to your $PATH](https://github.com/m455/rodo#adding-rodo-to-your-path).
