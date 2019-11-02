@@ -30,7 +30,7 @@
                ;; init
                (format "~a\n" config:initialize-command)
                "====\n"
-               (format "Creates ~a in ~a. This is where your to-do list will be stored.\n\n"
+               (format "Creates ~a in ~a. This is where your todo list will be stored.\n\n"
                        config:program-file
                        config:program-directory)
 
@@ -40,7 +40,7 @@
                ;; ls
                (format "~a\n" config:list-command)
                "====\n"
-               "Displays items in your to-do list.\n\n"
+               "Displays items in your todo list.\n\n"
 
                "Example:\n"
                (format "~a ~a\n\n" config:program-name config:list-command)
@@ -60,11 +60,11 @@
                "Example:\n"
                (format "~a ~a 1\n\n" config:program-name config:remove-command)
 
-               (format "Note: You may have to run `~a ~a` to see which number corresponds to which item in your to-do list."
+               (format "Note: You may have to run `~a ~a` to see which number corresponds to which item in your todo list."
                        config:program-name
                        config:list-command)
                " "
-               "In the example above, the first item was removed from the to-do list.\n\n"
+               "In the example above, the first item was removed from the todo list.\n\n"
 
                "Can't see the whole help message?\n"
                "=================================\n"
@@ -73,7 +73,7 @@
                " "
                "When you want to quit, type `q` (without the grave accents).\n")
 
-   'empty-to-do-list "> There is nothing in your list.\n"
+   'empty-todo-list "> There is nothing in your list.\n"
 
    'show-usage (format "> For usage type `~a -h` or `~a --help`.\n"
                        config:program-name
