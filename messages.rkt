@@ -31,7 +31,7 @@
                (format "~a\n" config:initialize-command)
                "====\n"
                (format "Creates ~a in ~a. This is where your todo list will be stored.\n\n"
-                       config:program-file
+                       config:list-file
                        config:program-directory)
 
                "Example:\n"
@@ -80,31 +80,31 @@
                        config:program-name)
 
    'creating (format "> Creating ~a in ~a.\n"
-                     config:program-file
+                     config:list-file
                      config:program-directory)
 
    'creation-error (string-append
                     (format "> Error: Could not create a(n) ~a in ~a.\n"
-                            config:program-file
+                            config:list-file
                             config:program-directory)
                     "> This might be due to directory permissions.\n")
 
    'file-already-exists (format "> Error: ~a already exists in ~a~a.\n"
                                 config:program-name
                                 config:program-directory
-                                config:program-file)
+                                config:list-file)
 
    'successfully-created (format "> ~a has been successfully created in ~a.\n"
                                  config:program-directory
-                                 config:program-file)
+                                 config:list-file)
 
    'file-not-found (format "> Error: Could not find ~a~a\n"
                            config:program-directory
-                           config:program-file)
+                           config:list-file)
 
    'init-y/n (string-append
               (format "> ~a will be created in ~a.\n"
-                      config:program-file
+                      config:list-file
                       config:program-directory)
               "> Are you sure you want to continue? [y/n]\n")
 
