@@ -34,8 +34,8 @@
                                      #:line-mode 'any)])
     todo-list))
 
-(define (list-file-empty? lst)
-  (list:empty? (file->string-list lst)))
+(define (list-file-empty? a-file)
+  (list:empty? (file->string-list a-file)))
 
 (define (get-removed-item lst args)
   (list-ref (file->string-list lst) (string->number args)))
