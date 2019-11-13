@@ -1,7 +1,7 @@
 #lang racket/base
 
-(require (prefix-in list: racket/list)
-         (prefix-in file: racket/file)
+(require (prefix-in file: racket/file)
+         (prefix-in list: racket/list)
          (prefix-in string: racket/string)
          (prefix-in config: "config.rkt")
          (prefix-in messages: "messages.rkt"))
@@ -88,7 +88,7 @@
                           #:exists 'truncate))
   (display-item-added args))
 
-;; The cdr here prevents user commands, such as "add" from being added to the file
+;; The cdr here prevents user commands, such as "add" being added to the file
 (define (add-item-to-list a-file args)
   (if (and (program-directory-exists?)
            (list-file-exists?))

@@ -1,11 +1,10 @@
 #lang racket/base
 
 (require (prefix-in vector: racket/vector)
-         (prefix-in list: racket/list)
          (prefix-in config: "config.rkt")
          (prefix-in init: "init.rkt")
-         (prefix-in util: "util.rkt")
-         (prefix-in messages: "messages.rkt"))
+         (prefix-in messages: "messages.rkt")
+         (prefix-in util: "util.rkt"))
 
 (provide (all-defined-out))
 

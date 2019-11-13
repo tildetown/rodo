@@ -1,9 +1,8 @@
 #lang racket/base
 
-(require (prefix-in file: racket/file)
-         (prefix-in config: "config.rkt")
-         (prefix-in util: "util.rkt")
-         (prefix-in messages: "messages.rkt"))
+(require (prefix-in config: "config.rkt")
+         (prefix-in messages: "messages.rkt")
+         (prefix-in util: "util.rkt"))
 
 (provide (all-defined-out))
 
