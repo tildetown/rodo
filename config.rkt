@@ -11,6 +11,6 @@
 (define add-command "add")
 (define list-command "ls")
 (define initialize-command "init")
-(define help-command '("-h" "--help"))
+(define help-command '("-h" "--help" "h" "help"))
 (define path-to-list-file
   (string-append program-directory list-file))
