@@ -1,7 +1,7 @@
 #lang racket/base
 (provide (all-defined-out))
 
-(define list-file "todo.txt")
+(define file-name "todo.txt")
 (define program-name "rodo")
 
 (define program-directory
@@ -9,8 +9,8 @@
     (expand-user-path
       (string-append "~/." program-name "/"))))
 
-(define path-to-list-file
-  (string-append program-directory list-file))
+(define list-file
+  (string-append program-directory file-name))
 
 (define help-command '("-h"
                        "--help"

@@ -102,6 +102,8 @@
                            config:program-directory
                            config:list-file)
 
+   'item-not-found "> Error: Could not find that item\n"
+
    'init-y/n (string-append
               (format "> ~a will be created in ~a.\n"
                       config:list-file
@@ -110,7 +112,7 @@
 
    'try-init (format "> Try typing `~a ~a` to set it up (without the grave accents).\n"
                      config:program-name
-                     config:initialize-command)
+                     (car config:initialize-command))
 
    'terminating (format "> Exiting ~a\n" config:program-name)
 
