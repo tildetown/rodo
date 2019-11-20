@@ -74,14 +74,14 @@
     ;; Otherwise
     [else (display-hash-ref messages:messages 'show-usage)]))
 
-;; TODO: Change this to just use append with lst and (list args)
 (define (append-item-to-list args lst)
-  (reverse (cons args (reverse (file:file->lines lst)))))
+  (append (file:file->lines lst) '(args)))
 
 ;; TODO: Turn into a check-add-conditions and then break
-;;       the rest down into separate functions
+;;       the rest down into separate procedures
 (define (add-item-to-list a-file args)
   (if (and (file-exists? config:list-file))
+      ;; Make this a procedure
       (let* ([item (string:string-join (cdr args) " ")]
              [new-list (append-item-to-list item config:list-file)])
         (file:display-to-file (string:string-join new-list "\n")
@@ -94,7 +94,7 @@
         (display-hash-ref messages:messages 'try-init))))
 
 ;; TODO: Turn into a check-remove-conditions and then break
-;;       the rest down into separate functions
+;;       the rest down into separate procedures
 (define (remove-item-from-list args)
   (cond
     ;; If directory and file exist, but file is empty
@@ -111,8 +111,10 @@
            ;; Length subtract one because the numbering starts at zero
            [list-length (sub1 (length (file:file->lines config:list-file)))])
        (if (not (> user-args list-length))
+           ;; Make this a procedure
            (let* ([item-to-remove (list-ref (file:file->lines config:list-file) user-args)]
                   [new-list (remove item-to-remove (file:file->lines config:list-file))])
+             ;; Might be able to just use display-lines-to-file procedure. See docs
              (file:display-to-file (string:string-join new-list "\n")
                                    config:list-file
                                    #:mode 'text
