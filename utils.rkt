@@ -1,120 +1,129 @@
 #lang racket/base
 
-(require (prefix-in file: racket/file)
-         (prefix-in list: racket/list)
-         (prefix-in string: racket/string)
-         (prefix-in config: "config.rkt")
+(require (prefix-in     file: racket/file)
+         (prefix-in     list: racket/list)
+         (prefix-in   string: racket/string)
+         (prefix-in   config: "config.rkt")
          (prefix-in messages: "messages.rkt"))
 
 (provide (all-defined-out))
 
-(define (list-file-exists?)
-  (file-exists? config:path-to-list-file))
-
-(define (program-directory-exists?)
-  (directory-exists? config:program-directory))
-
-(define (create-list-file-600 a-file)
-  (let ([opened-file (open-output-file a-file
-                                       #:mode 'text
-                                       #:exists 'truncate)])
+(define (create-file-600 a-file)
+  (let ([opened-file (open-output-file a-file #:mode 'text #:exists 'truncate)])
     (close-output-port opened-file))
   (file-or-directory-permissions a-file #o600))
 
-(define (create-program-directory-700 a-directory)
+(define (create-directory-700 a-directory)
   (make-directory a-directory)
   (file-or-directory-permissions a-directory #o700))
 
 (define (display-hash-ref hash-list key)
   (display (hash-ref hash-list key)))
 
-(define (file->string-list a-file)
-  (let ([todo-list (file:file->lines a-file
-                                     #:mode 'text
-                                     #:line-mode 'any)])
-    todo-list))
+(define (list->ascending-numbers lst)
+  (list:range (length lst)))
 
-(define (list-file-empty? a-file)
-  (list:empty? (file->string-list a-file)))
-
-(define (get-removed-item lst args)
-  (list-ref (file->string-list lst) (string->number args)))
-
-(define (surround-with-quotation-marks args)
-  (display (string-append "\"" args "\"")))
-
-(define (list->list-of-dotted-numbers lst)
+(define (list->dotted-ascending-numbers lst)
   (map (lambda (x) (string-append x ". "))
-       (map number->string (list:range (length lst)))))
+       (map number->string (list->ascending-numbers lst))))
 
 (define (list->numbered-list lst)
   (map (lambda (x y) (string-append x y))
-       (list->list-of-dotted-numbers lst)
+       (list->dotted-ascending-numbers lst)
        lst))
 
-(define (file->numbered-list-as-lines a-file)
-  (string:string-join (list->numbered-list (file->string-list a-file))
-                      "\n"
-                      #:after-last "\n"))
+(define (file->vertically-numbered-list a-file)
+  (string:string-join
+   (list->numbered-list (file:file->lines a-file))
+   "\n"
+   #:after-last "\n"))
 
-(define (append-item-to-list args lst)
-  (reverse (cons args (reverse (file->string-list lst)))))
+(define (surround-with-quotation-marks item)
+  (string-append "\"" item "\""))
 
-(define (display-item-added args)
+(define (display-item-added item)
   (display-hash-ref messages:messages 'item-added-prefix)
-  (surround-with-quotation-marks args)
+  (display (surround-with-quotation-marks item))
   (display-hash-ref messages:messages 'item-added-suffix))
 
 (define (display-item-removed args)
   (display-hash-ref messages:messages 'item-removed-prefix)
-  (surround-with-quotation-marks args)
+  (display (surround-with-quotation-marks args))
   (display-hash-ref messages:messages 'item-removed-suffix))
 
+;; TODO: Turn into a check-show-list-conditions and then break
+;;       the rest down into separate functions
 (define (show-list-from-file a-file)
-  (cond [(and (program-directory-exists?)
-              (list-file-exists?))
-         (if (list-file-empty? a-file)
-             (display-hash-ref messages:messages 'empty-todo-list)
-             (display (file->numbered-list-as-lines a-file)))]
-        [else
-         (display-hash-ref messages:messages 'file-not-found)
-         (display-hash-ref messages:messages 'try-init)]))
+  (cond
+    ;; If exists and not empty
+    [(and (file-exists? config:list-file)
+          (not (null? (file:file->lines a-file))))
+     (display (file->vertically-numbered-list a-file))]
 
-(define (write-item-to-file a-file args)
-  (let ([new-list (append-item-to-list args a-file)])
-    (file:display-to-file (string:string-join new-list "\n")
-                          a-file
-                          #:mode 'text
-                          #:exists 'truncate))
-  (display-item-added args))
+    ;; If exists and empty
+    [(and (file-exists? config:list-file)
+          (null? (file:file->lines a-file)))
+     (display-hash-ref messages:messages 'empty-list)]
 
-;; The cdr here prevents user commands, such as "add" being added to the file
+    ;; If not exist
+    [(and (not (file-exists? config:list-file)))
+     (begin
+       (display-hash-ref messages:messages 'file-not-found)
+       (display-hash-ref messages:messages 'try-init))]
+
+    ;; Otherwise
+    [else (display-hash-ref messages:messages 'show-usage)]))
+
+;; TODO: Change this to just use append with lst and (list args)
+(define (append-item-to-list args lst)
+  (reverse (cons args (reverse (file:file->lines lst)))))
+
+;; TODO: Turn into a check-add-conditions and then break
+;;       the rest down into separate functions
 (define (add-item-to-list a-file args)
-  (if (and (program-directory-exists?)
-           (list-file-exists?))
-      (write-item-to-file a-file (string:string-join (cdr (vector->list args))))
-      ;; Else
+  (if (and (file-exists? config:list-file))
+      (let* ([item (string:string-join (cdr args) " ")]
+             [new-list (append-item-to-list item config:list-file)])
+        (file:display-to-file (string:string-join new-list "\n")
+                              config:list-file
+                              #:mode 'text
+                              #:exists 'truncate)
+        (display-item-added item))
       (begin
         (display-hash-ref messages:messages 'file-not-found)
         (display-hash-ref messages:messages 'try-init))))
 
-(define (remove-item-from-list-file a-file args)
-  (let* ([removed-item (get-removed-item a-file args)]
-         [new-list (remove removed-item (file->string-list a-file))])
-    (file:display-to-file (string:string-join new-list "\n")
-                          a-file
-                          #:mode 'text
-                          #:exists 'truncate)
-    (display-item-removed removed-item)))
+;; TODO: Turn into a check-remove-conditions and then break
+;;       the rest down into separate functions
+(define (remove-item-from-list args)
+  (cond
+    ;; If directory and file exist, but file is empty
+    [(and (directory-exists? config:program-directory)
+          (file-exists?      config:list-file)
+          (null?             config:list-file))
+     (display-hash-ref messages:messages 'empty-list)]
 
-(define (remove-item-from-list a-file args)
-  (cond [(list-file-empty? a-file)
-         (display-hash-ref messages:messages 'empty-todo-list)]
-        [(and (program-directory-exists?)
-              (list-file-exists?))
-         (remove-item-from-list-file a-file (vector-ref args 1))]
-        [(and (not (program-directory-exists?))
-              (not (list-file-exists?)))
-         (begin
-           (display-hash-ref messages:messages 'file-not-found)
-           (display-hash-ref messages:messages 'try-init))]))
+    ;; If directory and file exist, and file is not empty
+    [(and (directory-exists? config:program-directory)
+          (file-exists?      config:list-file)
+          (not (null?        config:list-file)))
+     (let ([user-args   (string->number (list-ref args 1))]
+           ;; Length subtract one because the numbering starts at zero
+           [list-length (sub1 (length (file:file->lines config:list-file)))])
+       (if (not (> user-args list-length))
+           (let* ([item-to-remove (list-ref (file:file->lines config:list-file) user-args)]
+                  [new-list (remove item-to-remove (file:file->lines config:list-file))])
+             (file:display-to-file (string:string-join new-list "\n")
+                                   config:list-file
+                                   #:mode 'text
+                                   #:exists 'truncate)
+             (display-item-removed item-to-remove))
+           ;; Else
+           (display-hash-ref messages:messages 'item-not-found)))]
+
+    ;; If directory and file don't exist
+    [(and (not (directory-exists? config:program-directory))
+          (not (file-exists? config:list-file)))
+     (begin
+       (display-hash-ref messages:messages 'file-not-found)
+       (display-hash-ref messages:messages 'try-init))]))

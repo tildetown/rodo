@@ -1,6 +1,6 @@
 # rodo
 
-A minimal todo list program for people who live on the command line.
+A minimal list manager for people who live on the command line.
 
 # Screenshot
 
@@ -54,17 +54,17 @@ If you are using a single-file executable, create a wrapper as follows:
 # Introduction
 
 This readme will guide you through downloading, installing, and using the rodo
-todo list program. It is intended for people who spend a lot of their time on the
-command line and want a minimal todo list application.
+list manager. It is intended for people who spend a lot of their time on the
+command line and want a minimal list manager.
 
 # Conventions used in this readme
 
-* Notes - Notes signify additional information
-* Tips - Tips signify an alternate procedure for completing a step
-* Cautions - Cautions signify that damage may occur
-* Examples - Examples provide a visual reference of how a procedure would be carried out in the real world
+* **Note** - Notes signify additional information
+* **Tip**- Tips signify an alternate procedure for completing a step
+* **Caution** - Cautions signify that damage may occur
+* **Example** - Examples provide a visual reference of how a procedure would be carried out in the real world
 * `Inline code` - Inline code signifies package names, filenames, or commands
-* ```Code blocks``` - Code blocks signify file contents
+* ```Code block``` - Code blocks signify file contents
 
 # Platforms
 
@@ -191,5 +191,5 @@ The examples below assume that you have [added rodo to your $PATH](#adding-rodo-
 
 **Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
 
-Settings such as the program name, directory, and the filename of the todo list
+Settings such as the program name, directory, and the filename of the list
 file can be changed by editing the `config.rkt` file.

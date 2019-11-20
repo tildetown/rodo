@@ -5,4 +5,4 @@
 (define (main args)
   (args:check-args args))
 
-(main (current-command-line-arguments))
+(main (vector->list (current-command-line-arguments)))
