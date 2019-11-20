@@ -14,27 +14,27 @@
       [(equal? args-length 0)
        (utils:display-hash-ref messages:messages 'show-usage)]
 
-      ;; help
+      ;; help-command
       [(and (equal? args-length 1)
             (member (list-ref args 0) config:help-command))
        (utils:display-hash-ref messages:messages 'show-help)]
 
-      ;; init
+      ;; initialize-command
       [(and (equal? args-length 1)
             (member (list-ref args 0) config:initialize-command))
        (init:initialize)]
 
-      ;; add
+      ;; add-command
       [(and (or (equal? args-length 2) (>= args-length 2))
             (member (list-ref args 0) config:add-command))
        (utils:add-item-to-list config:list-file args)]
 
-      ;; ls
+      ;; list-command
       [(and (equal? args-length 1)
             (member (list-ref args 0) config:list-command))
        (utils:show-list-from-file config:list-file)]
 
-      ;; rm
+      ;; remove-command
       [(and (equal? args-length 2)
             (member (list-ref args 0) config:remove-command)
             (real?         (string->number (list-ref args 1)))

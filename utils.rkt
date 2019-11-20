@@ -63,7 +63,7 @@
     ;; If exists and empty
     [(and (file-exists? config:list-file)
           (null? (file:file->lines a-file)))
-     (display-hash-ref messages:messages 'empty-todo-list)]
+     (display-hash-ref messages:messages 'empty-list)]
 
     ;; If not exist
     [(and (not (file-exists? config:list-file)))
@@ -101,7 +101,7 @@
     [(and (directory-exists? config:program-directory)
           (file-exists?      config:list-file)
           (null?             config:list-file))
-     (display-hash-ref messages:messages 'empty-todo-list)]
+     (display-hash-ref messages:messages 'empty-list)]
 
     ;; If directory and file exist, and file is not empty
     [(and (directory-exists? config:program-directory)

@@ -4,129 +4,137 @@
 
 (provide (all-defined-out))
 
+(define newline "\n")
+
 (define messages
   (hash
-   'show-help (string-append
-               "Usage\n"
-               "=====\n"
-               (format "If you want to use the ~a or ~a commands, follow the structure below:\n"
-                       config:initialize-command
-                       config:list-command)
-               (format "~a <command>\n\n"
-                       config:program-name)
+   'show-help
+     (string-append "\n"
+                    "Conventions used in this help message\n"
+                    "====================================="
+                    "\n\n"
+                    "[command]  - [command]s should be replaced by a command from the Command section below without the surrounding \"[\" and \"]\"s."
+                    "\n\n"
+                    "<argument> - <argument>s should be replaced by user input without the surrounding \"<\" and \">\"s."
+                    "\n\n"
+                    "Command descriptions\n"
+                    "===================="
+                    "\n\n"
 
-               (format "If you want to use the ~a or ~a commands, follow the structure below:\n"
-                       config:add-command
-                       config:remove-command)
-               (format "~a <command> [argument]\n\n" config:program-name)
+                    ;; initialize-command
+            (format "~a" (car config:initialize-command))
+                    "\n\n"
+                    "\t"
+            (format "Creates a list in ~a." config:list-file)
+                    "\n\n"
 
-               "Note: Replace <command> with one of the Commands below without the surrounding \"<\" and \">\".\n\n"
+                    ;; list-command
+            (format "~a" (car config:list-command))
+                    "\n\n"
+                    "\t"
+                    "Displays items in your list."
+                    "\n\n"
 
-               "Commands\n"
-               "========\n"
-               (format "This section describes the commands available for ~a.\n\n" config:program-name)
-               (format "Note: The commands mentioned in this section should replace the \"<command>\" filler text found in the Usage section above.\n\n")
+                    ;; add-command
+            (format "~a" (car config:add-command))
+                    "\n\n"
+                    "\t"
+                    "Adds an item to your list."
+                    "\n\n"
 
-               ;; init
-               (format "~a\n" config:initialize-command)
-               "====\n"
-               (format "Creates ~a in ~a. This is where your todo list will be stored.\n\n"
-                       config:list-file
-                       config:program-directory)
+                    ;; remove-command
+            (format "~a" (car config:remove-command))
+                    "\n\n"
+                    "\t"
+                    "Removes an item from your list."
+                    "\n\n"
 
-               "Example:\n"
-               (format "~a ~a\n\n" config:program-name config:initialize-command)
+                    "Usage examples\n"
+                    "=============="
+                    "\n\n"
+                    ;; initialize-command
+            (format "~a" (car config:initialize-command))
+                    "\n\n"
+                    "\t"
+            (format "~a ~a" config:program-name (car config:initialize-command))
+                    "\n\n"
 
-               ;; ls
-               (format "~a\n" config:list-command)
-               "====\n"
-               "Displays items in your todo list.\n\n"
+                    ;; list-command
+            (format "~a" (car config:list-command))
+                    "\n\n"
+                    "\t"
+            (format "~a ~a" config:program-name (car config:list-command))
+                    "\n\n"
 
-               "Example:\n"
-               (format "~a ~a\n\n" config:program-name config:list-command)
+                    ;; add-command
+            (format "~a" (car config:add-command))
+                    "\n\n"
+                    "\t"
+            (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-command))
+                    "\n\n"
+                    "\t"
+            (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-command))
+                    "\n\n"
+                    "\t"
+                    "Note: Grave accents (`) and single quotation marks (\') cannot be used with this command."
+                    "\n\n"
 
-               (format "~a [argument(s)]\n" config:add-command)
-               "=================\n"
-               "Adds an item to the list.\n\n"
+                    ;; remove-command
+            (format "~a" (car config:remove-command))
+                    "\n\n"
+                    "\t"
+            (format "~a ~a 2" config:program-name (car config:remove-command))
+                    "\n\n"
+                    "\t"
+                    "Note: The example above will remove the third item from your list, because the list starts at zero."
+                    "\n\n"
 
-               "Examples:\n"
-               (format "~a ~a this is an unquoted item\n" config:program-name config:add-command)
-               (format "~a ~a \"this is a quoted item\"\n\n" config:program-name config:add-command)
+                    "Can't see the whole help message?\n"
+                    "================================="
+                    "\n\n"
+                    "\t"
+            (format "Try running \"~a -h | less\" (without the double quotation marks), so you can use the arrow keys to scroll up and down." config:program-name)
+                    "\n\n"
+                    "\t"
+                    "When you want to quit, type \"q\" (without the double quotation marks)."
+                    "\n\n")
 
-               (format "~a [argument]\n" config:remove-command)
-               "=============\n"
-               "Removes an item from the list.\n\n"
+        'empty-list "> There is nothing in your list.\n"
 
-               "Example:\n"
-               (format "~a ~a 1\n\n" config:program-name config:remove-command)
+        'show-usage (format "> For usage type \"~a -h\" (without the double quotation marks).\n" config:program-name)
 
-               (format "Note: You may have to run `~a ~a` to see which number corresponds to which item in your todo list."
-                       config:program-name
-                       config:list-command)
-               " "
-               "In the example above, the first item was removed from the todo list.\n\n"
+        'creating (format "> Creating a list in ~a...\n" config:list-file)
 
-               "Can't see the whole help message?\n"
-               "=================================\n"
-               (format "Try running `~a -h | less` so you can use the arrow keys to scroll up and down."
-                       config:program-name)
-               " "
-               "When you want to quit, type `q` (without the grave accents).\n")
+        'creation-error (format "> Error: Could not create a list file in ~a.\n" config:list-file)
 
-   'empty-todo-list "> There is nothing in your list.\n"
+        'file-already-exists (format "> Error: A list file already exists in ~a.\n" config:list-file)
 
-   'show-usage (format "> For usage type `~a -h` or `~a --help`.\n"
-                       config:program-name
-                       config:program-name)
+        'successfully-created (format "> Your list file was successfully created in ~a.\n" config:list-file)
 
-   'creating (format "> Creating ~a in ~a.\n"
-                     config:list-file
-                     config:program-directory)
+        'file-not-found (format "> Error: Could not find ~a.\n" config:list-file)
 
-   'creation-error (string-append
-                    (format "> Error: Could not create a(n) ~a in ~a.\n"
-                            config:list-file
-                            config:program-directory)
-                    "> This might be due to directory permissions.\n")
+        'item-not-found "> Error: Could not find that item.\n"
 
-   'file-already-exists (format "> Error: ~a already exists in ~a~a.\n"
-                                config:program-name
-                                config:program-directory
-                                config:list-file)
+        'init-y/n (format (string-append "> A list file will be created in ~a.\n"
+                                         "> Are you sure you want to continue? [y/n].\n")
+                          config:list-file)
 
-   'successfully-created (format "> ~a has been successfully created in ~a.\n"
-                                 config:program-directory
-                                 config:list-file)
+        'try-init (format "> Try typing \"~a ~a\" to set it up (without the double quotation marks).\n"
+                          config:program-name (car config:initialize-command))
 
-   'file-not-found (format "> Error: Could not find ~a~a\n"
-                           config:program-directory
-                           config:list-file)
+        'terminating (format "> Exited ~a.\n" config:program-name)
 
-   'item-not-found "> Error: Could not find that item\n"
+        'choose-y/n "> Error: Please choose y or n\n"
 
-   'init-y/n (string-append
-              (format "> ~a will be created in ~a.\n"
-                      config:list-file
-                      config:program-directory)
-              "> Are you sure you want to continue? [y/n]\n")
+        'not-in-list "> Error: Item does not exist\n"
 
-   'try-init (format "> Try typing `~a ~a` to set it up (without the grave accents).\n"
-                     config:program-name
-                     (car config:initialize-command))
+        'item-added-prefix "> Added "
 
-   'terminating (format "> Exiting ~a\n" config:program-name)
+        'item-added-suffix " to list\n"
 
-   'choose-y/n "> Error: Please choose y or n\n"
+        'item-removed-prefix "> Removed "
 
-   'not-in-list "> Error: Item does not exist\n"
-
-   'item-added-prefix "> Added "
-
-   'item-added-suffix " to list\n"
-
-   'item-removed-prefix "> Removed "
-
-   'item-removed-suffix " from list\n"))
+        'item-removed-suffix " from list\n"))
 
 (define y/n (hash 'yes '("yes" "Yes" "y" "Y")
-                  'no '("no" "No" "n" "N")))
+                  'no  '("no" "No" "n" "N")))

@@ -1,7 +1,7 @@
 #lang racket/base
 (provide (all-defined-out))
 
-(define file-name "todo.txt")
+(define file-name "list.txt")
 (define program-name "rodo")
 
 (define program-directory
@@ -12,22 +12,27 @@
 (define list-file
   (string-append program-directory file-name))
 
+;; TODO: pluralize this value's name
 (define help-command '("-h"
                        "--help"
                        "h"
                        "help"))
 
+;; TODO: pluralize this value's name
 (define initialize-command '("init"
                              "create"
                              "start"
                              "begin"))
 
+;; TODO: pluralize this value's name
 (define add-command '("add"
                       "a"))
 
+;; TODO: pluralize this value's name
 (define list-command '("ls"
                        "list"))
 
+;; TODO: pluralize this value's name
 (define remove-command '("rm"
                          "remove"
                          "del"
