@@ -4,7 +4,8 @@
 
 (provide (all-defined-out))
 
-(define newline "\n")
+(define (indent string)
+  (string-append "\t" string))
 
 (define messages
   (hash
@@ -22,80 +23,68 @@
                     "\n\n"
 
                     ;; initialize-command
-            (format "~a" (car config:initialize-command))
+            (format "~a" (car config:initialize-commands))
                     "\n\n"
-                    "\t"
-            (format "Creates a list in ~a." config:list-file)
+    (indent (format "Creates a list in ~a." config:list-file))
                     "\n\n"
 
                     ;; list-command
-            (format "~a" (car config:list-command))
+            (format "~a" (car config:list-commands))
                     "\n\n"
-                    "\t"
-                    "Displays items in your list."
+            (indent "Displays items in your list.")
                     "\n\n"
 
                     ;; add-command
-            (format "~a" (car config:add-command))
+            (format "~a" (car config:add-commands))
                     "\n\n"
-                    "\t"
-                    "Adds an item to your list."
+            (indent "Adds an item to your list.")
                     "\n\n"
 
                     ;; remove-command
-            (format "~a" (car config:remove-command))
+            (format "~a" (car config:remove-commands))
                     "\n\n"
-                    "\t"
-                    "Removes an item from your list."
+            (indent "Removes an item from your list.")
                     "\n\n"
 
                     "Usage examples\n"
                     "=============="
                     "\n\n"
+
                     ;; initialize-command
-            (format "~a" (car config:initialize-command))
+            (format "~a" (car config:initialize-commands))
                     "\n\n"
-                    "\t"
-            (format "~a ~a" config:program-name (car config:initialize-command))
+    (indent (format "~a ~a" config:program-name (car config:initialize-commands)))
                     "\n\n"
 
                     ;; list-command
-            (format "~a" (car config:list-command))
+            (format "~a" (car config:list-commands))
                     "\n\n"
-                    "\t"
-            (format "~a ~a" config:program-name (car config:list-command))
+    (indent (format "~a ~a" config:program-name (car config:list-commands)))
                     "\n\n"
 
                     ;; add-command
-            (format "~a" (car config:add-command))
+            (format "~a" (car config:add-commands))
                     "\n\n"
-                    "\t"
-            (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-command))
+    (indent (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-commands)))
                     "\n\n"
-                    "\t"
-            (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-command))
+    (indent (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-commands)))
                     "\n\n"
-                    "\t"
-                    "Note: Grave accents (`) and single quotation marks (\') cannot be used with this command."
+            (indent "Note: Grave accents (`) and single quotation marks (\') cannot be used with this command.")
                     "\n\n"
 
                     ;; remove-command
-            (format "~a" (car config:remove-command))
+            (format "~a" (car config:remove-commands))
                     "\n\n"
-                    "\t"
-            (format "~a ~a 2" config:program-name (car config:remove-command))
+    (indent (format "~a ~a 2" config:program-name (car config:remove-commands)))
                     "\n\n"
-                    "\t"
-                    "Note: The example above will remove the third item from your list, because the list starts at zero."
+            (indent "Note: The example above will remove the third item from your list, because the list starts at zero.")
                     "\n\n"
 
                     "Can't see the whole help message?\n"
                     "================================="
                     "\n\n"
-                    "\t"
             (format "Try running \"~a -h | less\" (without the double quotation marks), so you can use the arrow keys to scroll up and down." config:program-name)
                     "\n\n"
-                    "\t"
                     "When you want to quit, type \"q\" (without the double quotation marks)."
                     "\n\n")
 
@@ -120,7 +109,7 @@
                           config:list-file)
 
         'try-init (format "> Try typing \"~a ~a\" to set it up (without the double quotation marks).\n"
-                          config:program-name (car config:initialize-command))
+                          config:program-name (car config:initialize-commands))
 
         'terminating (format "> Exited ~a.\n" config:program-name)
 
@@ -128,13 +117,10 @@
 
         'not-in-list "> Error: Item does not exist\n"
 
-        'item-added-prefix "> Added "
+        'item-added "> Added \"~a\" to your list\n"
 
-        'item-added-suffix " to list\n"
+        'item-removed "> Removed \"~a\" from your list\n"))
 
-        'item-removed-prefix "> Removed "
-
-        'item-removed-suffix " from list\n"))
 
 (define y/n (hash 'yes '("yes" "Yes" "y" "Y")
                   'no  '("no" "No" "n" "N")))

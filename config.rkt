@@ -6,34 +6,29 @@
 
 (define program-directory
   (path->string
-    (expand-user-path
-      (string-append "~/." program-name "/"))))
+   (expand-user-path
+    (string-append "~/." program-name "/"))))
 
 (define list-file
   (string-append program-directory file-name))
 
-;; TODO: pluralize this value's name
-(define help-command '("-h"
-                       "--help"
-                       "h"
-                       "help"))
+(define help-commands '("-h"
+                        "--help"
+                        "h"
+                        "help"))
 
-;; TODO: pluralize this value's name
-(define initialize-command '("init"
-                             "create"
-                             "start"
-                             "begin"))
+(define initialize-commands '("init"
+                              "create"
+                              "start"
+                              "begin"))
 
-;; TODO: pluralize this value's name
-(define add-command '("add"
-                      "a"))
+(define add-commands '("add"
+                       "a"))
 
-;; TODO: pluralize this value's name
-(define list-command '("ls"
-                       "list"))
+(define list-commands '("ls"
+                        "list"))
 
-;; TODO: pluralize this value's name
-(define remove-command '("rm"
-                         "remove"
-                         "del"
-                         "delete"))
+(define remove-commands '("rm"
+                          "remove"
+                          "del"
+                          "delete"))

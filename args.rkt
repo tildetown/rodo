@@ -16,30 +16,30 @@
 
       ;; help-command
       [(and (equal? args-length 1)
-            (member (list-ref args 0) config:help-command))
+            (member (list-ref args 0) config:help-commands))
        (utils:display-hash-ref messages:messages 'show-help)]
 
       ;; initialize-command
       [(and (equal? args-length 1)
-            (member (list-ref args 0) config:initialize-command))
-       (init:initialize)]
+            (member (list-ref args 0) config:initialize-commands))
+       (init:check-initialize-conditions)]
 
       ;; add-command
       [(and (or (equal? args-length 2) (>= args-length 2))
-            (member (list-ref args 0) config:add-command))
-       (utils:add-item-to-list config:list-file args)]
+            (member (list-ref args 0) config:add-commands))
+       (utils:check-add-conditions args)]
 
       ;; list-command
       [(and (equal? args-length 1)
-            (member (list-ref args 0) config:list-command))
-       (utils:show-list-from-file config:list-file)]
+            (member (list-ref args 0) config:list-commands))
+       (utils:check-list-conditions)]
 
       ;; remove-command
       [(and (equal? args-length 2)
-            (member (list-ref args 0) config:remove-command)
+            (member (list-ref args 0) config:remove-commands)
             (real?         (string->number (list-ref args 1)))
             (or (positive? (string->number (list-ref args 1)))
                 (zero?     (string->number (list-ref args 1)))))
-       (utils:remove-item-from-list args)]
+       (utils:check-remove-conditions args)]
 
       [else (utils:display-hash-ref messages:messages 'show-usage)])))
