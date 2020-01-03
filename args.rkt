@@ -12,12 +12,12 @@
   (let ([args-length (length args)])
     (cond
       [(equal? args-length 0)
-       (utils:display-hash-ref messages:messages 'show-usage)]
+       (utils:display-messages '(show-usage))]
 
       ;; help-command
       [(and (equal? args-length 1)
             (member (list-ref args 0) config:help-commands))
-       (utils:display-hash-ref messages:messages 'show-help)]
+       (utils:display-messages '(show-help))]
 
       ;; initialize-command
       [(and (equal? args-length 1)
@@ -42,4 +42,4 @@
                 (zero?     (string->number (list-ref args 1)))))
        (utils:check-remove-conditions args)]
 
-      [else (utils:display-hash-ref messages:messages 'show-usage)])))
+      [else (utils:display-messages '(show-usage))])))

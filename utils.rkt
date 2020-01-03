@@ -17,12 +17,9 @@
   (make-directory a-directory)
   (file-or-directory-permissions a-directory #o700))
 
-(define (display-hash-ref hash-list key)
-  (display (hash-ref hash-list key)))
-
-(define (display-hash-ref-multi hash-list key-list)
+(define (display-messages key-list)
   (for ([key key-list])
-    (display (hash-ref hash-list key))))
+    (display (hash-ref messages:messages key))))
 
 (define (list->ascending-numbers lst)
   (list:range (length lst)))
@@ -61,13 +58,13 @@
     ;; If exists and empty
     [(and (file-exists? config:list-file)
           (null? (file:file->lines config:list-file)))
-     (display-hash-ref messages:messages 'empty-list)]
+     (display-messages '(empty-list))]
 
     ;; If not exist
     [(and (not (file-exists? config:list-file)))
-     (display-hash-ref-multi messages:messages '(file-not-found try-init))]
+     (display-messages '(file-not-found try-init))]
 
-    [else (display-hash-ref messages:messages 'show-usage)]))
+    [else (display-messages '(show-usage))]))
 
 (define (append-element-to-end-of-list lst item-to-add)
   (reverse (cons item-to-add (reverse (file:file->lines lst)))))
@@ -85,7 +82,7 @@
   (if (and (file-exists? config:list-file))
       (add-item-to-list args)
       ;; Otherwise
-      (display-hash-ref-multi messages:messages '(file-not-found try-init))))
+      (display-messages '(file-not-found try-init))))
 
 (define (remove-item-from-list user-args)
   (let* ([item-to-remove (list-ref (file:file->lines config:list-file) user-args)]
@@ -102,7 +99,7 @@
     [(and (directory-exists? config:program-directory)
           (file-exists?      config:list-file)
           (null?             config:list-file))
-     (display-hash-ref messages:messages 'empty-list)]
+     (display-messages '(empty-list))]
 
     ;; If directory and file exist, and file is not empty
     [(and (directory-exists? config:program-directory)
@@ -114,9 +111,9 @@
        (if (not (> user-args list-length))
            (remove-item-from-list user-args)
            ;; Otherwise
-           (display-hash-ref messages:messages 'item-not-found)))]
+           (display-messages '(item-not-found))))]
 
     ;; If directory and file don't exist
     [(and (not (directory-exists? config:program-directory))
           (not (file-exists? config:list-file)))
-     (display-hash-ref-multi messages:messages '(file-not-found try-init))]))
+     (display-messages '(file-not-found try-init))]))
