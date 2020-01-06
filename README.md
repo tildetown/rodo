@@ -8,26 +8,41 @@ A minimal list manager for people who live on the command line.
 
 # Table of Contents
 
-- [TL;DR](#tldr)
-- [Introduction](#introduction)
-- [Conventions used in this readme](#conventions-used-in-this-readme)
-- [Platforms](#platforms)
-- [Requirements](#requirements)
-- [Downloading the requirements](#downloading-the-requirements)
+- [Quick Start](#quick-start)
+- [Getting Started](#getting-started)
+    - [Conventions used in this readme](#conventions-used-in-this-readme)
+    - [Platforms](#platforms)
+    - [Requirements](#requirements)
+- [Downloading the Requirements](#downloading-the-requirements)
     - [Downloading Racket](#downloading-racket)
-        - [To download Racket](#to-download-racket)
-    - [Downloading the rodo source code](#downloading-the-rodo-source-code)
-        - [To download the rodo source code](#to-download-the-rodo-source-code)
-- [Running rodo from any directory](#downloading-rodo-from-any-directory)
+        - [To Download Racket](#to-download-racket)
+    - [Downloading the rodo Source Code](#downloading-the-rodo-source-code)
+        - [To Download the rodo source code](#to-download-the-rodo-source-code)
+- [Running rodo from Any Directory](#running-rodo-from-any-directory)
     - [Setting up a $PATH](#setting-up-a-path)
         - [To set up a $PATH](#to-set-up-a-path)
     - [Adding rodo to your $PATH](#adding-rodo-to-your-path)
         - [To add rodo to your $PATH](#to-add-rodo-to-your-path)
+- [Using rodo](#using-rodo)
+    - [Showing the Help Message](#showing-the-help-message)
+        - [To Show the Help Message](#to-show-the-help-message)
+    - [Initializing rodo](#initializing-rodo)
+        - [To Initialize rodo](#to-initialize-rodo)
+    - [Displaying Your List](#displaying-your-list)
+        - [To Display Your List](#to-display-your-list)
+    - [Adding an Item to Your List](#adding-an-item-to-your-list)
+        - [To Add an Item to Your List](#to-add-an-item-to-your-list)
+    - [Removing an Item from Your List](#removing-an-item-from-your-list)
+        - [To Remove an Item from Your List](#to-remove-an-item-from-your-list)
+    - [Configuring rodo](#configuring-rodo)
+        - [To Configure Rodo](#to-configure-rodo)
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
-- [Configuring rodo](#configuring-rodo)
 
-# TL;DR
+# Quick Start
+
+**Note** - This section is for users who are familiar with git, a Unix-like
+command line environment, or scripting.
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
 2. `git clone https://github.com/m455/rodo` into a directory of your choice
@@ -51,13 +66,13 @@ If you are using a single-file executable, create a wrapper as follows:
 ~/path/to/rodo "$@"
 ```
 
-# Introduction
+# Getting Started
 
-This readme will guide you through downloading, installing, and using the rodo
-list manager. It is intended for people who spend a lot of their time on the
-command line and want a minimal list manager.
+This readme will guide you through downloading, setting up, and using the rodo
+list manager. This readme is intended for people who spend a lot of their time
+on the command line and want a minimal list manager.
 
-# Conventions used in this readme
+## Conventions used in this readme
 
 * **Note** - Notes signify additional information
 * **Tip**- Tips signify an alternate procedure for completing a step
@@ -66,7 +81,7 @@ command line and want a minimal list manager.
 * `Inline code` - Inline code signifies package names, filenames, or commands
 * ```Code block``` - Code blocks signify file contents
 
-# Platforms
+## Platforms
 
 Below is a list of platforms that rodo can run on:
 
@@ -74,14 +89,14 @@ Below is a list of platforms that rodo can run on:
 * Windows Subsystem for Linux
 * macOS (Untested)
 
-# Requirements
+## Requirements
 
 The following items must be installed before you can use rodo:
 
 * Racket: [https://racket-lang.org/](https://racket-lang.org/)
 * rodo's source code: [https://github.com/m455/rodo](https://github.com/m455/rodo)
 
-# Downloading the requirements
+# Downloading the Requirements
 
 This section will guide you through downloading the required items for running
 rodo.
@@ -90,19 +105,19 @@ rodo.
 
 The Racket programming language will be needed to interpret or compile rodo.
 
-### To download Racket
+### To Download Racket
 
 1. run `sudo apt install racket` on the command line
 
-## Downloading the rodo source code
+## Downloading the rodo Source Code
 
 rodo's source code is needed so Racket can interpret or compile rodo.
 
-### To download the rodo source code
+### To Download the rodo Source Code
 
 1. run `git clone https://github.com/m455/rodo`
 
-# Running rodo from any directory
+# Running rodo from Any Directory
 
 This section will guide you through setting up your `$PATH` and adding rodo to
 your `$PATH`. This will allow you to run rodo from any directory on your system.
@@ -157,6 +172,78 @@ command:
 chmod u+x ~/bin/rodo
 ```
 
+# Using rodo
+
+This section will guide you the various commands that rodo can use. This section
+assumes you know how to run either the `rodo.rkt` or an executable created with
+`raco exe rodo.rkt`.
+
+## Showing the Help Message
+
+The help message will provide a list of available commands. This is useful
+in case you forget the name of a comamnd or how to use a command.
+
+### To Show the Help Message
+
+1. Run `rodo -h`
+
+## Initializing rodo
+
+Before using rodo, you must initialize rodo. Initializing will allow you to save
+your list to a text file for later access.
+
+### To initialize rodo
+
+1. Run `rodo init`
+
+## Displaying Your List
+
+Displaying your list will allow you to view items you have added to your list.
+You will notice numbers beside the items in your list. These numbers are for
+references when removing items. See the [Removing an Item from Your
+List](#removing-an-item-from-your-list) topic for more information.
+
+### To Display Your List
+
+1. Run `rodo ls`
+
+## Adding an Item to Your List
+
+Adding an item to your list will save it to a text file to access later.
+
+## To Add an Item to Your List
+
+1. Run `rodo add "this is an example of an item using double quotation marks"`
+
+**Note** - The double quotation marks are optional, but recommended
+
+## Removing an Item from Your List
+
+When removing an item from your list, you can reference the numbers beside each
+item when [Displaying Your List](#displaying-your-list). You can use these
+numbers when removing an item from your list.
+
+### To Remove an Item from Your List
+
+1. Run `rodo rm 1`
+
+**Note 1** - The "1" in the procedure above will remove the first item in your
+list.
+
+**Note 2** - You may need to run `rodo ls` first to see which numbers correspond
+with which item in your list.
+
+## Configuring rodo
+
+You can configure rodo's settings, such as the location of the list file, and
+command names.
+
+## To Configure rodo
+
+**Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
+
+1. Edit the `config.rkt` file
+
 # List of commands
 
 This section lists and describes rodo's commands.
@@ -187,9 +274,3 @@ The examples below assume that you have [added rodo to your $PATH](#adding-rodo-
 
 **Note**: You may have to run `rodo ls` to see which number corresponds to which item in your list.
 
-# Configuring rodo
-
-**Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
-
-Settings such as the program name, directory, and the filename of the list
-file can be changed by editing the `config.rkt` file.
