@@ -1,0 +1,1 @@
+("7.2" racket ("065ba24c0934d73675dc0b0163b4701d782dc426" . "af632c462e0b9ace40afb355782b3574ed81c224") #"/home/m455/dev/projects/rodo/config.rkt" (collects #"racket" #"base.rkt") (collects #"racket" #"runtime-config.rkt"))
