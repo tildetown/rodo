@@ -19,25 +19,24 @@
 
 (define (display-messages key-list)
   (for ([key key-list])
-    (display (hash-ref messages:messages key))))
+       (display (hash-ref messages:messages key))))
 
-(define (list->ascending-numbers lst)
+(define (list->ascending-numbers-list lst)
   (list:range (length lst)))
 
-(define (list->dotted-ascending-numbers lst)
+(define (list->dotted-ascending-numbers-list lst)
   (map (lambda (x) (string-append x ". "))
-       (map number->string (list->ascending-numbers lst))))
+       (map number->string (list->ascending-numbers-list lst))))
 
 (define (list->numbered-list lst)
   (map (lambda (x y) (string-append x y))
-       (list->dotted-ascending-numbers lst)
+       (list->dotted-ascending-numbers-list lst)
        lst))
 
 (define (file->vertically-numbered-list a-file)
-  (string:string-join
-   (list->numbered-list (file:file->lines a-file))
-   "\n"
-   #:after-last "\n"))
+  (string:string-join (list->numbered-list (file:file->lines a-file))
+                      "\n"
+                      #:after-last "\n"))
 
 (define (surround-with-quotation-marks item)
   (string-append "\"" item "\""))
@@ -50,19 +49,20 @@
 
 (define (check-list-conditions)
   (cond
-    ;; If exists and not empty
+    ;; If list exists and not empty
     [(and (file-exists? config:list-file)
           (not (null? (file:file->lines config:list-file))))
      (display (file->vertically-numbered-list config:list-file))]
 
-    ;; If exists and empty
+    ;; If list exists and empty
     [(and (file-exists? config:list-file)
           (null? (file:file->lines config:list-file)))
      (display-messages '(empty-list))]
 
     ;; If not exist
     [(and (not (file-exists? config:list-file)))
-     (display-messages '(file-not-found try-init))]
+     (display-messages '(file-not-found
+                          try-init))]
 
     [else (display-messages '(show-usage))]))
 
@@ -80,17 +80,15 @@
 
 (define (check-add-conditions args)
   (if (and (file-exists? config:list-file))
-      (add-item-to-list args)
-      ;; Otherwise
-      (display-messages '(file-not-found try-init))))
+    (add-item-to-list args)
+    ;; Otherwise
+    (display-messages '(file-not-found
+                         try-init))))
 
 (define (remove-item-from-list user-args)
   (let* ([item-to-remove (list-ref (file:file->lines config:list-file) user-args)]
          [new-list (remove item-to-remove (file:file->lines config:list-file))])
-    (file:display-lines-to-file new-list
-                                config:list-file
-                                #:mode 'text
-                                #:exists 'truncate)
+    (file:display-lines-to-file new-list config:list-file #:mode 'text #:exists 'truncate)
     (display-item-removed item-to-remove)))
 
 (define (check-remove-conditions args)
@@ -109,11 +107,12 @@
            ;; Length subtract one because the numbering starts at zero
            [list-length (sub1 (length (file:file->lines config:list-file)))])
        (if (not (> user-args list-length))
-           (remove-item-from-list user-args)
-           ;; Otherwise
-           (display-messages '(item-not-found))))]
+         (remove-item-from-list user-args)
+         ;; Otherwise
+         (display-messages '(item-not-found))))]
 
     ;; If directory and file don't exist
     [(and (not (directory-exists? config:program-directory))
           (not (file-exists? config:list-file)))
-     (display-messages '(file-not-found try-init))]))
+     (display-messages '(file-not-found
+                          try-init))]))
