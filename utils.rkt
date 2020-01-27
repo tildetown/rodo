@@ -48,23 +48,21 @@
   (display (format (hash-ref messages:messages 'item-removed) item-to-remove)))
 
 (define (check-list-conditions)
-  (cond
-    ;; If list exists and not empty
-    [(and (file-exists? config:list-file)
-          (not (null? (file:file->lines config:list-file))))
-     (display (file->vertically-numbered-list config:list-file))]
+  (let ([file-exists?   (lambda () (file-exists? config:list-file))]
+        [file-null?     (lambda () (null? (file:file->lines config:list-file)))])
+    (cond
+      [(and (file-exists?)
+            (file-null?))
+       (display-messages '(empty-list))]
 
-    ;; If list exists and empty
-    [(and (file-exists? config:list-file)
-          (null? (file:file->lines config:list-file)))
-     (display-messages '(empty-list))]
+      [(and (file-exists?)
+            (not (file-null?)))
+       (display (file->vertically-numbered-list config:list-file))]
 
-    ;; If not exist
-    [(and (not (file-exists? config:list-file)))
-     (display-messages '(file-not-found
-                          try-init))]
+      [(not (file-exists?))
+       (display-messages '(file-not-found try-init))]
 
-    [else (display-messages '(show-usage))]))
+      [else (display-messages '(show-usage))])))
 
 (define (append-element-to-end-of-list lst item-to-add)
   (reverse (cons item-to-add (reverse (file:file->lines lst)))))
@@ -85,8 +83,8 @@
     (display-messages '(file-not-found
                          try-init))))
 
-(define (remove-item-from-list user-args)
-  (let* ([item-to-remove (list-ref (file:file->lines config:list-file) user-args)]
+(define (remove-item-from-list args)
+  (let* ([item-to-remove (list-ref (file:file->lines config:list-file) args)]
          [new-list (remove item-to-remove (file:file->lines config:list-file))])
     (file:display-lines-to-file new-list config:list-file #:mode 'text #:exists 'truncate)
     (display-item-removed item-to-remove)))
@@ -103,11 +101,11 @@
     [(and (directory-exists? config:program-directory)
           (file-exists?      config:list-file)
           (not (null?        config:list-file)))
-     (let ([user-args   (string->number (list-ref args 1))]
+     (let ([args   (string->number (list-ref args 1))]
            ;; Length subtract one because the numbering starts at zero
            [list-length (sub1 (length (file:file->lines config:list-file)))])
-       (if (not (> user-args list-length))
-         (remove-item-from-list user-args)
+       (if (not (> args list-length))
+         (remove-item-from-list args)
          ;; Otherwise
          (display-messages '(item-not-found))))]
 
