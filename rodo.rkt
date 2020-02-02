@@ -3,6 +3,7 @@
 (require (prefix-in args: "args.rkt"))
 
 (define (main args)
-  (args:check-args args))
+  (let ([args-converted (vector->list args)])
+    (args:check-args args-converted)))
 
-(main (vector->list (current-command-line-arguments)))
+(main (current-command-line-arguments))
