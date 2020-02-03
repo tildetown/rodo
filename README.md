@@ -31,11 +31,11 @@ A minimal list manager for people who live on the command line.
     - [Displaying Your List](#displaying-your-list)
         - [To Display Your List](#to-display-your-list)
     - [Adding an Item to Your List](#adding-an-item-to-your-list)
-    - [To Add an Item to Your List](#to-add-an-item-to-your-list)
+        - [To Add an Item to Your List](#to-add-an-item-to-your-list)
     - [Removing an Item from Your List](#removing-an-item-from-your-list)
         - [To Remove an Item from Your List](#to-remove-an-item-from-your-list)
     - [Configuring rodo](#configuring-rodo)
-    - [To Configure rodo](#to-configure-rodo)
+        - [To Configure rodo](#to-configure-rodo)
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
@@ -210,7 +210,7 @@ List](#removing-an-item-from-your-list) topic for more information.
 
 Adding an item to your list will save it to a text file to access later.
 
-## To Add an Item to Your List
+### To Add an Item to Your List
 
 1. Run `rodo add "this is an example of an item using double quotation marks"`
 
@@ -237,7 +237,7 @@ with which item in your list.
 You can configure rodo's settings, such as the location of the list file, and
 command names.
 
-## To Configure rodo
+### To Configure rodo
 
 **Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
 
