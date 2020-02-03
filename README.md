@@ -42,7 +42,7 @@ A minimal list manager for people who live on the command line.
 <!-- markdown-toc end -->
 
 
-# Quick Start
+# Quick start
 
 **Note** - This section is for users who are familiar with git, a Unix-like
 command line environment, or scripting.
@@ -69,7 +69,7 @@ If you are using a single-file executable, create a wrapper as follows:
 ~/path/to/rodo "$@"
 ```
 
-# Getting Started
+# Getting started
 
 This readme will guide you through downloading, setting up, and using the rodo
 list manager. This readme is intended for people who spend a lot of their time
@@ -103,19 +103,19 @@ The following items must be downloaded and installed before you can use rodo:
 
 The Racket programming language will be needed to interpret or compile rodo.
 
-### To Download and install Racket
+### To download and install Racket
 
 1. run `sudo apt install racket` on the command line
 
-## Downloading the rodo Source Code
+## Downloading the rodo source code
 
 rodo's source code is needed so Racket can interpret or compile rodo.
 
-### To Download the rodo Source Code
+### To download the rodo source code
 
 1. run `git clone https://github.com/m455/rodo`
 
-# Running rodo from Any Directory
+# Running rodo from any directory
 
 This section will guide you through setting up your `$PATH` and adding rodo to
 your `$PATH`. This will allow you to run rodo from any directory on your system.
@@ -177,12 +177,12 @@ use. This section assumes you know how to run either the `rodo.rkt`
 using the Racket interpreter (`racket rodo.rkt`) or you have created
 an executable using `raco exe rodo.rkt`.
 
-## Showing the Help Message
+## Showing the help message
 
 The help message will provide a list of available commands. This is useful
 in case you forget the name of a comamnd or how to use a command.
 
-### To Show the Help Message
+### To show the help message
 
 1. Run `rodo -h`
 
@@ -195,34 +195,34 @@ your list to a text file for later access.
 
 1. Run `rodo init`
 
-## Displaying Your List
+## Displaying your list
 
 Displaying your list will allow you to view items you have added to your list.
 You will notice numbers beside the items in your list. These numbers are for
 references when removing items. See the [Removing an Item from Your
 List](#removing-an-item-from-your-list) topic for more information.
 
-### To Display Your List
+### To display your list
 
 1. Run `rodo ls`
 
-## Adding an Item to Your List
+## Adding an item to your list
 
 Adding an item to your list will save it to a text file to access later.
 
-### To Add an Item to Your List
+### To add an item to your list
 
 1. Run `rodo add "this is an example of an item using double quotation marks"`
 
 **Note** - The double quotation marks are optional, but recommended
 
-## Removing an Item from Your List
+## Removing an item from your list
 
 When removing an item from your list, you can reference the numbers beside each
 item when [Displaying Your List](#displaying-your-list). You can use these
 numbers when removing an item from your list.
 
-### To Remove an Item from Your List
+### To remove an item from your list
 
 1. Run `rodo rm 1`
 
@@ -237,7 +237,7 @@ with which item in your list.
 You can configure rodo's settings, such as the location of the list file, and
 command names.
 
-### To Configure rodo
+### To configure rodo
 
 **Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
 
