@@ -7,119 +7,121 @@
 (define (indent string)
   (string-append "\t" string))
 
+(define line-gap-single "\n")
+(define line-gap-double "\n\n")
+(define space " ")
+
 (define messages
   (hash
-   'show-help
-     (string-append "\n"
-                    "Conventions used in this help message\n"
-                    "====================================="
-                    "\n\n"
-                    "[command]  - [command]s should be replaced by a command from the Command section below without the surrounding \"[\" and \"]\"s."
-                    "\n\n"
-                    "<argument> - <argument>s should be replaced by user input without the surrounding \"<\" and \">\"s."
-                    "\n\n"
-                    "Command descriptions\n"
-                    "===================="
-                    "\n\n"
+    'show-help
+    (string-append "rodo"
+                   line-gap-double
 
-                    ;; initialize-command
-            (format "~a" (car config:initialize-commands))
-                    "\n\n"
-    (indent (format "Creates a list in ~a." config:list-file))
-                    "\n\n"
+                   "NAME"
+                   line-gap-single
+                   "rodo - A list-management tool"
+                   line-gap-double
 
-                    ;; list-command
-            (format "~a" (car config:list-commands))
-                    "\n\n"
-            (indent "Displays items in your list.")
-                    "\n\n"
+                   "SYNOPSIS"
+                   line-gap-single
+                   "rodo [command] <args>"
+                   line-gap-double
 
-                    ;; add-command
-            (format "~a" (car config:add-commands))
-                    "\n\n"
-            (indent "Adds an item to your list.")
-                    "\n\n"
+                   "DESCRIPTION"
+                   line-gap-single
+                   "rodo is a minimalistic list-management tool. It does not use any data formats, and cannot remove multiple items at once."
+                   line-gap-double
+                   (format "I made this tool to separate my hobby todos and my important todos. I do this by only using ~a to organize my hobby todos on the command line, and my important todos on a synced calendar elsewhere." config:program-name)
+                   line-gap-double
 
-                    ;; remove-command
-            (format "~a" (car config:remove-commands))
-                    "\n\n"
-            (indent "Removes an item from your list.")
-                    "\n\n"
+                   "COMMANDS"
+                   line-gap-single
+                   ;; initialize-command
+                   (car config:initialize-commands)
+                   line-gap-single
+                   (format "Creates a list file located at ~a" config:list-file)
+                   line-gap-double
 
-                    "Usage examples\n"
-                    "=============="
-                    "\n\n"
+                   ;; list-command
+                   (car config:list-commands)
+                   line-gap-single
+                   "Displays items from your list"
+                   line-gap-double
 
-                    ;; initialize-command
-            (format "~a" (car config:initialize-commands))
-                    "\n\n"
-    (indent (format "~a ~a" config:program-name (car config:initialize-commands)))
-                    "\n\n"
+                   ;; add-command
+                   (car config:add-commands) space "<args>"
+                   line-gap-single
+                   "Adds an item to your list"
+                   line-gap-double
 
-                    ;; list-command
-            (format "~a" (car config:list-commands))
-                    "\n\n"
-    (indent (format "~a ~a" config:program-name (car config:list-commands)))
-                    "\n\n"
+                   ;; remove-command
+                   (car config:remove-commands) space "<args>"
+                   line-gap-single
+                   "Removes an item from your list"
+                   line-gap-double
 
-                    ;; add-command
-            (format "~a" (car config:add-commands))
-                    "\n\n"
-    (indent (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-commands)))
-                    "\n\n"
-    (indent (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-commands)))
-                    "\n\n"
-            (indent "Note: Grave accents (`) and single quotation marks (\') cannot be used with this command.")
-                    "\n\n"
+                   "USAGE EXAMPLES"
+                   line-gap-single
+                   ;; initialize-command
+                   (car config:initialize-commands)
+                   line-gap-single
+                   (format "~a ~a" config:program-name (car config:initialize-commands))
+                   line-gap-double
 
-                    ;; remove-command
-            (format "~a" (car config:remove-commands))
-                    "\n\n"
-    (indent (format "~a ~a 2" config:program-name (car config:remove-commands)))
-                    "\n\n"
-            (indent "Note: The example above will remove the third item from your list, because the list starts at zero.")
-                    "\n\n"
+                   ;; list-command
+                   (car config:list-commands)
+                   line-gap-single
+                   (format "~a ~a" config:program-name (car config:list-commands))
+                   line-gap-double
 
-                    "Can't see the whole help message?\n"
-                    "================================="
-                    "\n\n"
-            (format "Try running \"~a -h | less\" (without the double quotation marks), so you can use the arrow keys to scroll up and down." config:program-name)
-                    "\n\n"
-                    "When you want to quit, type \"q\" (without the double quotation marks)."
-                    "\n\n")
+                   ;; add-command
+                   (car config:add-commands)
+                   line-gap-single
+                   (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-commands))
+                   line-gap-single
+                   (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-commands))
+                   line-gap-double
 
-        'empty-list "> There is nothing in your list.\n"
+                   ;; remove-command
+                   (car config:remove-commands)
+                   line-gap-single
+                   (format "~a ~a 2" config:program-name (car config:remove-commands))
+                   line-gap-double
 
-        'show-usage (format "> For usage type \"~a -h\" (without the double quotation marks).\n" config:program-name)
+                   "Can't see the whole help message? Try running:"
+                   line-gap-single
+                   (format "~a ~a | less" config:program-name (car config:help-commands))
+                   line-gap-single)
 
-        'creating (format "> Creating a list in ~a...\n" config:list-file)
+    'empty-list "> There is nothing in your list\n"
 
-        'creation-error (format "> Error: Could not create a list file in ~a.\n" config:list-file)
+    'show-usage (format "> For usage type ~a -h\n" config:program-name)
 
-        'file-already-exists (format "> Error: A list file already exists in ~a.\n" config:list-file)
+    'creating (format "> Creating a list in ~a...\n" config:list-file)
 
-        'successfully-created (format "> Your list file was successfully created in ~a.\n" config:list-file)
+    'creation-error (format "> Error: Could not create a list file in ~a\n" config:list-file)
 
-        'file-not-found (format "> Error: Could not find ~a.\n" config:list-file)
+    'file-already-exists (format "> Error: A list file already exists in ~a\n" config:list-file)
 
-        'item-not-found "> Error: Could not find that item.\n"
+    'successfully-created (format "> Your list file was successfully created in ~a\n" config:list-file)
 
-        'init-y/n (format (string-append "> A list file will be created in ~a.\n"
-                                         "> Are you sure you want to continue? [y/n].\n")
-                          config:list-file)
+    'file-not-found (format "> Error: Could not find ~a\n" config:list-file)
 
-        'try-init (format "> Try typing \"~a ~a\" to set it up (without the double quotation marks).\n"
-                          config:program-name (car config:initialize-commands))
+    'item-not-found "> Error: Could not find that item\n"
 
-        'terminating (format "> Exited ~a.\n" config:program-name)
+    'init-y/n (format "> A list file will be created in ~a\n> Are you sure you want to continue? [y/n]\n" config:list-file)
 
-        'choose-y/n "> Error: Please choose y or n\n"
+    'try-init (format "> Try typing ~a ~a to set it up\n" config:program-name (car config:initialize-commands))
 
-        'not-in-list "> Error: Item does not exist\n"
+    'terminating (format "> Exited ~a\n" config:program-name)
 
-        'item-added "> Added \"~a\" to your list\n"
+    'choose-y/n "> Error: Please choose y or n\n"
 
-        'item-removed "> Removed \"~a\" from your list\n"))
+    'not-in-list "> Error: Item does not exist\n"
+
+    'item-added "> Added [~a] to your list\n"
+
+    'item-removed "> Removed [~a] from your list\n"))
 
 
 (define y/n (hash 'yes '("yes" "Yes" "y" "Y")

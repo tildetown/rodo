@@ -10,38 +10,37 @@
 
 (define (check-args args)
   (let ([args-length (length args)]
-        [is-member?  (lambda (command) (member (list-ref args 0) command))]
-        [args-second (string->number (list-ref args 1))])
+        [is-member?  (lambda (command) (member (list-ref args 0) command))])
     (cond
       [(equal? args-length 0)
        (utils:display-messages '(show-usage))]
 
-      ;; help-command
+      ;; help
       [(and (equal? args-length 1)
             (is-member? config:help-commands))
        (utils:display-messages '(show-help))]
 
-      ;; initialize-command
+      ;; initialize
       [(and (equal? args-length 1)
             (is-member? config:initialize-commands))
        (init:check-initialize-conditions)]
 
-      ;; add-command
+      ;; add
       [(and (>= args-length 2)
             (is-member? config:add-commands))
        (utils:check-add-conditions args)]
 
-      ;; list-command
+      ;; list
       [(and (equal? args-length 1)
             (is-member? config:list-commands))
        (utils:check-list-conditions)]
 
-      ;; remove-command
+      ;; remove
       [(and (equal? args-length 2)
             (is-member? config:remove-commands)
-            (real? args-second)
-            (or (positive? args-second)
-                (zero? args-second)))
+            (real? (string->number (list-ref args 1)))
+            (or (positive? (string->number (list-ref args 1)))
+                (zero? (string->number (list-ref args 1)))))
        (utils:check-remove-conditions args)]
 
       [else (utils:display-messages '(show-usage))])))
