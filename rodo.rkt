@@ -1,9 +1,7 @@
 #lang racket/base
-
 (require (prefix-in args: "args.rkt"))
 
 (define (main args)
-  (let ([args-converted (vector->list args)])
-    (args:check-args args-converted)))
+  (args:check-args (vector->list args)))
 
 (main (current-command-line-arguments))

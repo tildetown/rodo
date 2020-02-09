@@ -10,8 +10,8 @@
 
 (define (check-args args)
   (let ([args-length (length args)]
-        [is-member?  (lambda (command)
-                       (member (list-ref args 0) command))])
+        [is-member?  (lambda (command) (member (list-ref args 0) command))]
+        [args-second (string->number (list-ref args 1))])
     (cond
       [(equal? args-length 0)
        (utils:display-messages '(show-usage))]
@@ -39,13 +39,9 @@
       ;; remove-command
       [(and (equal? args-length 2)
             (is-member? config:remove-commands)
-            ;; possibly replace this with something that checks
-            ;; the length, the creates a range with that, starting
-            ;; from zero, and checks to see if the user input
-            ;; is a member of that list
-            (real?         (string->number (list-ref args 1)))
-            (or (positive? (string->number (list-ref args 1)))
-                (zero?     (string->number (list-ref args 1)))))
+            (real? args-second)
+            (or (positive? args-second)
+                (zero? args-second)))
        (utils:check-remove-conditions args)]
 
       [else (utils:display-messages '(show-usage))])))
