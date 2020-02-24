@@ -10,6 +10,7 @@ A minimal list manager for people who live on the command line.
 # Table of Contents
 
 - [Quick start](#quick-start)
+    - [Creating a wrapper](#creating-a-wrapper)
 - [Getting started](#getting-started)
 - [Conventions used in this readme](#conventions-used-in-this-readme)
 - [Platforms](#platforms)
@@ -55,18 +56,14 @@ command line environment, or scripting.
     * To use rodo as an single-file executable follow the steps below:
         1. Run `raco exe rodo.rkt` to compile rodo into a single-file executable
         2. Run `./rodo`
-5. (optional) Create a wrapper in your `$PATH` directory to run rodo from anywhere:
+        3. Optional: Move the single-file executable, `rodo`, to your `$PATH`
+
+## Creating a wrapper
+Create a wrapper in your `$PATH` directory to run rodo from anywhere:
 
 ```
 #!/usr/bin/env bash
 racket ~/path/to/rodo.rkt "$@"
-```
-
-If you are using a single-file executable, create a wrapper as follows:
-
-```
-#!/usr/bin/env bash
-~/path/to/rodo "$@"
 ```
 
 # Getting started
