@@ -75,7 +75,7 @@ on the command line and want a minimal list manager.
 # Conventions used in this readme
 
 * **Note** - Notes signify additional information
-* **Tip**- Tips signify an alternate procedure for completing a step
+* **Tip** - Tips signify an alternate procedure for completing a step
 * **Caution** - Cautions signify that damage may occur
 * **Example** - Examples provide a visual reference of how a procedure would be carried out in the real world
 * `Inline code` - Inline code signifies package names, filenames, or commands
