@@ -10,6 +10,8 @@
 (define line-gap-single "\n")
 (define line-gap-double "\n\n")
 (define space " ")
+(define tab "\t")
+(define tab-double "\t\t")
 
 (define messages
   (hash
@@ -19,73 +21,73 @@
 
                    "NAME"
                    line-gap-single
-                   "rodo - A list-management tool"
+                   tab "rodo - A list-management tool"
                    line-gap-double
 
                    "SYNOPSIS"
                    line-gap-single
-                   "rodo [command] <args>"
+                   tab "rodo [command] <args>"
                    line-gap-double
 
                    "DESCRIPTION"
                    line-gap-single
-                   "rodo is a minimalistic list-management tool. It does not use any data formats, and cannot remove multiple items at once."
+                   tab "rodo is a minimalistic list-management tool. It does not use any data formats, and cannot remove multiple items at once."
                    line-gap-double
-                   (format "I made this tool to separate my hobby todos and my important todos. I do this by only using ~a to organize my hobby todos on the command line, and my important todos on a synced calendar elsewhere." config:program-name)
+                   tab (format "I made this tool to separate my hobby todos and my important todos. I do this by only using ~a to organize my hobby todos on the command line, and my important todos on a synced calendar elsewhere." config:program-name)
                    line-gap-double
 
                    "COMMANDS"
                    line-gap-single
                    ;; initialize-command
-                   (car config:initialize-commands)
+                   tab (car config:initialize-commands)
                    line-gap-single
-                   (format "Creates a list file located at ~a" config:list-file)
+                   tab-double (format "Creates a list file located at ~a" config:list-file)
                    line-gap-double
 
                    ;; list-command
-                   (car config:list-commands)
+                   tab (car config:list-commands)
                    line-gap-single
-                   "Displays items from your list"
+                   tab-double "Displays items from your list"
                    line-gap-double
 
                    ;; add-command
-                   (car config:add-commands) space "<args>"
+                   tab (car config:add-commands) space "<args>"
                    line-gap-single
-                   "Adds an item to your list"
+                   tab-double "Adds an item to your list"
                    line-gap-double
 
                    ;; remove-command
-                   (car config:remove-commands) space "<args>"
+                   tab (car config:remove-commands) space "<args>"
                    line-gap-single
-                   "Removes an item from your list"
+                   tab-double"Removes an item from your list"
                    line-gap-double
 
                    "USAGE EXAMPLES"
                    line-gap-single
                    ;; initialize-command
-                   (car config:initialize-commands)
+                   tab (car config:initialize-commands)
                    line-gap-single
-                   (format "~a ~a" config:program-name (car config:initialize-commands))
+                   tab-double (format "~a ~a" config:program-name (car config:initialize-commands))
                    line-gap-double
 
                    ;; list-command
-                   (car config:list-commands)
+                   tab (car config:list-commands)
                    line-gap-single
-                   (format "~a ~a" config:program-name (car config:list-commands))
+                   tab-double (format "~a ~a" config:program-name (car config:list-commands))
                    line-gap-double
 
                    ;; add-command
-                   (car config:add-commands)
+                   tab (car config:add-commands)
                    line-gap-single
-                   (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-commands))
+                   tab-double (format "~a ~a this is an item without double quotation marks" config:program-name (car config:add-commands))
                    line-gap-single
-                   (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-commands))
+                   tab-double (format "~a ~a \"this is an item surrounded by double quotation marks\"" config:program-name (car config:add-commands))
                    line-gap-double
 
                    ;; remove-command
-                   (car config:remove-commands)
+                   tab (car config:remove-commands)
                    line-gap-single
-                   (format "~a ~a 2" config:program-name (car config:remove-commands))
+                   tab-double (format "~a ~a 2" config:program-name (car config:remove-commands))
                    line-gap-double
 
                    "Can't see the whole help message? Try running:"
