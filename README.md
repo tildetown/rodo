@@ -119,8 +119,7 @@ next section will remove the `rodo` executable from `/usr/local/bin`.
 
 # Using rodo
 
-This section will guide you the various commands that rodo can
-use.
+This section will teach you how to use rodo's commands.
 
 This section assumes you have [installed rodo](#installing-rodo).
 
@@ -145,9 +144,10 @@ your list to a text file for later access.
 ## Displaying your list
 
 Displaying your list will allow you to view items you have added to your list.
-You will notice numbers beside the items in your list. These numbers are for
-references when removing items. See the [Removing an Item from Your
-List](#removing-an-item-from-your-list) topic for more information.
+You will notice numbers beside the items in your list.
+
+**Note**: These numbers are useful references for when you want to remove items from your list. For
+more information, see the [Removing an Item from Your List](#removing-an-item-from-your-list) topic.
 
 ### To display your list
 
