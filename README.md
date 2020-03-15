@@ -6,24 +6,21 @@ A minimal list manager for people who live on the command line.
 
 ![](screenshot.png)
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 # Table of Contents
 
 - [Quick start](#quick-start)
-    - [Creating a wrapper](#creating-a-wrapper)
 - [Getting started](#getting-started)
 - [Conventions used in this readme](#conventions-used-in-this-readme)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
-    - [Downloading Racket](#downloading-racket)
-        - [To download and install Racket](#to-download-and-install-racket)
-    - [Downloading the rodo source code](#downloading-the-rodo-source-code)
-        - [To download the rodo source code](#to-download-the-rodo-source-code)
-- [Running rodo from any directory](#running-rodo-from-any-directory)
-    - [Setting up a $PATH](#setting-up-a-path)
-        - [To set up a $PATH](#to-set-up-a-path)
-    - [Adding rodo to your $PATH](#adding-rodo-to-your-path)
-        - [To add rodo to your $PATH](#to-add-rodo-to-your-path)
+- [Downloading Racket](#downloading-racket)
+    - [To download and install Racket](#to-download-and-install-racket)
+- [Downloading the rodo source code](#downloading-the-rodo-source-code)
+    - [To download the rodo source code](#to-download-the-rodo-source-code)
+- [Installing rodo](#installing-rodo)
+    - [To install rodo](#to-install-rodo)
+- [Uninstalling rodo](#uninstalling-rodo)
+    - [To uninstall rodo](#to-uninstall-rodo)
 - [Using rodo](#using-rodo)
     - [Showing the help message](#showing-the-help-message)
         - [To show the help message](#to-show-the-help-message)
@@ -40,31 +37,17 @@ A minimal list manager for people who live on the command line.
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
-<!-- markdown-toc end -->
-
-
 # Quick start
 
 **Note** - This section is for users who are familiar with git, a Unix-like
 command line environment, or scripting.
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
-2. `git clone https://github.com/m455/rodo` into a directory of your choice
-3. `cd` into the `rodo` directory
-4. Choose one of the options below for running rodo:
-    * To use rodo using the Racket interpreter run: `racket rodo.rkt`
-    * To use rodo as an single-file executable follow the steps below:
-        1. Run `raco exe rodo.rkt` to compile rodo into a single-file executable
-        2. Run `./rodo`
-        3. Optional: Move the single-file executable, `rodo`, to your `$PATH`
+2. `git clone https://github.com/m455/rodo`
+3. `cd rodo`
+4. `sudo ./install.sh`
 
-## Creating a wrapper
-Create a wrapper in your `$PATH` directory to run rodo from anywhere:
-
-```
-#!/usr/bin/env bash
-racket ~/path/to/rodo.rkt "$@"
-```
+**Note**: To uninstall, run `sudo ./uninstall.sh`
 
 # Getting started
 
@@ -96,76 +79,43 @@ The following items must be downloaded and installed before you can use rodo:
 * Racket: [https://racket-lang.org/](https://racket-lang.org/)
 * rodo's source code: [https://github.com/m455/rodo](https://github.com/m455/rodo)
 
-## Downloading Racket
+# Downloading Racket
 
-The Racket programming language will be needed to interpret or compile rodo.
+The Racket programming language will be needed to create a single-file rodo executable
 
-### To download and install Racket
+## To download and install Racket
 
-1. run `sudo apt install racket` on the command line
+1. Run `sudo apt install racket` on the command line
 
-## Downloading the rodo source code
+# Downloading the rodo source code
 
-rodo's source code is needed so Racket can interpret or compile rodo.
+rodo's source code is needed so Racket's `raco` tool can create a single-file executable
 
-### To download the rodo source code
+## To download the rodo source code
 
-1. run `git clone https://github.com/m455/rodo`
+1. Run `git clone https://github.com/m455/rodo`
 
-# Running rodo from any directory
+# Installing rodo
 
-This section will guide you through setting up your `$PATH` and adding rodo to
-your `$PATH`. This will allow you to run rodo from any directory on your system.
+This section will guide you through installing rodo. Rodo will be installed into
+the `/usr/local/bin` directory.
 
-## Setting up a $PATH
+This section assumes you have already [downloaded the rodo source code](#downloading-the-rodo-source-code).
 
-A `$PATH` is a directory in which you can place executable files or scripts.
-After placing executable files or scripts in your `$PATH` directory, you can
-then run these files or scripts from any directory on your machine.
+## To install rodo
 
-**Tip**: If you have a `$PATH` already, then skip to [Adding rodo to your
-$PATH](#adding-rodo-to-your-path)
+1. Change to the directory you downloaded rodo into
+2. Run `sudo ./install.sh`
 
-### To set up a $PATH
+# Uninstalling rodo
 
-1. Create a `~/bin/` directory for your `$PATH` by running `mkdir ~/bin/`
-2. Add the `~/bin` directory to your `$PATH` by running the following command:
+This section will guide you through uninstalling rodo. The procedures in the
+next section will remove the `rodo` executable from `/usr/local/bin`.
 
-```
-echo "export PATH=~/bin:\$PATH" >> .bashrc
-```
+## To uninstall rodo
 
-## Adding rodo to your $PATH
-
-After rodo has been added to your `$PATH`, you will be able to run it from any
-directory on your machine.
-
-### To add rodo to your $PATH
-
-1. Create a file in your `~/bin/` directory with the following contents in it:
-
-```
-#!/usr/bin/env bash
-racket ~/path/to/rodo.rkt "$@"
-```
-
-2. Save the file
-3. Make the file executable by running `chmod u+x ~/bin/name-of-your-file`
-
-**Example**: You create a file called `rodo` in your `~/bin/` directory with
-the following contents in it if you downloaded the rodo directory to your
-`~/downloads/` directory:
-
-```
-racket ~/downloads/rodo/rodo.rkt "$@"
-```
-
-You would then make the rodo file executable by running the following
-command:
-
-```
-chmod u+x ~/bin/rodo
-```
+1. Change to the directory you downloaded rodo into
+2. Run `sudo ./uninstall`
 
 # Using rodo
 
