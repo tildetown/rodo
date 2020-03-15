@@ -81,7 +81,7 @@ The following items must be downloaded and installed before you can use rodo:
 
 # Downloading Racket
 
-The Racket programming language will be needed to create a single-file rodo executable
+The Racket programming language will be needed to create a single-file executable
 
 ## To download and install Racket
 
