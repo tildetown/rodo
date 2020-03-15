@@ -100,7 +100,7 @@ rodo's source code is needed so Racket's `raco` tool can create a single-file ex
 This section will guide you through installing rodo. Rodo will be installed into
 the `/usr/local/bin` directory.
 
-This section assumes you have already [downloaded the rodo source code](#downloading-the-rodo-source-code).
+**Note**: This section assumes you have already [downloaded the rodo source code](#downloading-the-rodo-source-code).
 
 ## To install rodo
 
@@ -121,7 +121,7 @@ next section will remove the `rodo` executable from `/usr/local/bin`.
 
 This section will teach you how to use rodo's commands.
 
-This section assumes you have [installed rodo](#installing-rodo).
+**Note**: This section assumes you have [installed rodo](#installing-rodo).
 
 ## Showing the help message
 
