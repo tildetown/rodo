@@ -120,9 +120,9 @@ next section will remove the `rodo` executable from `/usr/local/bin`.
 # Using rodo
 
 This section will guide you the various commands that rodo can
-use. This section assumes you know how to run either the `rodo.rkt`
-using the Racket interpreter (`racket rodo.rkt`) or you have created
-an executable using `raco exe rodo.rkt`.
+use.
+
+This section assumes you have [installed rodo](#installing-rodo).
 
 ## Showing the help message
 
