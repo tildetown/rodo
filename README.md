@@ -51,6 +51,7 @@ command line environment, or scripting.
 2. `git clone https://github.com/m455/rodo`
 3. `cd rodo`
 4. `sudo ./install.sh`
+5. `rodo`
 
 **Note**: To uninstall, run `sudo ./uninstall.sh`
 
