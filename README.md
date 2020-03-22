@@ -5,7 +5,7 @@ rodo is a list-management tool for people who prefer to use the command line.
 This document serves as a reference for operating rodo. This document
 assumes you have basic command line skills.
 
-If you are experience with setting up software projects, you can skip to the [Quick start](#quick-start) section.
+If you are experienced in setting up software projects, you can skip to the [Quick start](#quick-start) section.
 
 # Screenshot
 
