@@ -1,6 +1,11 @@
 # rodo
 
-A minimal list manager for people who live on the command line.
+rodo is a list-management tool for people who prefer to use the command line.
+
+This document serves as a reference for operating rodo. This document
+assumes you have basic command line skills.
+
+If you are experience with setting up software projects, you can skip to the [Quick start](#quick-start) section.
 
 # Screenshot
 
@@ -9,18 +14,18 @@ A minimal list manager for people who live on the command line.
 # Table of Contents
 
 - [Quick start](#quick-start)
-- [Getting started](#getting-started)
 - [Conventions used in this readme](#conventions-used-in-this-readme)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
-- [Downloading Racket](#downloading-racket)
-    - [To download and install Racket](#to-download-and-install-racket)
-- [Downloading the rodo source code](#downloading-the-rodo-source-code)
-    - [To download the rodo source code](#to-download-the-rodo-source-code)
-- [Installing rodo](#installing-rodo)
-    - [To install rodo](#to-install-rodo)
-- [Uninstalling rodo](#uninstalling-rodo)
-    - [To uninstall rodo](#to-uninstall-rodo)
+    - [Downloading Racket](#downloading-racket)
+        - [To download and install Racket](#to-download-and-install-racket)
+    - [Downloading the rodo source code](#downloading-the-rodo-source-code)
+        - [To download the rodo source code](#to-download-the-rodo-source-code)
+- [Getting started](#getting-started)
+    - [Installing rodo](#installing-rodo)
+        - [To install rodo](#to-install-rodo)
+    - [Uninstalling rodo](#uninstalling-rodo)
+        - [To uninstall rodo](#to-uninstall-rodo)
 - [Using rodo](#using-rodo)
     - [Showing the help message](#showing-the-help-message)
         - [To show the help message](#to-show-the-help-message)
@@ -49,12 +54,6 @@ command line environment, or scripting.
 
 **Note**: To uninstall, run `sudo ./uninstall.sh`
 
-# Getting started
-
-This readme will guide you through downloading, setting up, and using the rodo
-list manager. This readme is intended for people who spend a lot of their time
-on the command line and want a minimal list manager.
-
 # Conventions used in this readme
 
 * **Note** - Notes signify additional information
@@ -79,40 +78,45 @@ The following items must be downloaded and installed before you can use rodo:
 * Racket: [https://racket-lang.org/](https://racket-lang.org/)
 * rodo's source code: [https://github.com/m455/rodo](https://github.com/m455/rodo)
 
-# Downloading Racket
+## Downloading Racket
 
 The Racket programming language will be needed to create a single-file executable
 
-## To download and install Racket
+### To download and install Racket
 
 1. Run `sudo apt install racket` on the command line
 
-# Downloading the rodo source code
+## Downloading the rodo source code
 
 rodo's source code is needed so Racket's `raco` tool can create a single-file executable
 
-## To download the rodo source code
+### To download the rodo source code
 
 1. Run `git clone https://github.com/m455/rodo`
 
-# Installing rodo
+# Getting started
 
-This section will guide you through installing rodo. Rodo will be installed into
-the `/usr/local/bin` directory.
+This section will guide you through settig up rodo.
 
 **Note**: This section assumes you have already [downloaded the rodo source code](#downloading-the-rodo-source-code).
 
-## To install rodo
+## Installing rodo
+
+Installing rodo will add a rodo executable to the `/usr/local/bin` directory. This allows users to
+run rodo from any directory on their system.
+
+**Note**: Writing to the `/usr/local/bin` directory requires root privileges.
+
+### To install rodo
 
 1. Change to the directory you downloaded rodo into
 2. Run `sudo ./install.sh`
 
-# Uninstalling rodo
+## Uninstalling rodo
 
-This section will guide you through uninstalling rodo. The procedures in the
-next section will remove the `rodo` executable from `/usr/local/bin`.
+Uninstalling rodo removes the rodo executable from the `/usr/local/bin` directory.
 
-## To uninstall rodo
+### To uninstall rodo
 
 1. Change to the directory you downloaded rodo into
 2. Run `sudo ./uninstall`
@@ -125,8 +129,8 @@ This section will teach you how to use rodo's commands.
 
 ## Showing the help message
 
-The help message will provide a list of available commands. This is useful
-in case you forget the name of a comamnd or how to use a command.
+The help message will provide a list of available commands. This is list useful in case you forget
+the name of a command or how to use a command.
 
 ### To show the help message
 
