@@ -121,9 +121,9 @@
 
     'not-in-list "> Error: Item does not exist\n"
 
-    'item-added "> Added [~a] to your list\n"
+    'item-added "> Added \"~a\" to your list\n"
 
-    'item-removed "> Removed [~a] from your list\n"))
+    'item-removed "> Removed \"~a\" from your list\n"))
 
 
 (define y/n (hash 'yes '("yes" "Yes" "y" "Y")
