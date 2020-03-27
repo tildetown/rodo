@@ -1,11 +1,7 @@
 # rodo
 
-rodo is a list-management tool for people who prefer to use the command line.
-
-This document serves as a reference for operating rodo. This document
-assumes you have basic command line skills.
-
-If you are experienced in setting up software projects, you can skip to the [Quick start](#quick-start) section.
+This document will guide you through downloading, installing, and using rodo. This document assumes
+you have basic command line skills.
 
 # Screenshot
 
@@ -13,7 +9,7 @@ If you are experienced in setting up software projects, you can skip to the [Qui
 
 # Table of Contents
 
-- [Quick start](#quick-start)
+- [Description](#description)
 - [Conventions used in this readme](#conventions-used-in-this-readme)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
@@ -21,6 +17,7 @@ If you are experienced in setting up software projects, you can skip to the [Qui
         - [To download and install Racket](#to-download-and-install-racket)
     - [Downloading the rodo source code](#downloading-the-rodo-source-code)
         - [To download the rodo source code](#to-download-the-rodo-source-code)
+- [Quick start](#quick-start)
 - [Getting started](#getting-started)
     - [Installing rodo](#installing-rodo)
         - [To install rodo](#to-install-rodo)
@@ -42,18 +39,9 @@ If you are experienced in setting up software projects, you can skip to the [Qui
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
-# Quick start
+# Description
 
-**Note** - This section is for users who are familiar with git, a Unix-like
-command line environment, or scripting.
-
-1. Make sure [Racket](https://racket-lang.org/) is installed
-2. `git clone https://github.com/m455/rodo`
-3. `cd rodo`
-4. `sudo ./install.sh`
-5. `rodo`
-
-**Note**: To uninstall, run `sudo ./uninstall.sh`
+rodo is a list-management tool for people who prefer to use the command line.
 
 # Conventions used in this readme
 
@@ -94,6 +82,19 @@ rodo's source code is needed so Racket's `raco` tool can create a single-file ex
 ### To download the rodo source code
 
 1. Run `git clone https://github.com/m455/rodo`
+
+# Quick start
+
+This section is for users who are familiar with git, a Unix-like command line environment, or
+scripting.
+
+1. Make sure [Racket](https://racket-lang.org/) is installed
+2. `git clone https://github.com/m455/rodo`
+3. `cd rodo`
+4. `sudo ./install.sh`
+5. `rodo`
+
+**Note**: To uninstall, run `sudo ./uninstall.sh`
 
 # Getting started
 
