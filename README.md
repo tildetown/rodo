@@ -10,7 +10,7 @@ This document assumes you have basic command line skills.
 
 # Table of Contents
 
-- [Description](#description)
+- [What is rodo?](#description)
 - [Conventions used in this readme](#conventions-used-in-this-readme)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
@@ -40,9 +40,9 @@ This document assumes you have basic command line skills.
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
-# Description
+# What is rodo?
 
-rodo is a list-management tool for people who prefer to use the command line.
+rodo is a list-management tool on the command line.
 
 # Conventions used in this readme
 
