@@ -1,7 +1,8 @@
 # rodo
 
-This document will guide you through downloading, installing, and using rodo. This document assumes
-you have basic command line skills.
+This document will guide you through downloading, installing, and using rodo.
+
+This document assumes you have basic command line skills.
 
 # Screenshot
 
