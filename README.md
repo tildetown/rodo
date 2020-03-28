@@ -6,7 +6,7 @@ This document assumes you have basic command line skills.
 
 # Screenshot
 
-![](screenshot.png)
+![](screenshot.gif)
 
 # Table of Contents
 
