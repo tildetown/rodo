@@ -1,8 +1,6 @@
 # rodo
 
-This document will guide you through downloading, installing, and using rodo.
-
-This document assumes you have basic command line skills.
+rodo is a list-management tool on the command line.
 
 # Screenshot
 
@@ -10,7 +8,7 @@ This document assumes you have basic command line skills.
 
 # Table of Contents
 
-- [What is rodo?](#description)
+- [About this document](#about-this-document)
 - [Conventions used in this readme](#conventions-used-in-this-readme)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
@@ -40,9 +38,11 @@ This document assumes you have basic command line skills.
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
-# What is rodo?
+# About this document
 
-rodo is a list-management tool on the command line.
+This document will guide you through downloading, installing, and using rodo.
+
+This document assumes you have basic command line skills.
 
 # Conventions used in this readme
 
