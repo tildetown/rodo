@@ -9,7 +9,7 @@ rodo is a list-management tool on the command line.
 # Table of Contents
 
 - [About this document](#about-this-document)
-- [Conventions used in this readme](#conventions-used-in-this-readme)
+- [Conventions used in this document](#conventions-used-in-this-document)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
     - [Downloading Racket](#downloading-racket)
@@ -44,7 +44,7 @@ This document will guide you through downloading, installing, and using rodo.
 
 This document assumes you have basic command line skills.
 
-# Conventions used in this readme
+# Conventions used in this document
 
 * **Note** - Notes signify additional information
 * **Tip** - Tips signify an alternate procedure for completing a step
