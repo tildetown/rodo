@@ -1,6 +1,6 @@
 # rodo
 
-rodo is a list-management tool on the command line.
+rodo is a todo-list program for the command line.
 
 # Screenshot
 
