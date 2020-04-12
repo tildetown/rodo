@@ -58,21 +58,21 @@
 
         'show-usage (format "> For usage type ~a -h\n" config:program-name)
 
-        'creating (format "> Creating a list in ~a...\n" config:list-file)
+        'creating (format "> Creating a list at ~a...\n" config:list-file)
 
-        'creation-error (format "> Error: Could not create a list file in ~a\n" config:list-file)
+        'creation-error (format "> Error: Could not create a list file at ~a\n" config:list-file)
 
-        'file-already-exists (format "> Error: A list file already exists in ~a\n" config:list-file)
+        'file-already-exists (format "> Error: A list file already exists at ~a\n" config:list-file)
 
-        'successfully-created (format "> Your list file was successfully created in ~a\n" config:list-file)
+        'successfully-created (format "> Your list file was successfully created at ~a\n" config:list-file)
 
         'file-not-found (format "> Error: Could not find ~a\n" config:list-file)
 
         'item-not-found "> Error: Could not find that item\n"
 
-        'init-y/n (format "> A list file will be created in ~a\n> Are you sure you want to continue? [y/n]\n" config:list-file)
+        'init-y/n (format "> A list file will be created at ~a\n> Are you sure you want to continue? [y/n]\n" config:list-file)
 
-        'try-init (format "> Try typing ~a ~a to set it up\n" config:program-name (car config:initialize-commands))
+        'try-init (format "> Try typing the following to setup ~a:\n~a ~a\n" config:program-name config:program-name (car config:initialize-commands))
 
         'terminating (format "> Exited ~a\n" config:program-name)
 

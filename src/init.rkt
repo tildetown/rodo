@@ -8,8 +8,8 @@
 
 (define (create-initialization-contents)
   (utils:display-messages '(creating))
-  (utils:create-directory-700 config:program-directory)
-  (utils:create-file-600      config:list-file)
+  (utils:directory-create-700 config:program-directory)
+  (utils:file-create-600      config:list-file)
   (if (and (directory-exists? config:program-directory)
            (file-exists?      config:list-file))
       (utils:display-messages '(successfully-created))

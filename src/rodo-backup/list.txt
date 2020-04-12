@@ -1,0 +1,7 @@
+work on wg
+make pet game thing in chicken scheme
+learn assembly from https://skilldrick.github.io/easy6502/#snake
+work on generic tilde docs
+work on tildemush docs
+rewrite and decentralize nicethings in another lang
+rewrite rodo in chicken-scheme

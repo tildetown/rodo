@@ -8,12 +8,12 @@
 
 (provide (all-defined-out))
 
-(define (create-file-600 a-file)
+(define (file-create-600 a-file)
   (let ([opened-file (open-output-file a-file #:mode 'text #:exists 'truncate)])
     (close-output-port opened-file))
   (file-or-directory-permissions a-file #o600))
 
-(define (create-directory-700 a-directory)
+(define (directory-create-700 a-directory)
   (make-directory a-directory)
   (file-or-directory-permissions a-directory #o700))
 
@@ -67,7 +67,7 @@
 (define (append-element-to-end-of-list lst item-to-add)
   (reverse (cons item-to-add (reverse (file:file->lines lst)))))
 
-(define (add-item-to-list args)
+(define (item-add args)
   (let* ([item-to-add (string:string-join (cdr args) " ")]
          [new-list (append-element-to-end-of-list config:list-file item-to-add)])
     (file:display-lines-to-file new-list
@@ -78,12 +78,12 @@
 
 (define (check-add-conditions args)
   (if (and (file-exists? config:list-file))
-    (add-item-to-list args)
-    ;; Otherwise
-    (display-messages '(file-not-found
-                         try-init))))
+      (item-add args)
+      ;; Otherwise
+      (display-messages '(file-not-found
+                           try-init))))
 
-(define (remove-item-from-list args)
+(define (item-remove args)
   (let* ([item-to-remove (list-ref (file:file->lines config:list-file) args)]
          [new-list (remove item-to-remove (file:file->lines config:list-file))])
     (file:display-lines-to-file new-list config:list-file #:mode 'text #:exists 'truncate)
@@ -105,12 +105,11 @@
            ;; Length subtract one because the numbering starts at zero
            [list-length (sub1 (length (file:file->lines config:list-file)))])
        (if (not (> args list-length))
-         (remove-item-from-list args)
-         ;; Otherwise
-         (display-messages '(item-not-found))))]
+           (item-remove args)
+           ;; Otherwise
+           (display-messages '(item-not-found))))]
 
     ;; If directory and file don't exist
     [(and (not (directory-exists? config:program-directory))
           (not (file-exists? config:list-file)))
-     (display-messages '(file-not-found
-                          try-init))]))
+     (display-messages '(file-not-found try-init))]))
