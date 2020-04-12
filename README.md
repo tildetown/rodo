@@ -196,6 +196,7 @@ command names.
 **Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
 
 1. Edit the `config.rkt` file
+2. `sudo ./install.sh`
 
 # List of commands
 
