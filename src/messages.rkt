@@ -14,15 +14,15 @@
   (hash 'show-help (string-append
                      "NAME" newline
                      "====" newline
-                     "rodo" newline-double
+                     (format "~a" config:program-name) newline-double
 
                      "DESCRIPTION" newline
                      "===========" newline
-                     "rodo is a minimalistic list-management tool. It does not use any data formats, and cannot remove multiple items at once." newline-double
+                     (format "~a is a todo-list program for the command line. ~a does not use any data formats, and cannot remove multiple items at once." config:program-name config:program-name) newline-double
 
                      "USAGE SYNTAX" newline
                      "============" newline
-                     "rodo [command] <args>" newline-double
+                     (format "~a [command] <args>" config:program-name) newline-double
 
                      "COMMANDS AVAILABLE" newline
                      "==================" newline
