@@ -12,30 +12,32 @@
   (let ([args-length (length args)]
         [is-member?  (lambda (command) (member (list-ref args 0) command))])
     (cond
+      ;; if no args
       [(equal? args-length 0)
        (utils:display-messages '(show-usage))]
 
-      ;; help
+      ;; if one arg, and arg is the help command
       [(and (equal? args-length 1)
             (is-member? config:help-commands))
        (utils:display-messages '(show-help))]
 
-      ;; initialize
+      ;; if one arg, and arg is the initialize command
       [(and (equal? args-length 1)
             (is-member? config:initialize-commands))
        (init:check-initialize-conditions)]
 
-      ;; add
+      ;; if two args, and the add command exists in one of those args
       [(and (>= args-length 2)
             (is-member? config:add-commands))
        (utils:check-add-conditions args)]
 
-      ;; list
+      ;; if one arg, and arg is the list command
       [(and (equal? args-length 1)
             (is-member? config:list-commands))
        (utils:check-list-conditions)]
 
-      ;; remove
+      ;; if two args, and the remove command exists in one of those args
+      [(and (>= args-length 2)
       [(and (equal? args-length 2)
             (is-member? config:remove-commands)
             (real? (string->number (list-ref args 1)))

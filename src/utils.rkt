@@ -8,11 +8,13 @@
 
 (provide (all-defined-out))
 
+;; This may be affected by the user's umask
 (define (file-create-600 a-file)
   (let ([opened-file (open-output-file a-file #:mode 'text #:exists 'truncate)])
     (close-output-port opened-file))
   (file-or-directory-permissions a-file #o600))
 
+;; This may be affected by the user's umask
 (define (directory-create-700 a-directory)
   (make-directory a-directory)
   (file-or-directory-permissions a-directory #o700))
@@ -34,9 +36,10 @@
        lst))
 
 (define (file->vertically-numbered-list a-file)
-  (string:string-join (list->numbered-list (file:file->lines a-file))
-                      "\n"
-                      #:after-last "\n"))
+  (string:string-join
+    (list->numbered-list (file:file->lines a-file))
+    "\n"
+    #:after-last "\n"))
 
 (define (surround-with-quotation-marks item)
   (string-append "\"" item "\""))
@@ -79,9 +82,7 @@
 (define (check-add-conditions args)
   (if (and (file-exists? config:list-file))
       (item-add args)
-      ;; Otherwise
-      (display-messages '(file-not-found
-                           try-init))))
+      (display-messages '(file-not-found try-init))))
 
 (define (item-remove args)
   (let* ([item-to-remove (list-ref (file:file->lines config:list-file) args)]
@@ -97,7 +98,7 @@
           (null?             config:list-file))
      (display-messages '(empty-list))]
 
-    ;; If directory and file exist, and file is not empty
+    ;; If directory and file exist, but file is not empty
     [(and (directory-exists? config:program-directory)
           (file-exists?      config:list-file)
           (not (null?        config:list-file)))
@@ -106,10 +107,9 @@
            [list-length (sub1 (length (file:file->lines config:list-file)))])
        (if (not (> args list-length))
            (item-remove args)
-           ;; Otherwise
            (display-messages '(item-not-found))))]
 
-    ;; If directory and file don't exist
+    ;; If directory and file does not exist
     [(and (not (directory-exists? config:program-directory))
           (not (file-exists? config:list-file)))
      (display-messages '(file-not-found try-init))]))
