@@ -38,7 +38,7 @@
 
       ;; if two args, and the remove command exists in one of those args
       [(and (>= args-length 2)
-      [(and (equal? args-length 2)
+            (equal? args-length 2)
             (is-member? config:remove-commands)
             (real? (string->number (list-ref args 1)))
             (or (positive? (string->number (list-ref args 1)))
