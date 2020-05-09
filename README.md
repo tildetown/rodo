@@ -42,7 +42,8 @@ rodo is a todo-list program for the command line.
 
 This document will guide you through downloading, installing, and using rodo.
 
-This document assumes you have basic command line skills.
+This document assumes you have basic command line skills, such as navigating
+directories, and editing files.
 
 # Conventions used in this document
 
