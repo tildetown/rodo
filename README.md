@@ -46,12 +46,12 @@ This document assumes you have basic command line skills.
 
 # Conventions used in this document
 
-* **Note** - Notes signify additional information
-* **Tip** - Tips signify an alternate procedure for completing a step
-* **Caution** - Cautions signify that damage may occur
-* **Example** - Examples provide a visual reference of how a procedure would be carried out in the real world
-* `Inline code` - Inline code signifies package names, filenames, or commands
-* ```Code block``` - Code blocks signify file contents
+* **Note**: Notes signify additional information
+* **Tip**: Tips signify an alternate procedure for completing a step
+* **Caution**: Cautions signify that damage may occur
+* **Example**: Examples provide a visual reference of how a procedure would be carried out in the real world
+* `Inline code`: Inline code signifies package names, filenames, or commands
+* ```Code block```: Code blocks signify file contents
 
 # Platforms
 
@@ -168,7 +168,7 @@ Adding an item to your list will save it to a text file to access later.
 
 1. Run `rodo add "this is an example of an item using double quotation marks"`
 
-**Note** - The double quotation marks are optional, but recommended
+**Note**: The double quotation marks are optional, but recommended
 
 ## Removing an item from your list
 
@@ -180,10 +180,10 @@ numbers when removing an item from your list.
 
 1. Run `rodo rm 1`
 
-**Note 1** - The "1" in the procedure above will remove the first item in your
+**Note 1**: The "1" in the procedure above will remove the first item in your
 list.
 
-**Note 2** - You may need to run `rodo ls` first to see which numbers correspond
+**Note 2**: You may need to run `rodo ls` first to see which numbers correspond
 with which item in your list.
 
 ## Configuring rodo
