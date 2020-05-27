@@ -11,7 +11,7 @@
 
 (define program-name       config:program-name)
 (define list-file          config:list-file)
-(define help-command       (car config:help-commands)
+(define help-command       (car config:help-commands))
 (define initialize-command (car config:initialize-commands))
 (define list-command       (car config:list-commands))
 (define add-command        (car config:add-commands))
