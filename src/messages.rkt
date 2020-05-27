@@ -60,35 +60,35 @@
     "If you can't see the whole help message, then try running the following command: " newline
     tab-half (format "~a ~a | less" program-name help-command) newline)
 
-  'empty-list "> There is nothing in your list\n"
+   'empty-list "> There is nothing in your list\n"
 
-  'show-usage (format "> For usage type ~a -h\n" program-name)
+   'show-usage (format "> For usage type ~a -h\n" program-name)
 
-  'creating (format "> Creating a list at ~a...\n" list-file)
+   'creating (format "> Creating a list at ~a...\n" list-file)
 
-  'creation-error (format "> Error: Could not create a list file at ~a\n" list-file)
+   'creation-error (format "> Error: Could not create a list file at ~a\n" list-file)
 
-  'file-already-exists (format "> Error: A list file already exists at ~a\n" list-file)
+   'file-already-exists (format "> Error: A list file already exists at ~a\n" list-file)
 
-  'successfully-created (format "> Your list file was successfully created at ~a\n" list-file)
+   'successfully-created (format "> Your list file was successfully created at ~a\n" list-file)
 
-  'file-not-found (format "> Error: Could not find ~a\n" list-file)
+   'file-not-found (format "> Error: Could not find ~a\n" list-file)
 
-  'item-not-found "> Error: Could not find that item\n"
+   'item-not-found "> Error: Could not find that item\n"
 
-  'init-y/n (format "> A list file will be created at ~a\n> Are you sure you want to continue? [y/n]\n" list-file)
+   'init-y/n (format "> A list file will be created at ~a\n> Are you sure you want to continue? [y/n]\n" list-file)
 
-  'try-init (format "> Try typing the following to setup ~a:\n~a ~a\n" program-name program-name initialize-command)
+   'try-init (format "> Try typing the following to setup ~a:\n~a ~a\n" program-name program-name initialize-command)
 
-  'terminating (format "> Exited ~a\n" program-name)
+   'terminating (format "> Exited ~a\n" program-name)
 
-  'choose-y/n "> Error: Please choose y or n\n"
+   'choose-y/n "> Error: Please choose y or n\n"
 
-  'not-in-list "> Error: Item does not exist\n"
+   'not-in-list "> Error: Item does not exist\n"
 
-  'item-added "> Added \"~a\" to your list\n"
+   'item-added "> Added \"~a\" to your list\n"
 
-  'item-removed "> Removed \"~a\" from your list\n")
+   'item-removed "> Removed \"~a\" from your list\n"))
 
 
 (define y/n
