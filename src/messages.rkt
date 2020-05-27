@@ -4,9 +4,6 @@
 
 (provide (all-defined-out))
 
-(define (indent string)
-  (string-append "\t" string))
-
 (define tab-full       "\t")
 (define tab-half       "    ")
 (define newline        "\n")
