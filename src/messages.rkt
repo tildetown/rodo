@@ -88,7 +88,7 @@
 
     'item-added "> Added \"~a\" to your list\n"
 
-    'item-removed "> Removed \"~a\" from your list\n"))
+    'item-removed "> Removed \"~a\" from your list\n")
 
 
 (define y/n
