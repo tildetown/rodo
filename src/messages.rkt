@@ -55,7 +55,7 @@
     tab-full (format "~a ~a \"this is an item surrounded by double quotation marks\"" program-name add-command) newline-double
 
     tab-half remove-command newline
-    tab-full (format "~a ~a 2" program-name remove-commands) newline-double
+    tab-full (format "~a ~a 2" program-name remove-command) newline-double
 
     "If you can't see the whole help message, then try running the following command: " newline
     tab-half (format "~a ~a | less" program-name help-command) newline)
