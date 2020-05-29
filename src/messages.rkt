@@ -58,7 +58,7 @@
     tab-full (format "~a ~a 2" program-name remove-command) newline-double
 
     "If you can't see the whole help message, then try running the following command: " newline
-    tab-half (format "~a ~a | less" program-name help-command) newline)
+    (format "~a ~a | less" program-name help-command) newline)
 
    'empty-list "> There is nothing in your list\n"
 
