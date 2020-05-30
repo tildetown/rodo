@@ -1,6 +1,6 @@
 #lang racket/base
 
-(require (prefix-in config: "config.rkt"))
+(require "config.rkt")
 
 (provide (all-defined-out))
 
@@ -9,13 +9,11 @@
 (define newline        "\n")
 (define newline-double "\n\n")
 
-(define program-name       config:program-name)
-(define list-file          config:list-file)
-(define help-command       (car config:help-commands))
-(define initialize-command (car config:initialize-commands))
-(define list-command       (car config:list-commands))
-(define add-command        (car config:add-commands))
-(define remove-command     (car config:remove-commands))
+(define help-command       (car help-commands))
+(define initialize-command (car initialize-commands))
+(define list-command       (car list-commands))
+(define add-command        (car add-commands))
+(define remove-command     (car remove-commands))
 
 (define messages
   (hash
