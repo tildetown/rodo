@@ -2,11 +2,6 @@
 
 rodo is a todo-list program for the command line.
 
-Todo:
-
-- [ ] Update the `README.md` to match the new `Makefile`
-- [ ] Remove `install.sh` and `uninstall.sh` scripts after the `README.md` is updated
-
 # Screenshot
 
 ![](screenshot.gif)
