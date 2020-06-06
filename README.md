@@ -4,8 +4,6 @@ rodo is a todo-list program for the command line.
 
 Todo:
 
-- [X] Learn the basics of Makefiles
-- [X] Make a Makefile
 - [ ] Update the `README.md` to match the new `Makefile`
 - [ ] Remove `install.sh` and `uninstall.sh` scripts after the `README.md` is updated
 
@@ -15,20 +13,26 @@ Todo:
 
 # Table of Contents
 
-- [About this document](#about-this-document)
+- [Disclaimer](#disclaimer)
 - [Conventions used in this document](#conventions-used-in-this-document)
 - [Platforms](#platforms)
 - [Requirements](#requirements)
-    - [Downloading Racket](#downloading-racket)
-        - [To download and install Racket](#to-download-and-install-racket)
-    - [Downloading the rodo source code](#downloading-the-rodo-source-code)
-        - [To download the rodo source code](#to-download-the-rodo-source-code)
 - [Quick start](#quick-start)
-- [Getting started](#getting-started)
-    - [Installing rodo](#installing-rodo)
-        - [To install rodo](#to-install-rodo)
-    - [Uninstalling rodo](#uninstalling-rodo)
-        - [To uninstall rodo](#to-uninstall-rodo)
+- [Downloading rodo](#downloading-rodo)
+    - [Downloading rodo using git](#downloading-rodo-using-git)
+        - [To download rodo using git](#to-download-rodo-using-git)
+- [Installing rodo](#installing-rodo)
+    - [Installing rodo globally](#installing-rodo-globally)
+        - [To install rodo globally](#to-install-rodo-globally)
+    - [Installing rodo locally](#installing-rodo-locally)
+        - [To install rodo locally](#to-install-rodo-locally)
+    - [Installing rodo to a custom directory](#installing-rodo-to-a-custom-directory)
+        - [To install rodo to a custom directory](#to-install-rodo-to-a-custom-directory)
+- [Uninstalling rodo](#uninstalling-rodo)
+    - [Uninstalling rodo globally](#uninstalling-rodo-globally)
+        - [To uninstall rodo globally](#to-uninstall-rodo-globally)
+    - [Uninstalling rodo locally](#uninstalling-rodo-locally)
+        - [To uninstall rodo locally](#to-uninstall-rodo-locally)
 - [Using rodo](#using-rodo)
     - [Showing the help message](#showing-the-help-message)
         - [To show the help message](#to-show-the-help-message)
@@ -45,12 +49,14 @@ Todo:
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
-# About this document
+# Disclaimer
 
-This document will guide you through downloading, installing, and using rodo.
+This is a hobby project I built for myself to keep track of todos
+related to my hobbies.
 
-This document assumes you have basic command line skills, such as navigating
-directories, and editing files.
+I take no responsibility for anything that rodo deletes.
+
+Backup anything you don't want deleted.
 
 # Conventions used in this document
 
@@ -66,8 +72,8 @@ directories, and editing files.
 Below is a list of platforms that rodo can run on:
 
 * GNU/Linux
-* Windows Subsystem for Linux
-* macOS (Untested)
+* Windows (Using Windows Subsystem for Linux)
+* macOS (Using [Homebrew](https://brew.sh/))
 
 # Requirements
 
@@ -75,22 +81,6 @@ The following items must be downloaded and installed before you can use rodo:
 
 * Racket: [https://racket-lang.org/](https://racket-lang.org/)
 * rodo's source code: [https://github.com/m455/rodo](https://github.com/m455/rodo)
-
-## Downloading Racket
-
-The Racket programming language will be needed to create a single-file executable
-
-### To download and install Racket
-
-1. Run `sudo apt install racket` on the command line
-
-## Downloading the rodo source code
-
-rodo's source code is needed so Racket's `raco` tool can create a single-file executable
-
-### To download the rodo source code
-
-1. Run `git clone https://github.com/m455/rodo`
 
 # Quick start
 
@@ -100,43 +90,118 @@ scripting.
 1. Make sure [Racket](https://racket-lang.org/) is installed
 2. `git clone https://github.com/m455/rodo`
 3. `cd rodo`
-4. `sudo ./install.sh`
+4. `sudo make install-global`
 5. `rodo`
 
-**Note**: To uninstall, run `sudo ./uninstall.sh`
+**Note**: To uninstall, run `sudo make uninstall-global`
 
-# Getting started
+* `rodo help` - Displays the help message
+* `rodo init` - Generates the directory and file required in your home folder, so rodo can operate
+* `rodo add "your task here"` - Adds the message inside of quotation marks to your todo list
+* `rodo ls` - Displays your todo list
+* `rodo rm 2` - Removes the third item from your list. (The list starts at 0)
 
-This section will guide you through settig up rodo.
+**Note**: You may need to run `rodo ls` to see which number corresponds to which item in your list before running `rodo rm <number>`
 
-**Note**: This section assumes you have already [downloaded the rodo source code](#downloading-the-rodo-source-code).
+# Downloading rodo
 
-## Installing rodo
+rodo's source code exists in a public git repository. This makes
+accessing the code convenient, because you don't need to sign in or
+register for an account to download it.
 
-Installing rodo will add a rodo executable to the `/usr/local/bin` directory. This allows users to
-run rodo from any directory on their system.
+## Downloading rodo using git
 
-**Note**: Writing to the `/usr/local/bin` directory requires root privileges.
+You can use tools such as `git` to download rodo's source code. You
+will need the source code to install rodo.
 
-### To install rodo
+### To download rodo using git
 
-1. Change to the directory you downloaded rodo into
-2. Run `sudo ./install.sh`
+1. Run `git clone https://github.com/m455/rodo`
 
-## Uninstalling rodo
+**Note**: This will create a `rodo` directory in your current directory.
 
-Uninstalling rodo removes the rodo executable from the `/usr/local/bin` directory.
+# Installing rodo
 
-### To uninstall rodo
+You can either install rodo globally or locally on your system. A global installation allows all users on a machine to use rodo, while a local installation only allows one user to use rodo.
 
-1. Change to the directory you downloaded rodo into
-2. Run `sudo ./uninstall`
+See the options below for installing rodo:
+
+* [Installing rodo globally](#installing-rodo-globally)
+* [Installing rodo locally](#installing-rodo-locally)
+
+## Installing rodo globally
+
+This option will install rodo into `/usr/local/bin/`.
+
+This section assumes you have [downloaded rodo](#downloading-rodo).
+
+### To install rodo globally
+
+1. Run `cd rodo`
+2. Run `sudo make install-global`
+
+## Installing rodo locally
+
+This option will install rodo into `~/.local/bin/`.
+
+This section assumes you have [downloaded rodo](#downloading-rodo).
+
+### To install rodo locally
+
+1. Run `cd rodo`
+2. Run `sudo make install-local`
+
+## Installing rodo to a custom directory
+
+If you wish to have rodo exist elsewhere on your system, you can also
+build a single-file executable. Building a single-file executable
+allows you to place the executable in convenient places on your
+system, such as a directory on your `$PATH`.
+
+This section assumes you have [downloaded rodo](#downloading-rodo).
+
+### To install rodo to a custom directory
+
+1. Run `cd rodo`
+2. Run `make build`
+3. Move the `rodo` single-file executable to your desired directory
+
+# Uninstalling rodo
+
+Depending on your installation method, you can uninstall a global or local installation of rodo.
+
+See the options below for uninstalling rodo:
+
+* [Uninstalling rodo globally](#uninstalling-rodo-globally)
+* [Uninstalling rodo locally](#uninstalling-rodo-locally)
+
+## Uninstalling rodo globally
+
+This option will remove the `rodo` executable from `/usr/local/bin/`.
+
+This section assumes you have [downloaded rodo](#downloading-rodo).
+
+### To uninstall rodo globally
+
+1. Run `cd rodo`
+2. Run `sudo make uninstall-global`
+
+## Uninstalling rodo locally
+
+This option will remove the `rodo` executable from `~/.local/bin/`.
+
+This section assumes you have [downloaded rodo](#downloading-rodo).
+
+### To uninstall rodo locally
+
+1. Run `cd rodo`
+2. Run `sudo make uninstall-local`
 
 # Using rodo
 
 This section will teach you how to use rodo's commands.
 
-**Note**: This section assumes you have [installed rodo](#installing-rodo).
+This section assumes you have [installed rodo](#installing-rodo).
 
 ## Showing the help message
 

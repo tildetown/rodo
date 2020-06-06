@@ -19,7 +19,7 @@ help:
 	@echo "This Makefile supports the following commands:"
 	@echo "    help             - Displays this help message"
 	@echo "    clean            - Removes any $(file-executable) executable from $(directory-source)/"
-	@echo "    build            - Creates a $(file-executable) in your current directory"
+	@echo "    build            - Creates a $(file-executable) executable in your current directory"
 	@echo "    install-global   - Installs a $(file-executable) executable in $(directory-global)/"
 	@echo "    uninstall-global - Deletes a $(file-executable) executable from $(directory-global)/"
 	@echo "    install-local    - Installs a $(file-executable) executable in $(directory-local)/"
