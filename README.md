@@ -91,7 +91,7 @@ scripting.
 **Note**: To uninstall, run `sudo make uninstall-global`
 
 * `rodo help` - Displays the help message
-* `rodo init` - Generates the directory and file required in your home folder, so rodo can operate
+* `rodo initialize` - Generates the directory and file required in your home folder, so rodo can operate
 * `rodo add "your task here"` - Adds the message inside of quotation marks to your todo list
 * `rodo ls` - Displays your todo list
 * `rodo rm 2` - Removes the third item from your list. (The list starts at 0)
@@ -205,7 +205,7 @@ the name of a command or how to use a command.
 
 ### To show the help message
 
-1. Run `rodo -h`
+1. Run `rodo help`
 
 ## Initializing rodo
 
@@ -214,7 +214,7 @@ your list to a text file for later access.
 
 ### To initialize rodo
 
-1. Run `rodo init`
+1. Run `rodo initialize`
 
 ## Displaying your list
 
@@ -270,8 +270,8 @@ command names.
 
 This section lists and describes rodo's commands.
 
-* `-h` or `--help` displays the help message
-* `init` creates a list file (See the `config.rkt` file for the default location of this file)
+* `help` displays the help message
+* `initialize` creates a list file in `~/.config/rodo/list.txt` by default
 * `ls` displays your list
 * `add` adds an item to your list
 * `rm` removes an item from your list
@@ -280,17 +280,13 @@ This section lists and describes rodo's commands.
 
 The examples below assume that you have [added rodo to your $PATH](#adding-rodo-to-your-path).
 
-`rodo -h`
+`rodo help`
 
-`rodo --help`
-
-`rodo init`
+`rodo initialize`
 
 `rodo ls`
 
 `rodo add "this is an item"`
-
-`rodo add this is an item without quotation marks`
 
 `rodo rm 1`
 

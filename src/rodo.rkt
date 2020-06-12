@@ -1,7 +1,8 @@
 #lang racket/base
-(require (prefix-in args: "args.rkt"))
 
-(define (main args)
-  (args:check-args (vector->list args)))
+(require "args.rkt")
+
+(define (main vectorof-args)
+  (process-args vectorof-args))
 
 (main (current-command-line-arguments))

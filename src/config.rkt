@@ -1,34 +1,18 @@
 #lang racket/base
+
 (provide (all-defined-out))
 
-(define file-name "list.txt")
 (define program-name "rodo")
 
-(define program-directory
-  (path->string
-   (expand-user-path
-    (string-append "~/." program-name "/"))))
+(define program-directory (build-path (find-system-path 'home-dir) ".config" "rodo"))
+(define program-file      (build-path program-directory "list.txt"))
 
-(define list-file
-  (string-append program-directory file-name))
+(define help-command "help")
 
-(define help-commands '("-h"
-                        "--help"
-                        "h"
-                        "help"))
+(define initialize-command "initialize")
 
-(define initialize-commands '("init"
-                              "create"
-                              "start"
-                              "begin"))
+(define add-command "add")
 
-(define add-commands '("add"
-                       "a"))
+(define list-command "ls")
 
-(define list-commands '("ls"
-                        "list"))
-
-(define remove-commands '("rm"
-                          "remove"
-                          "del"
-                          "delete"))
+(define remove-command "rm")

@@ -1,17 +1,48 @@
 #lang racket/base
 
-(require (prefix-in file: racket/file)
-         (prefix-in list: racket/list)
-         (prefix-in string: racket/string)
-         (prefix-in config: "config.rkt")
-         (prefix-in messages: "messages.rkt"))
+(require racket/file
+         racket/list
+         racket/string
+         "config.rkt"
+         "messages.rkt")
 
 (provide (all-defined-out))
 
+(define (append-period string)
+  (string-append string ". "))
+
+(define (combine-lists lst1 lst2)
+  (map (lambda (lst1 lst2) (string-append lst1 lst2))
+       lst1
+       lst2))
+
+(define (messages-ref key)
+  (hash-ref messages key))
+
+(define (displayln-messages key-list)
+  (for ([key key-list])
+    (displayln (messages-ref key))))
+
+(define (displayln-format-message key item)
+  (displayln (format (messages-ref key) item)))
+
+(define (check-paths-exist)
+  (when (not (or (directory-exists? program-directory)
+                 (file-exists?      program-file)))
+    (displayln-messages '(file-not-found try-init))
+    (exit)))
+
+(define (check-file-empty)
+  (when (null? (file->lines program-file))
+    (displayln-messages '(empty-list))
+    (exit)))
+
 ;; This may be affected by the user's umask
 (define (file-create-600 a-file)
-  (let ([opened-file (open-output-file a-file #:mode 'text #:exists 'truncate)])
-    (close-output-port opened-file))
+  (close-output-port
+   (open-output-file a-file
+                     #:mode 'text
+                     #:exists 'truncate))
   (file-or-directory-permissions a-file #o600))
 
 ;; This may be affected by the user's umask
@@ -19,97 +50,85 @@
   (make-directory a-directory)
   (file-or-directory-permissions a-directory #o700))
 
-(define (display-messages key-list)
-  (for ([key key-list])
-       (display (hash-ref messages:messages key))))
+;; --------------------------------------------------------
+;; ls
+;; --------------------------------------------------------
+;; The (map add1 ...) here starts the numbering at 1 instead of 0
+(define (ls)
+  (check-paths-exist)
+  (check-file-empty)
+  (let* ([listof-file-lines            (file->lines program-file)]
+         [listof-numbers               (map add1 (range (length listof-file-lines)))]
+         [listof-number-strings        (map number->string listof-numbers)]
+         [listof-dotted-number-strings (map append-period listof-number-strings)]
+         [combined-lists               (combine-lists listof-dotted-number-strings listof-file-lines)]
+         [numbered-list                (string-join combined-lists "\n" #:after-last "\n")])
+    (display numbered-list)))
 
-(define (list->ascending-numbers-list lst)
-  (list:range (length lst)))
+;; --------------------------------------------------------
+;; add
+;; --------------------------------------------------------
+(define (add/append-item-to-list lst subcommand)
+  (let* ([listof-lines                    (file->lines lst)]
+         [listof-lines-reversed           (reverse listof-lines)]
+         [listof-lines-reversed-with-item (cons subcommand listof-lines-reversed)])
+    (reverse listof-lines-reversed-with-item)))
 
-(define (list->dotted-ascending-numbers-list lst)
-  (map (lambda (x) (string-append x ". "))
-       (map number->string (list->ascending-numbers-list lst))))
+(define (add subcommand)
+  (check-paths-exist)
+  (let ([list-with-item (add/append-item-to-list program-file subcommand)])
+    (display-lines-to-file list-with-item
+                           program-file
+                           #:mode 'text
+                           #:exists 'truncate)
+    (displayln-format-message 'item-added subcommand)))
 
-(define (list->numbered-list lst)
-  (map (lambda (x y) (string-append x y))
-       (list->dotted-ascending-numbers-list lst)
-       lst))
+;; --------------------------------------------------------
+;; rm
+;; --------------------------------------------------------
+;; The (sub1 subcommand-number) is because list-ref starts
+;; its index at 0, so we want to lower the user input by 1
+(define (rm subcommand-number)
+  (check-paths-exist)
+  (check-file-empty)
+  (if (<= subcommand-number (length (file->lines program-file)))
+      (let* ([item-number       (sub1 subcommand-number)]
+             [listof-lines      (file->lines program-file)]
+             [item-to-remove    (list-ref listof-lines item-number)]
+             [list-without-item (remove item-to-remove listof-lines)])
+        (display-lines-to-file list-without-item
+                               program-file
+                               #:mode 'text
+                               #:exists 'truncate)
+        (displayln-format-message 'item-removed item-to-remove))
+      (displayln-messages '(item-not-found try-ls))))
 
-(define (file->vertically-numbered-list a-file)
-  (string:string-join
-    (list->numbered-list (file:file->lines a-file))
-    "\n"
-    #:after-last "\n"))
+;; --------------------------------------------------------
+;; Initialize
+;; --------------------------------------------------------
+(define (initialize/cancel)
+  (displayln-messages '(cancel))
+  (exit))
 
-(define (surround-with-quotation-marks item)
-  (string-append "\"" item "\""))
+(define (initialize/start)
+  (displayln-messages '(creating))
+  (directory-create-700 program-directory)
+  (file-create-600      program-file)
+  (if (and (directory-exists? program-directory)
+           (file-exists?      program-file))
+      (displayln-messages '(successfully-created))
+      (displayln-messages '(creation-error))))
 
-(define (display-item-added item-to-add)
-  (display (format (hash-ref messages:messages 'item-added) item-to-add)))
+(define (initialize/prompt)
+  (displayln-messages '(initialize-prompt))
+  (display "> ")
+  (let ([user-input (read-line)])
+    (case (string->symbol user-input)
+      ['y   (initialize/start)]
+      ['n   (initialize/cancel)]
+      [else (displayln-messages '(choose-y/n))])))
 
-(define (display-item-removed item-to-remove)
-  (display (format (hash-ref messages:messages 'item-removed) item-to-remove)))
-
-(define (check-list-conditions)
-  (let ([file-exists?   (lambda () (file-exists? config:list-file))]
-        [file-null?     (lambda () (null? (file:file->lines config:list-file)))])
-    (cond
-      [(and (file-exists?)
-            (file-null?))
-       (display-messages '(empty-list))]
-
-      [(and (file-exists?)
-            (not (file-null?)))
-       (display (file->vertically-numbered-list config:list-file))]
-
-      [(not (file-exists?))
-       (display-messages '(file-not-found try-init))]
-
-      [else (display-messages '(show-usage))])))
-
-(define (append-element-to-end-of-list lst item-to-add)
-  (reverse (cons item-to-add (reverse (file:file->lines lst)))))
-
-(define (item-add args)
-  (let* ([item-to-add (string:string-join (cdr args) " ")]
-         [new-list (append-element-to-end-of-list config:list-file item-to-add)])
-    (file:display-lines-to-file new-list
-                                config:list-file
-                                #:mode 'text
-                                #:exists 'truncate)
-    (display-item-added item-to-add)))
-
-(define (check-add-conditions args)
-  (if (and (file-exists? config:list-file))
-      (item-add args)
-      (display-messages '(file-not-found try-init))))
-
-(define (item-remove args)
-  (let* ([item-to-remove (list-ref (file:file->lines config:list-file) args)]
-         [new-list (remove item-to-remove (file:file->lines config:list-file))])
-    (file:display-lines-to-file new-list config:list-file #:mode 'text #:exists 'truncate)
-    (display-item-removed item-to-remove)))
-
-(define (check-remove-conditions args)
-  (cond
-    ;; If directory and file exist, but file is empty
-    [(and (directory-exists? config:program-directory)
-          (file-exists?      config:list-file)
-          (null?             config:list-file))
-     (display-messages '(empty-list))]
-
-    ;; If directory and file exist, but file is not empty
-    [(and (directory-exists? config:program-directory)
-          (file-exists?      config:list-file)
-          (not (null?        config:list-file)))
-     (let ([args   (string->number (list-ref args 1))]
-           ;; Length subtract one because the numbering starts at zero
-           [list-length (sub1 (length (file:file->lines config:list-file)))])
-       (if (not (> args list-length))
-           (item-remove args)
-           (display-messages '(item-not-found))))]
-
-    ;; If directory and file does not exist
-    [(and (not (directory-exists? config:program-directory))
-          (not (file-exists? config:list-file)))
-     (display-messages '(file-not-found try-init))]))
+(define (initialize)
+  (if (file-exists? program-file)
+      (displayln-messages '(file-already-exists))
+      (initialize/prompt)))

@@ -1,48 +1,50 @@
 #lang racket/base
 
-(require (prefix-in config: "config.rkt")
-         (prefix-in init: "init.rkt")
-         (prefix-in file: racket/file)
-         (prefix-in messages: "messages.rkt")
-         (prefix-in utils: "utils.rkt"))
+(require racket/file
+         "config.rkt"
+         "utils.rkt")
 
 (provide (all-defined-out))
 
-(define (check-args args)
-  (let ([args-length (length args)]
-        [is-member?  (lambda (command) (member (list-ref args 0) command))])
+(define (process-args vectorof-args)
+  (let ([lengthof-vector   (vector-length vectorof-args)])
     (cond
       ;; if no args
-      [(equal? args-length 0)
-       (utils:display-messages '(show-usage))]
+      [(= lengthof-vector 0)
+       (displayln-messages '(show-usage))]
 
-      ;; if one arg, and arg is the help command
-      [(and (equal? args-length 1)
-            (is-member? config:help-commands))
-       (utils:display-messages '(show-help))]
+      ;; if more than 2 args
+      ;; Note: The add command requires items to be surrounded
+      ;;       in double quotes, so single quotation marks can
+      ;;       be used by the user in their add command text.
+      [(> lengthof-vector 2)
+       (displayln-messages '(too-many-args show-usage))]
 
-      ;; if one arg, and arg is the initialize command
-      [(and (equal? args-length 1)
-            (is-member? config:initialize-commands))
-       (init:check-initialize-conditions)]
+      ;; if help command
+      [(and (= lengthof-vector 1)
+            (equal? (vector-ref vectorof-args 0) help-command))
+       (displayln-messages '(show-help))]
 
-      ;; if two args, and the add command exists in one of those args
-      [(and (>= args-length 2)
-            (is-member? config:add-commands))
-       (utils:check-add-conditions args)]
+      ;; if initialize command
+      [(and (= lengthof-vector 1)
+            (equal? (vector-ref vectorof-args 0) initialize-command))
+       (initialize)]
 
-      ;; if one arg, and arg is the list command
-      [(and (equal? args-length 1)
-            (is-member? config:list-commands))
-       (utils:check-list-conditions)]
+      ;; if list command
+      [(and (= lengthof-vector 1)
+            (equal? (vector-ref vectorof-args 0) list-command))
+       (ls)]
 
-      ;; if two args, and the remove command exists in one of those args
-      [(and (>= args-length 2)
-            (equal? args-length 2)
-            (is-member? config:remove-commands)
-            (real? (string->number (list-ref args 1)))
-            (or (positive? (string->number (list-ref args 1)))
-                (zero? (string->number (list-ref args 1)))))
-       (utils:check-remove-conditions args)]
+      ;; if add command
+      [(and (= lengthof-vector 2)
+            (equal? (vector-ref vectorof-args 0) add-command))
+       (add (vector-ref vectorof-args 1))]
 
-      [else (utils:display-messages '(show-usage))])))
+      ;; if remove command
+      [(and (= lengthof-vector 2)
+            (equal?    (vector-ref vectorof-args 0) remove-command)
+            (real?     (string->number (vector-ref vectorof-args 1)))
+            (positive? (string->number (vector-ref vectorof-args 1))))
+       (rm (string->number (vector-ref vectorof-args 1)))]
+
+      [else (displayln-messages '(show-usage))])))
