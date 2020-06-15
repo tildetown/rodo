@@ -4,8 +4,8 @@
 
 (provide (all-defined-out))
 
-(define tab-full       "\t")
-(define tab-half       "    ")
+(define hyphen         " - ")
+(define indent         "  ")
 (define newline        "\n")
 (define newline-double "\n\n")
 
@@ -14,54 +14,48 @@
    'show-help
    (string-append
     "NAME" newline
-    tab-half (format "~a" program-name) newline-double
+    indent (format "~a" program-name)
+    newline-double
 
     "DESCRIPTION" newline
-    tab-half (format (string-append "~a is a todo-list program for the command line. "
+    indent (format (string-append "~a is a todo-list program for the command line. "
                                     "~a does not use any data formats, and cannot "
-                                    "remove multiple items at once.") program-name program-name)
+                                    "remove multiple items at once.")
+                   program-name program-name)
     newline-double
 
-    "USAGE SYNTAX" newline
-    tab-half (format "~a [command] <args>" program-name)
+    "USAGE" newline
+    indent (format "~a [command] [<args>]" program-name)
     newline-double
 
-    "COMMANDS AVAILABLE" newline
-    tab-half initialize-command newline
-    tab-full (format "Creates a list file located at ~a" program-file)
+    "COMMANDS" newline
+    indent initialize-command hyphen (format "Creates a list file located at ~a" program-file)
     newline-double
 
-    tab-half list-command newline
-    tab-full "Displays items from your todo list"
+    indent list-command hyphen "Displays items from your todo list"
     newline-double
 
-    tab-half add-command " <\"A quoted string\">" newline
-    tab-full "Adds an item to your todo list"
+    indent add-command " \"A quoted string\"" hyphen "Adds an item to your todo list"
     newline-double
 
-    tab-half remove-command " <number>" newline
-    tab-full "Removes an item from your todo list"
+    indent remove-command " <number>" hyphen "Removes an item from your todo list"
     newline-double
 
     "USAGE EXAMPLES" newline
-    tab-half initialize-command newline
-    tab-full (format "~a ~a" program-name initialize-command)
-    newline-double
+    indent (format "~a ~a" program-name initialize-command)
+    newline
 
-    tab-half list-command newline
-    tab-full (format "~a ~a" program-name list-command)
-    newline-double
+    indent (format "~a ~a" program-name list-command)
+    newline
 
-    tab-half add-command newline
-    tab-full (format "~a ~a \"Go for a walk\"" program-name add-command)
-    newline-double
+    indent (format "~a ~a \"Go for a walk\"" program-name add-command)
+    newline
 
-    tab-half remove-command newline
-    tab-full (format "~a ~a 2" program-name remove-command)
+    indent (format "~a ~a 2" program-name remove-command)
     newline-double
 
     "If you can't see the whole help message, then try running the following command: " newline
-    (format "~a ~a | less" program-name help-command) newline)
+    (format "~a ~a | less" program-name help-command))
 
    'empty-list                   "> There is nothing in your todo list"
    'show-usage           (format "> For usage type the following command:\n~a ~a" program-name help-command)
