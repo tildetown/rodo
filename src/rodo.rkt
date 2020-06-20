@@ -263,19 +263,19 @@
     ;; Proper usage
     [(or '#("-h")
          '#("--help")
-         '#(help-command))  (help)]
-    [(vector add-command _) (add (args-ref 1))]
-    [(vector rm-command _)  (rm  (args-ref 1))]
-    [(vector ls-command)    (ls)]
+         '#("help"))     (help)]
+    [(vector "add" _)    (add (args-ref 1))]
+    [(vector "rm"  _)    (rm  (args-ref 1))]
+    [(vector "ls" )      (ls)]
     ;; Improper usage
     ;; This is checked so we can give the user hints on how to
     ;; use the software if they have part of the command
     ;; correct
-    [(vector ls-command _) (displayln-message-list 'error-ls)]
-    [(vector add-command)  (displayln-message-list 'error-add)]
-    [(vector rm-command)   (displayln-message-list 'error-rm)]
+    [(vector "ls" _)     (displayln-message-list 'error-ls)]
+    [(vector "add")      (displayln-message-list 'error-add)]
+    [(vector "rm")       (displayln-message-list 'error-rm)]
     [(or (vector)
-         (vector _ ...))   (displayln-message-list 'error-usage)]))
+         (vector _ ...)) (displayln-message-list 'error-usage)]))
 
 (define (main vectorof-args)
   (process-args vectorof-args))
