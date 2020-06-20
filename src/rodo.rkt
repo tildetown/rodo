@@ -16,7 +16,7 @@
 (define program-name-dotted (string-append "." program-name))
 (define home-directory-path (find-system-path 'home-dir))
 (define program-path        (build-path home-directory-path program-name-dotted))
-(define correct-permissions 384)
+(define correct-permissions 384) ;; -rw------- permissions
 (define message-prefix      "> ")
 
 ;; ------------------------------------------------
@@ -94,7 +94,6 @@
   (for ([string strings])
     (displayln string)))
 
-;; -rw------- permissions
 (define (file-has-correct-permissions? file)
   (equal? correct-permissions (file-or-directory-permissions file 'bits)))
 
