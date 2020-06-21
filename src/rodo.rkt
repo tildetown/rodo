@@ -70,9 +70,9 @@
 
    'empty-list               (list "There is nothing in your list.")
 
-   'added                    (list "'~a' was added to your list.")
+   'added                    (list "Added '~a' to your list.")
 
-   'removed                  (list "'~a' was removed from your list.")))
+   'removed                  (list "Removed '~a' from your list.")))
 
 ;; ------------------------------------------------
 ;; helpers
