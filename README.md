@@ -31,8 +31,6 @@ rodo is a todo-list program for the command line.
 - [Using rodo](#using-rodo)
     - [Showing the help message](#showing-the-help-message)
         - [To show the help message](#to-show-the-help-message)
-    - [Initializing rodo](#initializing-rodo)
-        - [To initialize rodo](#to-initialize-rodo)
     - [Displaying your list](#displaying-your-list)
         - [To display your list](#to-display-your-list)
     - [Adding an item to your list](#adding-an-item-to-your-list)
@@ -91,7 +89,6 @@ scripting.
 **Note**: To uninstall, run `sudo make uninstall-global`
 
 * `rodo help` - Displays the help message
-* `rodo initialize` - Generates the directory and file required in your home folder, so rodo can operate
 * `rodo add "your task here"` - Adds the message inside of quotation marks to your todo list
 * `rodo ls` - Displays your todo list
 * `rodo rm 2` - Removes the third item from your list. (The list starts at 0)
@@ -207,15 +204,6 @@ the name of a command or how to use a command.
 
 1. Run `rodo help`
 
-## Initializing rodo
-
-Before using rodo, you must initialize rodo. Initializing will allow you to save
-your list to a text file for later access.
-
-### To initialize rodo
-
-1. Run `rodo initialize`
-
 ## Displaying your list
 
 Displaying your list will allow you to view items you have added to your list.
@@ -271,7 +259,6 @@ command names.
 This section lists and describes rodo's commands.
 
 * `help` displays the help message
-* `initialize` creates a list file in `~/.config/rodo/list.txt` by default
 * `ls` displays your list
 * `add` adds an item to your list
 * `rm` removes an item from your list
@@ -281,8 +268,6 @@ This section lists and describes rodo's commands.
 The examples below assume that you have [added rodo to your $PATH](#adding-rodo-to-your-path).
 
 `rodo help`
-
-`rodo initialize`
 
 `rodo ls`
 
