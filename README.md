@@ -37,8 +37,6 @@ rodo is a todo-list program for the command line.
         - [To add an item to your list](#to-add-an-item-to-your-list)
     - [Removing an item from your list](#removing-an-item-from-your-list)
         - [To remove an item from your list](#to-remove-an-item-from-your-list)
-    - [Configuring rodo](#configuring-rodo)
-        - [To configure rodo](#to-configure-rodo)
 - [List of commands](#list-of-commands)
 - [Usage examples](#usage-examples)
 
@@ -241,18 +239,6 @@ list.
 
 **Note 2**: You may need to run `rodo ls` first to see which numbers correspond
 with which item in your list.
-
-## Configuring rodo
-
-You can configure rodo's settings, such as the location of the list file, and
-command names.
-
-### To configure rodo
-
-**Caution**: Changing the `config.rkt` file should be done at your own risk as it may break rodo's functionality
-
-1. Edit the `config.rkt` file
-2. `sudo ./install.sh`
 
 # List of commands
 
