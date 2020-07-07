@@ -152,9 +152,10 @@ This section assumes you have [downloaded rodo](#downloading-rodo).
 
 ### To install rodo to a custom directory
 
+**Warning**: You will have to manually uninstall custom installations
+
 1. Run `cd rodo`
-2. Run `make build`
-3. Move the `rodo` single-file executable to your desired directory
+2. Run `make install-custom custom-location=~/path/to/custom/location`
 
 # Uninstalling rodo
 

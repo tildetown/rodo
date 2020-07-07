@@ -26,6 +26,7 @@ help:
 	@echo "    uninstall-global - Deletes a $(file-executable) executable from $(directory-global)/"
 	@echo "    install-local    - Installs a $(file-executable) executable in $(directory-local)/"
 	@echo "    uninstall-local  - Deletes a $(file-executable) executable from $(directory-local)/"
+	@echo "    install-custom   - Installs a $(file-executable) executable in a custom location"
 	@echo ""
 	@echo "Examples:"
 	@echo "    make help"
@@ -35,6 +36,9 @@ help:
 	@echo "    sudo make uninstall-global"
 	@echo "    make install-local"
 	@echo "    make uninstall-local"
+	@echo "    make install-custom custom-location=~/bin/"
+	@echo ""
+	@echo "Note: You will have to manually uninstall custom installations"
 
 
 .PHONY: install
@@ -45,6 +49,7 @@ install:
 uninstall:
 	@echo "Try running make help"
 
+# Uninstallation ---------------------------------------------------------
 .PHONY: uninstall-local
 uninstall-local:
 	@echo "Uninstalling $(file-executable) from $(file-executable-local) ..."
@@ -54,6 +59,12 @@ uninstall-local:
 uninstall-global:
 	@echo "Uninstalling $(file-executable) from $(file-executable-global) ..."
 	@rm $(file-executable-global)
+
+# Installation -----------------------------------------------------------
+.PHONY: install-custom
+install-custom: build
+	@echo "Moving $(file-executable-current) to $(custom-location) ..."
+	@mv $(file-executable-current) $(custom-location)
 
 .PHONY: install-local
 install-local: build
