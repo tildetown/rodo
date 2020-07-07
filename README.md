@@ -53,7 +53,7 @@ Backup anything you don't want deleted.
 
 * **Note**: Notes signify additional information
 * **Tip**: Tips signify an alternate procedure for completing a step
-* **Caution**: Cautions signify that damage may occur
+* **Warning**: Warnings signify that damage may occur
 * **Example**: Examples provide a visual reference of how a procedure would be carried out in the real world
 * `Inline code`: Inline code signifies package names, filenames, or commands
 * ```Code block```: Code blocks signify file contents
@@ -118,6 +118,7 @@ See the options below for installing rodo:
 
 * [Installing rodo globally](#installing-rodo-globally)
 * [Installing rodo locally](#installing-rodo-locally)
+* [Installing rodo to a custom directory](#installing-rodo-to-a-custom-directory)
 
 ## Installing rodo globally
 
