@@ -1,32 +1,41 @@
 program-name = rodo
+program-source = $(program-name).rkt
+
 directory-local = ~/.local/bin
 directory-global = /usr/local/bin
 directory-source = src
-directory-current = .
-
-file-source = $(program-name).rkt
-file-source-origin = $(directory-source)/$(file-source)
-
-file-executable = $(program-name)
-file-executable-local = $(directory-local)/$(file-executable)
-file-executable-global = $(directory-global)/$(file-executable)
-file-executable-origin= $(directory-source)/$(file-executable)
-file-executable-current= $(directory-current)/$(file-executable)
 
 .PHONY: help
 help:
 	@echo "Usage"
-	@echo "    make command [<args>]"
+	@echo "    make <command> [<args>]"
 	@echo ""
 	@echo "Commands:"
-	@echo "    help             	   - Displays this help message"
-	@echo "    clean            	   - Removes the $(file-executable) executable from $(directory-source)/"
-	@echo "    build                   - Creates a $(file-executable) executable in your current directory"
-	@echo "    install-global   	   - Installs a $(file-executable) executable in $(directory-global)/"
-	@echo "    uninstall-global 	   - Deletes a $(file-executable) executable from $(directory-global)/"
-	@echo "    install-local           - Installs a $(file-executable) executable in $(directory-local)/"
-	@echo "    uninstall-local         - Deletes a $(file-executable) executable from $(directory-local)/"
-	@echo "    install-custom [<args>] - Installs a $(file-executable) executable in a custom location"
+	@echo "    help"
+	@echo "        Displays this help message"
+	@echo ""
+	@echo "    clean"
+	@echo "        Removes the $(program-name) executable from $(directory-source)/"
+	@echo ""
+	@echo "    build"
+	@echo "        Creates a $(program-name) executable in your current directory"
+	@echo ""
+	@echo "    install-global"
+	@echo "        Installs a $(program-name) executable in $(directory-global)/"
+	@echo "        Note: This command requires sudo or root access"
+	@echo ""
+	@echo "    uninstall-global"
+	@echo "        Deletes a $(program-name) executable from $(directory-global)/"
+	@echo "        Note: This command requires sudo or root access"
+	@echo ""
+	@echo "    install-local"
+	@echo "        Installs a $(program-name) executable in $(directory-local)/"
+	@echo ""
+	@echo "    uninstall-local"
+	@echo "        Deletes a $(program-name) executable from $(directory-local)/"
+	@echo ""
+	@echo "    install-custom location=<args>"
+	@echo "        Installs a $(program-name) executable in a custom location"
 	@echo ""
 	@echo "Examples:"
 	@echo "    make help"
@@ -36,7 +45,7 @@ help:
 	@echo "    sudo make uninstall-global"
 	@echo "    make install-local"
 	@echo "    make uninstall-local"
-	@echo "    make install-custom custom-location=~/bin/"
+	@echo "    make install-custom location=~/bin/"
 	@echo ""
 	@echo "Note: You will have to manually uninstall custom installations"
 
@@ -52,37 +61,37 @@ uninstall:
 # Uninstallation ---------------------------------------------------------
 .PHONY: uninstall-local
 uninstall-local:
-	@echo "Uninstalling $(file-executable) from $(file-executable-local) ..."
-	@rm $(file-executable-local)
+	@echo "Uninstalling $(program-name) from $(directory-local) ..."
+	@rm $(directory-local)/$(program-name)
 
 .PHONY: uninstall-global
 uninstall-global:
-	@echo "Uninstalling $(file-executable) from $(file-executable-global) ..."
-	@rm $(file-executable-global)
+	@echo "Uninstalling $(program-name) from $(directory-global) ..."
+	@rm $(directory-global)/$(program-name)
 
 # Installation -----------------------------------------------------------
 .PHONY: install-custom
 install-custom: build
-	@echo "Moving $(file-executable-current) to $(custom-location) ..."
-	@mv $(file-executable-current) $(custom-location)
+	@echo "Moving ./$(program-name) to $(location) ..."
+	@mv ./$(program-name) $(location)
 
 .PHONY: install-local
 install-local: build
-	@echo "Moving $(file-executable-current) to $(file-executable-local) ..."
-	@mv $(file-executable-current) $(file-executable-local)
+	@echo "Moving ./$(program-name) to $(directory-local)/$(program-name) ..."
+	@mv ./$(program-name) $(directory-local)/$(progam-name)
 
 .PHONY: install-global
 install-global: build
-	@echo "Moving $(file-executable-current) to $(file-executable-global) ..."
-	@mv $(file-executable-current) $(file-executable-global)
+	@echo "Moving ./$(program-name) to $(directory-global)/$(program-name) ..."
+	@mv ./$(program-name) $(directory-global)/$(progam-name)
 
 .PHONY: clean
 clean:
-	@echo "Deleting any $(file-executable) executables found in your current folder ..."
-	@rm $(file-executable-current)
+	@echo "Deleting any $(program-name) executables found in your current folder ..."
+	@rm ./$(program-name)
 
 build:
-	@echo "Creating $(file-executable-origin) executable from $(file-source-origin) ..."
-	@raco exe $(file-source-origin)
-	@echo "Moving $(file-executable-origin) executable to your current folder ..."
-	@mv $(file-executable-origin) $(directory-current)/
+	@echo "Creating a $(directory-source)/$(program-name) executable from $(directory-source)/$(program-source) ..."
+	@raco exe $(directory-source)/$(program-source)
+	@echo "Moving $(directory-source)/$(program-name) executable to your current folder ..."
+	@mv $(directory-source)/$(program-name) ./
