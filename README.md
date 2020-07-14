@@ -29,6 +29,8 @@ rodo is a todo-list program for the command line.
     - [Uninstalling rodo locally](#uninstalling-rodo-locally)
         - [To uninstall rodo locally](#to-uninstall-rodo-locally)
 - [Using rodo](#using-rodo)
+    - [Initializing rodo](#initializing-rodo)
+        - [To initialize rodo](#to-intialize-rodo)
     - [Showing the help message](#showing-the-help-message)
         - [To show the help message](#to-show-the-help-message)
     - [Displaying your list](#displaying-your-list)
@@ -196,6 +198,15 @@ This section assumes you have [downloaded rodo](#downloading-rodo).
 This section will teach you how to use rodo's commands.
 
 This section assumes you have [installed rodo](#installing-rodo).
+
+## Initializing rodo
+
+Before using rodo, you will need to initialize it. This means rodo will create a `~/.rodo`.
+
+### To initialize rodo
+
+1. Run `rodo init`
+2. Choose `y`
 
 ## Showing the help message
 
