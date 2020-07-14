@@ -30,7 +30,7 @@ rodo is a todo-list program for the command line.
         - [To uninstall rodo locally](#to-uninstall-rodo-locally)
 - [Using rodo](#using-rodo)
     - [Initializing rodo](#initializing-rodo)
-        - [To initialize rodo](#to-intialize-rodo)
+        - [To initialize rodo](#to-initialize-rodo)
     - [Showing the help message](#showing-the-help-message)
         - [To show the help message](#to-show-the-help-message)
     - [Displaying your list](#displaying-your-list)
