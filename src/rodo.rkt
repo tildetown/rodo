@@ -117,6 +117,9 @@
   (close-output-port
     (open-output-file string)))
 
+(define (has-program-permissions? string)
+  (equal? program-permissions (file-or-directory-permissions string 'bits)))
+
 ;; ------------------------------------------------
 ;; Check conditions
 ;; ------------------------------------------------
@@ -130,8 +133,7 @@
      (begin (displayln-messages-ref 'error-file-doesnt-exist)
             (exit))]
 
-    [(not (equal? program-permissions
-                  (file-or-directory-permissions program-path 'bits)))
+    [(not (has-program-permissions? program-path))
      (displayln-messages-ref 'warning-permissions)]
 
     [else 'do-nothing]))
