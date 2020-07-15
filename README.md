@@ -266,8 +266,6 @@ This section lists and describes rodo's commands.
 
 # Usage examples
 
-The examples below assume that you have [added rodo to your $PATH](#adding-rodo-to-your-path).
-
 `rodo help`
 
 `rodo ls`
@@ -276,4 +274,3 @@ The examples below assume that you have [added rodo to your $PATH](#adding-rodo-
 
 `rodo rm 1`
 
-**Note**: You may have to run `rodo ls` to see which number corresponds to which item in your list.
