@@ -63,27 +63,34 @@ uninstall:
 uninstall-local:
 	@echo "Uninstalling $(program-name) from $(directory-local) ..."
 	@rm $(directory-local)/$(program-name)
+	@echo "Uninstallation complete!"
 
 .PHONY: uninstall-global
 uninstall-global:
 	@echo "Uninstalling $(program-name) from $(directory-global) ..."
 	@rm $(directory-global)/$(program-name)
+	@echo "Uninstallation complete!"
 
 # Installation -----------------------------------------------------------
 .PHONY: install-custom
 install-custom: build
 	@echo "Moving ./$(program-name) to $(location) ..."
 	@mv ./$(program-name) $(location)
+	@echo "Installation complete!"
 
 .PHONY: install-local
 install-local: build
+	@echo "Making $(directory-local) if it doesn't already exist ..."
+	@mkdir -p $(directory-local)
 	@echo "Moving ./$(program-name) to $(directory-local)/$(program-name) ..."
 	@mv ./$(program-name) $(directory-local)/$(progam-name)
+	@echo "Installation complete!"
 
 .PHONY: install-global
 install-global: build
 	@echo "Moving ./$(program-name) to $(directory-global)/$(program-name) ..."
 	@mv ./$(program-name) $(directory-global)/$(progam-name)
+	@echo "Installation complete!"
 
 .PHONY: clean
 clean:
