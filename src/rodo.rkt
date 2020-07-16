@@ -275,16 +275,14 @@
     (format "  ~a ~a 2" program-name rm-command))))
 
 (define (process-args vectorof-args)
-  (define (args-ref number)
-    (vector-ref vectorof-args number))
   (match vectorof-args
     [(or (vector (== help-command-1))
          (vector (== help-command-2))
          (vector (== help-command-3))) (help)]
     [(vector (== ls-command))          (ls)]
     [(vector (== init-command))        (init)]
-    [(vector (== add-command) _)       (add (args-ref 1))]
-    [(vector (== rm-command)  _)       (rm  (args-ref 1))]
+    [(vector (== add-command) a)       (add a)]
+    [(vector (== rm-command)  a)       (rm  a)]
     [(vector _ _ _ ...)
      (displayln-messages-ref 'error-too-many-arguments)]
     [(vector _ _)
