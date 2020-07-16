@@ -160,7 +160,7 @@ This section assumes you have [downloaded rodo](#downloading-rodo).
 1. Run `cd rodo`
 2. Run `make install-custom location=~/path/to/custom/location`
 
-Example: In step 2., you could run `make install-custom location=~/bin/`
+**Example**: In step 2., you could run `make install-custom location=~/bin/`
 
 # Uninstalling rodo
 
