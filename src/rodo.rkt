@@ -278,35 +278,19 @@
   (define (args-ref number)
     (vector-ref vectorof-args number))
   (match vectorof-args
-    [(vector a)
-     (cond
-       [(ormap (lambda (x) (equal? a x))
-               (list help-command-1
-                     help-command-2
-                     help-command-3))
-        (help)]
-
-       [(equal? a ls-command)
-        (ls)]
-
-       [(equal? a init-command)
-        (init)]
-
-       [else (displayln-messages-ref 'error-incorrect-usage)])]
-
-    [(vector a _)
-     (cond
-       [(equal? a add-command)
-        (add (args-ref 1))]
-
-       [(equal? a rm-command)
-        (rm (args-ref 1))]
-
-       [else (displayln-messages-ref 'error-incorrect-usage)])]
-
+    [(or (vector (== help-command-1))
+         (vector (== help-command-2))
+         (vector (== help-command-3))) (help)]
+    [(vector (== ls-command))          (ls)]
+    [(vector (== init-command))        (init)]
+    [(vector (== add-command) _)       (add (args-ref 1))]
+    [(vector (== rm-command)  _)       (rm  (args-ref 1))]
     [(vector _ _ _ ...)
      (displayln-messages-ref 'error-too-many-arguments)]
-
+    [(vector _ _)
+     (displayln-messages-ref 'error-incorrect-usage)]
+    [(vector _)
+     (displayln-messages-ref 'error-incorrect-usage)]
     [_ (ls)]))
 
 (define (main vectorof-args)
