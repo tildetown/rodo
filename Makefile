@@ -61,15 +61,15 @@ uninstall:
 # Uninstallation ---------------------------------------------------------
 .PHONY: uninstall-local
 uninstall-local:
-	@echo "Uninstalling $(program-name) from $(directory-local) ..."
+	@echo "uninstalling $(program-name) from $(directory-local) ..."
 	@rm $(directory-local)/$(program-name)
-	@echo "Uninstallation complete!"
+	@echo "uninstallation complete!"
 
 .PHONY: uninstall-global
 uninstall-global:
-	@echo "Uninstalling $(program-name) from $(directory-global) ..."
+	@echo "uninstalling $(program-name) from $(directory-global) ..."
 	@rm $(directory-global)/$(program-name)
-	@echo "Uninstallation complete!"
+	@echo "uninstallation complete!"
 
 # Installation -----------------------------------------------------------
 .PHONY: install-custom
@@ -92,13 +92,14 @@ install-global: build
 	@mv ./$(program-name) $(directory-global)/$(progam-name)
 	@echo "Installation complete!"
 
-.PHONY: clean
-clean:
-	@echo "Deleting any $(program-name) executables found in your current folder ..."
-	@rm ./$(program-name)
-
 build:
 	@echo "Creating a $(directory-source)/$(program-name) executable from $(directory-source)/$(program-source) ..."
 	@raco exe $(directory-source)/$(program-source)
 	@echo "Moving $(directory-source)/$(program-name) executable to your current folder ..."
 	@mv $(directory-source)/$(program-name) ./
+
+.PHONY: clean
+clean:
+	@echo "Deleting any $(program-name) executables found in your current folder ..."
+	@rm ./$(program-name)
+
