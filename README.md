@@ -201,7 +201,7 @@ This section assumes you have [installed rodo](#installing-rodo).
 
 ## Initializing rodo
 
-Before using rodo, you will need to initialize it. This means rodo will create a `~/.rodo`.
+Before using rodo, you will need to initialize it. This means rodo will create a `~/.rodo` file.
 
 ### To initialize rodo
 
