@@ -237,8 +237,6 @@ Adding an item to your list will save it to a text file to access later.
 
 1. Run `rodo add "this is an example of an item using double quotation marks"`
 
-**Note**: The double quotation marks are optional, but recommended
-
 ## Removing an item from your list
 
 When removing an item from your list, you can reference the numbers beside each
