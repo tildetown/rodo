@@ -257,12 +257,15 @@ with which item in your list.
 
 This section lists and describes rodo's commands.
 
+* `init` intializes the `~/.rodo` file
 * `help` displays the help message
 * `ls` displays your list
 * `add` adds an item to your list
 * `rm` removes an item from your list
 
 # Usage examples
+
+`rodo init`
 
 `rodo help`
 
