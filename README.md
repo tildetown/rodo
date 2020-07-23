@@ -219,7 +219,7 @@ the name of a command or how to use a command.
 
 ## Displaying your list
 
-Displaying your list will allow you to view items you have added to your list.
+Displaying your list will allow you to view the items you have added to your list.
 You will notice numbers beside the items in your list.
 
 **Note**: These numbers are useful references for when you want to remove items from your list. For
