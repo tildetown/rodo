@@ -73,7 +73,7 @@ Below is a list of platforms that rodo can run on:
 The following items must be downloaded and installed before you can use rodo:
 
 * Racket: [https://racket-lang.org/](https://racket-lang.org/)
-* rodo's source code: [https://github.com/m455/rodo](https://github.com/m455/rodo)
+* rodo's source code: [https://notabug.org/m455/rodo](https://notabug.org/m455/rodo)
 
 # Quick start
 
@@ -81,7 +81,7 @@ This section is for users who are familiar with git, a Unix-like command line en
 scripting.
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
-2. `git clone https://github.com/m455/rodo`
+2. `git clone https://notabug.org/m455/rodo`
 3. `cd rodo`
 4. `sudo make install-global`
 5. `rodo`
@@ -108,7 +108,7 @@ will need the source code to install rodo.
 
 ### To download rodo using git
 
-1. Run `git clone https://github.com/m455/rodo`
+1. Run `git clone https://notabug.org/m455/rodo`
 
 **Note**: This will create a `rodo` directory in your current directory.
 
