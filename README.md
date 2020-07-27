@@ -81,7 +81,7 @@ This section is for users who are familiar with git, a Unix-like command line en
 scripting.
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
-2. `git clone https://notabug.org/m455/rodo`
+2. `git clone -b main https://notabug.org/m455/rodo`
 3. `cd rodo`
 4. `sudo make install-global`
 5. `rodo`
