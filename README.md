@@ -56,7 +56,7 @@ Backup anything you don't want deleted.
 * **Note**: Notes signify additional information
 * **Tip**: Tips signify an alternative procedure for completing a step
 * **Warning**: Warnings signify that damage, such as data loss, may occur
-* **Example**: Examples provide a reference of how a procedure would be carried out in the real world
+* **Example**: Examples provide a reference of how a procedure would be performed in the real world
 * `Inline code`: Inline code signifies package names, filenames, or commands
 * ```Code block```: Code blocks signify file contents
 
