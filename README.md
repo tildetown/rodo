@@ -54,7 +54,7 @@ Backup anything you don't want deleted.
 # Conventions used in this document
 
 * **Note**: Notes signify additional information
-* **Tip**: Tips signify an alternate procedure for completing a step
+* **Tip**: Tips signify an alternative procedure for completing a step
 * **Warning**: Warnings signify that damage may occur
 * **Example**: Examples provide a visual reference of how a procedure would be carried out in the real world
 * `Inline code`: Inline code signifies package names, filenames, or commands
