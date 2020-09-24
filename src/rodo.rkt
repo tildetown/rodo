@@ -27,12 +27,6 @@
 ;; ------------------------------------------------
 (define messages
   (hash
-    'error-too-many-arguments
-    (format (string-append "Error: Too many arguments." newline
-                           "Try running '~a ~a' for more information.")
-            program-name
-            help-command-1)
-
     'error-incorrect-usage
     (format (string-append "Error: Incorrect usage." newline
                            "Try running '~a ~a' for more information.")
@@ -283,13 +277,8 @@
     [(vector (== init-command))        (init)]
     [(vector (== add-command) a)       (add a)]
     [(vector (== rm-command)  a)       (rm  a)]
-    [(vector _ _ _ ...)
-     (displayln-messages-ref 'error-too-many-arguments)]
-    [(vector _ _)
-     (displayln-messages-ref 'error-incorrect-usage)]
-    [(vector _)
-     (displayln-messages-ref 'error-incorrect-usage)]
-    [_ (ls)]))
+    [(vector _ ...)                    (displayln-messages-ref 'error-incorrect-usage)]
+    [_                                 (ls)]))
 
 (define (main vectorof-args)
   (process-args vectorof-args))
