@@ -81,7 +81,7 @@ This section is for users who are familiar with git, a Unix-like command line en
 scripting.
 
 1. Make sure [Racket](https://racket-lang.org/) is installed
-2. `git clone https://git.m455.casa/m455/rodo`
+2. `git clone git://git.m455.casa/rodo.git`
 3. `cd rodo`
 4. `sudo make install-global`
 5. `rodo`
@@ -108,7 +108,7 @@ will need the source code to install rodo.
 
 ### To download rodo using git
 
-1. Run `git clone https://git.m455.casa/m455/rodo`
+1. Run `git clone git://git.m455.casa/rodo.git`
 
 **Note**: This will create a `rodo` directory in your current directory.
 
