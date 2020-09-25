@@ -235,9 +235,9 @@ Adding an item to your list will save it to a text file to access later.
 
 ## Removing an item from your list
 
-When removing an item from your list, you can reference the numbers beside each
-item when [Displaying Your List](#displaying-your-list). You can use these
-numbers when removing an item from your list.
+When removing an item from your list, you can reference the numbers beside each item when
+[Displaying Your List](#displaying-your-list). You can use these numbers when removing an item from
+your list.
 
 ### To remove an item from your list
 
