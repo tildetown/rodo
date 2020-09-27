@@ -2,6 +2,10 @@
 
 rodo is a todo-list program for the command line.
 
+# Screenshot
+
+![A screenshot of a user adding an removing items from their todo list in a terminal](images/screenshot.gif)
+
 # Table of Contents
 
 - [Disclaimer](#disclaimer)
