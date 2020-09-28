@@ -4,7 +4,7 @@ rodo is a todo-list program for the command line.
 
 # Screenshot
 
-![A screenshot of a user adding an removing items from their todo list in a terminal](https://git.m455.casa/rodo.git/blob_plain/786cc2705f3d64c5d3f40145dac2d74f0b5c294e:/images/screenshot.gif)
+![A screenshot of a user adding an removing items from their todo list in a terminal](https://git.m455.casa/rodo.git/blob_plain/HEAD:/images/screenshot.gif)
 
 # Table of Contents
 
